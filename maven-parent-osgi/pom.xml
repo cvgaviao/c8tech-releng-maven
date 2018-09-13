@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ==========================================================================  -->
+<!-- Copyright © 2015-2017 Cristiano Gavião, C8 Technology ME.                         -->
+<!--                                                                             -->
+<!-- All rights reserved. This program and the accompanying materials            -->
+<!-- are made available under the terms of the Eclipse Public License v1.0       -->
+<!-- which accompanies this distribution, and is available at                    -->
+<!-- http://www.eclipse.org/legal/epl-v10.html                                   -->
+<!--                                                                             -->
+<!-- Contributors:                                                               -->
+<!-- Cristiano Gavião (cvgaviao@c8tech.com.br)- initial API and implementation   -->
+<!-- ==========================================================================  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>br.com.c8tech.releng</groupId>
+        <artifactId>maven-parent-java</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../maven-parent-java/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>maven-parent-osgi</artifactId>
+    <name>C8Tech Maven Parent OSGI POM</name>
+    <description>The master parent POM aimed to set up the build of all C8Tech's OSGI Maven based projects.</description>
+    <packaging>pom</packaging>
+
+    <inceptionYear>2015</inceptionYear>
+
+    <organization>
+        <name>C8 Technology ME</name>
+        <url>www.c8tech.com.br</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>cvgaviao</id>
+            <name>Cristiano Gavião</name>
+            <email>cvgaviao@c8tech.com.br</email>
+            <timezone>-3</timezone>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <!-- ================================  -->
+    <!--    ISSUES MANAGEMENT PROPERTIES   -->
+    <!-- ================================  -->
+    <issueManagement>
+        <system>${c8tech.im.system}</system>
+        <url>${c8tech.im.server.url}/${c8tech.im.server.dir}</url>
+    </issueManagement>
+
+    <!-- ciManagement, distributionManagement(Site) and scm should be duplicated
+        for every git repository (parent pom) and in most cases for each aggregator
+        due the fact that its modules uses different parents. -->
+
+    <!-- ====================================  -->
+    <!--    CONTINUOUS INTEGRATION PROPERTIES  -->
+    <!-- ====================================  -->
+    <ciManagement>
+        <system>${c8tech.ci.system}</system>
+        <url>${c8tech.ci.server.url}${c8tech.scm.repo.name}</url>
+    </ciManagement>
+
+    <!-- =================  -->
+    <!--    PROJECT SITE    -->
+    <!-- =================  -->
+    <url>${c8tech.project.site.url}</url>
+
+    <distributionManagement>
+        <!-- ===============================  -->
+        <!--  RELEASE PUBLISHING PROPERTIES   -->
+        <!-- ===============================  -->
+        <repository>
+            <id>c8tech-release-server</id>
+            <url>${c8tech.distribution.repository.release.url}</url>
+        </repository>
+        <!-- ================================  -->
+        <!--  SNAPSHOT PUBLISHING PROPERTIES   -->
+        <!-- ================================  -->
+        <snapshotRepository>
+            <id>c8tech-snapshots-server</id>
+            <url>${c8tech.distribution.repository.snapshot.url}</url>
+        </snapshotRepository>
+        <!-- ==============================  -->
+        <!--    SITE PUBLISHING PROPERTIES   -->
+        <!-- ==============================  -->
+        <site>
+            <id>${c8tech.distribution.site.id}</id>
+            <name>${c8tech.distribution.site.name}</name>
+            <url>${c8tech.distribution.site.url}</url>
+        </site>
+    </distributionManagement>
+
+    <!-- ======================================  -->
+    <!--  SOURCE CONTROL MANAGEMENT PROPERTIES   -->
+    <!-- ======================================  -->
+    <scm>
+        <!-- connection and developerConnection must be added in children
+            in order to work with git properly-->
+        <connection>${c8tech.scm.connection}</connection>
+        <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
+        <url>${c8tech.scm.url}</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Eclipse Public License v1.0</name>
+            <url>http://www.eclipse.org/legal/epl-v10.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+    
+        <!-- ========================  -->
+        <!--    PROJECT PROPERTIES     -->
+        <!-- ========================  -->
+        
+        <!-- holder form timestamp computed by maven -->
+        <osgi-version-qualifier>${maven.build.timestamp}</osgi-version-qualifier>
+
+        <!-- an OSGi semantic version computed by build-helper-maven-plugi -->
+        <bundle.short.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}</bundle.short.version>
+
+        <!-- a OSGi version containing the computed qualifier -->
+        <bundle.full.version>${bundle.short.version}.${osgi-version-qualifier}</bundle.full.version>
+
+
+
+        <!-- ===============================  -->
+        <!-- SITE STAGE and RELEASE SETTINGS  -->
+        <!-- ===============================  -->
+
+        <!-- The Id of the site to be published-->
+        <!-- The common case is that this value must point to a <server> in the settings.xml in order to get authentication data. -->
+        <c8tech.distribution.site.id>${project.artifactId}-site</c8tech.distribution.site.id>
+
+        <c8tech.distribution.site.name>
+            ${project.artifactId} Site
+        </c8tech.distribution.site.name>
+
+        <!-- points to the root of project's site -->
+        <!-- it is better to override this property in the setting.xml file. -->
+        <c8tech.site.domain></c8tech.site.domain>
+        
+        <!-- the url of the repository's site -->
+        <c8tech.site.repository.url>${c8tech.site.domain}${c8tech.scm.repo.name}/</c8tech.site.repository.url>
+
+        <!-- the url of the repository's site -->
+        <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
+        
+        <!-- This property should be overridden on every parent POM, normally only one for each SCM repository -->
+        <!-- the complete url (to be use with distribution site settings) -->
+        <!-- default behavior is maven to append /${project.artifactId} in
+            the end -->
+        <c8tech.distribution.site.url>${c8tech.site.repository.url}</c8tech.distribution.site.url>
+
+        <!-- Properties that children projects can use to skip site generation and deployment executions -->
+        <c8tech.site.skip>false</c8tech.site.skip>
+        <c8tech.deploy.skip>false</c8tech.deploy.skip>
+
+        <!-- Points to the current project workspace where built repositories and site will be staged. -->
+        <!-- should be better to set this property in the settings.xml file or using system property JVM parameter (-Dc8tech.workspace.dir).
+            in command line.  -->
+        <c8tech.workspace.dir>${env.HOME}${file.separator}c8tech-workspace-dev</c8tech.workspace.dir>
+
+        <!-- indicates where to stage built repositories in local machine -->
+        <c8tech.workspace.dir.repositories>${c8tech.workspace.dir}${file.separator}repositories${file.separator}</c8tech.workspace.dir.repositories>
+
+        <!-- indicates where to stage built repositories in local machine -->
+        <c8tech.workspace.dir.site>${c8tech.workspace.dir}${file.separator}STAGED-SITE${file.separator}</c8tech.workspace.dir.site>
+
+        <!-- should automatic push changes to scm repo when releasing -->
+        <c8tech.release.push>false</c8tech.release.push>
+
+
+        <!-- ========================  -->
+        <!--  ISSUE MANAGEMENT         -->
+        <!-- ========================  -->
+        <c8tech.im.system></c8tech.im.system>
+        <c8tech.im.server.url></c8tech.im.server.url>
+        <c8tech.im.server.dir></c8tech.im.server.dir>
+
+        <!--*** Set CI SYSTEM and location ***-->
+        <!-- ========================  -->
+        <!--  MAVEN PLUGIN VERSIONS    -->
+        <!-- ========================  -->
+        <c8tech.ci.system></c8tech.ci.system>
+        <c8tech.ci.server.url></c8tech.ci.server.url>
+
+        <!-- ========================  -->
+        <!--  MAVEN PLUGIN VERSIONS    -->
+        <!-- ========================  -->
+        <version.takari-lifecycle>1.13.6</version.takari-lifecycle>
+        <version.maven-bundle>3.5.1</version.maven-bundle>
+        <version.bndlib>4.1.0-SNAPSHOT</version.bndlib>
+        <eclipse.aether.version>1.0.0.v20140518</eclipse.aether.version>
+
+        <!-- Tools -->
+        <pojosr.version>0.2.1</pojosr.version>
+        <xtend.maven.version>2.11.0</xtend.maven.version>
+
+        <!-- OSGI -->
+        <version.osgi.core>7.0.0</version.osgi.core>
+        <version.osgi.compendium>${version.osgi.core}</version.osgi.compendium>
+        <version.osgi.annotation>${version.osgi.core}</version.osgi.annotation>
+        <version.pax-url>2.5.4</version.pax-url>
+
+    </properties>
+
+    <profiles>
+        <profile>
+            <!-- profile used to setup projects for OSGi bundle integration
+                tests based on Pax-Exam -->
+            <!-- it is activated only when the project contains a .c8tech.releng.itests
+                file. -->
+            <id>when-building-paxexam-integrationTests-project</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.itests.paxexam</exists>
+                </file>
+            </activation>
+            <properties>
+                <argLine>-Xmx1024m</argLine>
+                <itests.framework.dependencies.file>dependencies-${itests.osgi.framework.id}-${itests.osgi.framework.branch}.properties</itests.framework.dependencies.file>
+                <itests.osgi.frameworks.properties>itests-osgi-frameworks.properties</itests.osgi.frameworks.properties>
+            </properties>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>br.com.c8tech.releng</groupId>
+                        <artifactId>fpom-deps-osgi</artifactId>
+                        <version>${version.c8tech.releng}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>br.com.c8tech.releng</groupId>
+                        <artifactId>fpom-itests-paxexam</artifactId>
+                        <version>${version.c8tech.releng}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+            <dependencies>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>osgi.core</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>osgi.annotation</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>br.com.c8tech.releng</groupId>
+                    <artifactId>fpom-deps-osgi</artifactId>
+                    <version>${version.c8tech.releng}</version>
+                    <type>pom</type>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>br.com.c8tech.releng</groupId>
+                    <artifactId>fpom-itests-paxexam</artifactId>
+                    <version>${version.c8tech.releng}</version>
+                    <type>pom</type>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-enforcer-plugin</artifactId>
+                            <version>${version.maven-enforcer}</version>
+                            <inherited>true</inherited>
+                            <configuration>
+                                <failFast>true</failFast>
+                                <fail>true</fail>
+                                <ignoreCache>true</ignoreCache>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>check-osgi-framework-property</id>
+                                    <goals>
+                                        <goal>enforce</goal>
+                                    </goals>
+                                    <phase>pre-integration-test</phase>
+                                    <configuration>
+                                        <rules>
+                                            <requireProperty>
+                                                <property>itests.osgi.framework</property>
+                                            </requireProperty>
+                                        </rules>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.servicemix.tooling</groupId>
+                            <artifactId>depends-maven-plugin</artifactId>
+                            <version>${version.maven-depends}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>${version.maven-surefire}</version>
+                            <configuration>
+                                <skip>true</skip>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <version>${version.maven-surefire}</version>
+                            <inherited>true</inherited>
+                            <configuration>
+                                <failIfNoTests>false</failIfNoTests>
+                                <systemPropertyVariables>
+                                    <itests.osgi.framework.id>${itests.osgi.framework.id}</itests.osgi.framework.id>
+                                    <itests.osgi.framework.branch>${itests.osgi.framework.branch}</itests.osgi.framework.branch>
+                                    <itests.project.version>${project.version}</itests.project.version>
+                                    <itests.project.build.directory>${project.build.directory}</itests.project.build.directory>
+                                    <itests.paxexam.version>${version.pax-exam}</itests.paxexam.version>
+                                </systemPropertyVariables>
+                                <!-- Let's put failsafe reports with surefire
+                                    to have access to tests failures/success reports in sonar -->
+                                <!-- <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory> -->
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <executions>
+                            <execution>
+                                <id>integration-test</id>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>verify</id>
+                                <goals>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.servicemix.tooling</groupId>
+                        <artifactId>depends-maven-plugin</artifactId>
+                        <version>${version.maven-depends}</version>
+                        <inherited>true</inherited>
+                        <executions>
+                            <execution>
+                                <id>default-generate-depends-file</id>
+                                <goals>
+                                    <goal>generate-depends-file</goal>
+                                </goals>
+                                <phase>generate-resources</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <executions>
+                            <execution>
+                                <id>copy-framework</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>br.com.c8tech.releng</groupId>
+                                            <artifactId>fpom-itests-paxexam</artifactId>
+                                            <version>${version.c8tech.releng}</version>
+                                            <type>properties</type>
+                                            <classifier>frameworks</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.outputDirectory}/META-INF/maven/</outputDirectory>
+                                            <destFileName>${itests.osgi.frameworks.properties}</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>when-building-paxexam-integrationTests-with-felix-current-release</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.itests.paxexam</exists>
+                </file>
+                <property>
+                    <name>itests.osgi.framework</name>
+                    <value>felix</value>
+                </property>
+            </activation>
+            <properties>
+                <itests.osgi.framework.id>felix</itests.osgi.framework.id>
+                <itests.osgi.framework.branch>current</itests.osgi.framework.branch>
+            </properties>
+
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>br.com.c8tech.releng</groupId>
+                        <artifactId>fpom-deps-felix</artifactId>
+                        <version>${version.c8tech.releng}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+            <dependencies>
+                <dependency>
+                    <groupId>br.com.c8tech.releng</groupId>
+                    <artifactId>fpom-deps-felix</artifactId>
+                    <version>${version.c8tech.releng}</version>
+                    <type>pom</type>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <executions>
+                            <execution>
+                                <id>copy-deps-felix</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>br.com.c8tech.releng</groupId>
+                                            <artifactId>fpom-deps-felix</artifactId>
+                                            <version>${version.c8tech.releng}</version>
+                                            <type>properties</type>
+                                            <classifier>felix_release</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.outputDirectory}/META-INF/maven/</outputDirectory>
+                                            <destFileName>${itests.framework.dependencies.file}</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>when-building-paxexam-integrationTests-with-equinox-milestone</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.itests.paxexam</exists>
+                </file>
+                <property>
+                    <name>itests.osgi.framework</name>
+                    <value>equinox_milestone</value>
+                </property>
+            </activation>
+            <properties>
+                <itests.osgi.framework.id>equinox</itests.osgi.framework.id>
+                <itests.osgi.framework.branch>milestone</itests.osgi.framework.branch>
+                <version.eclipse.osgi>[3.13,3.14]</version.eclipse.osgi>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.eclipse.platform</groupId>
+                    <artifactId>org.eclipse.osgi</artifactId>
+                    <version>${version.eclipse.osgi}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <executions>
+                            <execution>
+                                <id>copy-deps-equinox-milestone</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>br.com.c8tech.releng</groupId>
+                                            <artifactId>fpom-deps-equinox</artifactId>
+                                            <version>${version.c8tech.releng}</version>
+                                            <type>properties</type>
+                                            <classifier>equinox_milestone</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.outputDirectory}/META-INF/maven/</outputDirectory>
+                                            <destFileName>${itests.framework.dependencies.file}</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>when-building-paxexam-integrationTests-with-equinox-current</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.itests.paxexam</exists>
+                </file>
+                <property>
+                    <name>itests.osgi.framework</name>
+                    <value>equinox_current</value>
+                </property>
+            </activation>
+            <properties>
+                <itests.osgi.framework.id>equinox</itests.osgi.framework.id>
+                <itests.osgi.framework.branch>current</itests.osgi.framework.branch>
+            </properties>
+
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>br.com.c8tech.releng</groupId>
+                        <artifactId>fpom-deps-osgi</artifactId>
+                        <version>1.0.0-SNAPSHOT</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>br.com.c8tech.releng</groupId>
+                        <artifactId>fpom-deps-equinox</artifactId>
+                        <version>${version.c8tech.releng}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                        <version>${version.junit}</version>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.eclipse.platform</groupId>
+                    <artifactId>org.eclipse.osgi</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+
+        </profile>
+
+        <profile>
+            <!-- profile used to setup a maven based bundle development project -->
+             <!-- it is activated when a .c8tech.releng.bundle file where found. -->
+            <id>when-building-pom-first-bundle</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.bundle</exists>
+                </file>
+            </activation>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>br.com.c8tech.releng</groupId>
+                        <artifactId>fpom-deps-osgi</artifactId>
+                        <version>${version.c8tech.releng}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+            <dependencies>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>osgi.core</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>org.apache.felix.converter</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.service.cm</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.service.event</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.service.component</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.service.coordinator</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.service.configurator</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.service.prefs</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.service.subsystem</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.service.metatype.annotations</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.service.log</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.service.component.annotations</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.namespace.extender</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.namespace.service</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.util.pushstream</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>osgi.annotation</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-resources-plugin</artifactId>
+                            <configuration>
+                                <skip>true</skip>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-install-plugin</artifactId>
+                            <configuration>
+                                <skip>true</skip>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-deploy-plugin</artifactId>
+                            <configuration>
+                                <skip>true</skip>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <skip>true</skip>
+                                <skipMain>true</skipMain>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.felix</groupId>
+                            <artifactId>maven-bundle-plugin</artifactId>
+                            <version>${version.maven-bundle}</version>
+                            <extensions>true</extensions>
+                            <inherited>true</inherited>
+                            <configuration>
+                                <exportScr>true</exportScr>
+                                <obrRepository>NONE</obrRepository>
+                                <instructions>
+                                    <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                                    <Bundle-DocURL>${project.url}</Bundle-DocURL>
+                                    <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
+                                    <Bundle-Name>${project.name}</Bundle-Name>
+                                    <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+                                    <_dsannotations>*</_dsannotations>
+                                    <_metatypeannotations>*</_metatypeannotations>
+<!--                                     <_snapshot>${osgi-version-qualifier}</_snapshot> -->
+                                    <_versionpolicy>[$(version;==;$(@)),$(version;+;$(@)))</_versionpolicy>
+                                </instructions>
+                                <supportedProjectTypes>
+                                    <supportedProjectType>bundle</supportedProjectType>
+                                    <supportedProjectType>jar</supportedProjectType>
+                                    <supportedProjectType>takari-jar</supportedProjectType>
+                                </supportedProjectTypes>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>io.takari.maven.plugins</groupId>
+                            <artifactId>takari-lifecycle-plugin</artifactId>
+                            <version>${version.takari-lifecycle}</version>
+                            <extensions>true</extensions>
+                            <inherited>true</inherited>
+                            <configuration>
+                                <proc>none</proc>
+                                <source>${java.version}</source>
+                                <target>${java.version}</target>
+                                <accessRulesViolation>error</accessRulesViolation>
+                                <archive>
+                                    <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                </archive>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>default-validate</id>
+                                    <phase>validate</phase>
+                                    <goals>
+                                        <goal>update-check</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>default-compile</id>
+                                    <phase>compile</phase>
+                                    <goals>
+                                        <goal>compile</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>default-export-package</id>
+                                    <phase>process-classes</phase>
+                                    <goals>
+                                        <goal>export-package</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>default-process-resources</id>
+                                    <phase>process-resources</phase>
+                                    <goals>
+                                        <goal>process-resources</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>default-process-test-resources</id>
+                                    <phase>process-test-resources</phase>
+                                    <goals>
+                                        <goal>process-test-resources</goal>
+                                        <goal>testProperties</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>default-testCompile</id>
+                                    <phase>test-compile</phase>
+                                    <goals>
+                                        <goal>testCompile</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>default-install</id>
+                                    <phase>install</phase>
+                                    <goals>
+                                        <goal>install</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>default-deploy</id>
+                                    <phase>deploy</phase>
+                                    <goals>
+                                        <goal>deploy</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <!-- profile used to setup a maven based bundle development projects -->
+             <!-- it is activated in normal Maven build (not inside eclipse
+                IDE) -->
+            <id>when-building-pom-first-bundle-out-of-eclipse</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.bundle</exists>
+                </file>
+                <property>
+                    <name>!m2e.version</name>
+                </property>
+            </activation>
+            <properties>
+                <baseline.failOnError>true</baseline.failOnError>
+                <baseline.failOnWarning>true</baseline.failOnWarning>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-nop</artifactId>
+                    <version>${version.slf4j}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.felix</groupId>
+                        <artifactId>maven-bundle-plugin</artifactId>
+                        <version>${version.maven-bundle}</version>
+                        <inherited>true</inherited>
+                        <executions>
+                            <execution>
+                                <id>gen-bundle-manifest-out-of-eclipse</id>
+                                <phase>process-classes</phase>
+                                <goals>
+                                    <goal>manifest</goal>
+                                </goals>
+                                <configuration>
+                                    <instructions>
+                                        <Permissions>all-permissions</Permissions>
+                                        <Include-Resource>{maven-dependencies},{maven-resources},META-INF/LICENSE=LICENSE.txt</Include-Resource>
+                                        <_removeheaders>Include-Resource,Private-Package,Ignore-Package</_removeheaders>
+                                        <_snapshot>${osgi-version-qualifier}</_snapshot>
+                                    </instructions>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>baseline</id>
+                                <goals>
+                                    <goal>baseline</goal>
+                                </goals>
+                                <configuration>
+                                    <skip>${baseline.skip}</skip>
+                                    <failOnWarning>${baseline.failOnWarning}</failOnWarning>
+                                    <failOnError>${baseline.failOnError}</failOnError>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.takari.maven.plugins</groupId>
+                        <artifactId>takari-lifecycle-plugin</artifactId>
+                        <inherited>true</inherited>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <configuration>
+                            <archive>
+                                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                            </archive>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <inherited>true</inherited>
+                    </plugin>
+                </plugins>
+            </build>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.felix</groupId>
+                        <artifactId>maven-bundle-plugin</artifactId>
+                        <reportSets>
+                            <reportSet>
+                                <id>baseline-report</id>
+                                <reports>
+                                    <report>baseline-report</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                </plugins>
+            </reporting>
+        </profile>
+
+        <profile>
+            <!-- profile used to setup a maven based bundle development projects -->
+            <!-- it is activated only when running m2e based build (inside
+                eclipse IDE) -->
+            <id>when-building-pom-first-bundle-inside-eclipse</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.bundle</exists>
+                </file>
+                <property>
+                    <name>m2e.version</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.felix</groupId>
+                        <artifactId>maven-bundle-plugin</artifactId>
+                        <version>${version.maven-bundle}</version>
+                        <inherited>true</inherited>
+                        <executions>
+                            <execution>
+                                <id>gen-bundle-manifest-inside-of-eclipse</id>
+                                <phase>process-classes</phase>
+                                <goals>
+                                    <goal>manifest</goal>
+                                </goals>
+                                <configuration>
+                                    <supportIncrementalBuild>true</supportIncrementalBuild>
+                                    <instructions>
+<!--                                         <_snapshot>qualifier</_snapshot> -->
+<!--                                         <Permissions>all-permissions</Permissions> -->
+<!--                                         <Include-Resource>{maven-dependencies},{maven-resources},META-INF/LICENSE=LICENSE.txt</Include-Resource> -->
+                                    </instructions>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.takari.maven.plugins</groupId>
+                        <artifactId>takari-lifecycle-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <configuration>
+                            <compilerId>jdt</compilerId>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <configuration>
+                            <archive>
+                                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                            </archive>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources-filtered</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources-filtered</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <inherited>true</inherited>
+                <executions>
+                    <execution>
+                        <id>parse-version</id>
+                        <goals>
+                            <goal>parse-version</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                    <execution>
+                        <id>attach-eplv1-license-header</id>
+                        <phase>package</phase>
+                        <inherited>false</inherited>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${basedir}/license-header-epl-v10.txt</file>
+                                    <type>txt</type>
+                                    <classifier>license</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- to be executed only for this POM -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>attach-file</id>
+                        <goals>
+                            <goal>attach-descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.takari.maven.plugins</groupId>
+                    <artifactId>takari-lifecycle-plugin</artifactId>
+                    <version>${version.takari-lifecycle}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>${version.maven-bundle}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>biz.aQute.bnd</groupId>
+                            <artifactId>biz.aQute.bndlib</artifactId>
+                            <version>${version.bndlib}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${version.slf4j}</version>
+            </dependency>
+            <dependency>
+                <!-- add support for ssh/scp -->
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh</artifactId>
+                <version>${version.wagon-ssh}</version>
+            </dependency>
+            <!-- support to github pages deployment http://site.trajano.net/wagon-git/ -->
+            <dependency>
+                <groupId>net.trajano.wagon</groupId>
+                <artifactId>wagon-git</artifactId>
+                <version>${version.wagon-git}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.skins</groupId>
+                <artifactId>maven-fluido-skin</artifactId>
+                <version>${version.maven-fluido-skin}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
