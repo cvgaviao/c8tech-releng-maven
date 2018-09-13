@@ -60,53 +60,39 @@ See this example:
 ####2. Create the multi-module Git repository
 Here the developer has two options:
 
-*   Create the repository directly on the repository management site (github.com, gitlab.com, etc) and then clone it to a local directory;
-*   Create a local directory and then inside it calls the *git init* command;
+*   Create the repository directly on the repository management site (github.com, gitlab.com, etc) and then clone it to its local directory;
+*   Create a local directory and then inside it calls the *git init* command, and push it to a remote repository;
 
 
 
-####3. Create the *Aggregator POM*
-The Aggregator pattern was chosen to bring some flexibility that the *One Parent* pattern doesn't provides.
+####3. Create the *Parent module*
 
-There is a drawback though. As the aggregator doesn't inherit from the multi-project parent POM, some properties need to be duplicated in both parent POM and aggregator POM.
+3.1.  create the parent POM project folder inside the repository's root folder;
 
-
-3.1.  create the pom.xml file in the root of the repository folder. The best-practice is to name the folder using the SCM repository's name;
-
-3.2. create the .c8tech.releng.aggregator empty file inside the root folder;
+3.2.  create the parent pom.xml file inside the parent POM folder;
 
 3.3.  add the parent tag to the created pom:
 
         <parent>
-           <groupId>c8tech.releng.maven</groupId>
-           <artifactId>parent-oss-pom</artifactId>
-           <version>0.9.1-SNAPSHOT</version>
+           <groupId>br.com.c8tech.releng</groupId>
+           <artifactId>maven-parent-java</artifactId>
+           <version>1.0.0</version>
         </parent>
+        <groupId>br.com.c8tech.project</groupId>
+        <artifactId>br.com.c8tech.project.parent</artifactId>
     
 3.4  set the required properties:
 
 
 
-####4. Create the *Parent module*
-
-2.1.  create the parent POM project folder inside the repository's root folder;
-
-2.1.  create the parent pom.xml file inside the parent POM folder;
-
-2.2.  add the parent tag to the created pom:
+#####4. Create a *Pom-First project module*
 
         <parent>
-           <groupId>c8tech.releng.maven</groupId>
-           <artifactId>parent-oss-pom</artifactId>
-           <version>0.9.1-SNAPSHOT</version>
+           <groupId>br.com.c8tech.project</groupId>
+           <artifactId>br.com.c8tech.project.parent</artifactId>
+           <version>1.0.0</version>
         </parent>
-    
-2.3  set the required properties:
-
-
-
-#####2. Create a *Pom-First project*
-
+        <artifactId>br.com.c8tech.project.config</artifactId>
 
 
 
@@ -131,3 +117,8 @@ Before contribute code to the project some steps are needed.
   This is needed to prevent git to have to much conflicts due to format conflicts.
 
  * Open the Preferences/Java/Code Style/Formatter dialog and import the file c8tech-eclipse-ide-formatters.xml.
+ 
+ Also you can add templates that uses resources from our plugins and frameworks
+ 
+ * Open the Preferences/Java/Editor/Templates Formatter dialog and import the file c8tech-eclipse-ide-templates.xml.
+ 

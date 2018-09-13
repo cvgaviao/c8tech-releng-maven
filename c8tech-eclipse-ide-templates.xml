@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="java" deleted="false" description="OSGi Declarative Service atomic binding" enabled="true" name="DeclarativeService_atomic">${imp:import(java.util.concurrent.atomic.AtomicReference,org.osgi.service.component.annotations.Reference,org.osgi.service.component.annotations.ReferenceCardinality,org.osgi.service.component.annotations.ReferencePolicy
+)}
+
+/**
+*
+*/
+private final AtomicReference&lt;${word_selection}&gt; ${name}Ref = new AtomicReference&lt;&gt;();
+
+
+@Reference(policy = ReferencePolicy.DYNAMIC)
+protected final void bind${word_selection}(final ${word_selection} p${word_selection}) {
+		this.${name}Ref.set(p${word_selection});
+	}
+
+protected final ${word_selection} get${word_selection}(){
+	return this.${name}Ref.get();
+}
+
+
+protected final void unbind${word_selection}(final ${word_selection} p${word_selection}) {
+		${name}Ref.compareAndSet(p${word_selection}, null);
+	}
+</template><template autoinsert="true" context="java" deleted="false" description="OSGi Declarative Service binding of a set of services" enabled="true" name="DeclarativeService_set">${imp:import(java.util.concurrent.CopyOnWriteArraySet,org.osgi.service.component.annotations.Reference,org.osgi.service.component.annotations.ReferenceCardinality,org.osgi.service.component.annotations.ReferencePolicy
+)}
+
+/**
+*
+*/
+private final Set&lt;${word_selection}&gt; ${name}Ref = new CopyOnWriteArraySet&lt;&gt;();
+
+
+@Reference(policy = ReferencePolicy.DYNAMIC)
+protected final void bind${word_selection}(final ${word_selection} p${word_selection}) {
+		this.${name}Ref.add(p${word_selection});
+	}
+
+protected final ${word_selection} get${word_selection}(){
+	return this.${name}Ref.get();
+}
+
+
+protected final void unbind${word_selection}(final ${word_selection} p${word_selection}) {
+		${name}Ref.remove(p${word_selection});
+	}
+</template></templates>
