@@ -186,13 +186,6 @@
         <!-- SITE STAGE and RELEASE SETTINGS  -->
         <!-- ===============================  -->
 
-        <!-- The Id of the site to be published-->
-        <!-- The common case is that this value must point to a <server> in the settings.xml in order to get authentication data. -->
-        <c8tech.distribution.site.id>${project.artifactId}-site</c8tech.distribution.site.id>
-
-        <c8tech.distribution.site.name>
-            ${project.artifactId} Site
-        </c8tech.distribution.site.name>
 
         <!-- points to the root of project's site -->
         <!-- it is better to override this property in the setting.xml file. -->
@@ -204,12 +197,19 @@
         <!-- the url of the repository's site -->
         <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
         
-        <!-- This property should be overridden on every parent POM, normally only one for each SCM repository -->
-        <!-- the complete url (to be use with distribution site settings) -->
-        <!-- default behavior is maven to append /${project.artifactId} in
-            the end -->
-        <c8tech.distribution.site.url>${c8tech.site.repository.url}</c8tech.distribution.site.url>
+        <!-- This property should be overridden on every parent POM 
+            in order to prevents maven's default behavior that is to 
+            append /${project.artifactId} in the end -->
+        <c8tech.distribution.protocol></c8tech.distribution.protocol>
+        <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
         
+        <!-- The Id of the site to be published-->
+        <!-- This value must point to a <server> in the settings.xml in order to get authentication data. -->
+        <c8tech.distribution.site.id>${c8tech.scm.repo.name}-ghpages</c8tech.distribution.site.id>
+
+        <c8tech.distribution.site.name>
+            ${project.artifactId} Site
+        </c8tech.distribution.site.name>
 
         <!-- Properties that children projects can use to skip site generation and deployment executions -->
         <c8tech.site.skip>false</c8tech.site.skip>
@@ -218,7 +218,7 @@
         <!-- Points to the current project workspace where built repositories and site will be staged. -->
         <!-- should be better to set this property in the settings.xml file or using system property JVM parameter (-Dc8tech.workspace.dir).
             in command line.  -->
-        <c8tech.workspace.dir>${env.HOME}${file.separator}c8tech-workspace-dev</c8tech.workspace.dir>
+        <c8tech.workspace.dir>${env.HOME}${file.separator}${project.groupId}-workspace-dev${file.separator}</c8tech.workspace.dir>
 
         <!-- indicates where to stage built repositories in local machine -->
         <c8tech.workspace.dir.repositories>${c8tech.workspace.dir}${file.separator}repositories${file.separator}</c8tech.workspace.dir.repositories>
@@ -395,7 +395,7 @@
             </activation>
             <properties>
                 <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}/${project.artifactId}</c8tech.project.site.url>
-                <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}/</c8tech.scm.url>
+                <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
                 <c8tech.distribution.site.url>${c8tech.site.repository.url}${project.artifactId}</c8tech.distribution.site.url>
             </properties>
         </profile>
@@ -409,7 +409,7 @@
             </activation>
             <properties>
                 <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
-                <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}/</c8tech.scm.url>
+                <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
             </properties>
             <reporting>
                 <plugins>
@@ -1368,27 +1368,16 @@
                                                 branch to release.
                                             </message>
                                         </requireProperty>
+                                        <requireProperty>
+                                            <property>c8tech.workspace.dir</property>
+                                            <message>You must set the
+                                                c8tech.workspace.dir
+                                                property in
+                                                the
+                                                settings.xml file!</message>
+                                        </requireProperty>
                                     </rules>
                                     <fail>${rule.check}</fail>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>check-project-files</id>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <phase>initialize</phase>
-                                <configuration>
-                                    <rules>
-                                        <requireFilesExist>
-                                            <files>
-                                                <file>LICENSE.txt</file>
-                                                <file>README.md</file>
-                                                <!-- <file>NOTICE.txt</file> -->
-                                                <!--<file>changelog.txt</file> -->
-                                            </files>
-                                        </requireFilesExist>
-                                    </rules>
                                 </configuration>
                             </execution>
                         </executions>
@@ -1411,22 +1400,24 @@
                 </file>
             </activation>
             <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.github.danielflower.mavenplugins</groupId>
-                        <artifactId>multi-module-maven-release-plugin</artifactId>
-                        <version>${version.multi-module-release}</version>
-                        <configuration>
-                            <releaseGoals>
-                                <releaseGoal>clean</releaseGoal>
-                                <releaseGoal>site</releaseGoal>
-                                <releaseGoal>deploy</releaseGoal>
-                            </releaseGoals>
-                            <releaseProfiles>
-                            </releaseProfiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.github.danielflower.mavenplugins</groupId>
+                            <artifactId>multi-module-maven-release-plugin</artifactId>
+                            <version>${version.multi-module-release}</version>
+                            <configuration>
+                                <releaseGoals>
+                                    <releaseGoal>clean</releaseGoal>
+                                    <releaseGoal>site</releaseGoal>
+                                    <releaseGoal>deploy</releaseGoal>
+                                </releaseGoals>
+                                <releaseProfiles>
+                                </releaseProfiles>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
             </build>
         </profile>
 
@@ -1441,6 +1432,37 @@
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <configuration>
+                            <failFast>true</failFast>
+                            <fail>true</fail>
+                            <ignoreCache>true</ignoreCache>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>check-project-files</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <phase>initialize</phase>
+                                <configuration>
+                                    <rules>
+                                        <requireFilesExist>
+                                            <files>
+                                                <file>LICENSE.txt</file>
+                                                <file>README.md</file>
+                                                <!-- <file>NOTICE.txt</file> -->
+                                                <!--<file>changelog.txt</file> -->
+                                            </files>
+                                        </requireFilesExist>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-site-plugin</artifactId>
                         <inherited>false</inherited>
                         <executions>
@@ -1452,18 +1474,21 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>com.github.danielflower.mavenplugins</groupId>
-                        <artifactId>multi-module-maven-release-plugin</artifactId>
-                        <version>${version.multi-module-release}</version>
-                        <configuration>
-                            <releaseGoals>
-                                <releaseGoal>clean</releaseGoal>
-                                <releaseGoal>deploy</releaseGoal>
-                            </releaseGoals>
-                        </configuration>
-                    </plugin>
                 </plugins>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.github.danielflower.mavenplugins</groupId>
+                            <artifactId>multi-module-maven-release-plugin</artifactId>
+                            <version>${version.multi-module-release}</version>
+                            <configuration>
+                                <releaseGoals>
+                                    <releaseGoal>deploy</releaseGoal>
+                                </releaseGoals>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
             </build>
         </profile>
 
@@ -1740,6 +1765,16 @@
             </testResource>
         </testResources>
         <plugins>
+            <plugin>
+                <groupId>com.github.danielflower.mavenplugins</groupId>
+                <artifactId>multi-module-maven-release-plugin</artifactId>
+                <version>${version.multi-module-release}</version>
+                <configuration>
+                    <releaseGoals>
+                        <releaseGoal>deploy</releaseGoal>
+                    </releaseGoals>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>

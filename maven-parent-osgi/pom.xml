@@ -193,8 +193,9 @@
         <!-- ========================  -->
         <!--  MAVEN PLUGIN VERSIONS    -->
         <!-- ========================  -->
-        <c8tech.ci.system></c8tech.ci.system>
-        <c8tech.ci.server.url></c8tech.ci.server.url>
+        <c8tech.ci.system>Travis</c8tech.ci.system>
+        <c8tech.ci.server.domain>https://travis-ci.org/</c8tech.ci.server.domain>
+        <c8tech.ci.server.url>${c8tech.ci.server.domain}${c8tech.scm.user}/</c8tech.ci.server.url>
 
         <!-- ========================  -->
         <!--  MAVEN PLUGIN VERSIONS    -->

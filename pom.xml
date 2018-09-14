@@ -13,7 +13,8 @@
 <!-- ==========================================================================  -->
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -25,25 +26,29 @@
 
     <url>${local-url}${c8tech.scm.repo.name}/</url>
 
-    <properties>
-        <c8tech.scm.repo.name>c8tech-releng-maven</c8tech.scm.repo.name>
-        
-        <!-- An aggregator pom doesn't need to be released -->
-        <maven.deploy.skip>true</maven.deploy.skip>
-        
-        
-        <local-url>file:///home/cvgaviao/c8tech-workspace-dev/STAGED-SITE/</local-url>
-        
-        
-    </properties>
-
     <distributionManagement>
+        <repository>
+            <id>c8tech-release-server</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>c8tech-snapshots-server</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
         <site>
-            <id>${project.artifactId}-site</id>
-            <url>${local-url}${c8tech.scm.repo.name}</url>
+            <id>c8tech-tools-maven-osgi-site</id>
+            <name>C8Tech OSGi Maven Tools - Parent/Aggregator POM Site</name>
+            <url>http://cvgaviao.github.io/c8tech-tools-maven/</url>
         </site>
     </distributionManagement>
 
+    <properties>
+        
+        <!-- An aggregator pom doesn't need to be released -->
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <maven.site.skip>true</maven.site.skip>
+        <maven.install.skip>true</maven.install.skip>
+    </properties>
 
     <modules>
         <module>maven-parent-java</module>
@@ -58,75 +63,21 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>2.9</version>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.7</version>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.6</version>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>1.4</version>
-                <inherited>true</inherited>
-                <configuration>
-                    <failFast>true</failFast>
-                    <fail>true</fail>
-                    <ignoreCache>true</ignoreCache>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>enforce-property</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <phase>validate</phase>
-                        <configuration>
-                            <rules>
-                                <requireProperty>
-                                    <property>c8tech.workspace.dir</property>
-                                    <message>You must set the
-                                        c8tech.workspace.dir property in
-                                        the settings.xml file!</message>
-                                </requireProperty>
-                            </rules>
-                            <fail>true</fail>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.danielflower.mavenplugins</groupId>
-                <artifactId>multi-module-maven-release-plugin</artifactId>
-                <version>2.1.3</version>
-                <configuration>
-                    <noChangesAction>ReleaseNone</noChangesAction>
-
-                    <releaseGoals>
-                        <releaseGoal>clean</releaseGoal>
-                        <releaseGoal>site</releaseGoal>
-<!--                         <releaseGoal>deploy</releaseGoal> -->
-                        <releaseGoal>install</releaseGoal>
-                    </releaseGoals>
-                    <releaseProfiles>
-                    </releaseProfiles>
-                </configuration>
-            </plugin>
-            <plugin>
-                <!-- to be executed only for this POM -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.6</version>
-                <inherited>false</inherited>
-                <configuration>
-                    <inputEncoding>UTF-8</inputEncoding>
-                    <stagingDirectory>${c8tech.workspace.dir}STAGED-SITE${file.separator}</stagingDirectory>
-                    <siteDirectory>${basedir}${file.separator}src${file.separator}site</siteDirectory>
-                    <topSiteURL>${c8tech.distribution.site.root.url}</topSiteURL>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
+
 </project>
