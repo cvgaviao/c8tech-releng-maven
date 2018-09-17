@@ -57,6 +57,7 @@
         <maven.install.skip>true</maven.install.skip>
         
         
+        <c8tech.scm.repo.name>c8tech-releng-maven</c8tech.scm.repo.name>
         <c8tech.scm.connection>
             ${c8tech.scm.connection.protocol}${c8tech.scm.connection.host}${c8tech.scm.user}/${c8tech.scm.repo.name}.git
         </c8tech.scm.connection>
