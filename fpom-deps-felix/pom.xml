@@ -38,14 +38,6 @@
         <tag>HEAD</tag>
     </scm>
 
-<!--     <distributionManagement> -->
-<!--         <site> -->
-<!--             <id>${c8tech.distribution.site.id}</id> -->
-<!--             <name>${c8tech.distribution.site.name}</name> -->
-<!--             <url>${c8tech.distribution.site.url}</url> -->
-<!--         </site> -->
-<!--     </distributionManagement> -->
-
     <properties>
 
         <!-- FELIX. -->

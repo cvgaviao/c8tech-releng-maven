@@ -39,14 +39,6 @@
         <version.pax-exam-link-mvn>4.12.0</version.pax-exam-link-mvn>
     </properties>
 
-<!--     <distributionManagement> -->
-<!--         <site> -->
-<!--             <id>${c8tech.distribution.site.id}</id> -->
-<!--             <name>${c8tech.distribution.site.name}</name> -->
-<!--             <url>${c8tech.distribution.site.url}</url> -->
-<!--         </site> -->
-<!--     </distributionManagement> -->
-
     <scm>
         <connection>${c8tech.scm.connection}</connection>
         <developerConnection>${c8tech.scm.connection.dev}</developerConnection>

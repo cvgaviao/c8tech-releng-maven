@@ -121,7 +121,7 @@
         
         <!-- the current version of releng POMs used by children projects. -->
         <!-- must be equal to this project version -->
-        <version.c8tech.releng>1.0.0-SNAPSHOT</version.c8tech.releng>
+        <version.c8tech.releng>1.0.0</version.c8tech.releng>
 
         <!-- The minimal Java compiler version-->
         <java.version>1.8</java.version>
@@ -1361,6 +1361,7 @@
                                 <goals>
                                     <goal>enforce</goal>
                                 </goals>
+                                <phase>validate</phase>
                                 <configuration>
                                     <rules>
                                         <requireProperty>
@@ -1386,7 +1387,6 @@
                                                 settings.xml file!</message>
                                         </requireProperty>
                                     </rules>
-                                    <fail>${rule.check}</fail>
                                 </configuration>
                             </execution>
                         </executions>
@@ -1424,8 +1424,6 @@
                                     <releaseGoal>site</releaseGoal>
                                     <releaseGoal>deploy</releaseGoal>
                                 </releaseGoals>
-                                <releaseProfiles>
-                                </releaseProfiles>
                             </configuration>
                         </plugin>
                     </plugins>

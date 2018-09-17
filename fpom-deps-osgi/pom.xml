@@ -61,25 +61,6 @@
 
     </properties>
 
-    <build>
-        <plugins>
-<!--             <plugin> -->
-<!--                 <groupId>org.codehaus.mojo</groupId> -->
-<!--                 <artifactId>license-maven-plugin</artifactId> -->
-<!--                 <executions> -->
-<!--                     <execution> -->
-<!--                         <id>update-license-files</id> -->
-<!--                         <inherited>false</inherited> -->
-<!--                         <configuration> -->
-<!--                             <deployMissingFile>true</deployMissingFile> -->
-<!--                             <useMissingFile>true</useMissingFile> -->
-<!--                             <useRepositoryMissingFiles>false</useRepositoryMissingFiles> -->
-<!--                         </configuration> -->
-<!--                     </execution> -->
-<!--                 </executions> -->
-<!--             </plugin> -->
-        </plugins>
-    </build>
     <dependencyManagement>
         <dependencies>
             <dependency>
