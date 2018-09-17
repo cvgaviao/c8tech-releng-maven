@@ -48,7 +48,7 @@
     <!-- ================================  -->
     <issueManagement>
         <system>${c8tech.im.system}</system>
-        <url>${c8tech.im.server.url}/${c8tech.im.server.dir}</url>
+        <url>${c8tech.im.server.url}</url>
     </issueManagement>
 
     <!-- ciManagement, distributionManagement(Site) and scm should be duplicated
@@ -60,7 +60,7 @@
     <!-- ====================================  -->
     <ciManagement>
         <system>${c8tech.ci.system}</system>
-        <url>${c8tech.ci.server.url}${c8tech.scm.repo.name}</url>
+        <url>${c8tech.ci.server.url}</url>
     </ciManagement>
 
     <!-- =================  -->
@@ -192,7 +192,7 @@
         <c8tech.site.domain></c8tech.site.domain>
         
         <!-- the url of the repository's site -->
-        <c8tech.site.repository.url>${c8tech.site.domain}${c8tech.scm.repo.name}/</c8tech.site.repository.url>
+        <c8tech.site.repository.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.site.repository.url>
 
         <!-- the url of the repository's site -->
         <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
@@ -234,14 +234,15 @@
         <!--  ISSUE MANAGEMENT         -->
         <!-- ========================  -->
         <c8tech.im.system></c8tech.im.system>
-        <c8tech.im.server.url></c8tech.im.server.url>
+        <c8tech.im.server.domain></c8tech.im.server.domain>
         <c8tech.im.server.dir></c8tech.im.server.dir>
+        <c8tech.im.server.url>${c8tech.im.server.domain}/${c8tech.im.server.dir}</c8tech.im.server.url>
 
         <!-- ========================  -->
         <!--  Set CI SYSTEM and location    -->
         <!-- ========================  -->
         <c8tech.ci.system></c8tech.ci.system>
-        <c8tech.ci.server.url></c8tech.ci.server.url>
+        <c8tech.ci.server.url>${c8tech.ci.server.domain}/${c8tech.ci.server.user}/${c8tech.scm.repo.name}</c8tech.ci.server.url>
 
         <!-- ========================  -->
         <!--  MAVEN PLUGIN VERSIONS    -->
@@ -316,8 +317,8 @@
         <version.maven-surefire>${version.maven-failsafe}</version.maven-surefire>
         <version.junit-platform-surefire-provider>1.2.0</version.junit-platform-surefire-provider>
         <version.junit-platform-launcher>1.2.0</version.junit-platform-launcher>
-        <version.sonar-maven>3.4.0.905</version.sonar-maven>
-        <version.jacoco-maven>0.8.1</version.jacoco-maven>
+        <version.sonar-maven>3.5.0.1254</version.sonar-maven>
+        <version.jacoco-maven>0.8.2</version.jacoco-maven>
         <version.pax-exam>4.11.0</version.pax-exam>
         <version.junit>5.2.0</version.junit>
         <version.mockito>2.21.0</version.mockito>
@@ -326,7 +327,7 @@
 
         <!-- The Sonar Jacoco Listener for JUnit to extract coverage details
             per test -->
-        <version.sonar-jacoco-listeners>5.4.0.14284</version.sonar-jacoco-listeners>
+        <version.sonar-jacoco-listeners>5.7.0.15470</version.sonar-jacoco-listeners>
 
         <version.commons-io>2.6</version.commons-io>
         <version.commons-collections>3.2.2</version.commons-collections>
@@ -874,6 +875,14 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>${version.maven-failsafe}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
@@ -884,7 +893,7 @@
                 that will be sent for SonarQube. -->
             <!-- Sonar/Jacoco integration. The sonar.host.url must be defined
                 in a profile inside setting.xml. Note that you need to call both profiles
-                when to execute sonar using: 'mvn sonar:sonar -Dc8tech.build.test.coverage'.
+                when executing sonar using: 'mvn sonar:sonar -Dc8tech.build.test.coverage'.
                 <sonar.host.url>http://localhost:9000/</sonar.host.url> -->
             <id>when-building-java-do-test-with-CodeCoverage</id>
             <activation>
@@ -948,7 +957,7 @@
                             <version>${version.maven-surefire}</version>
                             <inherited>true</inherited>
                             <configuration>
-                                <runOrder>random</runOrder>
+<!--                                 <runOrder>random</runOrder> -->
                                 <properties>
                                     <property>
                                         <name>listener</name>
@@ -1280,6 +1289,9 @@
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
+                                <configuration>
+                                    <additionalparam>${javadoc.opts}</additionalparam>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -1319,17 +1331,6 @@
                             <excludes>
                                 <exclude>**/jars/**</exclude>
                             </excludes>
-                            <archive>
-                                <manifestEntries>
-                                    <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
-                                    <Bundle-Name>${project.name}
-                                        (source)</Bundle-Name>
-                                    <Bundle-SymbolicName>${project.artifactId}.source</Bundle-SymbolicName>
-                                    <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
-                                    <Bundle-Version>${bundle.full.version}</Bundle-Version>
-                                    <Eclipse-SourceBundle>${project.artifactId};version="${bundle.full.version}";roots:="."</Eclipse-SourceBundle>
-                                </manifestEntries>
-                            </archive>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -1382,7 +1383,6 @@
                             </execution>
                         </executions>
                     </plugin>
-
                 </plugins>
             </build>
         </profile>
@@ -1768,7 +1768,6 @@
             <plugin>
                 <groupId>com.github.danielflower.mavenplugins</groupId>
                 <artifactId>multi-module-maven-release-plugin</artifactId>
-                <version>${version.multi-module-release}</version>
                 <configuration>
                     <releaseGoals>
                         <releaseGoal>deploy</releaseGoal>
@@ -1954,8 +1953,6 @@
                     <version>${version.maven-jarsigner}</version>
                     <configuration>
                         <verify>true</verify>
-                        <storetype>jks</storetype>
-                        <tsa>https://timestamp.geotrust.com/tsa</tsa>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -1968,10 +1965,7 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${version.maven-javadoc}</version>
                     <configuration>
-                        <skip>${maven.javadoc.skip}</skip>
-                        <quiet>${maven.javadoc.quiet}</quiet>
                         <charset>${project.reporting.outputEncoding}</charset>
-                        <additionalparam>${javadoc.opts}</additionalparam>
                         <tagletArtifacts>
                             <tagletArtifact>
                                 <groupId>org.apache.maven.plugin-tools</groupId>
@@ -1984,18 +1978,6 @@
                                 <version>${version.plexus-component-javadoc}</version>
                             </tagletArtifact>
                         </tagletArtifacts>
-                        <additionalDependencies>
-                            <additionalDependency>
-                                <groupId>org.osgi</groupId>
-                                <artifactId>osgi.core</artifactId>
-                                <version>${osgi.core.version}</version>
-                            </additionalDependency>
-                            <additionalDependency>
-                                <groupId>org.osgi</groupId>
-                                <artifactId>osgi.annotation</artifactId>
-                                <version>${osgi.annotation.version}</version>
-                            </additionalDependency>
-                        </additionalDependencies>
                     </configuration>
                 </plugin>
                 <plugin>

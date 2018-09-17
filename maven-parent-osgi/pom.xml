@@ -211,7 +211,7 @@
 
         <!-- OSGI -->
         <version.osgi.core>7.0.0</version.osgi.core>
-        <version.osgi.compendium>${version.osgi.core}</version.osgi.compendium>
+        <version.osgi.cmpn>${version.osgi.core}</version.osgi.cmpn>
         <version.osgi.annotation>${version.osgi.core}</version.osgi.annotation>
         <version.pax-url>2.5.4</version.pax-url>
 
@@ -230,7 +230,7 @@
                 </file>
             </activation>
             <properties>
-                <argLine>-Xmx1024m</argLine>
+<!--                 <argLine>-Xmx1024m</argLine> -->
                 <itests.framework.dependencies.file>dependencies-${itests.osgi.framework.id}-${itests.osgi.framework.branch}.properties</itests.framework.dependencies.file>
                 <itests.osgi.frameworks.properties>itests-osgi-frameworks.properties</itests.osgi.frameworks.properties>
             </properties>
@@ -256,19 +256,20 @@
                 <dependency>
                     <groupId>org.osgi</groupId>
                     <artifactId>osgi.core</artifactId>
+                    <version>${version.osgi.core}</version>
                     <scope>provided</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.osgi</groupId>
                     <artifactId>osgi.annotation</artifactId>
+                    <version>${version.osgi.annotation}</version>
                     <scope>provided</scope>
                 </dependency>
                 <dependency>
-                    <groupId>br.com.c8tech.releng</groupId>
-                    <artifactId>fpom-deps-osgi</artifactId>
-                    <version>${version.c8tech.releng}</version>
-                    <type>pom</type>
-                    <scope>test</scope>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>osgi.cmpn</artifactId>
+                    <version>${version.osgi.cmpn}</version>
+                    <scope>provided</scope>
                 </dependency>
                 <dependency>
                     <groupId>br.com.c8tech.releng</groupId>
@@ -618,81 +619,19 @@
                 <dependency>
                     <groupId>org.osgi</groupId>
                     <artifactId>osgi.core</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>org.apache.felix.converter</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.service.cm</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.service.event</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.service.component</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.service.coordinator</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.service.configurator</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.service.prefs</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.service.subsystem</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.service.metatype.annotations</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.service.log</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.service.component.annotations</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.namespace.extender</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.namespace.service</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.osgi</groupId>
-                    <artifactId>org.osgi.util.pushstream</artifactId>
+                    <version>${version.osgi.core}</version>
                     <scope>provided</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.osgi</groupId>
                     <artifactId>osgi.annotation</artifactId>
+                    <version>${version.osgi.annotation}</version>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>osgi.cmpn</artifactId>
+                    <version>${version.osgi.cmpn}</version>
                     <scope>provided</scope>
                 </dependency>
             </dependencies>
@@ -996,6 +935,55 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <!-- profile used to generate source artifacts for bundles. It
+                is activated only for full buildings -->
+            <id>when-releasing-bundle-generate-source</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.bundle</exists>
+                </file>
+                <property>
+                    <name>c8tech.build.release</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- Generates jar with sources -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <excludeResources>true</excludeResources>
+                            <excludes>
+                                <exclude>**/jars/**</exclude>
+                            </excludes>
+                            <archive>
+                                <manifestEntries>
+                                    <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+                                    <Bundle-Name>${project.name}
+                                        (source)</Bundle-Name>
+                                    <Bundle-SymbolicName>${project.artifactId}.source</Bundle-SymbolicName>
+                                    <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
+                                    <Bundle-Version>${bundle.full.version}</Bundle-Version>
+                                    <Eclipse-SourceBundle>${project.artifactId};version="${bundle.full.version}";roots:="."</Eclipse-SourceBundle>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
     </profiles>
 
     <build>
@@ -1082,6 +1070,25 @@
                             <version>${version.bndlib}</version>
                         </dependency>
                     </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${version.maven-javadoc}</version>
+                    <configuration>
+                        <additionalDependencies>
+                            <additionalDependency>
+                                <groupId>org.osgi</groupId>
+                                <artifactId>osgi.core</artifactId>
+                                <version>${version.osgi.core}</version>
+                            </additionalDependency>
+                            <additionalDependency>
+                                <groupId>org.osgi</groupId>
+                                <artifactId>osgi.annotation</artifactId>
+                                <version>${version.osgi.annotation}</version>
+                            </additionalDependency>
+                        </additionalDependencies>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
