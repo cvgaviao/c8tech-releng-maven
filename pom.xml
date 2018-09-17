@@ -21,7 +21,7 @@
     <groupId>br.com.c8tech.releng</groupId>
     <artifactId>c8tech-releng-maven</artifactId>
     <name>C8Tech Releng Maven Aggregator POM</name>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <url>${local-url}${c8tech.scm.repo.name}/</url>
