@@ -1338,11 +1338,11 @@
         </profile>
 
         <profile>
+            <!-- THIS PROFILE WILL BE CALLED BY THE RELEASER:RELEASE -->
+            <!-- It will ensure that the required properties are being provided -->
             <id>when-releasing-ensure-requirements</id>
             <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <build>
                 <plugins>
@@ -1363,6 +1363,14 @@
                                 </goals>
                                 <configuration>
                                     <rules>
+                                        <requireProperty>
+                                            <property>c8tech.build.release</property>
+                                            <message>You must set the
+                                                release property, so all
+                                                profiles related are
+                                                called.
+                                            </message>
+                                        </requireProperty>
                                         <requireProperty>
                                             <property>c8tech.build.branch</property>
                                             <message>You must set which
@@ -1399,6 +1407,10 @@
                     <exists>.c8tech.releng.aggregator</exists>
                 </file>
             </activation>
+            <properties>
+                <maven.deploy.skip>true</maven.deploy.skip>
+                <maven.install.skip>true</maven.install.skip>
+            </properties>
             <build>
                 <pluginManagement>
                     <plugins>
@@ -1483,6 +1495,8 @@
                             <version>${version.multi-module-release}</version>
                             <configuration>
                                 <releaseGoals>
+                                    <releaseGoal>clean</releaseGoal>
+                                    <releaseGoal>site</releaseGoal>
                                     <releaseGoal>deploy</releaseGoal>
                                 </releaseGoals>
                             </configuration>
@@ -1770,8 +1784,12 @@
                 <artifactId>multi-module-maven-release-plugin</artifactId>
                 <configuration>
                     <releaseGoals>
+                        <releaseGoal>clean</releaseGoal>
                         <releaseGoal>deploy</releaseGoal>
                     </releaseGoals>
+                    <releaseProfiles>
+                        <releaseProfile>when-releasing-ensure-requirements</releaseProfile>
+                    </releaseProfiles>
                 </configuration>
             </plugin>
             <plugin>
@@ -2160,9 +2178,6 @@
                     <groupId>com.github.danielflower.mavenplugins</groupId>
                     <artifactId>multi-module-maven-release-plugin</artifactId>
                     <version>${version.multi-module-release}</version>
-                    <configuration>
-                        <buildNumber>${maven.build.timestamp}</buildNumber>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
