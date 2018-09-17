@@ -26,6 +26,18 @@
 
     <url>${local-url}${c8tech.scm.repo.name}/</url>
 
+    <!-- ======================================  -->
+    <!--  SOURCE CONTROL MANAGEMENT PROPERTIES   -->
+    <!-- ======================================  -->
+    <scm>
+        <!-- connection and developerConnection must be added in children
+            in order to work with git properly-->
+        <connection>${c8tech.scm.connection}</connection>
+        <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
+        <url>${c8tech.scm.url}</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <distributionManagement>
         <repository>
             <id>c8tech-release-server</id>
@@ -35,11 +47,6 @@
             <id>c8tech-snapshots-server</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
-        <site>
-            <id>c8tech-tools-maven-osgi-site</id>
-            <name>C8Tech OSGi Maven Tools - Parent/Aggregator POM Site</name>
-            <url>http://cvgaviao.github.io/c8tech-tools-maven/</url>
-        </site>
     </distributionManagement>
 
     <properties>
@@ -48,6 +55,15 @@
         <maven.deploy.skip>true</maven.deploy.skip>
         <maven.site.skip>true</maven.site.skip>
         <maven.install.skip>true</maven.install.skip>
+        
+        
+        <c8tech.scm.connection>
+            ${c8tech.scm.connection.protocol}${c8tech.scm.connection.host}${c8tech.scm.user}/${c8tech.scm.repo.name}.git
+        </c8tech.scm.connection>
+        <c8tech.scm.connection.dev>
+            ${c8tech.scm.connection.dev.protocol}${c8tech.scm.connection.dev.host}/${c8tech.scm.user}/${c8tech.scm.repo.name}.git
+        </c8tech.scm.connection.dev>
+        
     </properties>
 
     <modules>
@@ -62,14 +78,10 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.danielflower.mavenplugins</groupId>
-                <artifactId>multi-module-maven-release-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <releaseProfiles>
-                        <releaseProfile>when-releasing-ensure-requirements</releaseProfile>
-                    </releaseProfiles>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration></configuration>
             </plugin>
         </plugins>
         <pluginManagement>
