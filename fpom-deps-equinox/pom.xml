@@ -29,13 +29,22 @@
     It is aimed to be imported by integration tests or distribution projects POMs.</description>
     <packaging>pom</packaging>
 
-<!--     <url>${c8tech.project.site.url}</url> -->
-
-<!--     <scm> -->
-<!--         <connection>${c8tech.scm.connection}</connection> -->
-<!--         <developerConnection>${c8tech.scm.connection.dev}</developerConnection> -->
-<!--         <tag>HEAD</tag> -->
-<!--     </scm> -->
+    <!-- Due a maven limitation, this MUST be replicated to all children -->
+    <url>${c8tech.project.site.url}</url>
+    <scm>
+        <connection>${c8tech.scm.connection}</connection>
+        <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
+        <url>${c8tech.scm.url}</url>
+        <tag>HEAD</tag>
+    </scm>
+    <distributionManagement>
+        <site>
+            <id>${c8tech.distribution.site.id}</id>
+            <name>${c8tech.distribution.site.name}</name>
+            <url>${c8tech.distribution.site.url}</url>
+        </site>
+    </distributionManagement>
+    <!-- end of per child setting -->
 
     <properties>
         <javax.xml.version>1.3.4.v201005080400</javax.xml.version>
