@@ -19,7 +19,7 @@
     <parent>
         <groupId>br.com.c8tech.releng</groupId>
         <artifactId>maven-parent-java</artifactId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -106,7 +106,7 @@
         <connection>${c8tech.scm.connection}</connection>
         <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
         <url>${c8tech.scm.url}</url>
-        <tag>v1.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <licenses>
@@ -238,14 +238,14 @@
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-deps-osgi</artifactId>
-                        <version>1.0</version>
+                        <version>1.1-SNAPSHOT</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-itests-paxexam</artifactId>
-                        <version>1.0</version>
+                        <version>1.1-SNAPSHOT</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -273,7 +273,7 @@
                 <dependency>
                     <groupId>br.com.c8tech.releng</groupId>
                     <artifactId>fpom-itests-paxexam</artifactId>
-                    <version>1.0</version>
+                    <version>1.1-SNAPSHOT</version>
                     <type>pom</type>
                     <scope>test</scope>
                 </dependency>
@@ -430,7 +430,7 @@
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-deps-felix</artifactId>
-                        <version>1.0</version>
+                        <version>1.1-SNAPSHOT</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -440,7 +440,7 @@
                 <dependency>
                     <groupId>br.com.c8tech.releng</groupId>
                     <artifactId>fpom-deps-felix</artifactId>
-                    <version>1.0</version>
+                    <version>1.1-SNAPSHOT</version>
                     <type>pom</type>
                     <scope>test</scope>
                 </dependency>
@@ -560,14 +560,14 @@
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-deps-osgi</artifactId>
-                        <version>1.0</version>
+                        <version>1.1-SNAPSHOT</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-deps-equinox</artifactId>
-                        <version>1.0</version>
+                        <version>1.1-SNAPSHOT</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -608,7 +608,7 @@
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-deps-osgi</artifactId>
-                        <version>1.0</version>
+                        <version>1.1-SNAPSHOT</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
