@@ -201,7 +201,7 @@
         <c8tech.site.domain />
         
         <!-- the url of the repository's site -->
-        <c8tech.site.repository.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.site.repository.url>
+        <c8tech.site.repository.url>${c8tech.site.domain}${c8tech.scm.repo.name}/</c8tech.site.repository.url>
 
         <!-- the url of the repository's site -->
         <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
@@ -406,7 +406,6 @@
             <properties>
                 <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}/${project.artifactId}</c8tech.project.site.url>
                 <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
-                <c8tech.distribution.site.url>${c8tech.site.repository.url}${project.artifactId}</c8tech.distribution.site.url>
             </properties>
         </profile>
 

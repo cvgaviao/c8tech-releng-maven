@@ -13,3 +13,4 @@ plugin.xml_gen
 /.m2e-launchers/
 license-header-epl-v10.txt
 /release.properties
+pom.xml.releaseBackup

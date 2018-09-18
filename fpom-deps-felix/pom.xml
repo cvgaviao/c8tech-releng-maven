@@ -29,13 +29,13 @@
     It is aimed to be imported by integration tests or distribution projects POMs.</description>
     <packaging>pom</packaging>
 
-    <url>${c8tech.project.site.url}</url>
+<!--     <url>${c8tech.project.site.url}</url> -->
 
-    <scm>
-        <connection>${c8tech.scm.connection}</connection>
-        <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
+<!--     <scm> -->
+<!--         <connection>${c8tech.scm.connection}</connection> -->
+<!--         <developerConnection>${c8tech.scm.connection.dev}</developerConnection> -->
+<!--         <tag>HEAD</tag> -->
+<!--     </scm> -->
 
     <properties>
 
@@ -52,7 +52,7 @@
         <felix.version>${felix.framework.version}</felix.version>
         <felix.eventadmin.version>1.5.0</felix.eventadmin.version>
         <felix.coordinator.version>1.0.2</felix.coordinator.version>
-        <felix.configadmin.version>1.9.4</felix.configadmin.version>
+        <felix.configadmin.version>1.9.6</felix.configadmin.version>
         <felix.configurator.version>1.0.4</felix.configurator.version>
         <felix.converter.version>1.0.0</felix.converter.version>
 <!--         <felix.scr.version>2.0.14</felix.scr.version> -->
