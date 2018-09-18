@@ -13,14 +13,12 @@
 <!-- ==========================================================================  -->
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.c8tech.releng</groupId>
     <artifactId>maven-parent-java</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>C8Tech Maven Parent Java POM</name>
     <description>The master parent POM aimed to set up the build of all C8Tech's Java Maven based projects.</description>
     <packaging>pom</packaging>
@@ -111,7 +109,7 @@
         <connection>${c8tech.scm.connection}</connection>
         <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
         <url>${c8tech.scm.url}</url>
-        <tag>HEAD</tag>
+        <tag>v1.0</tag>
     </scm>
 
     <licenses>
@@ -155,25 +153,25 @@
 
         <!-- The user used to upload released projects to the SCM repository  -->
         <!-- Better override this property on setting.xml -->
-        <c8tech.scm.user></c8tech.scm.user>
+        <c8tech.scm.user />
         
         <!--  -->
         <c8tech.scm.branch>master</c8tech.scm.branch>
         
         <!--  -->
-        <c8tech.scm.domain></c8tech.scm.domain>
+        <c8tech.scm.domain />
         
         <!--  -->
         <c8tech.scm.connection.protocol>scm:git:git://</c8tech.scm.connection.protocol>
         
         <!--  -->
-        <c8tech.scm.connection.host></c8tech.scm.connection.host>
+        <c8tech.scm.connection.host />
         
         <!--  -->
         <c8tech.scm.connection.dev.protocol>scm:git:ssh://</c8tech.scm.connection.dev.protocol>
         
         <!--  -->
-        <c8tech.scm.connection.dev.host></c8tech.scm.connection.dev.host>
+        <c8tech.scm.connection.dev.host />
 
         <!--  -->
         <c8tech.scm.url>
@@ -200,7 +198,7 @@
 
         <!-- points to the root of project's site -->
         <!-- it is better to override this property in the setting.xml file. -->
-        <c8tech.site.domain></c8tech.site.domain>
+        <c8tech.site.domain />
         
         <!-- the url of the repository's site -->
         <c8tech.site.repository.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.site.repository.url>
@@ -211,7 +209,7 @@
         <!-- This property should be overridden on every parent POM 
             in order to prevents maven's default behavior that is to 
             append /${project.artifactId} in the end -->
-        <c8tech.distribution.protocol></c8tech.distribution.protocol>
+        <c8tech.distribution.protocol />
         <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
         
         <!-- The Id of the site to be published-->
@@ -244,15 +242,15 @@
         <!-- ========================  -->
         <!--  ISSUE MANAGEMENT         -->
         <!-- ========================  -->
-        <c8tech.im.system></c8tech.im.system>
-        <c8tech.im.server.domain></c8tech.im.server.domain>
-        <c8tech.im.server.dir></c8tech.im.server.dir>
+        <c8tech.im.system />
+        <c8tech.im.server.domain />
+        <c8tech.im.server.dir />
         <c8tech.im.server.url>${c8tech.im.server.domain}/${c8tech.im.server.dir}</c8tech.im.server.url>
 
         <!-- ========================  -->
         <!--  Set CI SYSTEM and location    -->
         <!-- ========================  -->
-        <c8tech.ci.system></c8tech.ci.system>
+        <c8tech.ci.system />
         <c8tech.ci.server.url>${c8tech.ci.server.domain}/${c8tech.ci.server.user}/${c8tech.scm.repo.name}</c8tech.ci.server.url>
 
         <!-- ========================  -->
