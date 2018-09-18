@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- ==========================================================================  -->
-<!-- Copyright © 2015-2017 Cristiano Gavião, C8 Technology ME.                         -->
+<!-- Copyright © 2015-2018 Cristiano Gavião, C8 Technology ME.                         -->
 <!--                                                                             -->
 <!-- All rights reserved. This program and the accompanying materials            -->
 <!-- are made available under the terms of the Eclipse Public License v1.0       -->
@@ -12,6 +12,7 @@
 <!-- Cristiano Gavião (cvgaviao@c8tech.com.br)- initial API and implementation   -->
 <!-- ==========================================================================  -->
 
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -21,7 +22,7 @@
         <groupId>br.com.c8tech.releng</groupId>
         <artifactId>maven-parent-java</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../maven-parent-java/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>maven-parent-osgi</artifactId>
