@@ -716,6 +716,7 @@
                         <groupId>org.junit.vintage</groupId>
                         <artifactId>junit-vintage-engine</artifactId>
                         <version>${version.junit}</version>
+                        <scope>test</scope>
                     </dependency>
                     <dependency>
                         <groupId>org.junit.jupiter</groupId>
@@ -739,16 +740,19 @@
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
                         <version>${version.junit-platform-surefire-provider}</version>
+                        <scope>test</scope>
                     </dependency>
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-launcher</artifactId>
                         <version>${version.junit-platform-launcher}</version>
+                        <scope>test</scope>
                     </dependency>
                     <dependency>
                         <groupId>org.mockito</groupId>
                         <artifactId>mockito-core</artifactId>
                         <version>${version.mockito}</version>
+                        <scope>test</scope>
                     </dependency>
 <!--                     <dependency> -->
 <!--                         <groupId>org.powermock</groupId> -->
@@ -922,7 +926,7 @@
 
                 <!-- Tells Sonar where the Jacoco coverage result file is
                     located for Integration Tests -->
-                <sonar.jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.itReportPath>
+                <sonar.jacoco.reportPaths>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.reportPaths>
 
                 <sonar.language>java</sonar.language>
 
@@ -930,14 +934,12 @@
 
                 <sonar.verbose>false</sonar.verbose>
 
-                <sonar.jacoco.reportMissing.force.zero>true</sonar.jacoco.reportMissing.force.zero>
-
                 <!-- Jacoco output file for UTs -->
                 <jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
 
                 <!-- Tells Sonar where the Jacoco coverage result file is
                     located for Unit Tests -->
-                <sonar.jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPath>
+                <sonar.jacoco.reportPaths>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPaths>
 
                 <!-- Jacoco output file for ITs -->
                 <jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
@@ -1009,7 +1011,7 @@
                                 </goals>
                                 <phase>process-test-classes</phase>
                                 <configuration>
-                                    <destFile>${sonar.jacoco.reportPath}</destFile>
+                                    <destFile>${sonar.jacoco.reportPaths}</destFile>
                                 </configuration>
                             </execution>
                             <execution>
@@ -1019,7 +1021,7 @@
                                 </goals>
                                 <phase>verify</phase>
                                 <configuration>
-                                    <dataFile>${sonar.jacoco.reportPath}</dataFile>
+                                    <dataFile>${sonar.jacoco.reportPaths}</dataFile>
                                 </configuration>
                             </execution>
                             <execution>
@@ -1031,7 +1033,7 @@
                                 </goals>
                                 <phase>pre-integration-test</phase>
                                 <configuration>
-                                    <destFile>${sonar.jacoco.itReportPath}</destFile>
+                                    <destFile>${sonar.jacoco.reportPaths}</destFile>
                                 </configuration>
                             </execution>
                             <execution>
@@ -1041,7 +1043,7 @@
                                 </goals>
                                 <phase>verify</phase>
                                 <configuration>
-                                    <dataFile>${sonar.jacoco.itReportPath}</dataFile>
+                                    <dataFile>${sonar.jacoco.reportPaths}</dataFile>
                                 </configuration>
                             </execution>
                         </executions>
@@ -2187,17 +2189,12 @@
                         </dependency>
                     </dependencies>
                 </plugin>
-<!--                 <plugin> -->
-<!--                     <groupId>com.github.danielflower.mavenplugins</groupId> -->
-<!--                     <artifactId>multi-module-maven-release-plugin</artifactId> -->
-<!--                     <version>${version.multi-module-release}</version> -->
-<!--                 </plugin> -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${version.maven-release}</version>
                     <configuration>
-                        <arguments>-Dc8tech.build.release ${arguments}</arguments>
+                        <arguments>-Dc8tech.build.release -Dc8tech.build.test.coverage ${arguments}</arguments>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <releaseProfiles>when-releasing-ensure-requirements</releaseProfiles>
