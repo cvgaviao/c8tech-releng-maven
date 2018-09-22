@@ -13,7 +13,9 @@
 <!-- ==========================================================================  -->
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -63,19 +65,31 @@
         <version.org.eclipse.equinox.http.servlet>1.4.0</version.org.eclipse.equinox.http.servlet>
         <version.org.eclipse.equinox.metatype>1.4.400</version.org.eclipse.equinox.metatype>
         <version.org.eclipse.equinox.preferences>3.7.100</version.org.eclipse.equinox.preferences>
-        <version.org.eclipse.equinox.region>1.4.100</version.org.eclipse.equinox.region>
         <version.org.eclipse.equinox.useradmin>1.1.500</version.org.eclipse.equinox.useradmin>
         <version.org.eclipse.equinox.util>1.1.0</version.org.eclipse.equinox.util>
         <version.org.eclipse.equinox.wireadmin>1.0.600</version.org.eclipse.equinox.wireadmin>
         <version.org.eclipse.osgi.services>3.7.0</version.org.eclipse.osgi.services>
         <version.org.eclipse.osgi.util>3.5.0</version.org.eclipse.osgi.util>
         <version.org.eclipse.osgi>3.13.0</version.org.eclipse.osgi>
-        <org.eclipse.jetty.version>9.4.11.v20180605</org.eclipse.jetty.version>
 
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>br.com.c8tech.releng</groupId>
+                <version>1.4-SNAPSHOT</version>
+                <artifactId>fpom-deps-felix</artifactId>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>br.com.c8tech.releng</groupId>
+                <version>1.4-SNAPSHOT</version>
+                <artifactId>fpom-deps-osgi</artifactId>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <!-- current released eclipse bundles from maven central -->
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
@@ -91,11 +105,6 @@
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.osgi.util</artifactId>
                 <version>${version.org.eclipse.osgi.util}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.region</artifactId>
-                <version>${version.org.eclipse.equinox.region}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
@@ -142,41 +151,6 @@
                 <artifactId>org.eclipse.equinox.event</artifactId>
                 <version>${version.org.eclipse.equinox.event}</version>
             </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-server</artifactId>
-                <version>${org.eclipse.jetty.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-util</artifactId>
-                <version>${org.eclipse.jetty.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-servlet</artifactId>
-                <version>${org.eclipse.jetty.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-io</artifactId>
-                <version>${org.eclipse.jetty.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-security</artifactId>
-                <version>${org.eclipse.jetty.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-http</artifactId>
-                <version>${org.eclipse.jetty.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-continuation</artifactId>
-                <version>${org.eclipse.jetty.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -193,10 +167,6 @@
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.osgi.util</artifactId>
         </dependency>
-<!--         <dependency> -->
-<!--             <groupId>org.eclipse.platform</groupId> -->
-<!--             <artifactId>org.eclipse.equinox.region</artifactId> -->
-<!--         </dependency> -->
         <dependency>
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.equinox.util</artifactId>
@@ -209,10 +179,15 @@
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.equinox.metatype</artifactId>
         </dependency>
+<!-- we are using the felix implementation since equinox is still on Compendium 6 -->
 <!--         <dependency> -->
 <!--             <groupId>org.eclipse.platform</groupId> -->
 <!--             <artifactId>org.eclipse.equinox.ds</artifactId> -->
 <!--         </dependency> -->
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.scr</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.equinox.coordinator</artifactId>
@@ -221,10 +196,15 @@
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.equinox.console</artifactId>
         </dependency>
+<!-- we are using the felix implementation since equinox is still on Compendium 6 -->
 <!--         <dependency> -->
 <!--             <groupId>org.eclipse.platform</groupId> -->
 <!--             <artifactId>org.eclipse.equinox.cm</artifactId> -->
 <!--         </dependency> -->
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.configadmin</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.equinox.common</artifactId>
@@ -233,102 +213,51 @@
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.equinox.event</artifactId>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.logback</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.bundlerepository</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.converter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.configurator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.gogo.runtime</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.gogo.shell</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.gogo.jline</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
 
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-current-versions-properties</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target</outputDirectory>
-<!--                             <filters> -->
-<!--                                 <filter>${basedir}/src/equinox-latest-versions-filtering.properties</filter> -->
-<!--                             </filters> -->
-                            <resources>
-                                <resource>
-                                    <directory>src</directory>
-                                    <filtering>true</filtering>
-                                    <includes>
-                                        <include>dependencies-equinox-current-from-maven-central.properties</include>
-                                    </includes>
-                                    <targetPath>current</targetPath>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-milestone-versions-properties</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target</outputDirectory>
-<!--                             <filters> -->
-<!--                                 <filter>${basedir}/src/equinox-latest-versions-filtering.properties</filter> -->
-<!--                             </filters> -->
-                            <resources>
-                                <resource>
-                                    <directory>src</directory>
-<!--                                     <filtering>true</filtering> -->
-                                    <includes>
-                                        <include>dependencies-equinox-milestone-from-p2.properties</include>
-                                    </includes>
-                                    <targetPath>milestone</targetPath>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-current-artifact</id>
-                        <phase>package</phase>
-                        <inherited>false</inherited>
-                        <goals>
-                            <goal>attach-artifact</goal>
-                        </goals>
-                        <configuration>
-                            <artifacts>
-                                <artifact>
-                                    <file>${basedir}/target/current/dependencies-equinox-current-from-maven-central.properties</file>
-                                    <type>properties</type>
-                                    <classifier>current</classifier>
-                                </artifact>
-                            </artifacts>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>attach-milestone-artifact</id>
-                        <phase>package</phase>
-                        <inherited>false</inherited>
-                        <goals>
-                            <goal>attach-artifact</goal>
-                        </goals>
-                        <configuration>
-                            <artifacts>
-                                <artifact>
-                                    <file>${basedir}/target/milestone/dependencies-equinox-milestone-from-p2.properties</file>
-                                    <type>properties</type>
-                                    <classifier>milestone</classifier>
-                                </artifact>
-                            </artifacts>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+    </dependencies>
 
 </project>

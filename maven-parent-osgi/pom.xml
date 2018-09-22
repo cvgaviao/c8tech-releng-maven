@@ -66,14 +66,13 @@
         <!-- ========================  -->
         <!--  MAVEN PLUGIN VERSIONS    -->
         <!-- ========================  -->
-        <version.takari-lifecycle>1.13.6</version.takari-lifecycle>
-        <version.maven-bundle>3.5.1</version.maven-bundle>
+        <version.takari-lifecycle>1.13.7</version.takari-lifecycle>
+        <version.maven-bundle>4.0.0</version.maven-bundle>
         <version.bndlib>4.1.0-SNAPSHOT</version.bndlib>
         <eclipse.aether.version>1.0.0.v20140518</eclipse.aether.version>
 
         <!-- Tools -->
         <pojosr.version>0.2.1</pojosr.version>
-        <xtend.maven.version>2.11.0</xtend.maven.version>
 
         <!-- OSGI -->
         <version.osgi.core>7.0.0</version.osgi.core>
@@ -722,6 +721,7 @@
                     <plugin>
                         <groupId>org.apache.felix</groupId>
                         <artifactId>maven-bundle-plugin</artifactId>
+                        <version>${version.maven-bundle}</version>
                         <reportSets>
                             <reportSet>
                                 <id>baseline-report</id>

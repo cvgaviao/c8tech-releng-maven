@@ -13,7 +13,9 @@
 <!-- ==========================================================================  -->
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -47,50 +49,38 @@
     <!-- end of per child setting -->
 
     <properties>
-        <aries.subsystems.api.version>2.0.10</aries.subsystems.api.version>
-        <aries.subsystems.core.version>${aries.subsystems.api.version}</aries.subsystems.core.version>
-        <aries.util.version>1.1.3</aries.util.version>
-        <aries.spifly.version>1.0.14</aries.spifly.version>
-        <apache.mina.version>2.0.19</apache.mina.version>
-        <apache.sshd.version>2.0.0</apache.sshd.version>
-        <javax.xml.version>1.3.4.v201005080400</javax.xml.version>
-        <javax.servlet.version>3.1.0.v201410161800</javax.servlet.version>
-        <javax.net.ssl.version>3.1.0.v201410161800</javax.net.ssl.version>
-
-
+        <version.aries.subsystems.api>2.0.10</version.aries.subsystems.api>
+        <version.aries.subsystems.core>${version.aries.subsystems.api}</version.aries.subsystems.core>
+        <version.aries.util>1.1.3</version.aries.util>
+        <version.aries.spifly>1.0.14</version.aries.spifly>
+        <version.apache.mina>2.0.19</version.apache.mina>
+        <version.apache.sshd>2.0.0</version.apache.sshd>
+        <version.org.eclipse.equinox.region>1.4.100</version.org.eclipse.equinox.region>
+        <version.jline>3.9.0</version.jline>
 
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.eclipse.platform</groupId>
+                <artifactId>org.eclipse.equinox.region</artifactId>
+                <version>${version.org.eclipse.equinox.region}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>3.7</version>
-            </dependency>
-            <dependency>
-                <groupId>br.com.c8tech.releng</groupId>
-                <artifactId>fpom-deps-felix</artifactId>
-                <version>1.4-SNAPSHOT</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>br.com.c8tech.releng</groupId>
-                <artifactId>fpom-deps-equinox</artifactId>
-                <version>1.4-SNAPSHOT</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <version>${version.commons-lang3}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.aries.spifly</groupId>
                 <artifactId>org.apache.aries.spifly.dynamic.bundle</artifactId>
-                <version>${aries.spifly.version}</version>
+                <version>${version.aries.spifly}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.aries.subsystem</groupId>
                 <artifactId>org.apache.aries.subsystem.core</artifactId>
-                <version>${aries.subsystems.core.version}</version>
+                <version>${version.aries.subsystems.core}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.aries.application</groupId>
@@ -113,7 +103,7 @@
             <dependency>
                 <groupId>org.apache.aries.subsystem</groupId>
                 <artifactId>org.apache.aries.subsystem.api</artifactId>
-                <version>${aries.subsystems.api.version}</version>
+                <version>${version.aries.subsystems.api}</version>
                 <exclusions>
                     <exclusion>
                         <artifactId>org.osgi.annotation</artifactId>
@@ -139,17 +129,17 @@
             <dependency>
                 <groupId>org.apache.aries</groupId>
                 <artifactId>org.apache.aries.util</artifactId>
-                <version>${aries.util.version}</version>
+                <version>${version.aries.util}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.mina</groupId>
                 <artifactId>mina-core</artifactId>
-                <version>${apache.mina.version}</version>
+                <version>${version.apache.mina}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.sshd</groupId>
                 <artifactId>sshd-core</artifactId>
-                <version>${apache.sshd.version}</version>
+                <version>${version.apache.sshd}</version>
             </dependency>
             <dependency>
                 <groupId>net.java.dev.jna</groupId>
@@ -263,26 +253,15 @@
                 <artifactId>org.osgi.util.pushstream</artifactId>
                 <version>1.0.0</version>
             </dependency>
+            <dependency>
+                <groupId>org.jline</groupId>
+                <artifactId>jline</artifactId>
+                <version>${version.jline}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.logback</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.configadmin</artifactId>
-        </dependency>
 <!--         <dependency> -->
 <!--             <groupId>com.google.guava</groupId> -->
 <!--             <artifactId>guava</artifactId> -->
@@ -298,34 +277,10 @@
         <dependency>
             <groupId>org.apache.aries.subsystem</groupId>
             <artifactId>org.apache.aries.subsystem.core</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.aries.application</groupId>
-                    <artifactId>org.apache.aries.application.api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.aries.application</groupId>
-                    <artifactId>org.apache.aries.application.utils</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.eclipse.equinox</groupId>
-                    <artifactId>org.eclipse.equinox.region</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.eclipse.equinox</groupId>
-                    <artifactId>org.eclipse.equinox.coordinator</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.aries.subsystem</groupId>
             <artifactId>org.apache.aries.subsystem.api</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>org.osgi.annotation</artifactId>
-                    <groupId>org.osgi</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -335,169 +290,10 @@
             <groupId>org.apache.aries</groupId>
             <artifactId>org.apache.aries.util</artifactId>
         </dependency>
-<!--         <dependency> -->
-<!--             <groupId>org.apache.mina</groupId> -->
-<!--             <artifactId>mina-core</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.apache.sshd</groupId> -->
-<!--             <artifactId>sshd-core</artifactId> -->
-<!--         </dependency> -->
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.scr</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>animal-sniffer-annotations</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.bundlerepository</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>easymock</artifactId>
-                    <groupId>org.easymock</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.osgi.core</artifactId>
-                    <groupId>org.osgi</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.gogo.runtime</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.gogo.command</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>org.apache.felix.gogo.runtime</artifactId>
-                    <groupId>org.apache.felix</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.apache.felix.bundlerepository</artifactId>
-                    <groupId>org.apache.felix</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.osgi.compendium</artifactId>
-                    <groupId>org.osgi</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.osgi.core</artifactId>
-                    <groupId>org.osgi</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-<!--         <dependency> -->
-<!--             <groupId>org.apache.felix</groupId> -->
-<!--             <artifactId>org.apache.felix.gogo.shell</artifactId> -->
-<!--         </dependency> -->
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.gogo.jline</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jline</groupId>
-            <artifactId>jline</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.equinox.region</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.eclipse.platform</groupId>
-                    <artifactId>org.eclipse.osgi</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.converter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.configurator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>osgi.annotation</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>osgi.core</artifactId>
-            <scope>provided</scope>
-        </dependency>
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.util.converter</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.service.event</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.service.coordinator</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.service.configurator</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.service.cm</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.service.prefs</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.service.component</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.service.component.annotations</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.service.subsystem</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.service.metatype.annotations</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.service.log</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.namespace.service</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.namespace.extender</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.osgi</groupId> -->
-<!--             <artifactId>org.osgi.util.pushstream</artifactId> -->
-<!--         </dependency> -->
     </dependencies>
 
 </project>
