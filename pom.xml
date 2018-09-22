@@ -128,10 +128,6 @@
         <!--    PROJECT PROPERTIES     -->
         <!-- ========================  -->
         
-        <!-- the current version of releng POMs used by children projects. -->
-        <!-- must be equal to this project version -->
-        <version.c8tech.releng>1.0-SNAPSHOT</version.c8tech.releng>
-
         <!-- The minimal Java compiler version-->
         <java.version>1.8</java.version>
         <javadocJreApiVersion>8</javadocJreApiVersion>
@@ -1070,7 +1066,7 @@
                                         <artifactItem>
                                             <groupId>br.com.c8tech.releng</groupId>
                                             <artifactId>maven-parent-java</artifactId>
-                                            <version>1.0-SNAPSHOT</version>
+                                            <version>1.3</version>
                                             <type>txt</type>
                                             <classifier>license</classifier>
                                             <overWrite>true</overWrite>
