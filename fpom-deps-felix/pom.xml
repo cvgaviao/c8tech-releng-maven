@@ -18,9 +18,8 @@
 
     <parent>
         <groupId>br.com.c8tech.releng</groupId>
-        <artifactId>maven-parent-osgi</artifactId>
+        <artifactId>maven-parent-java</artifactId>
         <version>2.1-SNAPSHOT</version>
-        <relativePath>../maven-parent-osgi/pom.xml</relativePath>
     </parent>
 
     <artifactId>fpom-deps-felix</artifactId>
@@ -62,10 +61,10 @@
         <version.felix.eventadmin>1.5.0</version.felix.eventadmin>
         <version.felix.coordinator>1.0.2</version.felix.coordinator>
         <version.felix.configadmin>1.9.6</version.felix.configadmin>
-        <version.felix.configurator>1.0.4</version.felix.configurator>
+        <version.felix.configurator>1.0.6</version.felix.configurator>
         <version.felix.converter>1.0.0</version.felix.converter>
         <version.felix.logback>1.0.0</version.felix.logback>
-        <version.felix.scr>2.1.6</version.felix.scr>
+        <version.felix.scr>2.1.8</version.felix.scr>
         <version.felix.prefs>1.1.0</version.felix.prefs>
         <version.felix.metatype>1.2.0</version.felix.metatype>
         <version.felix.resolver>2.0.0</version.felix.resolver>
