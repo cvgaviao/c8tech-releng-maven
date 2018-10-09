@@ -545,7 +545,7 @@
                                     <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
                                     <_dsannotations>*</_dsannotations>
                                     <_metatypeannotations>*</_metatypeannotations>
-<!--                                     <_snapshot>${osgi-version-qualifier}</_snapshot> -->
+                                    <_snapshot>${osgi-version-qualifier}</_snapshot>
                                     <_versionpolicy>[$(version;==;$(@)),$(version;+;$(@)))</_versionpolicy>
                                 </instructions>
                                 <supportedProjectTypes>
@@ -563,6 +563,7 @@
                             <inherited>true</inherited>
                             <configuration>
                                 <proc>none</proc>
+                                <compilerId>javac</compilerId>
                                 <source>${java.version}</source>
                                 <target>${java.version}</target>
                                 <accessRulesViolation>error</accessRulesViolation>
