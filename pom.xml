@@ -276,12 +276,12 @@
         <version.maven-resources>3.0.2</version.maven-resources>
         <version.maven-site>3.7</version.maven-site>
         <version.maven-source>3.0.1</version.maven-source>
-        <!-- DEPENDENCIES VERSIONS -->
-        <version.wagon-ssh>3.1.0</version.wagon-ssh>
+
+        <version.wagon-ssh>3.2.0</version.wagon-ssh>
         <version.wagon-git>2.0.3</version.wagon-git>
 
         <!-- Tools -->
-        <version.guava>24.1-jre</version.guava>
+        <version.guava>26.0-jre</version.guava>
         <version.dockerfile-maven>1.4.4</version.dockerfile-maven>
 
         <version.vertx>3.5.3</version.vertx>
@@ -323,7 +323,7 @@
         <version.jacoco-maven>0.8.2</version.jacoco-maven>
         <version.pax-exam>4.11.0</version.pax-exam>
         <version.junit>5.3.1</version.junit>
-        <version.mockito>2.22.0</version.mockito>
+        <version.mockito>2.23.0</version.mockito>
         <version.assertj>3.11.1</version.assertj>
         <version.powermock>1.7.4</version.powermock>
 
@@ -2121,6 +2121,9 @@
                         <arguments>-Dc8tech.build.release
                             -Dc8tech.build.test.coverage ${arguments}</arguments>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
+                        <commitByProject>true</commitByProject>
+                        <!-- ensure submodule are available to other submodules -->
+                        <preparationGoals>clean install</preparationGoals>
                         <releaseProfiles>when-releasing-ensure-requirements</releaseProfiles>
                     </configuration>
                 </plugin>
