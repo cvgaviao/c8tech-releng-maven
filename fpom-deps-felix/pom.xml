@@ -13,7 +13,9 @@
 <!-- ==========================================================================  -->
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -50,25 +52,25 @@
         <!-- FELIX. -->
         <version.felix.framework>6.0.1</version.felix.framework>
 
+        <version.felix>${version.felix.framework}</version.felix>
         <version.felix.bundlerepository>2.0.10</version.felix.bundlerepository>
-        <version.felix.gogo.runtime>1.1.0</version.felix.gogo.runtime>
-        <version.felix.gogo.command>1.0.2</version.felix.gogo.command>
-        <version.felix.gogo.shell>1.1.0</version.felix.gogo.shell>
-        <version.felix.gogo.jline>1.1.0</version.felix.gogo.jline>
+        <version.felix.coordinator>1.0.2</version.felix.coordinator>
+        <version.felix.configadmin>1.9.8</version.felix.configadmin>
+        <version.felix.configurator>1.0.6</version.felix.configurator>
+        <version.felix.converter>1.0.2</version.felix.converter>
         <version.felix.dpadmin>0.9.10</version.felix.dpadmin>
         <version.felix.dp.rp.conf>0.1.8</version.felix.dp.rp.conf>
-        <version.felix>${version.felix.framework}</version.felix>
         <version.felix.eventadmin>1.5.0</version.felix.eventadmin>
-        <version.felix.coordinator>1.0.2</version.felix.coordinator>
-        <version.felix.configadmin>1.9.6</version.felix.configadmin>
-        <version.felix.configurator>1.0.6</version.felix.configurator>
-        <version.felix.converter>1.0.0</version.felix.converter>
+        <version.felix.gogo.command>1.0.2</version.felix.gogo.command>
+        <version.felix.gogo.runtime>1.1.0</version.felix.gogo.runtime>
+        <version.felix.gogo.shell>1.1.0</version.felix.gogo.shell>
+        <version.felix.gogo.jline>1.1.0</version.felix.gogo.jline>
         <version.felix.logback>1.0.0</version.felix.logback>
-        <version.felix.scr>2.1.8</version.felix.scr>
-        <version.felix.prefs>1.1.0</version.felix.prefs>
-        <version.felix.metatype>1.2.0</version.felix.metatype>
-        <version.felix.resolver>2.0.0</version.felix.resolver>
         <version.felix.log>1.2.0</version.felix.log>
+        <version.felix.metatype>1.2.2</version.felix.metatype>
+        <version.felix.scr>2.1.10</version.felix.scr>
+        <version.felix.prefs>1.1.0</version.felix.prefs>
+        <version.felix.resolver>2.0.0</version.felix.resolver>
     </properties>
 
     <dependencyManagement>
@@ -89,6 +91,13 @@
                 <groupId>org.apache.felix</groupId>
                 <artifactId>org.apache.felix.main</artifactId>
                 <version>${version.felix.framework}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.felix</groupId>
+                        <artifactId>org.apache.felix.framework</artifactId>
+                    </exclusion>
+                </exclusions>
+
             </dependency>
             <dependency>
                 <groupId>org.apache.felix</groupId>
@@ -170,8 +179,8 @@
                 <version>${version.felix.log}</version>
                 <exclusions>
                     <exclusion>
-                        <artifactId>org.osgi.core</artifactId>
                         <groupId>org.osgi</groupId>
+                        <artifactId>osgi.core</artifactId>
                     </exclusion>
                     <exclusion>
                         <artifactId>org.osgi.compendium</artifactId>
@@ -195,6 +204,10 @@
                 <artifactId>org.apache.felix.resolver</artifactId>
                 <version>${version.felix.resolver}</version>
                 <exclusions>
+                    <exclusion>
+                        <groupId>org.osgi</groupId>
+                        <artifactId>osgi.annotation</artifactId>
+                    </exclusion>
                     <exclusion>
                         <artifactId>org.osgi.core</artifactId>
                         <groupId>org.osgi</groupId>
@@ -260,10 +273,6 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.framework</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.bundlerepository</artifactId>
         </dependency>
         <dependency>
@@ -288,6 +297,18 @@
         </dependency>
         <dependency>
             <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.gogo.runtime</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.gogo.command</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.gogo.jline</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.log</artifactId>
         </dependency>
         <dependency>
@@ -300,11 +321,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.prefs</artifactId>
+            <artifactId>org.apache.felix.metatype</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.metatype</artifactId>
+            <artifactId>org.apache.felix.prefs</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.felix</groupId>
@@ -315,22 +336,6 @@
             <artifactId>org.apache.felix.scr</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.gogo.runtime</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.gogo.command</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.gogo.jline</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
@@ -338,7 +343,26 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.fusesource.jansi</groupId>
+            <artifactId>jansi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.util.pushstream</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.util.function</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.util.promise</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
