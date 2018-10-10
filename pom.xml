@@ -13,7 +13,9 @@
 <!-- ==========================================================================  -->
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.c8tech.releng</groupId>
@@ -257,25 +259,35 @@
         <version.maven-animal-sniffer>1.17</version.maven-animal-sniffer>
         <version.maven-build-helper>3.0.0</version.maven-build-helper>
         <version.maven-checkstyle>3.0.0</version.maven-checkstyle>
-        <version.maven-clean>3.0.0</version.maven-clean>
-        <version.maven-compiler>3.7.0</version.maven-compiler>
+        <version.maven-clean>3.1.0</version.maven-clean>
+        <version.maven-compiler>3.8.0</version.maven-compiler>
         <version.maven-dependency>3.1.1</version.maven-dependency>
         <version.maven-depends>1.4.0</version.maven-depends>
-        <version.maven-deploy>2.8.2</version.maven-deploy>
-        <version.maven-enforcer>3.0.0-M1</version.maven-enforcer>
+        <version.maven-deploy>3.0.0-M1</version.maven-deploy>
+        <version.maven-enforcer>3.0.0-M2</version.maven-enforcer>
         <version.extra-enforcer-rules>1.0-beta-9</version.extra-enforcer-rules>
         <version.maven-findbugs>3.0.5</version.maven-findbugs>
         <version.maven-gpg>1.6</version.maven-gpg>
-        <version.maven-install>2.5.2</version.maven-install>
-        <version.maven-javadoc>3.0.0</version.maven-javadoc>
-        <version.maven-jar>3.0.2</version.maven-jar>
+        <version.maven-install>3.0.0-M1</version.maven-install>
+        <version.maven-javadoc>3.0.1</version.maven-javadoc>
+        <version.maven-jar>3.1.0</version.maven-jar>
         <version.maven-jarsigner>1.4</version.maven-jarsigner>
-        <version.maven-project-info-reports>2.9</version.maven-project-info-reports>
+        <version.maven-project-info-reports>3.0.0</version.maven-project-info-reports>
         <version.maven-property>1.0.0</version.maven-property>
         <version.maven-release>2.5.3</version.maven-release>
-        <version.maven-resources>3.0.2</version.maven-resources>
-        <version.maven-site>3.7</version.maven-site>
+        <version.maven-resources>3.1.0</version.maven-resources>
+        <version.maven-site>3.7.1</version.maven-site>
         <version.maven-source>3.0.1</version.maven-source>
+        <!-- REPORTING -->
+        <version.taglist-maven>2.4</version.taglist-maven>
+        <version.report-license-maven>1.16</version.report-license-maven>
+        <version.versions-maven>2.7</version.versions-maven>
+        <version.maven-jxr>2.5</version.maven-jxr>
+        <version.maven.doxia.module.markdown>1.8</version.maven.doxia.module.markdown>
+        <version.maven-fluido-skin>1.7</version.maven-fluido-skin>
+        <version.maven-changes>2.12.1</version.maven-changes>
+        <version.maven-plugin-tools-javadoc>3.4</version.maven-plugin-tools-javadoc>
+        <version.plexus-component-javadoc>1.6</version.plexus-component-javadoc>
 
         <version.wagon-ssh>3.2.0</version.wagon-ssh>
         <version.wagon-git>2.0.3</version.wagon-git>
@@ -293,15 +305,6 @@
         <version.slf4j>1.7.25</version.slf4j>
         <version.logback>1.2.3</version.logback>
 
-        <!-- REPORTING -->
-        <version.taglist-maven>2.4</version.taglist-maven>
-        <version.report-license-maven>1.14</version.report-license-maven>
-        <version.versions-maven>2.5</version.versions-maven>
-        <version.maven-jxr>2.5</version.maven-jxr>
-        <version.maven.doxia.module.markdown>1.8</version.maven.doxia.module.markdown>
-        <version.maven-fluido-skin>1.7</version.maven-fluido-skin>
-        <version.maven-plugin-tools-javadoc>3.4</version.maven-plugin-tools-javadoc>
-        <version.plexus-component-javadoc>1.6</version.plexus-component-javadoc>
         <!-- in order to generate a short version of reports for testing
             purposes -->
         <c8tech.report.short>false</c8tech.report.short>
@@ -390,6 +393,7 @@
                 <c8tech.stage.repository.keep.old>false</c8tech.stage.repository.keep.old>
             </properties>
         </profile>
+
         <profile>
             <id>setup-site-for-parent-projects</id>
             <activation>
@@ -398,46 +402,32 @@
                 </file>
             </activation>
             <properties>
-                <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}/${project.artifactId}</c8tech.project.site.url>
-                <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>setup-site-for-aggregator-projects</id>
-            <activation>
-                <file>
-                    <exists>.c8tech.releng.aggregator</exists>
-                </file>
-            </activation>
-            <properties>
                 <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
                 <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
+                <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
             </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-site-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-file</id>
+<!--                                 <inherited>false</inherited> -->
+                                <goals>
+                                    <goal>attach-descriptor</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
             <reporting>
                 <plugins>
                     <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>taglist-maven-plugin</artifactId>
-                        <version>${version.taglist-maven}</version>
-                        <reportSets>
-                            <reportSet>
-                                <!-- defines taglist aggregate report -->
-                                <id>taglist-aggregate</id>
-                                <inherited>false</inherited>
-                                <reports>
-                                    <report>taglist</report>
-                                </reports>
-                                <configuration>
-                                    <aggregate>true</aggregate>
-                                </configuration>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-
-                    <plugin>
                         <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>${report.checkstyle.version}</version>
+                        <version>${version.maven-checkstyle}</version>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -446,6 +436,7 @@
                         <reportSets>
                             <reportSet>
                                 <id>aggregate-jxr</id>
+<!--                                 <inherited>false</inherited> -->
                                 <reports>
                                     <report>aggregate</report>
                                     <report>test-aggregate</report>
@@ -462,6 +453,7 @@
                         <reportSets>
                             <reportSet>
                                 <id>javadoc-aggregate</id>
+<!--                                 <inherited>false</inherited> -->
                                 <configuration>
                                     <detectLinks>true</detectLinks>
                                     <quiet>true</quiet>
@@ -474,15 +466,34 @@
                         </reportSets>
                     </plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-report-plugin</artifactId>
-                        <version>${version.maven-surefire}</version>
-                        <configuration>
-                            <skipFailsafeReport>${c8tech.skip.reports}</skipFailsafeReport>
-                            <skipSurefireReport>${c8tech.skip.reports}</skipSurefireReport>
-                            <aggregate>true</aggregate>
-                        </configuration>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>taglist-maven-plugin</artifactId>
+                        <version>${version.taglist-maven}</version>
+                        <reportSets>
+                            <reportSet>
+                                <!-- defines taglist aggregate report -->
+                                <id>taglist-aggregate</id>
+<!--                                 <inherited>false</inherited> -->
+                                <reports>
+                                    <report>taglist</report>
+                                </reports>
+                                <configuration>
+                                    <aggregate>true</aggregate>
+                                </configuration>
+                            </reportSet>
+                        </reportSets>
                     </plugin>
+<!--                     <plugin> -->
+<!--                         <groupId>org.apache.maven.plugins</groupId> -->
+<!--                         <artifactId>maven-surefire-report-plugin</artifactId> -->
+<!--                         <version>${version.maven-surefire}</version> -->
+<!--                         <inherited>false</inherited> -->
+<!--                         <configuration> -->
+<!--                             <skipFailsafeReport>${c8tech.skip.reports}</skipFailsafeReport> -->
+<!--                             <skipSurefireReport>${c8tech.skip.reports}</skipSurefireReport> -->
+<!--                             <aggregate>true</aggregate> -->
+<!--                         </configuration> -->
+<!--                     </plugin> -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -493,17 +504,19 @@
                         </configuration>
                         <reportSets>
                             <reportSet>
+                                <id>parent-project-info-report</id>
+<!--                                 <inherited>false</inherited> -->
                                 <reports>
-                                    <!-- distribution-management, index,
-                                        dependencies, help, issue-tracking, plugins, cim, license, dependency-management,
-                                        mailing-list, project-team, dependency-convergence, scm, plugin-management,
-                                        modules, summary -->
+                                    <!-- ci-management, dependencies, dependency-convergence, 
+                                    dependency-info, dependency-management, distribution-management, 
+                                    help, index, issue-management, licenses, mailing-lists, 
+                                    modules, plugin-management, plugins, scm, summary, team -->
                                     <report>index</report>
-                                    <report>summary</report>
+<!--                                     <report>summary</report> -->
                                     <report>modules</report>
-                                    <report>project-team</report>
-                                    <report>license</report>
-                                    <report>dependency-convergence</report>
+                                    <report>team</report>
+<!--                                     <report>licenses</report> -->
+<!--                                     <report>dependency-convergence</report> -->
                                 </reports>
                             </reportSet>
                         </reportSets>
@@ -512,6 +525,7 @@
             </reporting>
         </profile>
 
+
         <profile>
             <id>setup-site-for-java-projects</id>
             <activation>
@@ -519,30 +533,46 @@
                     <exists>${basedir}/src/main/java</exists>
                 </file>
             </activation>
+            <properties>
+                <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}/${project.artifactId}</c8tech.project.site.url>
+                <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
+                <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}${project.artifactId}</c8tech.distribution.site.url>
+            </properties>
             <reporting>
                 <plugins>
-                    <!-- <plugin> -->
-                    <!-- <groupId>org.apache.maven.plugins</groupId> -->
-                    <!-- <artifactId>maven-changes-plugin</artifactId> -->
-                    <!-- <version>2.11</version> -->
-                    <!-- <reportSets> -->
-                    <!-- <reportSet> -->
-                    <!-- <reports> -->
-                    <!-- <report>jira-report</report> -->
-                    <!-- </reports> -->
-                    <!-- </reportSet> -->
-                    <!-- </reportSets> -->
-                    <!-- </plugin> -->
                     <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>taglist-maven-plugin</artifactId>
-                        <version>${version.taglist-maven}</version>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-report-plugin</artifactId>
+                        <version>${version.maven-surefire}</version>
+                        <inherited>true</inherited>
                         <reportSets>
                             <reportSet>
-                                <!-- defines taglist reports in the modules -->
-                                <id>taglist-report</id>
+                                <id>tests-report-java</id>
                                 <reports>
-                                    <report>taglist</report>
+                                    <report>report-only</report>
+                                </reports>
+                            </reportSet>
+                            <reportSet>
+                                <id>integration-tests-report-java</id>
+                                <reports>
+                                    <report>failsafe-report-only</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-changes-plugin</artifactId>
+                        <version>${version.maven-changes}</version>
+                        <configuration>
+                            <includeOpenIssues>false</includeOpenIssues>
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <id>changes-report-java</id>
+                                <reports>
+                                    <report>changes-report</report>
                                 </reports>
                             </reportSet>
                         </reportSets>
@@ -558,6 +588,7 @@
                         </configuration>
                         <reportSets>
                             <reportSet>
+                                <id>versions-report-java</id>
                                 <reports>
                                     <report>dependency-updates-report</report>
                                     <report>plugin-updates-report</report>
@@ -577,7 +608,7 @@
                         </configuration>
                         <reportSets>
                             <reportSet>
-                                <id>licenses-report</id>
+                                <id>licenses-report-java</id>
                                 <reports>
                                     <report>third-party-report</report>
                                 </reports>
@@ -596,28 +627,59 @@
                         </configuration>
                         <reportSets>
                             <reportSet>
+                                <id>project-info-report-java</id>
                                 <reports>
-                                    <!-- distribution-management, index,
-                                        dependencies, help, issue-tracking, plugins, cim, license, dependency-management,
-                                        mailing-list, project-team, dependency-convergence, scm, plugin-management,
-                                        modules, summary -->
+                                    <!-- ci-management, dependencies, dependency-convergence, 
+                                    dependency-info, dependency-management, distribution-management, 
+                                    help, index, issue-management, licenses, mailing-lists, 
+                                    modules, plugin-management, plugins, scm, summary, team -->
                                     <report>index</report>
-                                    <report>cim</report>
+                                    <report>ci-management</report>
                                     <report>dependencies</report>
                                     <report>dependency-convergence</report>
                                     <report>dependency-info</report>
                                     <report>dependency-management</report>
                                     <report>distribution-management</report>
-                                    <report>issue-tracking</report>
-                                    <report>license</report>
+                                    <report>issue-management</report>
+                                    <report>licenses</report>
                                     <report>plugin-management</report>
                                     <report>plugins</report>
                                     <report>scm</report>
                                     <report>summary</report>
+                                    <report>team</report>
                                 </reports>
                             </reportSet>
                         </reportSets>
                     </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jxr-plugin</artifactId>
+                        <version>${version.maven-jxr}</version>
+                        <reportSets>
+                            <reportSet>
+                                <id>jxr-report-java</id>
+                                <reports>
+                                    <report>jxr</report>
+                                    <report>test-jxr</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>taglist-maven-plugin</artifactId>
+                        <version>${version.taglist-maven}</version>
+                        <reportSets>
+                            <reportSet>
+                                <!-- defines taglist reports in the modules -->
+                                <id>taglist-report-java</id>
+                                <reports>
+                                    <report>taglist</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+
                 </plugins>
             </reporting>
         </profile>
@@ -1002,30 +1064,6 @@
                     </plugin>
                 </plugins>
             </build>
-            <reporting>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-report-plugin</artifactId>
-                        <version>${version.maven-surefire}</version>
-                        <inherited>true</inherited>
-                        <reportSets>
-                            <reportSet>
-                                <id>tests</id>
-                                <reports>
-                                    <report>report-only</report>
-                                </reports>
-                            </reportSet>
-                            <reportSet>
-                                <id>integration-tests</id>
-                                <reports>
-                                    <report>failsafe-report-only</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                </plugins>
-            </reporting>
             <dependencies>
                 <dependency>
                     <groupId>org.sonarsource.java</groupId>
@@ -1356,35 +1394,6 @@
             </build>
         </profile>
 
-        <profile>
-            <!-- profile used to prepare a aggregator project to be released. 
-            An aggregator project just contain modules and is not they parent. -->
-            <id>when-releasing-aggregator-project</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-                <file>
-                    <exists>.c8tech.releng.aggregator</exists>
-                </file>
-            </activation>
-            <properties>
-                <maven.deploy.skip>true</maven.deploy.skip>
-                <maven.install.skip>true</maven.install.skip>
-            </properties>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-release-plugin</artifactId>
-                            <configuration>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
 
         <profile>
             <id>when-releasing-parent-project</id>
@@ -1761,20 +1770,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <!-- to be executed only for this POM -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <inherited>false</inherited>
-                <executions>
-                    <execution>
-                        <id>attach-file</id>
-                        <goals>
-                            <goal>attach-descriptor</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
         </plugins>
         <pluginManagement>
             <plugins>
@@ -1890,6 +1886,30 @@
                             <version>${version.maven.doxia.module.markdown}</version>
                         </dependency>
                     </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>taglist-maven-plugin</artifactId>
+                    <version>${version.taglist-maven}</version>
+                    <configuration>
+                        <tagListOptions>
+                            <tagClasses>
+                                <tagClass>
+                                    <displayName>Todo Work</displayName>
+                                    <tags>
+                                        <tag>
+                                            <matchString>todo</matchString>
+                                            <matchType>ignoreCase</matchType>
+                                        </tag>
+                                        <tag>
+                                            <matchString>FIXME</matchString>
+                                            <matchType>exact</matchType>
+                                        </tag>
+                                    </tags>
+                                </tagClass>
+                            </tagClasses>
+                        </tagListOptions>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -2118,8 +2138,9 @@
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${version.maven-release}</version>
                     <configuration>
-                        <arguments>-Dc8tech.build.release
-                            -Dc8tech.build.test.coverage ${arguments}</arguments>
+                        <arguments>
+                            -Dc8tech.build.release -Dc8tech.build.test.coverage ${arguments}
+                        </arguments>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                         <commitByProject>true</commitByProject>
                         <!-- ensure submodule are available to other submodules -->
