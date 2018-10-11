@@ -406,23 +406,6 @@
                 <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
                 <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
             </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-site-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>attach-file</id>
-<!--                                 <inherited>false</inherited> -->
-                                <goals>
-                                    <goal>attach-descriptor</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
             <reporting>
                 <plugins>
                     <plugin>
@@ -436,7 +419,6 @@
                         <reportSets>
                             <reportSet>
                                 <id>aggregate-jxr</id>
-<!--                                 <inherited>false</inherited> -->
                                 <reports>
                                     <report>aggregate</report>
                                     <report>test-aggregate</report>
@@ -453,7 +435,6 @@
                         <reportSets>
                             <reportSet>
                                 <id>javadoc-aggregate</id>
-<!--                                 <inherited>false</inherited> -->
                                 <configuration>
                                     <detectLinks>true</detectLinks>
                                     <quiet>true</quiet>
@@ -473,7 +454,6 @@
                             <reportSet>
                                 <!-- defines taglist aggregate report -->
                                 <id>taglist-aggregate</id>
-<!--                                 <inherited>false</inherited> -->
                                 <reports>
                                     <report>taglist</report>
                                 </reports>
@@ -505,18 +485,15 @@
                         <reportSets>
                             <reportSet>
                                 <id>parent-project-info-report</id>
-<!--                                 <inherited>false</inherited> -->
                                 <reports>
                                     <!-- ci-management, dependencies, dependency-convergence, 
                                     dependency-info, dependency-management, distribution-management, 
                                     help, index, issue-management, licenses, mailing-lists, 
                                     modules, plugin-management, plugins, scm, summary, team -->
                                     <report>index</report>
-<!--                                     <report>summary</report> -->
                                     <report>modules</report>
                                     <report>team</report>
-<!--                                     <report>licenses</report> -->
-<!--                                     <report>dependency-convergence</report> -->
+                                    <report>licenses</report>
                                 </reports>
                             </reportSet>
                         </reportSets>
@@ -525,12 +502,12 @@
             </reporting>
         </profile>
 
-
         <profile>
             <id>setup-site-for-java-projects</id>
             <activation>
                 <file>
                     <exists>${basedir}/src/main/java</exists>
+                    <missing>.c8tech.releng.solo</missing>
                 </file>
             </activation>
             <properties>
@@ -538,6 +515,29 @@
                 <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
                 <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}${project.artifactId}</c8tech.distribution.site.url>
             </properties>
+        </profile>
+
+        <profile>
+            <id>setup-site-parameters-for-java-projects-without-parent</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.solo</exists>
+                </file>
+            </activation>
+            <properties>
+                <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
+                <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
+                <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
+            </properties>
+        </profile>
+        
+        <profile>
+            <id>setup-site-parameters-for-java-projects</id>
+            <activation>
+                <file>
+                    <exists>${basedir}/src/main/java</exists>
+                </file>
+            </activation>
             <reporting>
                 <plugins>
                     <plugin>
@@ -684,35 +684,6 @@
             </reporting>
         </profile>
 
-        <profile>
-            <id>when-building-java-inside-jenkins-setTestCodeCoverage-dir</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/test/java</exists>
-                </file>
-                <property>
-                    <name>env.WORKSPACE</name>
-                </property>
-            </activation>
-            <properties>
-                <jacoco.outputDir>${env.WORKSPACE}/target/jacoco</jacoco.outputDir>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>when-building-java-outside-jenkins-setTestCodeCoverage-dir</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/test/java</exists>
-                </file>
-                <property>
-                    <name>!env.WORKSPACE</name>
-                </property>
-            </activation>
-            <properties>
-                <jacoco.outputDir>${basedir}/../target/jacoco</jacoco.outputDir>
-            </properties>
-        </profile>
 
         <profile>
             <id>when-building-java-using-java8</id>
@@ -915,6 +886,52 @@
         </profile>
 
         <profile>
+            <id>when-building-java-inside-jenkins</id>
+            <activation>
+                <file>
+                    <exists>${basedir}/src/test/java</exists>
+                </file>
+                <property>
+                    <name>env.WORKSPACE</name>
+                </property>
+            </activation>
+            <properties>
+                <c8tech.build.workspace>${env.WORKSPACE}</c8tech.build.workspace>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>when-building-java-with-parent-outside-jenkins</id>
+            <activation>
+                <file>
+                    <exists>${basedir}/src/test/java</exists>
+                    <missing>.c8tech.releng.solo</missing>
+                </file>
+                <property>
+                    <name>!env.WORKSPACE</name>
+                </property>
+            </activation>
+            <properties>
+                <c8tech.build.workspace>${basedir}/../target/</c8tech.build.workspace>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>when-building-java-without-parent-outside-jenkins</id>
+            <activation>
+                <file>
+                    <exists>${basedir}/src/test/java</exists>
+                </file>
+                <property>
+                    <name>!env.WORKSPACE</name>
+                </property>
+            </activation>
+            <properties>
+                <c8tech.build.workspace>${basedir}/target/</c8tech.build.workspace>
+            </properties>
+        </profile>
+
+        <profile>
             <!-- This profile is used to setup a code coverage using Jacoco
                 that will be sent for SonarQube. -->
             <!-- Sonar/Jacoco integration. The sonar.host.url must be defined
@@ -932,6 +949,8 @@
             </activation>
             <properties>
                 <argLine>-Xmx1024m</argLine>
+
+                <jacoco.outputDir>${c8tech.build.workspace}/jacoco</jacoco.outputDir>
 
                 <c8tech.jacoco.include>*/**</c8tech.jacoco.include>
 
@@ -2139,7 +2158,8 @@
                     <version>${version.maven-release}</version>
                     <configuration>
                         <arguments>
-                            -Dc8tech.build.release -Dc8tech.build.test.coverage ${arguments}
+                            -Dc8tech.build.release
+                            -Dc8tech.build.test.coverage ${arguments}
                         </arguments>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                         <commitByProject>true</commitByProject>
