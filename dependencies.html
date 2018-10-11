@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>C8Tech Maven Fragment POM for Pax-Exam based Integration Tests. &#x2013; Project Dependencies</title>
+    <title>C8Tech Maven Fragment POM for dependencies of a Equinox container. &#x2013; Project Dependencies</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -16,7 +16,7 @@
   <body class="composite">
     <div id="banner">
 <div id="bannerLeft">
-C8Tech Maven Fragment POM for Pax-Exam based Integration Tests.
+C8Tech Maven Fragment POM for dependencies of a Equinox container.
 </div>
       <div class="clear">
         <hr/>
@@ -55,77 +55,167 @@ C8Tech Maven Fragment POM for Pax-Exam based Integration Tests.
 <th>Type</th>
 <th>Licenses</th></tr>
 <tr class="b">
-<td>javax.inject</td>
-<td><a class="externalLink" href="http://code.google.com/p/atinject/">javax.inject</a></td>
-<td>1</td>
+<td>ch.qos.logback</td>
+<td><a class="externalLink" href="http://logback.qos.ch/logback-classic">logback-classic</a></td>
+<td>1.2.3</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License - v 1.0</a><a class="externalLink" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public License</a></td></tr>
+<tr class="a">
+<td>ch.qos.logback</td>
+<td><a class="externalLink" href="http://logback.qos.ch/logback-core">logback-core</a></td>
+<td>1.2.3</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License - v 1.0</a><a class="externalLink" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public License</a></td></tr>
+<tr class="b">
+<td>org.apache.felix</td>
+<td><a class="externalLink" href="http://felix.apache.org/org.apache.felix.bundlerepository/">org.apache.felix.bundlerepository</a></td>
+<td>2.0.10</td>
 <td>jar</td>
 <td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></td></tr>
 <tr class="a">
-<td>org.codehaus.jackson</td>
-<td><a class="externalLink" href="http://jackson.codehaus.org">jackson-core-asl</a></td>
-<td>1.9.13</td>
+<td>org.apache.felix</td>
+<td><a class="externalLink" href="http://felix.apache.org/org.apache.felix.configadmin/">org.apache.felix.configadmin</a></td>
+<td>1.9.8</td>
+<td>jar</td>
+<td><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></td></tr>
+<tr class="b">
+<td>org.apache.felix</td>
+<td><a class="externalLink" href="http://felix.apache.org/org.apache.felix.configurator/">org.apache.felix.configurator</a></td>
+<td>1.0.6</td>
+<td>jar</td>
+<td><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></td></tr>
+<tr class="a">
+<td>org.apache.felix</td>
+<td><a class="externalLink" href="http://felix.apache.org/org.apache.felix.converter/">org.apache.felix.converter</a></td>
+<td>1.0.2</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></td></tr>
+<tr class="b">
+<td>org.apache.felix</td>
+<td><a class="externalLink" href="http://felix.apache.org/gogo-parent/org.apache.felix.gogo.command/">org.apache.felix.gogo.command</a></td>
+<td>1.0.2</td>
 <td>jar</td>
 <td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></td></tr>
-<tr class="b">
-<td>org.knowhowlab.osgi</td>
-<td><a class="externalLink" href="http://knowhowlab.org">org.knowhowlab.osgi.testing.assertions</a></td>
-<td>1.3.0</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td></tr>
 <tr class="a">
-<td>org.knowhowlab.osgi</td>
-<td><a class="externalLink" href="http://knowhowlab.org">org.knowhowlab.osgi.testing.utils</a></td>
-<td>1.3.0</td>
+<td>org.apache.felix</td>
+<td><a class="externalLink" href="http://felix.apache.org/gogo-parent/org.apache.felix.gogo.jline/">org.apache.felix.gogo.jline</a></td>
+<td>1.1.0</td>
 <td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td></tr>
+<td><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></td></tr>
 <tr class="b">
-<td>org.ops4j.pax.exam</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxexam/pax-exam/">pax-exam</a></td>
-<td>4.12.0</td>
+<td>org.apache.felix</td>
+<td><a class="externalLink" href="http://felix.apache.org/gogo-parent/org.apache.felix.gogo.runtime/">org.apache.felix.gogo.runtime</a></td>
+<td>1.1.0</td>
 <td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></td></tr>
+<td><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></td></tr>
 <tr class="a">
-<td>org.ops4j.pax.exam</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxexam/pax-exam-container-native/">pax-exam-container-native</a></td>
-<td>4.12.0</td>
+<td>org.apache.felix</td>
+<td><a class="externalLink" href="http://felix.apache.org/gogo-parent/org.apache.felix.gogo.shell/">org.apache.felix.gogo.shell</a></td>
+<td>1.1.0</td>
 <td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></td></tr>
+<td><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></td></tr>
 <tr class="b">
-<td>org.ops4j.pax.exam</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxexam/pax-exam-junit4/">pax-exam-junit4</a></td>
-<td>4.12.0</td>
+<td>org.apache.felix</td>
+<td><a class="externalLink" href="http://felix.apache.org/org.apache.felix.logback/">org.apache.felix.logback</a></td>
+<td>1.0.0</td>
 <td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></td></tr>
+<td><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></td></tr>
 <tr class="a">
-<td>org.ops4j.pax.exam</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxexam/pax-exam-link-mvn/">pax-exam-link-mvn</a></td>
-<td>4.12.0</td>
+<td>org.apache.felix</td>
+<td><a class="externalLink" href="http://felix.apache.org/org.apache.felix.scr/">org.apache.felix.scr</a></td>
+<td>2.1.10</td>
 <td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></td></tr>
+<td><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></td></tr>
 <tr class="b">
-<td>org.ops4j.pax.url</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-aether">pax-url-aether</a></td>
-<td>2.5.4</td>
+<td>org.eclipse.platform</td>
+<td><a class="externalLink" href="http://www.eclipse.org/platform">org.eclipse.equinox.common</a></td>
+<td>3.10.100</td>
 <td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></td></tr>
 <tr class="a">
-<td>org.ops4j.pax.url</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-assembly">pax-url-assembly</a></td>
-<td>2.5.4</td>
+<td>org.eclipse.platform</td>
+<td><a class="externalLink" href="http://www.eclipse.org/platform">org.eclipse.equinox.console</a></td>
+<td>1.3.100</td>
 <td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></td></tr>
 <tr class="b">
-<td>org.slf4j</td>
-<td><a class="externalLink" href="http://www.slf4j.org">jcl-over-slf4j</a></td>
-<td>1.7.25</td>
+<td>org.eclipse.platform</td>
+<td><a class="externalLink" href="http://www.eclipse.org/platform">org.eclipse.equinox.coordinator</a></td>
+<td>1.3.600</td>
 <td>jar</td>
-<td><a class="externalLink" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></td></tr>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></td></tr>
 <tr class="a">
-<td>org.slf4j</td>
-<td><a class="externalLink" href="http://www.slf4j.org">slf4j-api</a></td>
-<td>1.7.25</td>
+<td>org.eclipse.platform</td>
+<td><a class="externalLink" href="http://www.eclipse.org/platform">org.eclipse.equinox.event</a></td>
+<td>1.4.300</td>
 <td>jar</td>
-<td><a class="externalLink" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></td></tr></table></div></div><a name="Project_Transitive_Dependencies"></a>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></td></tr>
+<tr class="b">
+<td>org.eclipse.platform</td>
+<td><a class="externalLink" href="http://www.eclipse.org/platform">org.eclipse.equinox.metatype</a></td>
+<td>1.4.500</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></td></tr>
+<tr class="a">
+<td>org.eclipse.platform</td>
+<td><a class="externalLink" href="http://www.eclipse.org/platform">org.eclipse.equinox.preferences</a></td>
+<td>3.7.200</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></td></tr>
+<tr class="b">
+<td>org.eclipse.platform</td>
+<td><a class="externalLink" href="http://www.eclipse.org/platform">org.eclipse.equinox.util</a></td>
+<td>1.1.100</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></td></tr>
+<tr class="a">
+<td>org.eclipse.platform</td>
+<td><a class="externalLink" href="http://www.eclipse.org/platform">org.eclipse.osgi</a></td>
+<td>3.13.100</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></td></tr>
+<tr class="b">
+<td>org.eclipse.platform</td>
+<td><a class="externalLink" href="http://www.eclipse.org/platform">org.eclipse.osgi.services</a></td>
+<td>3.7.100</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></td></tr>
+<tr class="a">
+<td>org.eclipse.platform</td>
+<td><a class="externalLink" href="http://www.eclipse.org/platform">org.eclipse.osgi.util</a></td>
+<td>3.5.100</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></td></tr>
+<tr class="b">
+<td>org.fusesource.jansi</td>
+<td><a class="externalLink" href="http://fusesource.github.io/jansi/jansi">jansi</a></td>
+<td>1.17.1</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></td></tr>
+<tr class="a">
+<td>org.jline</td>
+<td><a class="externalLink" href="http://nexus.sonatype.org/oss-repository-hosting.html/jline-parent/jline">jline</a></td>
+<td>3.9.0</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.opensource.org/licenses/bsd-license.php">The BSD License</a></td></tr>
+<tr class="b">
+<td>org.osgi</td>
+<td><a class="externalLink" href="https://www.osgi.org/">org.osgi.util.function</a></td>
+<td>1.1.0</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></td></tr>
+<tr class="a">
+<td>org.osgi</td>
+<td><a class="externalLink" href="https://www.osgi.org/">org.osgi.util.promise</a></td>
+<td>1.1.0</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></td></tr>
+<tr class="b">
+<td>org.osgi</td>
+<td><a class="externalLink" href="https://www.osgi.org/">org.osgi.util.pushstream</a></td>
+<td>1.0.0</td>
+<td>jar</td>
+<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></td></tr></table></div></div><a name="Project_Transitive_Dependencies"></a>
 <div class="section">
 <h2><a name="Project_Transitive_Dependencies"></a>Project Transitive Dependencies</h2>
 <p>The following is a list of transitive dependencies for this project. Transitive dependencies are the dependencies of the project dependencies.</p><a name="Project_Transitive_Dependencies_compile"></a>
@@ -140,155 +230,11 @@ C8Tech Maven Fragment POM for Pax-Exam based Integration Tests.
 <th>Type</th>
 <th>Licenses</th></tr>
 <tr class="b">
-<td>biz.aQute.bnd</td>
-<td><a class="externalLink" href="http://www.aQute.biz/Code/Bnd/bndlib">bndlib</a></td>
-<td>2.4.0</td>
+<td>org.slf4j</td>
+<td><a class="externalLink" href="http://www.slf4j.org">slf4j-api</a></td>
+<td>1.7.25</td>
 <td>jar</td>
-<td><a class="externalLink" href="http://www.opensource.org/licenses/apache2.0.php">Apache Software License 2.0</a></td></tr>
-<tr class="a">
-<td>junit</td>
-<td><a class="externalLink" href="http://junit.org">junit</a></td>
-<td>4.12</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License 1.0</a></td></tr>
-<tr class="b">
-<td>org.eclipse.aether</td>
-<td><a class="externalLink" href="http://www.eclipse.org/aether/aether-api/">aether-api</a></td>
-<td>1.0.2.v20150114</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a></td></tr>
-<tr class="a">
-<td>org.eclipse.aether</td>
-<td><a class="externalLink" href="http://www.eclipse.org/aether/aether-impl/">aether-impl</a></td>
-<td>1.0.2.v20150114</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a></td></tr>
-<tr class="b">
-<td>org.eclipse.aether</td>
-<td><a class="externalLink" href="http://www.eclipse.org/aether/aether-spi/">aether-spi</a></td>
-<td>1.0.2.v20150114</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a></td></tr>
-<tr class="a">
-<td>org.eclipse.aether</td>
-<td><a class="externalLink" href="http://www.eclipse.org/aether/aether-util/">aether-util</a></td>
-<td>1.0.2.v20150114</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a></td></tr>
-<tr class="b">
-<td>org.hamcrest</td>
-<td><a class="externalLink" href="https://github.com/hamcrest/JavaHamcrest/hamcrest-core">hamcrest-core</a></td>
-<td>1.3</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.opensource.org/licenses/bsd-license.php">New BSD License</a></td></tr>
-<tr class="a">
-<td>org.ops4j.base</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-io/">ops4j-base-io</a></td>
-<td>1.5.0</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="b">
-<td>org.ops4j.base</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-lang/">ops4j-base-lang</a></td>
-<td>1.5.0</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="a">
-<td>org.ops4j.base</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-monitors/">ops4j-base-monitors</a></td>
-<td>1.5.0</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="b">
-<td>org.ops4j.base</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-net/">ops4j-base-net</a></td>
-<td>1.5.0</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="a">
-<td>org.ops4j.base</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-spi/">ops4j-base-spi</a></td>
-<td>1.5.0</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="b">
-<td>org.ops4j.base</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-store/">ops4j-base-store</a></td>
-<td>1.5.0</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="a">
-<td>org.ops4j.base</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-util-property/">ops4j-base-util-property</a></td>
-<td>1.5.0</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="b">
-<td>org.ops4j.pax.exam</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxexam/pax-exam-spi/">pax-exam-spi</a></td>
-<td>4.12.0</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></td></tr>
-<tr class="a">
-<td>org.ops4j.pax.swissbox</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-core">pax-swissbox-core</a></td>
-<td>1.8.2</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="b">
-<td>org.ops4j.pax.swissbox</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-lifecycle">pax-swissbox-lifecycle</a></td>
-<td>1.8.2</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="a">
-<td>org.ops4j.pax.swissbox</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-optional-jcl">pax-swissbox-optional-jcl</a></td>
-<td>1.8.2</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="b">
-<td>org.ops4j.pax.swissbox</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-property">pax-swissbox-property</a></td>
-<td>1.8.2</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="a">
-<td>org.ops4j.pax.swissbox</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-tracker">pax-swissbox-tracker</a></td>
-<td>1.8.2</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="b">
-<td>org.ops4j.pax.tinybundles</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/ops4j/Tinybundles">tinybundles</a></td>
-<td>2.1.1</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="a">
-<td>org.ops4j.pax.url</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-aether-support">pax-url-aether-support</a></td>
-<td>2.5.4</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="b">
-<td>org.ops4j.pax.url</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-classpath">pax-url-classpath</a></td>
-<td>2.4.5</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="a">
-<td>org.ops4j.pax.url</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-commons">pax-url-commons</a></td>
-<td>2.5.4</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr>
-<tr class="b">
-<td>org.ops4j.pax.url</td>
-<td><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-link">pax-url-link</a></td>
-<td>2.4.5</td>
-<td>jar</td>
-<td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></td></tr></table></div></div><a name="Project_Dependency_Graph"></a>
+<td><a class="externalLink" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></td></tr></table></div></div><a name="Project_Dependency_Graph"></a>
 <div class="section">
 <h2><a name="Project_Dependency_Graph"></a>Project Dependency Graph</h2>
 <script language="javascript" type="text/javascript">
@@ -314,18 +260,216 @@ C8Tech Maven Fragment POM for Pax-Exam based Integration Tests.
 <div class="section">
 <h3><a name="Dependency_Tree"></a>Dependency Tree</h3>
 <ul>
-<li>br.com.c8tech.releng:fpom-itests-paxexam:pom:4.0 <img id="_img1" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep0', '_img1' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep0" style="display:none">
+<li>br.com.c8tech.releng:fpom-deps-equinox:pom:4.0 <img id="_img1" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep0', '_img1' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep0" style="display:none">
 <table border="0" class="bodyTable">
 <tr class="a">
-<th>C8Tech Maven Fragment POM for Pax-Exam based Integration Tests.</th></tr>
+<th>C8Tech Maven Fragment POM for dependencies of a Equinox container.</th></tr>
 <tr class="b">
 <td>
-<p><b>Description: </b>A fragment POM that groups dependencies needed by integration tests projects based on PAX-Exam tool.
-    It is aimed to be imported by other integration tests projects POMs.</p>
+<p><b>Description: </b>A fragment POM that groups dependencies related to Equinox container.
+    It is aimed to be imported by integration tests or distribution projects POMs.</p>
 <p><b>URL: </b><a class="externalLink" href="http://cvgaviao.github.io/c8tech-releng-maven">http://cvgaviao.github.io/c8tech-releng-maven</a></p>
 <p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License v1.0</a></p></td></tr></table></div>
 <ul>
-<li>org.slf4j:slf4j-api:jar:1.7.25 (compile) <img id="_img3" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep2', '_img3' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep2" style="display:none">
+<li>org.eclipse.platform:org.eclipse.osgi:jar:3.13.100 (compile) <img id="_img3" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep2', '_img3' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep2" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>OSGi System Bundle</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>OSGi System Bundle
+
+%systemBundle</p>
+<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/platform">http://www.eclipse.org/platform</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></p></td></tr></table></div></li>
+<li>org.eclipse.platform:org.eclipse.osgi.services:jar:3.7.100 (compile) <img id="_img5" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep4', '_img5' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep4" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>OSGi Release 4.2.0 Services</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>OSGi Release 4.2.0 Services
+
+OSGi Service Platform Release 4.2.0 Service Interfaces and Classes</p>
+<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/platform">http://www.eclipse.org/platform</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></p></td></tr></table></div></li>
+<li>org.eclipse.platform:org.eclipse.osgi.util:jar:3.5.100 (compile) <img id="_img7" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep6', '_img7' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep6" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>OSGi Release 4.2.0 Utility Classes</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>OSGi Release 4.2.0 Utility Classes
+
+OSGi Service Platform Release 4.2.0 Utility Classes</p>
+<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/platform">http://www.eclipse.org/platform</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></p></td></tr></table></div></li>
+<li>org.eclipse.platform:org.eclipse.equinox.common:jar:3.10.100 (compile) <img id="_img9" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep8', '_img9' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep8" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Common Eclipse Runtime</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Common Eclipse Runtime</p>
+<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/platform">http://www.eclipse.org/platform</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></p></td></tr></table></div></li>
+<li>org.eclipse.platform:org.eclipse.equinox.coordinator:jar:1.3.600 (compile) <img id="_img11" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep10', '_img11' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep10" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Coordinator</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Coordinator</p>
+<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/platform">http://www.eclipse.org/platform</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></p></td></tr></table></div></li>
+<li>org.eclipse.platform:org.eclipse.equinox.console:jar:1.3.100 (compile) <img id="_img13" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep12', '_img13' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep12" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Console plug-in</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Console plug-in</p>
+<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/platform">http://www.eclipse.org/platform</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></p></td></tr></table></div></li>
+<li>org.eclipse.platform:org.eclipse.equinox.event:jar:1.4.300 (compile) <img id="_img15" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep14', '_img15' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep14" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Event Admin</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Event Admin</p>
+<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/platform">http://www.eclipse.org/platform</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></p></td></tr></table></div></li>
+<li>org.eclipse.platform:org.eclipse.equinox.metatype:jar:1.4.500 (compile) <img id="_img17" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep16', '_img17' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep16" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Meta Type</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Meta Type</p>
+<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/platform">http://www.eclipse.org/platform</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></p></td></tr></table></div></li>
+<li>org.eclipse.platform:org.eclipse.equinox.preferences:jar:3.7.200 (compile) <img id="_img19" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep18', '_img19' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep18" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Eclipse Preferences Mechanism</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Eclipse Preferences Mechanism</p>
+<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/platform">http://www.eclipse.org/platform</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></p></td></tr></table></div></li>
+<li>org.eclipse.platform:org.eclipse.equinox.util:jar:1.1.100 (compile) <img id="_img21" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep20', '_img21' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep20" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Equinox Util Bundle</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Equinox Util Bundle
+
+The Equinox Util Bundle contains services to facilitate bundle developers in their programming, and to lighten resource usage at runtime.</p>
+<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/platform">http://www.eclipse.org/platform</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License</a></p></td></tr></table></div></li>
+<li>org.apache.felix:org.apache.felix.bundlerepository:jar:2.0.10 (compile) <img id="_img23" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep22', '_img23' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep22" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Apache Felix Bundle Repository</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Bundle repository service.</p>
+<p><b>URL: </b><a class="externalLink" href="http://felix.apache.org/org.apache.felix.bundlerepository/">http://felix.apache.org/org.apache.felix.bundlerepository/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></p></td></tr></table></div></li>
+<li>org.apache.felix:org.apache.felix.configadmin:jar:1.9.8 (compile) <img id="_img25" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep24', '_img25' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep24" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Apache Felix Configuration Admin Service</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Implementation of the OSGi Configuration Admin Service Specification 1.6</p>
+<p><b>URL: </b><a class="externalLink" href="http://felix.apache.org/org.apache.felix.configadmin/">http://felix.apache.org/org.apache.felix.configadmin/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></p></td></tr></table></div></li>
+<li>org.apache.felix:org.apache.felix.converter:jar:1.0.2 (compile) <img id="_img27" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep26', '_img27' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep26" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Apache Felix Converter</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Apache Felix is a community effort to implement the OSGi Framework and Service platform and other interesting OSGi-related technologies.</p>
+<p><b>URL: </b><a class="externalLink" href="http://felix.apache.org/org.apache.felix.converter/">http://felix.apache.org/org.apache.felix.converter/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></p></td></tr></table></div></li>
+<li>org.apache.felix:org.apache.felix.configurator:jar:1.0.6 (compile) <img id="_img29" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep28', '_img29' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep28" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Apache Felix Configurator Service</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Implementation of the OSGi Configurator Service Specification 1.0</p>
+<p><b>URL: </b><a class="externalLink" href="http://felix.apache.org/org.apache.felix.configurator/">http://felix.apache.org/org.apache.felix.configurator/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></p></td></tr></table></div></li>
+<li>org.apache.felix:org.apache.felix.gogo.shell:jar:1.1.0 (compile) <img id="_img31" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep30', '_img31' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep30" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Apache Felix Gogo Shell</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Apache Felix Gogo Subproject</p>
+<p><b>URL: </b><a class="externalLink" href="http://felix.apache.org/gogo-parent/org.apache.felix.gogo.shell/">http://felix.apache.org/gogo-parent/org.apache.felix.gogo.shell/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></p></td></tr></table></div></li>
+<li>org.apache.felix:org.apache.felix.gogo.runtime:jar:1.1.0 (compile) <img id="_img33" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep32', '_img33' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep32" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Apache Felix Gogo Runtime</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Apache Felix Gogo Subproject</p>
+<p><b>URL: </b><a class="externalLink" href="http://felix.apache.org/gogo-parent/org.apache.felix.gogo.runtime/">http://felix.apache.org/gogo-parent/org.apache.felix.gogo.runtime/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></p></td></tr></table></div></li>
+<li>org.apache.felix:org.apache.felix.gogo.command:jar:1.0.2 (compile) <img id="_img35" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep34', '_img35' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep34" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Apache Felix Gogo Command</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Provides basic shell commands for Gogo.</p>
+<p><b>URL: </b><a class="externalLink" href="http://felix.apache.org/gogo-parent/org.apache.felix.gogo.command/">http://felix.apache.org/gogo-parent/org.apache.felix.gogo.command/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></p></td></tr></table></div></li>
+<li>org.apache.felix:org.apache.felix.gogo.jline:jar:1.1.0 (compile) <img id="_img37" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep36', '_img37' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep36" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Apache Felix Gogo JLine Shell</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Apache Felix Gogo Subproject</p>
+<p><b>URL: </b><a class="externalLink" href="http://felix.apache.org/gogo-parent/org.apache.felix.gogo.jline/">http://felix.apache.org/gogo-parent/org.apache.felix.gogo.jline/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></p></td></tr></table></div></li>
+<li>org.apache.felix:org.apache.felix.logback:jar:1.0.0 (compile) <img id="_img39" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep38', '_img39' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep38" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Apache Felix Logback Backend Integration</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>A simple integration of the OSGi R7 Log (1.4) service to Logback backend.</p>
+<p><b>URL: </b><a class="externalLink" href="http://felix.apache.org/org.apache.felix.logback/">http://felix.apache.org/org.apache.felix.logback/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></p></td></tr></table></div></li>
+<li>org.apache.felix:org.apache.felix.scr:jar:2.1.10 (compile) <img id="_img41" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep40', '_img41' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep40" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Apache Felix Declarative Services</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Implementation of the Declarative Services specification 1.4</p>
+<p><b>URL: </b><a class="externalLink" href="http://felix.apache.org/org.apache.felix.scr/">http://felix.apache.org/org.apache.felix.scr/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License, Version 2.0</a></p></td></tr></table></div></li>
+<li>ch.qos.logback:logback-classic:jar:1.2.3 (compile) <img id="_img43" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep42', '_img43' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep42" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Logback Classic Module</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>logback-classic module</p>
+<p><b>URL: </b><a class="externalLink" href="http://logback.qos.ch/logback-classic">http://logback.qos.ch/logback-classic</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License - v 1.0</a>, <a class="externalLink" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public License</a></p></td></tr></table></div>
+<ul>
+<li>org.slf4j:slf4j-api:jar:1.7.25 (compile) <img id="_img45" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep44', '_img45' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep44" style="display:none">
 <table border="0" class="bodyTable">
 <tr class="a">
 <th>SLF4J API Module</th></tr>
@@ -333,364 +477,72 @@ C8Tech Maven Fragment POM for Pax-Exam based Integration Tests.
 <td>
 <p><b>Description: </b>The slf4j API</p>
 <p><b>URL: </b><a class="externalLink" href="http://www.slf4j.org">http://www.slf4j.org</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></p></td></tr></table></div></li>
-<li>org.slf4j:jcl-over-slf4j:jar:1.7.25 (compile) <img id="_img5" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep4', '_img5' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep4" style="display:none">
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></p></td></tr></table></div></li></ul></li>
+<li>ch.qos.logback:logback-core:jar:1.2.3 (compile) <img id="_img47" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep46', '_img47' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep46" style="display:none">
 <table border="0" class="bodyTable">
 <tr class="a">
-<th>JCL 1.2 implemented over SLF4J</th></tr>
+<th>Logback Core Module</th></tr>
 <tr class="b">
 <td>
-<p><b>Description: </b>JCL 1.2 implemented over SLF4J</p>
-<p><b>URL: </b><a class="externalLink" href="http://www.slf4j.org">http://www.slf4j.org</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></p></td></tr></table></div></li>
-<li>javax.inject:javax.inject:jar:1 (compile) <img id="_img7" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep6', '_img7' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep6" style="display:none">
+<p><b>Description: </b>logback-core module</p>
+<p><b>URL: </b><a class="externalLink" href="http://logback.qos.ch/logback-core">http://logback.qos.ch/logback-core</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License - v 1.0</a>, <a class="externalLink" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public License</a></p></td></tr></table></div></li>
+<li>org.fusesource.jansi:jansi:jar:1.17.1 (compile) <img id="_img49" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep48', '_img49' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep48" style="display:none">
 <table border="0" class="bodyTable">
 <tr class="a">
-<th>javax.inject</th></tr>
+<th>jansi</th></tr>
 <tr class="b">
 <td>
-<p><b>Description: </b>The javax.inject API</p>
-<p><b>URL: </b><a class="externalLink" href="http://code.google.com/p/atinject/">http://code.google.com/p/atinject/</a></p>
+<p><b>Description: </b>Jansi is a java library for generating and interpreting ANSI escape sequences.</p>
+<p><b>URL: </b><a class="externalLink" href="http://fusesource.github.io/jansi/jansi">http://fusesource.github.io/jansi/jansi</a></p>
 <p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></p></td></tr></table></div></li>
-<li>org.knowhowlab.osgi:org.knowhowlab.osgi.testing.assertions:jar:1.3.0 (compile) <img id="_img9" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep8', '_img9' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep8" style="display:none">
+<li>org.jline:jline:jar:3.9.0 (compile) <img id="_img51" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep50', '_img51' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep50" style="display:none">
 <table border="0" class="bodyTable">
 <tr class="a">
-<th>KnowHowLab OSGi Testing - Assertions</th></tr>
+<th>JLine Bundle</th></tr>
 <tr class="b">
 <td>
-<p><b>Description: </b>KnowHowLab OSGi Testing - Assertions</p>
-<p><b>URL: </b><a class="externalLink" href="http://knowhowlab.org">http://knowhowlab.org</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p></td></tr></table></div></li>
-<li>org.knowhowlab.osgi:org.knowhowlab.osgi.testing.utils:jar:1.3.0 (compile) <img id="_img11" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep10', '_img11' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep10" style="display:none">
+<p><b>Description: </b>JLine</p>
+<p><b>URL: </b><a class="externalLink" href="http://nexus.sonatype.org/oss-repository-hosting.html/jline-parent/jline">http://nexus.sonatype.org/oss-repository-hosting.html/jline-parent/jline</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.opensource.org/licenses/bsd-license.php">The BSD License</a></p></td></tr></table></div></li>
+<li>org.osgi:org.osgi.util.pushstream:jar:1.0.0 (compile) <img id="_img53" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep52', '_img53' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep52" style="display:none">
 <table border="0" class="bodyTable">
 <tr class="a">
-<th>KnowHowLab OSGi Testing - Utils</th></tr>
+<th>org.osgi:org.osgi.util.pushstream</th></tr>
 <tr class="b">
 <td>
-<p><b>Description: </b>KnowHowLab OSGi Testing - Utils</p>
-<p><b>URL: </b><a class="externalLink" href="http://knowhowlab.org">http://knowhowlab.org</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p></td></tr></table></div></li>
-<li>org.codehaus.jackson:jackson-core-asl:jar:1.9.13 (compile) <img id="_img13" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep12', '_img13' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep12" style="display:none">
+<p><b>Description: </b>OSGi Companion Code for org.osgi.util.pushstream Version 1.0.0</p>
+<p><b>URL: </b><a class="externalLink" href="https://www.osgi.org/">https://www.osgi.org/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></p></td></tr></table></div></li>
+<li>org.osgi:org.osgi.util.function:jar:1.1.0 (compile) <img id="_img55" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep54', '_img55' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep54" style="display:none">
 <table border="0" class="bodyTable">
 <tr class="a">
-<th>Jackson</th></tr>
+<th>org.osgi:org.osgi.util.function</th></tr>
 <tr class="b">
 <td>
-<p><b>Description: </b>Jackson is a high-performance JSON processor (parser, generator)</p>
-<p><b>URL: </b><a class="externalLink" href="http://jackson.codehaus.org">http://jackson.codehaus.org</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></p></td></tr></table></div></li>
-<li>org.ops4j.pax.exam:pax-exam:jar:4.12.0 (compile) <img id="_img15" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep14', '_img15' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep14" style="display:none">
+<p><b>Description: </b>OSGi Companion Code for org.osgi.util.function Version 1.1.0</p>
+<p><b>URL: </b><a class="externalLink" href="https://www.osgi.org/">https://www.osgi.org/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></p></td></tr></table></div></li>
+<li>org.osgi:org.osgi.util.promise:jar:1.1.0 (compile) <img id="_img57" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep56', '_img57' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep56" style="display:none">
 <table border="0" class="bodyTable">
 <tr class="a">
-<th>OPS4J Pax Exam API</th></tr>
+<th>org.osgi:org.osgi.util.promise</th></tr>
 <tr class="b">
 <td>
-<p><b>Description: </b>Pax Exam Integration testing framework for Modern Java Platforms.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxexam/pax-exam/">http://team.ops4j.org/wiki/display/paxexam/pax-exam/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></p></td></tr></table></div>
-<ul>
-<li>org.ops4j.base:ops4j-base-lang:jar:1.5.0 (compile) <img id="_img17" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep16', '_img17' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep16" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Base - Lang</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Base - Utilities/Extensions related to java.lang.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-lang/">http://team.ops4j.org/wiki/display/base/ops4j-base-lang/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div></li>
-<li>org.ops4j.base:ops4j-base-store:jar:1.5.0 (compile) <img id="_img19" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep18', '_img19' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep18" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Base - Store</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Base -Store</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-store/">http://team.ops4j.org/wiki/display/base/ops4j-base-store/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div>
-<ul>
-<li>org.ops4j.base:ops4j-base-io:jar:1.5.0 (compile) <img id="_img21" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep20', '_img21' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep20" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Base - IO</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Base - Utilities/Extensions related to java.io.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-io/">http://team.ops4j.org/wiki/display/base/ops4j-base-io/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div></li></ul></li>
-<li>org.ops4j.base:ops4j-base-util-property:jar:1.5.0 (compile) <img id="_img23" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep22', '_img23' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep22" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Base - Util - Property</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Base - Utilities/Extensions related to sytem/configuration properties.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-util-property/">http://team.ops4j.org/wiki/display/base/ops4j-base-util-property/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div></li></ul></li>
-<li>org.ops4j.pax.exam:pax-exam-container-native:jar:4.12.0 (compile) <img id="_img25" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep24', '_img25' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep24" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Exam TestContainer Native</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>Leverages the OSGi R4.2 Launch API so it just works with newer osgi implementations.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxexam/pax-exam-container-native/">http://team.ops4j.org/wiki/display/paxexam/pax-exam-container-native/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></p></td></tr></table></div>
-<ul>
-<li>org.ops4j.pax.exam:pax-exam-spi:jar:4.12.0 (compile) <img id="_img27" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep26', '_img27' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep26" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Exam UI Low Level SPI</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>Pax Exam Integration testing framework for Modern Java Platforms.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxexam/pax-exam-spi/">http://team.ops4j.org/wiki/display/paxexam/pax-exam-spi/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></p></td></tr></table></div>
-<ul>
-<li>org.ops4j.base:ops4j-base-spi:jar:1.5.0 (compile) <img id="_img29" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep28', '_img29' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep28" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Base - Service Provider Access</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>Utility classes and extensions to be used in OPS4J projects.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-spi/">http://team.ops4j.org/wiki/display/base/ops4j-base-spi/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div></li>
-<li>org.ops4j.pax.tinybundles:tinybundles:jar:2.1.1 (compile) <img id="_img31" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep30', '_img31' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep30" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Tinybundles</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>Tiny Bundles is a library to create and modify adhoc bundles and other OSGi resources using fluent Java API.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/ops4j/Tinybundles">http://team.ops4j.org/wiki/display/ops4j/Tinybundles</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div>
-<ul>
-<li>biz.aQute.bnd:bndlib:jar:2.4.0 (compile) <img id="_img33" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep32', '_img33' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep32" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>A Swiss Army Knife for OSGi</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>The bndlib project is a general library to be used with OSGi bundles. It contains
-    lots of cool functionality that calculates dependencies, etc.</p>
-<p><b>URL: </b><a class="externalLink" href="http://www.aQute.biz/Code/Bnd/bndlib">http://www.aQute.biz/Code/Bnd/bndlib</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.opensource.org/licenses/apache2.0.php">Apache Software License 2.0</a></p></td></tr></table></div></li></ul></li></ul></li>
-<li>org.ops4j.pax.swissbox:pax-swissbox-core:jar:1.8.2 (compile) <img id="_img35" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep34', '_img35' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep34" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Swissbox :: OSGi Core</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Swissbox - Utilities related to OSGi core framework.
-    Detailed information to be found at http://wiki.ops4j.org/confluence/x/MgRN.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-core">http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-core</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div>
-<ul>
-<li>org.ops4j.pax.swissbox:pax-swissbox-lifecycle:jar:1.8.2 (compile) <img id="_img37" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep36', '_img37' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep36" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Swissbox :: Lifecycle</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Swissbox - Utilities related to lifecycle.
-    Detailed information to be found at http://wiki.ops4j.org/confluence/x/NgRN.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-lifecycle">http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-lifecycle</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div></li></ul></li>
-<li>org.ops4j.pax.swissbox:pax-swissbox-tracker:jar:1.8.2 (compile) <img id="_img39" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep38', '_img39' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep38" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Swissbox :: Tracker</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Swissbox - Utilities related to service tracking.
-    Detailed information to be found at http://wiki.ops4j.org/confluence/x/OQRN.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-tracker">http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-tracker</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div></li>
-<li>org.ops4j.base:ops4j-base-net:jar:1.5.0 (compile) <img id="_img41" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep40', '_img41' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep40" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Base - Net</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Base - Utilities/Extensions related to java.net.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-net/">http://team.ops4j.org/wiki/display/base/ops4j-base-net/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div>
-<ul>
-<li>org.ops4j.base:ops4j-base-monitors:jar:1.5.0 (compile) <img id="_img43" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep42', '_img43' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep42" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Base - Monitors</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Base - Utilities/Extensions related to monitoring.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/base/ops4j-base-monitors/">http://team.ops4j.org/wiki/display/base/ops4j-base-monitors/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div></li></ul></li>
-<li>org.ops4j.pax.url:pax-url-link:jar:2.4.5 (compile) <img id="_img45" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep44', '_img45' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep44" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Url - link:</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Url - link: protocol handler.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-link">http://team.ops4j.org/wiki/display/paxurl/pax-url-link</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div></li>
-<li>org.ops4j.pax.url:pax-url-classpath:jar:2.4.5 (compile) <img id="_img47" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep46', '_img47' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep46" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Url - classpath:</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Url - classpath: protocol handler.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-classpath">http://team.ops4j.org/wiki/display/paxurl/pax-url-classpath</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div>
-<ul>
-<li>org.ops4j.pax.swissbox:pax-swissbox-optional-jcl:jar:1.8.2 (compile) <img id="_img49" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep48', '_img49' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep48" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Swissbox :: Optional JCL</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Swissbox - Optional Apache Commons Logging.
-    Detailed information to be found at http://wiki.ops4j.org/confluence/x/NwRN.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-optional-jcl">http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-optional-jcl</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div></li></ul></li></ul></li>
-<li>org.ops4j.pax.exam:pax-exam-junit4:jar:4.12.0 (compile) <img id="_img51" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep50', '_img51' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep50" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Exam Driver JUnit4</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>Pax Exam Integration testing framework for Modern Java Platforms.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxexam/pax-exam-junit4/">http://team.ops4j.org/wiki/display/paxexam/pax-exam-junit4/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></p></td></tr></table></div>
-<ul>
-<li>junit:junit:jar:4.12 (compile) <img id="_img53" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep52', '_img53' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep52" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>JUnit</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>JUnit is a unit testing framework for Java, created by Erich Gamma and Kent Beck.</p>
-<p><b>URL: </b><a class="externalLink" href="http://junit.org">http://junit.org</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License 1.0</a></p></td></tr></table></div>
-<ul>
-<li>org.hamcrest:hamcrest-core:jar:1.3 (compile) <img id="_img55" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep54', '_img55' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep54" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Hamcrest Core</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>This is the core API of hamcrest matcher framework to be used by third-party framework providers. This includes the a foundation set of matcher implementations for common operations.</p>
-<p><b>URL: </b><a class="externalLink" href="https://github.com/hamcrest/JavaHamcrest/hamcrest-core">https://github.com/hamcrest/JavaHamcrest/hamcrest-core</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.opensource.org/licenses/bsd-license.php">New BSD License</a></p></td></tr></table></div></li></ul></li></ul></li>
-<li>org.ops4j.pax.exam:pax-exam-link-mvn:jar:4.12.0 (compile) <img id="_img57" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep56', '_img57' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep56" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Exam Links for Maven</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>Pax Exam Integration testing framework for Modern Java Platforms.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxexam/pax-exam-link-mvn/">http://team.ops4j.org/wiki/display/paxexam/pax-exam-link-mvn/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></p></td></tr></table></div></li>
-<li>org.ops4j.pax.url:pax-url-aether:jar:2.5.4 (compile) <img id="_img59" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep58', '_img59' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep58" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Url - aether:</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Url - aether: protocol handler.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-aether">http://team.ops4j.org/wiki/display/paxurl/pax-url-aether</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div>
-<ul>
-<li>org.ops4j.pax.url:pax-url-aether-support:jar:2.5.4 (compile) <img id="_img61" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep60', '_img61' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep60" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Url - aether: - support library</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Url - aether: protocol handler. - support library</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-aether-support">http://team.ops4j.org/wiki/display/paxurl/pax-url-aether-support</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div>
-<ul>
-<li>org.eclipse.aether:aether-impl:jar:1.0.2.v20150114 (compile) <img id="_img63" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep62', '_img63' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep62" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Aether Implementation</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>An implementation of the repository system.</p>
-<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/aether/aether-impl/">http://www.eclipse.org/aether/aether-impl/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a></p></td></tr></table></div>
-<ul>
-<li>org.eclipse.aether:aether-api:jar:1.0.2.v20150114 (compile) <img id="_img65" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep64', '_img65' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep64" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Aether API</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>The application programming interface for the repository system.</p>
-<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/aether/aether-api/">http://www.eclipse.org/aether/aether-api/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a></p></td></tr></table></div></li>
-<li>org.eclipse.aether:aether-spi:jar:1.0.2.v20150114 (compile) <img id="_img67" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep66', '_img67' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep66" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Aether SPI</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>The service provider interface for repository system implementations and repository connectors.</p>
-<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/aether/aether-spi/">http://www.eclipse.org/aether/aether-spi/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a></p></td></tr></table></div></li>
-<li>org.eclipse.aether:aether-util:jar:1.0.2.v20150114 (compile) <img id="_img69" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep68', '_img69' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep68" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Aether Utilities</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>A collection of utility classes to ease usage of the repository system.</p>
-<p><b>URL: </b><a class="externalLink" href="http://www.eclipse.org/aether/aether-util/">http://www.eclipse.org/aether/aether-util/</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a></p></td></tr></table></div></li></ul></li></ul></li></ul></li>
-<li>org.ops4j.pax.url:pax-url-assembly:jar:2.5.4 (compile) <img id="_img71" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep70', '_img71' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep70" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Url - assembly:</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Url - assembly: protocol handler.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-assembly">http://team.ops4j.org/wiki/display/paxurl/pax-url-assembly</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div>
-<ul>
-<li>org.ops4j.pax.url:pax-url-commons:jar:2.5.4 (compile) <img id="_img73" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep72', '_img73' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep72" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Url - Commons</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Shared - Shared classes between protocol handlers.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/paxurl/pax-url-commons">http://team.ops4j.org/wiki/display/paxurl/pax-url-commons</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div>
-<ul>
-<li>org.ops4j.pax.swissbox:pax-swissbox-property:jar:1.8.2 (compile) <img id="_img75" src="./images/icon_info_sml.gif" alt="[Information]" onclick="toggleDependencyDetails( '_dep74', '_img75' );" style="cursor: pointer; vertical-align: text-bottom;"></img><div id="_dep74" style="display:none">
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>OPS4J Pax Swissbox :: Property</th></tr>
-<tr class="b">
-<td>
-<p><b>Description: </b>OPS4J Pax Swissbox - Utilities related to properties in osgi.
-    Detailed information to be found at http://wiki.ops4j.org/confluence/x/OARN.</p>
-<p><b>URL: </b><a class="externalLink" href="http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-property">http://team.ops4j.org/wiki/display/PAXSB/pax-swissbox-property</a></p>
-<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.html">ALv2</a></p></td></tr></table></div></li></ul></li></ul></li></ul></li></ul></div></div><a name="Licenses"></a>
+<p><b>Description: </b>OSGi Companion Code for org.osgi.util.promise Version 1.1.0</p>
+<p><b>URL: </b><a class="externalLink" href="https://www.osgi.org/">https://www.osgi.org/</a></p>
+<p><b>Project Licenses: </b><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></p></td></tr></table></div></li></ul></li></ul></div></div><a name="Licenses"></a>
 <div class="section">
 <h2><a name="Licenses"></a>Licenses</h2>
-<p><b>Eclipse Public License, Version 1.0: </b>Aether API, Aether Implementation, Aether SPI, Aether Utilities</p>
-<p><b>Apache License 2.0: </b>KnowHowLab OSGi Testing - Assertions, KnowHowLab OSGi Testing - Utils</p>
-<p><b>Eclipse Public License 1.0: </b>JUnit</p>
-<p><b>MIT License: </b>JCL 1.2 implemented over SLF4J, SLF4J API Module</p>
-<p><b>Apache License, Version 2.0: </b>OPS4J Pax Exam API, OPS4J Pax Exam Driver JUnit4, OPS4J Pax Exam Links for Maven, OPS4J Pax Exam TestContainer Native, OPS4J Pax Exam UI Low Level SPI</p>
-<p><b>Eclipse Public License v1.0: </b>C8Tech Maven Fragment POM for Pax-Exam based Integration Tests.</p>
-<p><b>ALv2: </b>OPS4J Base - IO, OPS4J Base - Lang, OPS4J Base - Monitors, OPS4J Base - Net, OPS4J Base - Service Provider Access, OPS4J Base - Store, OPS4J Base - Util - Property, OPS4J Pax Swissbox :: Lifecycle, OPS4J Pax Swissbox :: OSGi Core, OPS4J Pax Swissbox :: Optional JCL, OPS4J Pax Swissbox :: Property, OPS4J Pax Swissbox :: Tracker, OPS4J Pax Tinybundles, OPS4J Pax Url - Commons, OPS4J Pax Url - aether:, OPS4J Pax Url - aether: - support library, OPS4J Pax Url - assembly:, OPS4J Pax Url - classpath:, OPS4J Pax Url - link:</p>
-<p><b>New BSD License: </b>Hamcrest Core</p>
-<p><b>The Apache Software License, Version 2.0: </b>Jackson, javax.inject</p>
-<p><b>Apache Software License 2.0: </b>A Swiss Army Knife for OSGi</p></div><a name="Dependency_File_Details"></a>
+<p><b>The BSD License: </b>JLine Bundle</p>
+<p><b>MIT License: </b>SLF4J API Module</p>
+<p><b>Apache License, Version 2.0: </b>Apache Felix Configuration Admin Service, Apache Felix Configurator Service, Apache Felix Converter, Apache Felix Declarative Services, Apache Felix Gogo JLine Shell, Apache Felix Gogo Runtime, Apache Felix Gogo Shell, Apache Felix Logback Backend Integration</p>
+<p><b>Apache-2.0: </b>org.osgi:org.osgi.util.function, org.osgi:org.osgi.util.promise, org.osgi:org.osgi.util.pushstream</p>
+<p><b>Eclipse Public License v1.0: </b>C8Tech Maven Fragment POM for dependencies of a Equinox container.</p>
+<p><b>Eclipse Public License: </b>Common Eclipse Runtime, Console plug-in, Coordinator, Eclipse Preferences Mechanism, Equinox Util Bundle, Event Admin, Meta Type, OSGi Release 4.2.0 Services, OSGi Release 4.2.0 Utility Classes, OSGi System Bundle</p>
+<p><b>GNU Lesser General Public License: </b>Logback Classic Module, Logback Core Module</p>
+<p><b>The Apache Software License, Version 2.0: </b>Apache Felix Bundle Repository, Apache Felix Gogo Command, jansi</p>
+<p><b>Eclipse Public License - v 1.0: </b>Logback Classic Module, Logback Core Module</p></div><a name="Dependency_File_Details"></a>
 <div class="section">
 <h2><a name="Dependency_File_Details"></a>Dependency File Details</h2>
 <table border="0" class="bodyTable">
@@ -703,294 +555,222 @@ C8Tech Maven Fragment POM for Pax-Exam based Integration Tests.
 <th>Java Version</th>
 <th title="Indicates whether these dependencies have been compiled with debug information.">Debug Information</th></tr>
 <tr class="b">
-<td>bndlib-2.4.0.jar</td>
-<td>2 MB</td>
-<td>1526</td>
-<td>661</td>
-<td>108</td>
+<td>logback-classic-1.2.3.jar</td>
+<td>290.3 kB</td>
+<td>234</td>
+<td>175</td>
+<td>27</td>
 <td>1.6</td>
 <td>Yes</td></tr>
 <tr class="a">
-<td>javax.inject-1.jar</td>
-<td>2.5 kB</td>
-<td>8</td>
+<td>logback-core-1.2.3.jar</td>
+<td>471.9 kB</td>
+<td>419</td>
+<td>373</td>
+<td>36</td>
+<td>1.6</td>
+<td>Yes</td></tr>
+<tr class="b">
+<td>org.apache.felix.bundlerepository-2.0.10.jar</td>
+<td>237.3 kB</td>
+<td>157</td>
+<td>123</td>
+<td>14</td>
+<td>1.5</td>
+<td>Yes</td></tr>
+<tr class="a">
+<td>org.apache.felix.configadmin-1.9.8.jar</td>
+<td>155 kB</td>
+<td>104</td>
+<td>80</td>
 <td>6</td>
-<td>1</td>
-<td>1.5</td>
-<td>No</td></tr>
-<tr class="b">
-<td>junit-4.12.jar</td>
-<td>314.9 kB</td>
-<td>323</td>
-<td>286</td>
-<td>30</td>
-<td>1.5</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>jackson-core-asl-1.9.13.jar</td>
-<td>232.2 kB</td>
-<td>137</td>
-<td>121</td>
-<td>8</td>
-<td>1.5</td>
+<td>1.7</td>
 <td>Yes</td></tr>
 <tr class="b">
-<td>aether-api-1.0.2.v20150114.jar</td>
-<td>136.3 kB</td>
-<td>149</td>
-<td>128</td>
-<td>11</td>
-<td>1.5</td>
+<td>org.apache.felix.configurator-1.0.6.jar</td>
+<td>289.1 kB</td>
+<td>83</td>
+<td>57</td>
+<td>5</td>
+<td>1.7</td>
 <td>Yes</td></tr>
 <tr class="a">
-<td>aether-impl-1.0.2.v20150114.jar</td>
-<td>173 kB</td>
-<td>114</td>
+<td>org.apache.felix.converter-1.0.2.jar</td>
+<td>113.5 kB</td>
+<td>112</td>
 <td>96</td>
-<td>4</td>
-<td>1.5</td>
+<td>2</td>
+<td>1.7</td>
 <td>Yes</td></tr>
 <tr class="b">
-<td>aether-spi-1.0.2.v20150114.jar</td>
-<td>30.7 kB</td>
-<td>54</td>
-<td>34</td>
-<td>8</td>
-<td>1.5</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>aether-util-1.0.2.v20150114.jar</td>
-<td>146.9 kB</td>
-<td>126</td>
-<td>101</td>
+<td>org.apache.felix.gogo.command-1.0.2.jar</td>
+<td>46.6 kB</td>
+<td>32</td>
 <td>13</td>
-<td>1.5</td>
-<td>Yes</td></tr>
-<tr class="b">
-<td>hamcrest-core-1.3.jar</td>
-<td>45 kB</td>
-<td>52</td>
-<td>45</td>
-<td>3</td>
-<td>1.5</td>
+<td>2</td>
+<td>1.7</td>
 <td>Yes</td></tr>
 <tr class="a">
-<td>org.knowhowlab.osgi.testing.assertions-1.3.0.jar</td>
-<td>19.7 kB</td>
-<td>22</td>
-<td>7</td>
-<td>2</td>
-<td>1.5</td>
-<td>Yes</td></tr>
-<tr class="b">
-<td>org.knowhowlab.osgi.testing.utils-1.3.0.jar</td>
-<td>51 kB</td>
-<td>49</td>
-<td>34</td>
-<td>2</td>
-<td>1.5</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>ops4j-base-io-1.5.0.jar</td>
-<td>21.2 kB</td>
-<td>21</td>
-<td>11</td>
+<td>org.apache.felix.gogo.jline-1.1.0.jar</td>
+<td>129.4 kB</td>
+<td>56</td>
+<td>39</td>
 <td>1</td>
-<td>1.6</td>
+<td>1.8</td>
 <td>Yes</td></tr>
 <tr class="b">
-<td>ops4j-base-lang-1.5.0.jar</td>
-<td>6.7 kB</td>
+<td>org.apache.felix.gogo.runtime-1.1.0.jar</td>
+<td>189.2 kB</td>
+<td>144</td>
+<td>124</td>
+<td>5</td>
+<td>1.8</td>
+<td>Yes</td></tr>
+<tr class="a">
+<td>org.apache.felix.gogo.shell-1.1.0.jar</td>
+<td>57.3 kB</td>
+<td>32</td>
 <td>14</td>
-<td>4</td>
-<td>1</td>
-<td>1.6</td>
+<td>2</td>
+<td>1.8</td>
 <td>Yes</td></tr>
-<tr class="a">
-<td>ops4j-base-monitors-1.5.0.jar</td>
-<td>8.2 kB</td>
-<td>20</td>
+<tr class="b">
+<td>org.apache.felix.logback-1.0.0.jar</td>
+<td>19.9 kB</td>
+<td>24</td>
 <td>8</td>
-<td>3</td>
-<td>1.6</td>
-<td>Yes</td></tr>
-<tr class="b">
-<td>ops4j-base-net-1.5.0.jar</td>
-<td>13 kB</td>
-<td>16</td>
-<td>6</td>
 <td>1</td>
-<td>1.6</td>
+<td>1.8</td>
 <td>Yes</td></tr>
 <tr class="a">
-<td>ops4j-base-spi-1.5.0.jar</td>
-<td>7.4 kB</td>
-<td>14</td>
-<td>4</td>
-<td>1</td>
-<td>1.6</td>
+<td>org.apache.felix.scr-2.1.10.jar</td>
+<td>417.1 kB</td>
+<td>260</td>
+<td>219</td>
+<td>20</td>
+<td>1.7</td>
 <td>Yes</td></tr>
 <tr class="b">
-<td>ops4j-base-store-1.5.0.jar</td>
-<td>7.4 kB</td>
-<td>16</td>
-<td>5</td>
-<td>2</td>
-<td>1.6</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>ops4j-base-util-property-1.5.0.jar</td>
-<td>5.9 kB</td>
-<td>16</td>
-<td>5</td>
-<td>1</td>
-<td>1.6</td>
-<td>Yes</td></tr>
-<tr class="b">
-<td>pax-exam-4.12.0.jar</td>
-<td>82.2 kB</td>
-<td>102</td>
+<td>org.eclipse.equinox.common-3.10.100.jar</td>
+<td>122.1 kB</td>
 <td>82</td>
-<td>6</td>
-<td>1.7</td>
+<td>64</td>
+<td>4</td>
+<td>1.8</td>
 <td>Yes</td></tr>
 <tr class="a">
-<td>pax-exam-container-native-4.12.0.jar</td>
-<td>21 kB</td>
-<td>23</td>
-<td>5</td>
-<td>1</td>
+<td>org.eclipse.equinox.console-1.3.100.jar</td>
+<td>125.4 kB</td>
+<td>71</td>
+<td>52</td>
+<td>7</td>
 <td>1.7</td>
 <td>Yes</td></tr>
 <tr class="b">
-<td>pax-exam-junit4-4.12.0.jar</td>
-<td>35 kB</td>
-<td>31</td>
-<td>15</td>
-<td>2</td>
-<td>1.7</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>pax-exam-link-mvn-4.12.0.jar</td>
-<td>11.2 kB</td>
-<td>30</td>
-<td>0</td>
-<td>0</td>
-<td>-</td>
-<td>No</td></tr>
-<tr class="b">
-<td>pax-exam-spi-4.12.0.jar</td>
-<td>70 kB</td>
-<td>58</td>
-<td>38</td>
-<td>6</td>
-<td>1.7</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>pax-swissbox-core-1.8.2.jar</td>
-<td>9.2 kB</td>
-<td>17</td>
-<td>5</td>
-<td>1</td>
-<td>1.6</td>
-<td>Yes</td></tr>
-<tr class="b">
-<td>pax-swissbox-lifecycle-1.8.2.jar</td>
-<td>6.6 kB</td>
-<td>18</td>
-<td>6</td>
-<td>1</td>
-<td>1.6</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>pax-swissbox-optional-jcl-1.8.2.jar</td>
-<td>6.7 kB</td>
-<td>16</td>
-<td>5</td>
-<td>1</td>
-<td>1.6</td>
-<td>Yes</td></tr>
-<tr class="b">
-<td>pax-swissbox-property-1.8.2.jar</td>
-<td>4 kB</td>
-<td>13</td>
-<td>1</td>
-<td>1</td>
-<td>1.6</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>pax-swissbox-tracker-1.8.2.jar</td>
-<td>15.2 kB</td>
+<td>org.eclipse.equinox.coordinator-1.3.600.jar</td>
+<td>52.6 kB</td>
+<td>41</td>
 <td>22</td>
-<td>10</td>
-<td>1</td>
-<td>1.6</td>
-<td>Yes</td></tr>
-<tr class="b">
-<td>tinybundles-2.1.1.jar</td>
-<td>29.6 kB</td>
-<td>33</td>
-<td>15</td>
-<td>3</td>
-<td>1.6</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>pax-url-aether-2.5.4.jar</td>
-<td>3.2 MB</td>
-<td>2399</td>
-<td>1911</td>
-<td>176</td>
-<td>1.7</td>
-<td>Yes</td></tr>
-<tr class="b">
-<td>pax-url-aether-support-2.5.4.jar</td>
-<td>5.2 kB</td>
-<td>13</td>
-<td>1</td>
-<td>1</td>
-<td>1.7</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>pax-url-assembly-2.5.4.jar</td>
-<td>237.7 kB</td>
-<td>224</td>
-<td>162</td>
-<td>20</td>
-<td>1.7</td>
-<td>Yes</td></tr>
-<tr class="b">
-<td>pax-url-classpath-2.4.5.jar</td>
-<td>8.6 kB</td>
-<td>19</td>
-<td>6</td>
 <td>2</td>
-<td>1.6</td>
+<td>1.5</td>
 <td>Yes</td></tr>
 <tr class="a">
-<td>pax-url-commons-2.5.4.jar</td>
-<td>9.3 kB</td>
-<td>19</td>
-<td>6</td>
-<td>1</td>
-<td>1.7</td>
-<td>Yes</td></tr>
-<tr class="b">
-<td>pax-url-link-2.4.5.jar</td>
-<td>7.4 kB</td>
-<td>18</td>
-<td>5</td>
-<td>2</td>
-<td>1.6</td>
-<td>Yes</td></tr>
-<tr class="a">
-<td>jcl-over-slf4j-1.7.25.jar</td>
-<td>16.5 kB</td>
-<td>23</td>
-<td>9</td>
+<td>org.eclipse.equinox.event-1.4.300.jar</td>
+<td>34.8 kB</td>
+<td>34</td>
+<td>16</td>
 <td>2</td>
 <td>1.5</td>
 <td>Yes</td></tr>
 <tr class="b">
+<td>org.eclipse.equinox.metatype-1.4.500.jar</td>
+<td>82.3 kB</td>
+<td>55</td>
+<td>40</td>
+<td>2</td>
+<td>1.5</td>
+<td>Yes</td></tr>
+<tr class="a">
+<td>org.eclipse.equinox.preferences-3.7.200.jar</td>
+<td>133.5 kB</td>
+<td>92</td>
+<td>69</td>
+<td>4</td>
+<td>1.8</td>
+<td>Yes</td></tr>
+<tr class="b">
+<td>org.eclipse.equinox.util-1.1.100.jar</td>
+<td>83.3 kB</td>
+<td>66</td>
+<td>41</td>
+<td>11</td>
+<td>1.7</td>
+<td>Yes</td></tr>
+<tr class="a">
+<td>org.eclipse.osgi-3.13.100.jar</td>
+<td>1.4 MB</td>
+<td>871</td>
+<td>732</td>
+<td>80</td>
+<td>1.7</td>
+<td>Yes</td></tr>
+<tr class="b">
+<td>org.eclipse.osgi.services-3.7.100.jar</td>
+<td>125.9 kB</td>
+<td>174</td>
+<td>133</td>
+<td>18</td>
+<td>1.7</td>
+<td>Yes</td></tr>
+<tr class="a">
+<td>org.eclipse.osgi.util-3.5.100.jar</td>
+<td>73.3 kB</td>
+<td>63</td>
+<td>47</td>
+<td>5</td>
+<td>1.7</td>
+<td>Yes</td></tr>
+<tr class="b">
+<td>jansi-1.17.1.jar</td>
+<td>283.9 kB</td>
+<td>111</td>
+<td>54</td>
+<td>3</td>
+<td>1.6</td>
+<td>Yes</td></tr>
+<tr class="a">
+<td>jline-3.9.0.jar</td>
+<td>707.3 kB</td>
+<td>363</td>
+<td>286</td>
+<td>25</td>
+<td>1.8</td>
+<td>Yes</td></tr>
+<tr class="b">
+<td>org.osgi.util.function-1.1.0.jar</td>
+<td>14.1 kB</td>
+<td>27</td>
+<td>4</td>
+<td>1</td>
+<td>1.7</td>
+<td>No</td></tr>
+<tr class="a">
+<td>org.osgi.util.promise-1.1.0.jar</td>
+<td>75.4 kB</td>
+<td>67</td>
+<td>35</td>
+<td>1</td>
+<td>1.7</td>
+<td>Yes</td></tr>
+<tr class="b">
+<td>org.osgi.util.pushstream-1.0.0.jar</td>
+<td>132.3 kB</td>
+<td>85</td>
+<td>46</td>
+<td>1</td>
+<td>1.8</td>
+<td>Yes</td></tr>
+<tr class="a">
 <td>slf4j-api-1.7.25.jar</td>
 <td>41.2 kB</td>
 <td>46</td>
@@ -998,7 +778,7 @@ C8Tech Maven Fragment POM for Pax-Exam based Integration Tests.
 <td>4</td>
 <td>1.5</td>
 <td>Yes</td></tr>
-<tr class="a">
+<tr class="b">
 <th>Total</th>
 <th>Size</th>
 <th>Entries</th>
@@ -1006,22 +786,22 @@ C8Tech Maven Fragment POM for Pax-Exam based Integration Tests.
 <th>Packages</th>
 <th>Java Version</th>
 <th>Debug Information</th></tr>
-<tr class="b">
-<td>37</td>
-<td>7.1 MB</td>
-<td>5801</td>
-<td>3878</td>
-<td>431</td>
-<td>1.7</td>
-<td>35</td></tr>
 <tr class="a">
-<td>compile: 37</td>
-<td>compile: 7.1 MB</td>
-<td>compile: 5801</td>
-<td>compile: 3878</td>
-<td>compile: 431</td>
+<td>28</td>
+<td>5.9 MB</td>
+<td>3905</td>
+<td>2996</td>
+<td>291</td>
+<td>1.8</td>
+<td>27</td></tr>
+<tr class="b">
+<td>compile: 28</td>
+<td>compile: 5.9 MB</td>
+<td>compile: 3905</td>
+<td>compile: 2996</td>
+<td>compile: 291</td>
 <td>-</td>
-<td>compile: 35</td></tr></table></div>
+<td>compile: 27</td></tr></table></div>
       </div>
     </div>
     <div class="clear">
