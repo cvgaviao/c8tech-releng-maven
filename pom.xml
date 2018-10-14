@@ -1092,7 +1092,47 @@
         </profile>
 
         <profile>
-            <id>when-building-any-project-check-header-and-license</id>
+            <id>when-building-any-project-check-license</id>
+            <activation>
+                <property>
+                    <name>!m2e.version</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>license-maven-plugin</artifactId>
+                        <inherited>true</inherited>
+                        <configuration>
+                            <verbose>false</verbose>
+                            <useMissingFile>true</useMissingFile>
+                            <failIfWarning>true</failIfWarning>
+                            <deployMissingFile>false</deployMissingFile>
+                            <useRepositoryMissingFiles>false</useRepositoryMissingFiles>
+                            <includeTransitiveDependencies>false</includeTransitiveDependencies>
+                            <roots>
+                                <root>src/main/java</root>
+                                <root>src/test/java</root>
+                            </roots>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>check-license-files</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>update-project-license</goal>
+                                    <goal>add-third-party</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>when-building-any-project-check-header</id>
             <activation>
                 <property>
                     <name>!m2e.version</name>
@@ -1160,34 +1200,6 @@
                                 <exclude>.m2e-launchers/*/**</exclude>
                             </excludes>
                         </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>license-maven-plugin</artifactId>
-                        <inherited>true</inherited>
-                        <configuration>
-                            <verbose>false</verbose>
-                            <useMissingFile>true</useMissingFile>
-                            <failIfWarning>true</failIfWarning>
-                            <deployMissingFile>false</deployMissingFile>
-                            <useRepositoryMissingFiles>false</useRepositoryMissingFiles>
-                            <includeTransitiveDependencies>false</includeTransitiveDependencies>
-                            <roots>
-                                <root>src/main/java</root>
-                                <root>src/test/java</root>
-                            </roots>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>check-license-files</id>
-                                <phase>generate-resources</phase>
-                                <goals>
-                                    <goal>update-project-license</goal>
-                                    <goal>add-third-party</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>
@@ -2049,6 +2061,7 @@
                     <version>${version.report-license-maven}</version>
                     <configuration>
                         <verbose>false</verbose>
+                        <generateBundle>true</generateBundle>
                         <quiet>true</quiet>
                         <sortArtifactByName>true</sortArtifactByName>
                         <failIfWarning>true</failIfWarning>
@@ -2156,8 +2169,7 @@
                     <version>${version.maven-release}</version>
                     <configuration>
                         <arguments>
-                            -Dc8tech.build.release
-                            -Dc8tech.build.test.coverage ${arguments}
+                            -Dc8tech.build.release -Dc8tech.build.test.coverage ${arguments}
                         </arguments>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                         <commitByProject>true</commitByProject>
