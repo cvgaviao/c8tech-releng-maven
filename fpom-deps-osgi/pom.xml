@@ -19,7 +19,7 @@
     <parent>
         <groupId>br.com.c8tech.releng</groupId>
         <artifactId>maven-parent-java</artifactId>
-        <version>4.1-SNAPSHOT</version>
+        <version>4.2</version>
     </parent>
 
     <artifactId>fpom-deps-osgi</artifactId>
@@ -34,7 +34,7 @@
         <connection>${c8tech.scm.connection}</connection>
         <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
         <url>${c8tech.scm.url}</url>
-        <tag>HEAD</tag>
+        <tag>v4.2</tag>
     </scm>
     <distributionManagement>
         <site>
