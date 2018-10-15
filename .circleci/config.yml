@@ -45,6 +45,6 @@ jobs: # a collection of steps
       main:
         branch: master
         commands:
-          - mvn -s .circleci/.circleci.settings.xml -DskipTests deploy
+          - mvn -s .circleci/.circleci.settings.xml -DskipTests deploy -Dc8tech.build.release
 
 

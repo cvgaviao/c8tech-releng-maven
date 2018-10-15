@@ -1496,7 +1496,7 @@
             </activation>
             <properties>
                 <baseline.failOnError>true</baseline.failOnError>
-                <baseline.failOnWarning>true</baseline.failOnWarning>
+                <baseline.failOnWarning>false</baseline.failOnWarning>
             </properties>
             <build>
                 <plugins>
@@ -2175,6 +2175,9 @@
                         <commitByProject>true</commitByProject>
                         <!-- ensure submodule are available to other submodules -->
                         <preparationGoals>clean install</preparationGoals>
+                        
+                        <!-- Let the CI do the deployment -->
+                        <goals>install</goals>
                         <releaseProfiles>when-releasing-ensure-requirements</releaseProfiles>
                     </configuration>
                 </plugin>
