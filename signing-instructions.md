@@ -59,8 +59,8 @@ This must be done only once for each development/build machine.
                 </property>
             </activation>
             <properties>
-                <gpg.keyname>[the key id from step 3.1]</gpg.keyname>
                 <gpg.executable>gpg2</gpg.executable>
+                <gpg.keyname>[the key ID from step 3.1]</gpg.keyname>
                 <gpg.passphrase>[the encrypted passphrase from step 3.1.1]<gpg.passphrase>
             </properties>
       </profile>
@@ -68,8 +68,8 @@ This must be done only once for each development/build machine.
  3.3.1 - insert a server tag in the settings.xml
  
      <server>
-            <id>[key from step 3.1]</id>
-            <passphrase>[the value from 3.4]</passphrase>
+            <id>[key ID from step 3.1]</id>
+            <passphrase>[the value from step 3.1]</passphrase>
         </server>     
       
 

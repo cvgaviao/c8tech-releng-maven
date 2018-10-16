@@ -6,35 +6,38 @@
         <server>
         <!-- USING SONATYPE'S PROFILE -->
             <id>c8tech-release-server</id>
-            <username>w3QQ4dgH</username>
-            <password>
-               ${env.C8TECH_RELEASE_SERVER_PASSWORD}
-            </password>
+            <username>${env.C8TECH_SONATYPE_USER}</username>
+            <password>${env.C8TECH_SONATYPE_PASSWORD}</password>
         </server>
         <server>
             <id>c8tech-snapshots-server</id>
-            <username>w3QQ4dgH</username>
-            <password>
-                ${env.C8TECH_SNAPSHOTS_SERVER_PASSWORD}
-            </password>
+            <username>${env.C8TECH_SONATYPE_USER}</username>
+            <password>${env.C8TECH_SONATYPE_PASSWORD}</password>
         </server>
         <server>
         <!-- USED BY SITE DEPLOYMENT AT GITHUB -->
             <id>c8tech-tools-maven-library-ghpages</id>
-            <password>${env.GHPAGES_PASSWORD}
-            </password>
+            <password>${env.GHPAGES_PASSWORD}</password>
         </server>
 
     </servers>
 
+    <activeProfiles>
+        <activeProfile>CI</activeProfile>
+        <activeProfile>Signing</activeProfile>
+    </activeProfiles>
     <profiles>
 
-
         <profile>
-            <id>C8Tech-OSS-Release</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <id>Signing</id>
+            <properties>
+                <gpg.executable>gpg</gpg.executable>
+                <gpg.keyname>${env.C8TECH_GPG_KEY_NAME}</gpg.keyname>
+                <gpg.passphrase>${env.C8TECH_GPG_PASSPHRASE}</gpg.passphrase>
+            </properties>
+        </profile>
+        <profile>
+            <id>CI</id>
             <properties>
             
             <!-- ** WORKSPACE ** -->
@@ -84,9 +87,6 @@
                 <!--      SITE PROPERTIES       -->
                 <!-- ========================  -->
                 <!-- Set Site Server Location -->
-<!--                 <c8tech.distribution.site.id> -->
-<!--                     ${c8tech.scm.user}_gh-pages -->
-<!--                 </c8tech.distribution.site.id> -->
 
                 <c8tech.distribution.site.name>
                     ${project.name} Site

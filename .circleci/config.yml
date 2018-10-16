@@ -6,10 +6,6 @@ version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
 
-    branches:
-      ignore:
-        - gh-pages
-        
     docker: # run the steps with Docker
       # specify the version you desire here
       - image: circleci/openjdk:8u181-jdk-stretch
@@ -26,25 +22,38 @@ jobs: # a collection of steps
       # Download and cache dependencies
       - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
           keys:
-          - v1-dependencies-{{ checksum "pom.xml" }}
+          - v1-dependencies-{{ checksum "pom.xml" }}-{{ checksum "maven-parent-osgi/pom.xml" }}-{{ checksum "fpom-itests-paxexam/pom.xml" }}-{{ checksum "fpom-deps-felix/pom.xml" }}-{{ checksum "fpom-deps-osgi/pom.xml" }}-{{ checksum "fpom-deps-equinox/pom.xml" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: mvn -s .circleci/.circleci.settings.xml -fn -DskipTests dependency:go-offline
+      # Build 
+      - run: mvn -s .circleci/settings.xml -fn -DskipTests dependency:go-offline
 
       - save_cache: # saves the project dependencies
           name: Dependencies caching
           paths:
             - ~/.m2
-          key: v1-dependencies-{{ checksum "pom.xml" }}
+          key: v1-dependencies-{{ checksum "pom.xml" }}-{{ checksum "maven-parent-osgi/pom.xml" }}-{{ checksum "fpom-itests-paxexam/pom.xml" }}-{{ checksum "fpom-deps-felix/pom.xml" }}-{{ checksum "fpom-deps-osgi/pom.xml" }}-{{ checksum "fpom-deps-equinox/pom.xml" }}
         
-      # run tests!
-      - run: mvn -s .circleci/.circleci.settings.xml -Dc8tech.build.test.coverage clean install
+      # Run tests!
+      - run: mvn -s .circleci/settings.xml -Dc8tech.build.test.coverage clean install
 
-    deployment:
-      main:
-        branch: master
-        commands:
-          - mvn -s .circleci/.circleci.settings.xml -DskipTests deploy -Dc8tech.build.release
+      - add_ssh_keys
 
-
+      # Deploy if on master branch. If the $RELEASE and $NEXT variables are set then prepare a full maven release.
+      - deploy:
+          # checks if the commit tag starts with "v." and is the "master" branch
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            
+              gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys $C8TECH_GPG_KEY_NAME 
+              if [[ -n "${RELEASE_VERSION}" && -n "${NEXT_VERSION}" ]]; then
+                git config --global user.email "releaser.bot@c8tech.com.br"
+                git config --global user.name "c8tech releaser bot"
+                mvn -B -s .circleci/settings.xml release:prepare -DdryRun -Darguments="-s .circleci/settings.xml" -DreleaseVersion=$RELEASE -DdevelopmentVersion=$NEXT -DscmCommentPrefix="release: "
+              else
+                mvn -B -s .circleci/settings.xml deploy
+              fi
+            fi
+            
+        
