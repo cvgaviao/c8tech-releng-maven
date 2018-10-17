@@ -93,12 +93,13 @@
                 <!-- ========================  -->
                 <!-- Set Site Server Location -->
 
+                <c8tech.site.user>cvgaviao</c8tech.site.user>
                 <c8tech.distribution.site.name>
                     ${project.name} Site
                 </c8tech.distribution.site.name>
 
             <!-- points to the root of project's site at github -->
-                <c8tech.site.domain>http://${c8tech.scm.user}.github.io/
+                <c8tech.site.domain>http://${c8tech.site.user}.github.io/
                 </c8tech.site.domain>
                 <c8tech.distribution.protocol>github:
                 </c8tech.distribution.protocol>
@@ -117,7 +118,7 @@
                 <c8tech.ci.server.domain>
                     https://circleci.com/gh/
                 </c8tech.ci.server.domain>
-                <c8tech.ci.server.user>cvgaviao</c8tech.ci.server.user>
+                <c8tech.ci.server.user>c8tech-releaser-bot</c8tech.ci.server.user>
 
             </properties>
 
