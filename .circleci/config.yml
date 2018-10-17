@@ -3,6 +3,7 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2 # use CircleCI 2.0
+
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
 
@@ -17,6 +18,8 @@ jobs: # a collection of steps
       MAVEN_OPTS: -Xmx3200m
     
     steps: # a collection of executable commands
+      - add_ssh_keys
+
       - checkout # check out source code to working directory
 
       # Download and cache dependencies
@@ -38,21 +41,26 @@ jobs: # a collection of steps
       # Run tests!
       - run: mvn -s .circleci/settings.xml -Dc8tech.build.test.coverage clean install
 
-      - add_ssh_keys
 
       # Deploy if on master branch. If the $RELEASE and $NEXT variables are set then prepare a full maven release.
       - deploy:
-          # checks if the commit tag starts with "v." and is the "master" branch
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
             
-              gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys $C8TECH_GPG_KEY_NAME 
+              echo "release-version= ${RELEASE_VERSION}" 
+            
+              echo $C8TECH_GPG_KEY | base64 --decode > signing-key
+                gpg --pinentry-mode=loopback --passphrase $C8TECH_GPG_PASSPHRASE --import signing-key
+                shred signing-key
+            
+              echo "1234" | gpg --pinentry-mode=loopback --passphrase "${C8TECH_GPG_PASSPHRASE}" -o /dev/null --local-user "${C8TECH_GPG_KEY_ID}" -as - && echo "The correct passphrase was entered for this key"
+              
               if [[ -n "${RELEASE_VERSION}" && -n "${NEXT_VERSION}" ]]; then
                 git config --global user.email "releaser.bot@c8tech.com.br"
                 git config --global user.name "c8tech releaser bot"
-                mvn -B -s .circleci/settings.xml release:prepare -DdryRun -Darguments="-s .circleci/settings.xml" -DreleaseVersion=$RELEASE -DdevelopmentVersion=$NEXT -DscmCommentPrefix="release: "
+                mvn -B -s .circleci/settings.xml release:prepare -DdryRun -Darguments="-s .circleci/settings.xml -Dc8tech.build.release" -Dc8tech.build.release -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$NEXT_VERSION -DscmCommentPrefix="release: "
               else
-                mvn -B -s .circleci/settings.xml deploy
+                mvn -B -s .circleci/settings.xml deploy -Dc8tech.build.release
               fi
             fi
             

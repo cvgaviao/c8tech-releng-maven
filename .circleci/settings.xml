@@ -32,8 +32,9 @@
             <id>Signing</id>
             <properties>
                 <gpg.executable>gpg</gpg.executable>
-                <gpg.keyname>${env.C8TECH_GPG_KEY_NAME}</gpg.keyname>
+                <gpg.keyname>${env.C8TECH_GPG_KEY_ID}</gpg.keyname>
                 <gpg.passphrase>${env.C8TECH_GPG_PASSPHRASE}</gpg.passphrase>
+                <gpg.homedir>/home/circleci/.gnupg/</gpg.homedir>
             </properties>
         </profile>
         <profile>
@@ -73,14 +74,18 @@
                 <!-- =========================  -->
                 <!--  DISTRIBUTION PROPERTIES   -->
                 <!-- =========================  -->
-
                 <!-- Set distribution repositories -->
+                <c8tech.distribution.repository.release.id>c8tech-release-server</c8tech.distribution.repository.release.id>
+                <c8tech.distribution.repository.snapshot.id>c8tech-snapshots-server</c8tech.distribution.repository.snapshot.id>
+                
+                <c8tech.distribution.repository.base.url>
+                    https://oss.sonatype.org/
+                </c8tech.distribution.repository.base.url>
                 <c8tech.distribution.repository.release.url>
-                    https://oss.sonatype.org/service/local/staging/deploy/maven2/
+                    ${c8tech.distribution.repository.base.url}/service/local/staging/deploy/maven2/
                 </c8tech.distribution.repository.release.url>
-
                 <c8tech.distribution.repository.snapshot.url>
-                    https://oss.sonatype.org/content/repositories/snapshots/
+                    ${c8tech.distribution.repository.base.url}/content/repositories/snapshots/
                 </c8tech.distribution.repository.snapshot.url>
 
                 <!-- ========================  -->
