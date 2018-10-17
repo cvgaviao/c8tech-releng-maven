@@ -58,7 +58,7 @@ jobs: # a collection of steps
               if [[ -n "${RELEASE_VERSION}" && -n "${NEXT_VERSION}" ]]; then
                 git config --global user.email "releaser.bot@c8tech.com.br"
                 git config --global user.name "c8tech releaser bot"
-                mvn -B -s .circleci/settings.xml release:prepare -DdryRun -Darguments="-s .circleci/settings.xml -Dc8tech.build.release" -Dc8tech.build.release -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$NEXT_VERSION -DscmCommentPrefix="release: "
+                mvn -B -s .circleci/settings.xml release:prepare -Darguments="-s .circleci/settings.xml -Dc8tech.build.release" -Dc8tech.build.release -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$NEXT_VERSION -DscmCommentPrefix="release: "
               else
                 mvn -B -s .circleci/settings.xml deploy -Dc8tech.build.release
               fi
