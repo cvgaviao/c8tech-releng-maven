@@ -53,7 +53,7 @@
         <version.felix>${version.felix.framework}</version.felix>
         <version.felix.bundlerepository>2.0.10</version.felix.bundlerepository>
         <version.felix.coordinator>1.0.2</version.felix.coordinator>
-        <version.felix.configadmin>1.9.8</version.felix.configadmin>
+        <version.felix.configadmin>1.9.10</version.felix.configadmin>
         <version.felix.configurator>1.0.6</version.felix.configurator>
         <version.felix.converter>1.0.2</version.felix.converter>
         <version.felix.dpadmin>0.9.10</version.felix.dpadmin>
@@ -66,7 +66,7 @@
         <version.felix.logback>1.0.0</version.felix.logback>
         <version.felix.log>1.2.0</version.felix.log>
         <version.felix.metatype>1.2.2</version.felix.metatype>
-        <version.felix.scr>2.1.10</version.felix.scr>
+        <version.felix.scr>2.1.12</version.felix.scr>
         <version.felix.prefs>1.1.0</version.felix.prefs>
         <version.felix.resolver>2.0.0</version.felix.resolver>
     </properties>
