@@ -2191,12 +2191,11 @@
                             -Dc8tech.build.release -Dc8tech.build.test.coverage ${arguments}
                         </arguments>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
-                        <commitByProject>true</commitByProject>
                         <!-- ensure submodule are available to other submodules -->
                         <preparationGoals>clean install</preparationGoals>
                         
                         <!-- Let the CI do the deployment -->
-                        <goals>install</goals>
+                        <goals>install site site-deploy</goals>
                         <releaseProfiles>when-releasing-ensure-requirements</releaseProfiles>
                     </configuration>
                 </plugin>
