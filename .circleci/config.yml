@@ -14,7 +14,7 @@ defaults: &defaults
     MAVEN_OPTS: -Xmx3200m
 
 
-version: 2 # use CircleCI 2.0
+version: 2
 
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
@@ -68,12 +68,4 @@ jobs: # a collection of steps
                 mvn -B -s .circleci/settings.xml deploy -Dc8tech.build.release
               fi
             fi
-  
-
-workflows:
-  version: 2
-  
-  build-test-deploy-approve-site:
-    jobs:
-      - build
         
