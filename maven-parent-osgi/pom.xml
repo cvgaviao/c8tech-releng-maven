@@ -13,7 +13,9 @@
 <!-- ==========================================================================  -->
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -67,7 +69,7 @@
         <!--  MAVEN PLUGIN VERSIONS    -->
         <!-- ========================  -->
         <version.takari-lifecycle>1.13.7</version.takari-lifecycle>
-        <version.maven-bundle>4.0.0</version.maven-bundle>
+        <version.maven-bundle>4.1.0</version.maven-bundle>
         <eclipse.aether.version>1.0.0.v20140518</eclipse.aether.version>
 
         <!-- Tools -->
@@ -623,10 +625,7 @@
                                 </execution>
                                 <execution>
                                     <id>default-deploy</id>
-                                    <phase>deploy</phase>
-                                    <goals>
-                                        <goal>deploy</goal>
-                                    </goals>
+                                    <phase>nono</phase>
                                 </execution>
                             </executions>
                         </plugin>
@@ -649,7 +648,7 @@
             </activation>
             <properties>
                 <baseline.failOnError>true</baseline.failOnError>
-                <baseline.failOnWarning>true</baseline.failOnWarning>
+                <baseline.failOnWarning>false</baseline.failOnWarning>
             </properties>
             <dependencies>
                 <dependency>
@@ -699,6 +698,12 @@
                         <groupId>io.takari.maven.plugins</groupId>
                         <artifactId>takari-lifecycle-plugin</artifactId>
                         <inherited>true</inherited>
+                        <executions>
+                            <execution>
+                                <id>default-deploy</id>
+                                <phase>none</phase>
+                            </execution>
+                        </executions>
                     </plugin>
                     <plugin>
                         <artifactId>maven-jar-plugin</artifactId>
@@ -780,6 +785,12 @@
                         <configuration>
                             <compilerId>jdt</compilerId>
                         </configuration>
+                        <executions>
+                            <execution>
+                                <id>default-deploy</id>
+                                <phase>none</phase>
+                            </execution>
+                        </executions>
                     </plugin>
                     <plugin>
                         <artifactId>maven-jar-plugin</artifactId>

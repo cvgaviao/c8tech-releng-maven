@@ -16,7 +16,7 @@
         </server>
         <server>
         <!-- USED BY SITE DEPLOYMENT AT GITHUB -->
-            <id>c8tech-tools-maven-library-ghpages</id>
+            <id>c8tech-releng-maven-ghpages</id>
             <password>${env.GHPAGES_PASSWORD}</password>
         </server>
 

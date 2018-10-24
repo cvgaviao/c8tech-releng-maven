@@ -13,7 +13,9 @@
 <!-- ==========================================================================  -->
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.c8tech.releng</groupId>
@@ -125,7 +127,7 @@
         <!-- ========================  -->
         <!--    PROJECT PROPERTIES     -->
         <!-- ========================  -->
-        
+
         <version.c8tech.releng>4.5-SNAPSHOT</version.c8tech.releng>
         
         <!-- The minimal Java compiler version-->
@@ -1772,13 +1774,16 @@
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <extensions>true</extensions>
-                <configuration>
-                    <serverId>${c8tech.distribution.repository.release.id}</serverId>
-                    <nexusUrl>${c8tech.distribution.repository.base.url}</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -1819,6 +1824,12 @@
                     <artifactId>nexus-staging-maven-plugin</artifactId>
                     <version>${version.nexus-staging-maven-plugin}</version>
                     <extensions>true</extensions>
+                    <configuration>
+                        <serverId>${c8tech.distribution.repository.release.id}</serverId>
+                        <nexusUrl>${c8tech.distribution.repository.base.url}</nexusUrl>
+                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        <autoDropAfterRelease>false</autoDropAfterRelease>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -2008,7 +2019,7 @@
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>${version.maven-deploy}</version>
                     <configuration>
-                        <skip>${c8tech.deploy.skip}</skip>
+                        <skip>true</skip>
                     </configuration>
                 </plugin>
                 <plugin>
