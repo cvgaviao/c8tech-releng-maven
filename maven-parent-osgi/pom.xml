@@ -13,15 +13,13 @@
 <!-- ==========================================================================  -->
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>br.com.c8tech.releng</groupId>
         <artifactId>maven-parent-java</artifactId>
-        <version>5.3-SNAPSHOT</version>
+        <version>5.4</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -36,7 +34,7 @@
         <connection>${c8tech.scm.connection}</connection>
         <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
         <url>${c8tech.scm.url}</url>
-        <tag>HEAD</tag>
+        <tag>v5.4</tag>
     </scm>
     <distributionManagement>
         <site>
@@ -105,14 +103,14 @@
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-deps-osgi</artifactId>
-                        <version>5.3-SNAPSHOT</version>
+                        <version>5.4</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-itests-paxexam</artifactId>
-                        <version>5.3-SNAPSHOT</version>
+                        <version>5.4</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -140,7 +138,7 @@
                 <dependency>
                     <groupId>br.com.c8tech.releng</groupId>
                     <artifactId>fpom-itests-paxexam</artifactId>
-                    <version>5.3-SNAPSHOT</version>
+                    <version>5.4</version>
                     <type>pom</type>
                     <scope>test</scope>
                 </dependency>
@@ -297,7 +295,7 @@
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-deps-felix</artifactId>
-                        <version>5.3-SNAPSHOT</version>
+                        <version>5.4</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -307,7 +305,7 @@
                 <dependency>
                     <groupId>br.com.c8tech.releng</groupId>
                     <artifactId>fpom-deps-felix</artifactId>
-                    <version>5.3-SNAPSHOT</version>
+                    <version>5.4</version>
                     <type>pom</type>
                     <scope>test</scope>
                 </dependency>
@@ -427,14 +425,14 @@
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-deps-osgi</artifactId>
-                        <version>5.3-SNAPSHOT</version>
+                        <version>5.4</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-deps-equinox</artifactId>
-                        <version>5.3-SNAPSHOT</version>
+                        <version>5.4</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -471,7 +469,7 @@
                     <dependency>
                         <groupId>br.com.c8tech.releng</groupId>
                         <artifactId>fpom-deps-osgi</artifactId>
-                        <version>5.3-SNAPSHOT</version>
+                        <version>5.4</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
