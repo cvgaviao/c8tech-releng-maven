@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/cvgaviao/c8tech-releng-maven.svg?style=svg)](https://circleci.com/gh/cvgaviao/c8tech-releng-maven)
 
+[![Maven Central](https://img.shields.io/maven-central/v/br.com.c8tech.releng/maven-parent-java.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22br.com.c8tech.releng%22%20AND%20a:%22maven-parent-java%22)
+
 # c8tech-releng-maven
 
 This repository contains a set of Maven POMs aimed to help the development and build of multi-modules projects. Those modules can be of different types, including POM aggregator, POM parent, Java libraries, OSGi bundles(Pom-First and Manifest-First), OSGi Integration Tests and others.

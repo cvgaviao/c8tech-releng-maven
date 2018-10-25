@@ -398,6 +398,9 @@
         <profile>
             <id>setup-site-for-parent-projects</id>
             <activation>
+                <property>
+                    <name>c8tech.build.release</name>
+                </property>
                 <file>
                     <exists>.c8tech.releng.parent</exists>
                 </file>
@@ -506,6 +509,9 @@
         <profile>
             <id>setup-site-for-java-projects</id>
             <activation>
+                <property>
+                    <name>c8tech.build.release</name>
+                </property>
                 <file>
                     <exists>${basedir}/src/main/java</exists>
                     <missing>.c8tech.releng.solo</missing>
@@ -521,6 +527,9 @@
         <profile>
             <id>setup-site-parameters-for-java-projects-without-parent</id>
             <activation>
+                <property>
+                    <name>c8tech.build.release</name>
+                </property>
                 <file>
                     <exists>.c8tech.releng.solo</exists>
                 </file>
@@ -535,6 +544,9 @@
         <profile>
             <id>setup-site-parameters-for-java-projects</id>
             <activation>
+                <property>
+                    <name>c8tech.build.release</name>
+                </property>
                 <file>
                     <exists>${basedir}/src/main/java</exists>
                 </file>
@@ -2257,7 +2269,6 @@
                 <artifactId>doxia-module-markdown</artifactId>
                 <version>${version.maven.doxia.module.markdown}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 </project>
