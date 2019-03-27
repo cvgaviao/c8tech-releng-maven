@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- ==========================================================================  -->
-<!-- Copyright © 2015-2018 Cristiano Gavião, C8 Technology ME.                         -->
+<!-- Copyright © 2015-2019 Cristiano Gavião, C8 Technology ME.                         -->
 <!--                                                                             -->
 <!-- All rights reserved. This program and the accompanying materials            -->
 <!-- are made available under the terms of the Eclipse Public License v1.0       -->
@@ -12,8 +12,9 @@
 <!-- Cristiano Gavião (cvgaviao@c8tech.com.br)- initial API and implementation   -->
 <!-- ==========================================================================  -->
 
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.c8tech.releng</groupId>
@@ -126,11 +127,13 @@
         <!--    PROJECT PROPERTIES     -->
         <!-- ========================  -->
 
-        <version.c8tech.releng>4.5-SNAPSHOT</version.c8tech.releng>
+        <version.c8tech.releng>6.1-SNAPSHOT</version.c8tech.releng>
         
         <!-- The minimal Java compiler version-->
-        <java.version>1.8</java.version>
-        <javadocJreApiVersion>8</javadocJreApiVersion>
+        <java.version>11</java.version>
+        <java.target.version>11</java.target.version>
+        <java.release.version>11</java.release.version>
+        <javadocJreApiVersion>11</javadocJreApiVersion>
         
         <!-- Encoding settings-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -254,56 +257,56 @@
         <!-- ========================  -->
         <!--  MAVEN PLUGIN VERSIONS    -->
         <!-- ========================  -->
-        <version.maven-assembly>3.1.0</version.maven-assembly>
-        <version.maven-antrun>1.8</version.maven-antrun>
-        <version.maven-animal-sniffer>1.17</version.maven-animal-sniffer>
-        <version.maven-build-helper>3.0.0</version.maven-build-helper>
-        <version.maven-checkstyle>3.0.0</version.maven-checkstyle>
-        <version.maven-clean>3.1.0</version.maven-clean>
-        <version.maven-compiler>3.8.0</version.maven-compiler>
-        <version.maven-dependency>3.1.1</version.maven-dependency>
-        <version.maven-depends>1.4.0</version.maven-depends>
-        <version.maven-deploy>3.0.0-M1</version.maven-deploy>
-        <version.maven-enforcer>3.0.0-M2</version.maven-enforcer>
-        <version.extra-enforcer-rules>1.0-beta-9</version.extra-enforcer-rules>
-        <version.maven-findbugs>3.0.5</version.maven-findbugs>
-        <version.maven-gpg>1.6</version.maven-gpg>
-        <version.maven-install>3.0.0-M1</version.maven-install>
-        <version.maven-javadoc>3.0.1</version.maven-javadoc>
-        <version.maven-jar>3.1.0</version.maven-jar>
-        <version.maven-jarsigner>1.4</version.maven-jarsigner>
-        <version.maven-project-info-reports>3.0.0</version.maven-project-info-reports>
-        <version.maven-property>1.0.0</version.maven-property>
-        <version.maven-release>2.5.3</version.maven-release>
-        <version.maven-resources>3.1.0</version.maven-resources>
-        <version.maven-site>3.7.1</version.maven-site>
-        <version.maven-source>3.0.1</version.maven-source>
+        <maven-assembly.version>3.1.0</maven-assembly.version>
+        <maven-antrun.version>1.8</maven-antrun.version>
+        <maven-animal-sniffer.version>1.17</maven-animal-sniffer.version>
+        <maven-build-helper.version>3.0.0</maven-build-helper.version>
+        <maven-checkstyle.version>3.0.0</maven-checkstyle.version>
+        <maven-clean.version>3.1.0</maven-clean.version>
+        <maven-compiler.version>3.8.0</maven-compiler.version>
+        <maven-dependency.version>3.1.1</maven-dependency.version>
+        <maven-depends.version>1.4.0</maven-depends.version>
+        <maven-deploy.version>3.0.0-M1</maven-deploy.version>
+        <maven-enforcer.version>3.0.0-M2</maven-enforcer.version>
+        <extra-enforcer-rules.version>1.1</extra-enforcer-rules.version>
+        <maven-findbugs.version>3.0.5</maven-findbugs.version>
+        <maven-gpg.version>1.6</maven-gpg.version>
+        <maven-install.version>3.0.0-M1</maven-install.version>
+        <maven-javadoc.version>3.0.1</maven-javadoc.version>
+        <maven-jar.version>3.1.0</maven-jar.version>
+        <maven-jar-signer.version>1.4</maven-jar-signer.version>
+        <maven-project-info-reports.version>3.0.0</maven-project-info-reports.version>
+        <maven-property.version>1.0.0</maven-property.version>
+        <maven-release.version>2.5.3</maven-release.version>
+        <maven-resources.version>3.1.0</maven-resources.version>
+        <maven-site.version>3.7.1</maven-site.version>
+        <maven-source.version>3.0.1</maven-source.version>
         <!-- REPORTING -->
-        <version.taglist-maven>2.4</version.taglist-maven>
-        <version.report-license-maven>1.16</version.report-license-maven>
-        <version.versions-maven>2.7</version.versions-maven>
-        <version.maven-jxr>2.5</version.maven-jxr>
-        <version.maven.doxia.module.markdown>1.8</version.maven.doxia.module.markdown>
-        <version.maven-fluido-skin>1.7</version.maven-fluido-skin>
-        <version.maven-changes>2.12.1</version.maven-changes>
-        <version.maven-plugin-tools-javadoc>3.4</version.maven-plugin-tools-javadoc>
-        <version.plexus-component-javadoc>1.6</version.plexus-component-javadoc>
+        <taglist-maven.version>2.4</taglist-maven.version>
+        <report-license-maven.version>1.16</report-license-maven.version>
+        <versions-maven.version>2.7</versions-maven.version>
+        <maven-jxr.version>2.5</maven-jxr.version>
+        <maven.doxia.module.markdown.version>1.8</maven.doxia.module.markdown.version>
+        <maven-fluido-skin.version>1.7</maven-fluido-skin.version>
+        <maven-changes.version>2.12.1</maven-changes.version>
+        <maven-plugin-tools-javadoc.version>3.4</maven-plugin-tools-javadoc.version>
+        <plexus-component-javadoc.version>1.6</plexus-component-javadoc.version>
 
-        <version.wagon-ssh>3.2.0</version.wagon-ssh>
-        <version.wagon-git>2.0.3</version.wagon-git>
+        <wagon-ssh.version>3.3.2</wagon-ssh.version>
+        <wagon-git.version>2.0.3</wagon-git.version>
 
         <!-- Tools -->
-        <version.guava>26.0-jre</version.guava>
-        <version.dockerfile-maven>1.4.4</version.dockerfile-maven>
-
-        <version.vertx>3.5.3</version.vertx>
+        <guava.version>27.1-jre</guava.version>
+        <dockerfile-maven.version>1.4.4</dockerfile-maven.version>
+        <johnzon.version>1.1.11</johnzon.version>
+        <geronimo.json.version>1.2</geronimo.json.version>
+        <vertx.version>3.6.3</vertx.version>
+        <jool.version>0.9.14</jool.version>
+        <org.immutables.version>2.7.5</org.immutables.version>
         
-        <!-- SECURITY -->
-        <version.shiro>1.2.3</version.shiro>
-
         <!-- LOGGING AND MONITORING -->
-        <version.slf4j>1.7.25</version.slf4j>
-        <version.logback>1.2.3</version.logback>
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.2.3</logback.version>
 
         <!-- in order to generate a short version of reports for testing
             purposes -->
@@ -312,7 +315,7 @@
 
         <!-- license configuration -->
         <!-- default license to use for children -->
-        <version.license-maven>3.0</version.license-maven>
+        <license-maven.version>3.0</license-maven.version>
         <license.licenseName>epl_v1</license.licenseName>
         <license.copyrightOwners>Cristiano Gavião, C8 Technology ME</license.copyrightOwners>
 
@@ -320,26 +323,25 @@
         <!-- TESTING -->
         <!-- JACOCO and Sonar/Reporting settings -->
         <version.maven-failsafe>2.22.0</version.maven-failsafe>
-        <version.maven-surefire>${version.maven-failsafe}</version.maven-surefire>
+        <maven-surefire.version>${version.maven-failsafe}</maven-surefire.version>
         <version.junit-platform>1.3.1</version.junit-platform>
-        <version.sonar-maven>3.5.0.1254</version.sonar-maven>
+        <sonar-maven.version>3.5.0.1254</sonar-maven.version>
         <version.jacoco-maven>0.8.2</version.jacoco-maven>
-        <version.pax-exam>4.11.0</version.pax-exam>
-        <version.junit>5.3.1</version.junit>
-        <version.mockito>2.23.0</version.mockito>
+        <pax-exam.version>4.11.0</pax-exam.version>
+        <version.junit>5.3.2</version.junit>
+        <version.mockito>2.23.4</version.mockito>
         <version.assertj>3.11.1</version.assertj>
-        <version.powermock>1.7.4</version.powermock>
 
         <!-- The Sonar Jacoco Listener for JUnit to extract coverage details
             per test -->
         <version.sonar-jacoco-listeners>5.7.0.15470</version.sonar-jacoco-listeners>
 
-        <version.commons-io>2.6</version.commons-io>
-        <version.commons-collections>3.2.2</version.commons-collections>
-        <version.commons-lang3>3.8.1</version.commons-lang3>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
         <version.commons-compress>1.18</version.commons-compress>
-        <version.freemarker>2.3.28</version.freemarker>
-        <version.nexus-staging-maven-plugin>1.6.8</version.nexus-staging-maven-plugin>
+        <freemarker.version>2.3.28</freemarker.version>
+        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
     </properties>
 
     <profiles>
@@ -414,12 +416,12 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>${version.maven-checkstyle}</version>
+                        <version>${maven-checkstyle.version}</version>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-jxr-plugin</artifactId>
-                        <version>${version.maven-jxr}</version>
+                        <version>${maven-jxr.version}</version>
                         <reportSets>
                             <reportSet>
                                 <id>aggregate-jxr</id>
@@ -453,7 +455,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>taglist-maven-plugin</artifactId>
-                        <version>${version.taglist-maven}</version>
+                        <version>${taglist-maven.version}</version>
                         <reportSets>
                             <reportSet>
                                 <!-- defines taglist aggregate report -->
@@ -470,7 +472,7 @@
 <!--                     <plugin> -->
 <!--                         <groupId>org.apache.maven.plugins</groupId> -->
 <!--                         <artifactId>maven-surefire-report-plugin</artifactId> -->
-<!--                         <version>${version.maven-surefire}</version> -->
+<!--                         <version>${maven-surefire.version}</version> -->
 <!--                         <inherited>false</inherited> -->
 <!--                         <configuration> -->
 <!--                             <skipFailsafeReport>${c8tech.skip.reports}</skipFailsafeReport> -->
@@ -481,7 +483,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-project-info-reports-plugin</artifactId>
-                        <version>${version.maven-project-info-reports}</version>
+                        <version>${maven-project-info-reports.version}</version>
                         <configuration>
                             <dependencyDetailsEnabled>${c8tech.allow.reports}</dependencyDetailsEnabled>
                             <dependencyLocationsEnabled>${c8tech.allow.reports}</dependencyLocationsEnabled>
@@ -556,7 +558,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-report-plugin</artifactId>
-                        <version>${version.maven-surefire}</version>
+                        <version>${maven-surefire.version}</version>
                         <inherited>true</inherited>
                         <reportSets>
                             <reportSet>
@@ -577,7 +579,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-changes-plugin</artifactId>
-                        <version>${version.maven-changes}</version>
+                        <version>${maven-changes.version}</version>
                         <configuration>
                             <includeOpenIssues>false</includeOpenIssues>
                         </configuration>
@@ -593,7 +595,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>versions-maven-plugin</artifactId>
-                        <version>${version.versions-maven}</version>
+                        <version>${versions-maven.version}</version>
                         <configuration>
                             <skip>${c8tech.skip.reports}</skip>
                             <autoLinkItems>true</autoLinkItems>
@@ -613,7 +615,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>license-maven-plugin</artifactId>
-                        <version>${version.report-license-maven}</version>
+                        <version>${report-license-maven.version}</version>
                         <configuration>
                             <verbose>false</verbose>
                             <quiet>true</quiet>
@@ -631,7 +633,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-project-info-reports-plugin</artifactId>
-                        <version>${version.maven-project-info-reports}</version>
+                        <version>${maven-project-info-reports.version}</version>
                         <configuration>
                             <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
                             <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
@@ -667,7 +669,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-jxr-plugin</artifactId>
-                        <version>${version.maven-jxr}</version>
+                        <version>${maven-jxr.version}</version>
                         <reportSets>
                             <reportSet>
                                 <id>jxr-report-java</id>
@@ -681,7 +683,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>taglist-maven-plugin</artifactId>
-                        <version>${version.taglist-maven}</version>
+                        <version>${taglist-maven.version}</version>
                         <reportSets>
                             <reportSet>
                                 <!-- defines taglist reports in the modules -->
@@ -697,45 +699,29 @@
             </reporting>
         </profile>
 
-
         <profile>
-            <id>when-building-java-using-java8</id>
+            <!--
+            Enable unit testing. The profile is activated when you have
+            src/test/java directory in the project. It will add junit, assertJ,
+            and mockito artifacts to the classpath ("test" scope).
+            -->
+   <!-- This profile is only activated when building in Eclipse with m2e -->
+            <id>when-building-java-with-junit-tests-eclipse</id>
             <activation>
-                <jdk>[1.8,)</jdk>
                 <file>
-                    <exists>${basedir}/src/main/java</exists>
+                    <exists>${basedir}/src/test/java</exists>
                 </file>
+                <property>
+                    <name>m2e.version</name>
+                </property>
             </activation>
-            <properties>
-            <!-- added in order to bypass the issues cause by new
-                jdk 1.8 javadoc lint -->
-                <javadoc.opts>-Xdoclint:none</javadoc.opts>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>animal-sniffer-maven-plugin</artifactId>
-                        <configuration>
-                            <signature>
-                                <groupId>org.codehaus.mojo.signature</groupId>
-                                <artifactId>java18</artifactId>
-                                <version>1.0</version>
-                            </signature>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>enforce-java-api-compatibility</id>
-                                <phase>test</phase>
-                                <inherited>true</inherited>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
+            <dependencies>
+<!--                 <dependency> -->
+<!--                     <groupId>org.junit.platform</groupId> -->
+<!--                     <artifactId>junit-platform-launcher</artifactId> -->
+<!--                     <scope>test</scope> -->
+<!--                 </dependency> -->
+            </dependencies>
         </profile>
 
         <profile>
@@ -753,45 +739,22 @@
             <dependencyManagement>
                 <dependencies>
                     <dependency>
-                        <groupId>org.junit.vintage</groupId>
-                        <artifactId>junit-vintage-engine</artifactId>
+                        <groupId>org.junit</groupId>
+                        <artifactId>junit-bom</artifactId>
                         <version>${version.junit}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.junit.jupiter</groupId>
-                        <artifactId>junit-jupiter-api</artifactId>
-                        <version>${version.junit}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.junit.jupiter</groupId>
-                        <artifactId>junit-jupiter-engine</artifactId>
-                        <version>${version.junit}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.junit.jupiter</groupId>
-                        <artifactId>junit-jupiter-params</artifactId>
-                        <version>${version.junit}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-launcher</artifactId>
-                        <version>${version.junit-platform}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>org.mockito</groupId>
                         <artifactId>mockito-core</artifactId>
                         <version>${version.mockito}</version>
                     </dependency>
-<!--                     <dependency> -->
-<!--                         <groupId>org.powermock</groupId> -->
-<!--                         <artifactId>powermock-api-mockito</artifactId> -->
-<!--                         <version>${version.powermock}</version> -->
-<!--                     </dependency> -->
-<!--                     <dependency> -->
-<!--                         <groupId>org.powermock</groupId> -->
-<!--                         <artifactId>powermock-module-junit4</artifactId> -->
-<!--                         <version>${version.powermock}</version> -->
-<!--                     </dependency> -->
+                    <dependency>
+                        <groupId>org.mockito</groupId>
+                        <artifactId>mockito-junit-jupiter</artifactId>
+                        <version>${version.mockito}</version>
+                    </dependency>
                     <dependency>
                         <groupId>org.assertj</groupId>
                         <artifactId>assertj-core</artifactId>
@@ -800,7 +763,13 @@
                     <dependency>
                         <groupId>org.slf4j</groupId>
                         <artifactId>slf4j-simple</artifactId>
-                        <version>${version.slf4j}</version>
+                        <version>${slf4j.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>info.solidsoft.mockito</groupId>
+                        <artifactId>mockito-java8</artifactId>
+                        <version>2.5.0</version>
+                        <scope>test</scope>
                     </dependency>
                 </dependencies>
             </dependencyManagement>
@@ -821,13 +790,13 @@
                     <scope>test</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.junit.platform</groupId>
-                    <artifactId>junit-platform-launcher</artifactId>
+                    <groupId>org.mockito</groupId>
+                    <artifactId>mockito-core</artifactId>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.mockito</groupId>
-                    <artifactId>mockito-core</artifactId>
+                    <artifactId>mockito-junit-jupiter</artifactId>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
@@ -847,7 +816,7 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-surefire-plugin</artifactId>
-                            <version>${version.maven-surefire}</version>
+                            <version>${maven-surefire.version}</version>
                             <inherited>true</inherited>
                             <configuration>
                         <!-- Skips unit tests if the value of skip.unit.tests
@@ -887,8 +856,14 @@
                         <version>${version.maven-failsafe}</version>
                         <executions>
                             <execution>
+                                <id>integration-test</id>
                                 <goals>
                                     <goal>integration-test</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>verify</id>
+                                <goals>
                                     <goal>verify</goal>
                                 </goals>
                             </execution>
@@ -1010,7 +985,7 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-surefire-plugin</artifactId>
-                            <version>${version.maven-surefire}</version>
+                            <version>${maven-surefire.version}</version>
                             <inherited>true</inherited>
                             <configuration>
 <!--                                 <runOrder>random</runOrder> -->
@@ -1025,7 +1000,7 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-failsafe-plugin</artifactId>
-                            <version>${version.maven-surefire}</version>
+                            <version>${maven-surefire.version}</version>
                             <inherited>true</inherited>
                             <configuration>
                                 <failIfNoTests>false</failIfNoTests>
@@ -1110,7 +1085,7 @@
             <id>when-building-any-project-check-license</id>
             <activation>
                 <property>
-                    <name>!m2e.version</name>
+                    <name>c8tech.build.test.coverage</name>
                 </property>
             </activation>
             <build>
@@ -1150,7 +1125,7 @@
             <id>when-building-any-project-check-header</id>
             <activation>
                 <property>
-                    <name>!m2e.version</name>
+                    <name>c8tech.build.test.coverage</name>
                 </property>
                 <file>
                     <missing>license-header-epl-v10.txt</missing>
@@ -1161,7 +1136,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
-                        <version>${version.maven-dependency}</version>
+                        <version>${maven-dependency.version}</version>
                         <executions>
                             <execution>
                                 <id>copy-license-header-check</id>
@@ -1233,9 +1208,20 @@
                     <artifactId>slf4j-api</artifactId>
                     <scope>compile</scope>
                 </dependency>
+                <dependency>
+                    <groupId>org.immutables</groupId>
+                    <artifactId>value</artifactId>
+                    <version>${org.immutables.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.immutables</groupId>
+                    <artifactId>builder</artifactId>
+                    <version>${org.immutables.version}</version>
+                    <scope>provided</scope>
+                </dependency>
             </dependencies>
             <build>
-
             </build>
         </profile>
 
@@ -1567,9 +1553,6 @@
                 <property>
                     <name>c8tech.build.release</name>
                 </property>
-                <file>
-                    <missing>.c8tech.releng.agreggator</missing>
-                </file>
             </activation>
             <build>
                 <plugins>
@@ -1832,7 +1815,7 @@
                 <plugin>
                     <groupId>org.sonatype.plugins</groupId>
                     <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${version.nexus-staging-maven-plugin}</version>
+                    <version>${nexus-staging-maven-plugin.version}</version>
                     <extensions>true</extensions>
                     <configuration>
                         <serverId>${c8tech.distribution.repository.release.id}</serverId>
@@ -1844,80 +1827,87 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>${version.maven-build-helper}</version>
+                    <version>${maven-build-helper.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>${version.maven-project-info-reports}</version>
+                    <version>${maven-project-info-reports.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>${version.maven-source}</version>
+                    <version>${maven-source.version}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${version.maven-compiler}</version>
+                    <version>${maven-compiler.version}</version>
                     <configuration>
+                        <forceJavacCompilerUse>true</forceJavacCompilerUse>
                         <source>${java.version}</source>
-                        <target>${java.version}</target>
+                        <target>${java.target.version}</target>
+                        <release>${java.release.version}</release>
                     </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>${version.maven-install}</version>
+                    <version>${maven-install.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>${version.maven-resources}</version>
+                    <version>${maven-resources.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${version.maven-surefire}</version>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven-surefire.version}</version>
+                    <configuration>
+                        <argLine>
+                            --illegal-access=permit
+                        </argLine>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>${version.maven-jar}</version>
+                    <version>${maven-jar.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>${version.maven-clean}</version>
+                    <version>${maven-clean.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
-                    <version>${version.maven-antrun}</version>
+                    <version>${maven-antrun.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
-                    <version>${version.maven-findbugs}</version>
+                    <version>${maven-findbugs.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
-                    <version>${version.sonar-maven}</version>
+                    <version>${sonar-maven.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${version.maven-checkstyle}</version>
+                    <version>${maven-checkstyle.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>${version.maven-assembly}</version>
+                    <version>${maven-assembly.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>${version.maven-site}</version>
+                    <version>${maven-site.version}</version>
                     <inherited>true</inherited>
                     <configuration>
                         <stagingDirectory>${c8tech.workspace.dir.site}</stagingDirectory>
@@ -1932,32 +1922,32 @@
                             <!-- add support for ssh/scp -->
                             <groupId>org.apache.maven.wagon</groupId>
                             <artifactId>wagon-ssh</artifactId>
-                            <version>${version.wagon-ssh}</version>
+                            <version>${wagon-ssh.version}</version>
                         </dependency>
                         <!-- support to github pages deployment http://site.trajano.net/wagon-git/ -->
                         <dependency>
                             <groupId>net.trajano.wagon</groupId>
                             <artifactId>wagon-git</artifactId>
                             <!-- DON'T CHANGE THIS to 2.0.4 -->
-                            <version>${version.wagon-git}</version>
+                            <version>${wagon-git.version}</version>
                         </dependency>
                         <dependency>
                             <groupId>org.apache.maven.skins</groupId>
                             <artifactId>maven-fluido-skin</artifactId>
-                            <version>${version.maven-fluido-skin}</version>
+                            <version>${maven-fluido-skin.version}</version>
                         </dependency>
                         <dependency>
                             <!-- To use the Markdown format -->
                             <groupId>org.apache.maven.doxia</groupId>
                             <artifactId>doxia-module-markdown</artifactId>
-                            <version>${version.maven.doxia.module.markdown}</version>
+                            <version>${maven.doxia.module.markdown.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>taglist-maven-plugin</artifactId>
-                    <version>${version.taglist-maven}</version>
+                    <version>${taglist-maven.version}</version>
                     <configuration>
                         <tagListOptions>
                             <tagClasses>
@@ -1981,12 +1971,17 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>${version.maven-surefire}</version>
+                    <version>${maven-surefire.version}</version>
+                    <configuration>
+                        <argLine>
+                            --illegal-access=permit
+                        </argLine>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
-                    <version>${version.maven-jxr}</version>
+                    <version>${maven-jxr.version}</version>
                     <configuration>
                         <skip>${c8tech.skip.reports}</skip>
                     </configuration>
@@ -1994,7 +1989,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jarsigner-plugin</artifactId>
-                    <version>${version.maven-jarsigner}</version>
+                    <version>${maven-jar-signer.version}</version>
                     <configuration>
                         <verify>true</verify>
                     </configuration>
@@ -2002,24 +1997,24 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-gpg-plugin</artifactId>
-                    <version>${version.maven-gpg}</version>
+                    <version>${maven-gpg.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${version.maven-javadoc}</version>
+                    <version>${maven-javadoc.version}</version>
                     <configuration>
                         <charset>${project.reporting.outputEncoding}</charset>
                         <tagletArtifacts>
                             <tagletArtifact>
                                 <groupId>org.apache.maven.plugin-tools</groupId>
                                 <artifactId>maven-plugin-tools-javadoc</artifactId>
-                                <version>${version.maven-plugin-tools-javadoc}</version>
+                                <version>${maven-plugin-tools-javadoc.version}</version>
                             </tagletArtifact>
                             <tagletArtifact>
                                 <groupId>org.codehaus.plexus</groupId>
                                 <artifactId>plexus-component-javadoc</artifactId>
-                                <version>${version.plexus-component-javadoc}</version>
+                                <version>${plexus-component-javadoc.version}</version>
                             </tagletArtifact>
                         </tagletArtifacts>
                     </configuration>
@@ -2027,7 +2022,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${version.maven-deploy}</version>
+                    <version>${maven-deploy.version}</version>
                     <configuration>
                         <skip>true</skip>
                     </configuration>
@@ -2035,22 +2030,22 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
-                    <version>${version.versions-maven}</version>
+                    <version>${versions-maven.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>animal-sniffer-maven-plugin</artifactId>
-                    <version>${version.maven-animal-sniffer}</version>
+                    <version>${maven-animal-sniffer.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>${version.maven-enforcer}</version>
+                    <version>${maven-enforcer.version}</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>extra-enforcer-rules</artifactId>
-                            <version>${version.extra-enforcer-rules}</version>
+                            <version>${extra-enforcer-rules.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -2058,7 +2053,7 @@
                     <!-- This plugin is to control the headers -->
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>${version.license-maven}</version>
+                    <version>${license-maven.version}</version>
                     <inherited>true</inherited>
                     <configuration>
                         <failIfUnknown>true</failIfUnknown>
@@ -2087,7 +2082,7 @@
                         <dependency>
                             <groupId>com.mycila</groupId>
                             <artifactId>license-maven-plugin-git</artifactId>
-                            <version>${version.license-maven}</version>
+                            <version>${license-maven.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -2096,7 +2091,7 @@
                     <!-- this plugin is to control the license files attached to binaries -->
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>${version.report-license-maven}</version>
+                    <version>${report-license-maven.version}</version>
                     <configuration>
                         <verbose>false</verbose>
                         <generateBundle>true</generateBundle>
@@ -2182,32 +2177,33 @@
                         <dependency>
                             <groupId>org.freemarker</groupId>
                             <artifactId>freemarker</artifactId>
-                            <version>${version.freemarker}</version>
+                            <version>${freemarker.version}</version>
                         </dependency>
                         <dependency>
                             <groupId>org.apache.commons</groupId>
                             <artifactId>commons-lang3</artifactId>
-                            <version>${version.commons-lang3}</version>
+                            <version>${commons-lang3.version}</version>
                         </dependency>
                         <dependency>
                             <groupId>commons-collections</groupId>
                             <artifactId>commons-collections</artifactId>
-                            <version>${version.commons-collections}</version>
+                            <version>${commons-collections.version}</version>
                         </dependency>
                         <dependency>
                             <groupId>commons-io</groupId>
                             <artifactId>commons-io</artifactId>
-                            <version>${version.commons-io}</version>
+                            <version>${commons-io.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>${version.maven-release}</version>
+                    <version>${maven-release.version}</version>
                     <configuration>
                         <arguments>
-                            -Dc8tech.build.release -Dc8tech.build.test.coverage ${arguments}
+                            -Dc8tech.build.release
+                            -Dc8tech.build.test.coverage ${arguments}
                         </arguments>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                         <!-- ensure submodule are available to other submodules -->
@@ -2221,12 +2217,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>${version.maven-dependency}</version>
+                    <version>${maven-dependency.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>com.spotify</groupId>
                     <artifactId>dockerfile-maven-plugin</artifactId>
-                    <version>${version.dockerfile-maven}</version>
+                    <version>${dockerfile-maven.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -2236,38 +2232,63 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.apache.servicemix.bundles</groupId>
+                <artifactId>org.apache.servicemix.bundles.jsr305</artifactId>
+                <version>3.0.2_1</version>
+            </dependency>
+
+            <!-- Lambda extension -->
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jool</artifactId>
+                <version>${jool.version}</version>
+            </dependency>
+        
+        <!-- JSON support -->
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-json_1.1_spec</artifactId>
+                <version>${geronimo.json.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.johnzon</groupId>
+                <artifactId>johnzon-core</artifactId>
+                <version>${johnzon.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>${version.slf4j}</version>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>${version.logback}</version>
+                <version>${logback.version}</version>
             </dependency>
 
             <dependency>
                 <!-- add support for ssh/scp -->
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-ssh</artifactId>
-                <version>${version.wagon-ssh}</version>
+                <version>${wagon-ssh.version}</version>
             </dependency>
             <!-- support to github pages deployment http://site.trajano.net/wagon-git/ -->
             <dependency>
                 <groupId>net.trajano.wagon</groupId>
                 <artifactId>wagon-git</artifactId>
-                <version>${version.wagon-git}</version>
+                <version>${wagon-git.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.maven.skins</groupId>
                 <artifactId>maven-fluido-skin</artifactId>
-                <version>${version.maven-fluido-skin}</version>
+                <version>${maven-fluido-skin.version}</version>
             </dependency>
             <dependency>
                 <!-- To use the Markdown format -->
                 <groupId>org.apache.maven.doxia</groupId>
                 <artifactId>doxia-module-markdown</artifactId>
-                <version>${version.maven.doxia.module.markdown}</version>
+                <version>${maven.doxia.module.markdown.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

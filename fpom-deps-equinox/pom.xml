@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- ==========================================================================  -->
-<!-- Copyright © 2015-2018 Cristiano Gavião, C8 Technology ME.                         -->
+<!-- Copyright © 2015-2019 Cristiano Gavião, C8 Technology ME.                         -->
 <!--                                                                             -->
 <!-- All rights reserved. This program and the accompanying materials            -->
 <!-- are made available under the terms of the Eclipse Public License v1.0       -->
@@ -12,8 +12,9 @@
 <!-- Cristiano Gavião (cvgaviao@c8tech.com.br)- initial API and implementation   -->
 <!-- ==========================================================================  -->
 
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -50,27 +51,80 @@
         <javax.servlet.version>3.1.0.v201410161800</javax.servlet.version>
         <javax.net.ssl.version>3.1.0.v201410161800</javax.net.ssl.version>
 
-        <version.org.eclipse.equinox.cm>1.3.100</version.org.eclipse.equinox.cm>
-        <version.org.eclipse.equinox.common>3.10.100</version.org.eclipse.equinox.common>
-        <version.org.eclipse.equinox.concurrent>1.1.0</version.org.eclipse.equinox.concurrent>
-        <version.org.eclipse.equinox.console>1.3.100</version.org.eclipse.equinox.console>
-        <version.org.eclipse.equinox.coordinator>1.3.600</version.org.eclipse.equinox.coordinator>
-        <version.org.eclipse.equinox.device>1.0.400</version.org.eclipse.equinox.device>
-        <version.org.eclipse.equinox.ds>1.5.200</version.org.eclipse.equinox.ds>
-        <version.org.eclipse.equinox.event>1.4.300</version.org.eclipse.equinox.event>
-        <version.org.eclipse.equinox.http.jetty>3.4.0</version.org.eclipse.equinox.http.jetty>
-        <version.org.eclipse.equinox.http.servlet>1.4.0</version.org.eclipse.equinox.http.servlet>
-        <version.org.eclipse.equinox.metatype>1.4.500</version.org.eclipse.equinox.metatype>
-        <version.org.eclipse.equinox.preferences>3.7.200</version.org.eclipse.equinox.preferences>
-        <version.org.eclipse.equinox.region>1.4.200</version.org.eclipse.equinox.region>
-        <version.org.eclipse.equinox.useradmin>1.1.500</version.org.eclipse.equinox.useradmin>
-        <version.org.eclipse.equinox.util>1.1.100</version.org.eclipse.equinox.util>
-        <version.org.eclipse.equinox.wireadmin>1.0.600</version.org.eclipse.equinox.wireadmin>
-        <version.org.eclipse.osgi.services>3.7.100</version.org.eclipse.osgi.services>
-        <version.org.eclipse.osgi.util>3.5.100</version.org.eclipse.osgi.util>
-        <version.org.eclipse.osgi>3.13.100</version.org.eclipse.osgi>
+        <org.eclipse.equinox.cm.version>1.4.0</org.eclipse.equinox.cm.version>
+        <org.eclipse.equinox.common.version>3.10.300</org.eclipse.equinox.common.version>
+        <org.eclipse.equinox.concurrent.version>1.1.0</org.eclipse.equinox.concurrent.version>
+        <org.eclipse.equinox.console.version>1.3.200</org.eclipse.equinox.console.version>
+        <org.eclipse.equinox.coordinator.version>1.3.600</org.eclipse.equinox.coordinator.version>
+        <org.eclipse.equinox.device.version>1.0.400</org.eclipse.equinox.device.version>
+        <org.eclipse.equinox.ds.version>1.6.0</org.eclipse.equinox.ds.version>
+        <org.eclipse.equinox.event.version>1.5.0</org.eclipse.equinox.event.version>
+        <org.eclipse.equinox.metatype.version>1.4.600</org.eclipse.equinox.metatype.version>
+        <org.eclipse.equinox.preferences.version>3.7.300</org.eclipse.equinox.preferences.version>
+        <org.eclipse.equinox.region.version>1.4.300</org.eclipse.equinox.region.version>
+        <org.eclipse.equinox.useradmin.version>1.1.500</org.eclipse.equinox.useradmin.version>
+        <org.eclipse.equinox.util.version>1.1.200</org.eclipse.equinox.util.version>
+        <org.eclipse.equinox.wireadmin.version>1.0.600</org.eclipse.equinox.wireadmin.version>
+        <org.eclipse.osgi.version.services>3.8.0</org.eclipse.osgi.version.services>
+        <org.eclipse.osgi.util.version>3.5.200</org.eclipse.osgi.util.version>
+        <org.eclipse.osgi.version>3.13.300</org.eclipse.osgi.version>
 
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+            <!-- This is necessary as POM doesn't have resources goal bound to its lifecycle -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-properties</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <overwrite>true</overwrite>
+                            <outputDirectory>${basedir}/target</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources-filtered</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>dependencies-equinox.properties</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-felix-artifact</id>
+                        <phase>package</phase>
+                        <inherited>false</inherited>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${basedir}/target/dependencies-equinox.properties</file>
+                                    <type>properties</type>
+                                    <classifier>versions</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencyManagement>
         <dependencies>
@@ -92,67 +146,67 @@
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.osgi</artifactId>
-                <version>${version.org.eclipse.osgi}</version>
+                <version>${org.eclipse.osgi.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.osgi.services</artifactId>
-                <version>${version.org.eclipse.osgi.services}</version>
+                <version>${org.eclipse.osgi.version.services}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.osgi.util</artifactId>
-                <version>${version.org.eclipse.osgi.util}</version>
+                <version>${org.eclipse.osgi.util.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.util</artifactId>
-                <version>${version.org.eclipse.equinox.util}</version>
+                <version>${org.eclipse.equinox.util.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.preferences</artifactId>
-                <version>${version.org.eclipse.equinox.preferences}</version>
+                <version>${org.eclipse.equinox.preferences.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.metatype</artifactId>
-                <version>${version.org.eclipse.equinox.metatype}</version>
+                <version>${org.eclipse.equinox.metatype.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.ds</artifactId>
-                <version>${version.org.eclipse.equinox.ds}</version>
+                <version>${org.eclipse.equinox.ds.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.coordinator</artifactId>
-                <version>${version.org.eclipse.equinox.coordinator}</version>
+                <version>${org.eclipse.equinox.coordinator.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.console</artifactId>
-                <version>${version.org.eclipse.equinox.console}</version>
+                <version>${org.eclipse.equinox.console.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.cm</artifactId>
-                <version>${version.org.eclipse.equinox.cm}</version>
+                <version>${org.eclipse.equinox.cm.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.common</artifactId>
-                <version>${version.org.eclipse.equinox.common}</version>
+                <version>${org.eclipse.equinox.common.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.event</artifactId>
-                <version>${version.org.eclipse.equinox.event}</version>
+                <version>${org.eclipse.equinox.event.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.region</artifactId>
-                <version>${version.org.eclipse.equinox.region}</version>
+                <version>${org.eclipse.equinox.region.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
