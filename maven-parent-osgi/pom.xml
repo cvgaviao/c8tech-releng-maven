@@ -67,7 +67,7 @@
         <!-- ========================  -->
         <!--  MAVEN PLUGIN VERSIONS    -->
         <!-- ========================  -->
-        <version.maven-bundle>4.1.0</version.maven-bundle>
+        <version.maven-bundle>4.2.0</version.maven-bundle>
         <eclipse.aether.version>1.0.0.v20140518</eclipse.aether.version>
 
         <!-- Tools -->
@@ -138,7 +138,7 @@
                 <dependency>
                     <groupId>br.com.c8tech.releng</groupId>
                     <artifactId>fpom-itests-paxexam</artifactId>
-                    <version>${version.c8tech.releng}</version>
+                    <version>${c8tech.releng.version}</version>
                     <type>pom</type>
                     <scope>test</scope>
                 </dependency>
@@ -284,7 +284,7 @@
                 <dependency>
                     <groupId>org.junit.vintage</groupId>
                     <artifactId>junit-vintage-engine</artifactId>
-                    <version>${version.junit}</version>
+                    <version>${junit.version}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -294,6 +294,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
+                        <version>${maven-dependency.version}</version>
                         <inherited>true</inherited>
                         <executions>
                             <execution>
@@ -307,7 +308,7 @@
                                         <artifactItem>
                                             <groupId>br.com.c8tech.releng</groupId>
                                             <artifactId>fpom-deps-felix</artifactId>
-                                            <version>${version.c8tech.releng}</version>
+                                            <version>${c8tech.releng.version}</version>
                                             <type>versions</type>
                                             <classifier>latest</classifier>
                                             <overWrite>true</overWrite>
@@ -368,7 +369,7 @@
                 <dependency>
                     <groupId>org.junit.vintage</groupId>
                     <artifactId>junit-vintage-engine</artifactId>
-                    <version>${version.junit}</version>
+                    <version>${junit.version}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -501,6 +502,7 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-deploy-plugin</artifactId>
+		                    <version>${maven-deploy.version}</version>
                             <configuration>
                                 <skip>true</skip>
                             </configuration>
@@ -591,6 +593,7 @@
                     </plugin>
                     <plugin>
                         <artifactId>maven-jar-plugin</artifactId>
+	                    <version>${maven-jar.version}</version>
                         <inherited>true</inherited>
                         <configuration>
                             <archive>
@@ -669,6 +672,7 @@
 
                     <plugin>
                         <artifactId>maven-jar-plugin</artifactId>
+	                    <version>${maven-jar.version}</version>
                         <inherited>true</inherited>
                         <configuration>
                             <archive>
@@ -701,6 +705,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
+	                    <version>${maven-source.version}</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>

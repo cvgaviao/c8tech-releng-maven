@@ -49,14 +49,14 @@
     <properties>
 
         <!-- FELIX. -->
-        <felix.framework.version>6.0.2</felix.framework.version>
+        <felix.framework.version>6.0.3</felix.framework.version>
 
         <version.felix>${felix.framework.version}</version.felix>
         <version.felix.bundlerepository>2.0.10</version.felix.bundlerepository>
         <felix.configadmin.version>1.9.14</felix.configadmin.version>
         <felix.configurator.version>1.0.8</felix.configurator.version>
         <felix.coordinator.version>1.0.2</felix.coordinator.version>
-        <felix.converter.version>1.0.4</felix.converter.version>
+        <felix.converter.version>1.0.8</felix.converter.version>
         <felix.dpadmin.version>0.9.10</felix.dpadmin.version>
         <felix.dp.rp.conf.version>0.1.8</felix.dp.rp.conf.version>
         <felix.eventadmin.version>1.5.0</felix.eventadmin.version>

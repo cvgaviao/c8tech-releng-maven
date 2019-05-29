@@ -127,12 +127,11 @@
         <!--    PROJECT PROPERTIES     -->
         <!-- ========================  -->
 
-        <version.c8tech.releng>6.1-SNAPSHOT</version.c8tech.releng>
+        <c8tech.releng.version>6.1-SNAPSHOT</c8tech.releng.version>
         
         <!-- The minimal Java compiler version-->
         <java.version>11</java.version>
         <java.target.version>11</java.target.version>
-        <java.release.version>11</java.release.version>
         <javadocJreApiVersion>11</javadocJreApiVersion>
         
         <!-- Encoding settings-->
@@ -257,7 +256,7 @@
         <!-- ========================  -->
         <!--  MAVEN PLUGIN VERSIONS    -->
         <!-- ========================  -->
-        <maven-assembly.version>3.1.0</maven-assembly.version>
+        <maven-assembly.version>3.1.1</maven-assembly.version>
         <maven-antrun.version>1.8</maven-antrun.version>
         <maven-animal-sniffer.version>1.17</maven-animal-sniffer.version>
         <maven-build-helper.version>3.0.0</maven-build-helper.version>
@@ -268,24 +267,25 @@
         <maven-depends.version>1.4.0</maven-depends.version>
         <maven-deploy.version>3.0.0-M1</maven-deploy.version>
         <maven-enforcer.version>3.0.0-M2</maven-enforcer.version>
-        <extra-enforcer-rules.version>1.1</extra-enforcer-rules.version>
+        <extra-enforcer-rules.version>1.2</extra-enforcer-rules.version>
         <maven-findbugs.version>3.0.5</maven-findbugs.version>
         <maven-gpg.version>1.6</maven-gpg.version>
         <maven-install.version>3.0.0-M1</maven-install.version>
-        <maven-javadoc.version>3.0.1</maven-javadoc.version>
-        <maven-jar.version>3.1.0</maven-jar.version>
-        <maven-jar-signer.version>1.4</maven-jar-signer.version>
+        <maven-javadoc.version>3.1.0</maven-javadoc.version>
+        <maven-jar.version>3.1.1</maven-jar.version>
+        <maven-jar-signer.version>3.0.0</maven-jar-signer.version>
         <maven-project-info-reports.version>3.0.0</maven-project-info-reports.version>
         <maven-property.version>1.0.0</maven-property.version>
         <maven-release.version>2.5.3</maven-release.version>
         <maven-resources.version>3.1.0</maven-resources.version>
+        <maven-shade.version>3.2.1</maven-shade.version>
         <maven-site.version>3.7.1</maven-site.version>
         <maven-source.version>3.0.1</maven-source.version>
         <!-- REPORTING -->
         <taglist-maven.version>2.4</taglist-maven.version>
-        <report-license-maven.version>1.16</report-license-maven.version>
+        <report-license-maven.version>1.20</report-license-maven.version>
         <versions-maven.version>2.7</versions-maven.version>
-        <maven-jxr.version>2.5</maven-jxr.version>
+        <maven-jxr.version>3.0.0</maven-jxr.version>
         <maven.doxia.module.markdown.version>1.8</maven.doxia.module.markdown.version>
         <maven-fluido-skin.version>1.7</maven-fluido-skin.version>
         <maven-changes.version>2.12.1</maven-changes.version>
@@ -297,7 +297,7 @@
 
         <!-- Tools -->
         <guava.version>27.1-jre</guava.version>
-        <dockerfile-maven.version>1.4.4</dockerfile-maven.version>
+        <dockerfile-maven.version>1.4.10</dockerfile-maven.version>
         <johnzon.version>1.1.11</johnzon.version>
         <geronimo.json.version>1.2</geronimo.json.version>
         <vertx.version>3.6.3</vertx.version>
@@ -322,24 +322,24 @@
         <!-- ************************ -->
         <!-- TESTING -->
         <!-- JACOCO and Sonar/Reporting settings -->
-        <version.maven-failsafe>2.22.0</version.maven-failsafe>
-        <maven-surefire.version>${version.maven-failsafe}</maven-surefire.version>
-        <version.junit-platform>1.3.1</version.junit-platform>
-        <sonar-maven.version>3.5.0.1254</sonar-maven.version>
-        <version.jacoco-maven>0.8.2</version.jacoco-maven>
+        <maven-failsafe.version>3.0.0-M3</maven-failsafe.version>
+        <maven-surefire.version>${maven-failsafe.version}</maven-surefire.version>
+        <junit.version-platform>1.3.1</junit.version-platform>
+        <sonar-maven.version>3.6.0.1398</sonar-maven.version>
+        <jacoco-maven.version>0.8.2</jacoco-maven.version>
         <pax-exam.version>4.11.0</pax-exam.version>
-        <version.junit>5.3.2</version.junit>
-        <version.mockito>2.23.4</version.mockito>
-        <version.assertj>3.11.1</version.assertj>
+        <junit.version>5.3.2</junit.version>
+        <mockito.version>2.27.0</mockito.version>
+        <assertj.version>3.12.2</assertj.version>
 
         <!-- The Sonar Jacoco Listener for JUnit to extract coverage details
             per test -->
-        <version.sonar-jacoco-listeners>5.7.0.15470</version.sonar-jacoco-listeners>
+        <sonar-jacoco-listeners.version>5.7.0.15470</sonar-jacoco-listeners.version>
 
         <commons-io.version>2.6</commons-io.version>
         <commons-collections.version>3.2.2</commons-collections.version>
-        <commons-lang3.version>3.8.1</commons-lang3.version>
-        <version.commons-compress>1.18</version.commons-compress>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-compress.version>1.18</commons-compress.version>
         <freemarker.version>2.3.28</freemarker.version>
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
     </properties>
@@ -741,24 +741,19 @@
                     <dependency>
                         <groupId>org.junit</groupId>
                         <artifactId>junit-bom</artifactId>
-                        <version>${version.junit}</version>
+                        <version>${junit.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>org.mockito</groupId>
-                        <artifactId>mockito-core</artifactId>
-                        <version>${version.mockito}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.mockito</groupId>
                         <artifactId>mockito-junit-jupiter</artifactId>
-                        <version>${version.mockito}</version>
+                        <version>${mockito.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.assertj</groupId>
                         <artifactId>assertj-core</artifactId>
-                        <version>${version.assertj}</version>
+                        <version>${assertj.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.slf4j</groupId>
@@ -789,12 +784,7 @@
                     <artifactId>junit-jupiter-api</artifactId>
                     <scope>test</scope>
                 </dependency>
-                <dependency>
-                    <groupId>org.mockito</groupId>
-                    <artifactId>mockito-core</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
+                 <dependency>
                     <groupId>org.mockito</groupId>
                     <artifactId>mockito-junit-jupiter</artifactId>
                     <scope>test</scope>
@@ -837,7 +827,7 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-failsafe-plugin</artifactId>
-                            <version>${version.maven-failsafe}</version>
+                            <version>${maven-failsafe.version}</version>
                             <inherited>true</inherited>
                             <configuration>
                                 <includes>
@@ -853,7 +843,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${version.maven-failsafe}</version>
+                        <version>${maven-failsafe.version}</version>
                         <executions>
                             <execution>
                                 <id>integration-test</id>
@@ -977,7 +967,7 @@
                         <plugin>
                             <groupId>org.jacoco</groupId>
                             <artifactId>jacoco-maven-plugin</artifactId>
-                            <version>${version.jacoco-maven}</version>
+                            <version>${jacoco-maven.version}</version>
                             <configuration>
                                 <append>true</append>
                             </configuration>
@@ -1021,7 +1011,7 @@
                     <plugin>
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>${version.jacoco-maven}</version>
+                        <version>${jacoco-maven.version}</version>
                         <executions>
                             <!-- Prepares a variable, jacoco.agent.ut.arg,
                                 that contains the info to be passed to the JVM hosting the code being tested. -->
@@ -1075,7 +1065,7 @@
                 <dependency>
                     <groupId>org.sonarsource.java</groupId>
                     <artifactId>sonar-jacoco-listeners</artifactId>
-                    <version>${version.sonar-jacoco-listeners}</version>
+                    <version>${sonar-jacoco-listeners.version}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -1344,6 +1334,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
+	                    <version>${maven-source.version}</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -1559,6 +1550,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
+                        <version>${maven-dependency.version}</version>
                         <inherited>true</inherited>
                         <executions>
                             <execution>
@@ -1573,7 +1565,7 @@
                                         <artifactItem>
                                             <groupId>br.com.c8tech.releng</groupId>
                                             <artifactId>maven-parent-java</artifactId>
-                                            <version>${version.c8tech.releng}</version>
+                                            <version>${c8tech.releng.version}</version>
                                             <type>txt</type>
                                             <classifier>license</classifier>
                                             <overWrite>true</overWrite>
@@ -1840,13 +1832,13 @@
                     <version>${maven-source.version}</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler.version}</version>
                     <configuration>
-                        <forceJavacCompilerUse>true</forceJavacCompilerUse>
                         <source>${java.version}</source>
                         <target>${java.target.version}</target>
-                        <release>${java.release.version}</release>
+                        <release>${java.target.version}</release>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -1903,6 +1895,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
                     <version>${maven-assembly.version}</version>
+                </plugin>
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-shade-plugin</artifactId>
+	                <version>${maven-shade.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
