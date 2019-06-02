@@ -12,15 +12,13 @@
 <!-- Cristiano Gavião (cvgaviao@c8tech.com.br)- initial API and implementation   -->
 <!-- ==========================================================================  -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>br.com.c8tech.releng</groupId>
         <artifactId>maven-parent-java</artifactId>
-        <version>6.1-SNAPSHOT</version>
+        <version>0.7.0</version>
     </parent>
 
     <artifactId>fpom-deps-felix</artifactId>
@@ -35,7 +33,7 @@
         <connection>${c8tech.scm.connection}</connection>
         <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
         <url>${c8tech.scm.url}</url>
-        <tag>HEAD</tag>
+        <tag>v0.7.0</tag>
     </scm>
     <distributionManagement>
         <site>
@@ -76,7 +74,7 @@
         <dependencies>
             <dependency>
                 <groupId>br.com.c8tech.releng</groupId>
-                <version>6.1-SNAPSHOT</version>
+                <version>0.7.0</version>
                 <artifactId>fpom-deps-osgi</artifactId>
                 <scope>import</scope>
                 <type>pom</type>
