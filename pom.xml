@@ -127,8 +127,6 @@
         <!--    PROJECT PROPERTIES     -->
         <!-- ========================  -->
 
-        <c8tech.releng.version>6.1-SNAPSHOT</c8tech.releng.version>
-        
         <!-- The minimal Java compiler version-->
         <java.version>11</java.version>
         <java.target.version>11</java.target.version>
@@ -1565,7 +1563,7 @@
                                         <artifactItem>
                                             <groupId>br.com.c8tech.releng</groupId>
                                             <artifactId>maven-parent-java</artifactId>
-                                            <version>${c8tech.releng.version}</version>
+                                            <version>6.1-SNAPSHOT</version>
                                             <type>txt</type>
                                             <classifier>license</classifier>
                                             <overWrite>true</overWrite>
