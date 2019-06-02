@@ -17,7 +17,7 @@
 
     <groupId>br.com.c8tech.releng</groupId>
     <artifactId>maven-parent-java</artifactId>
-    <version>7.0</version>
+    <version>7.1-SNAPSHOT</version>
     <name>C8Tech Maven Parent Java POM</name>
     <description>The master parent POM aimed to set up the build of all C8Tech's Java Maven based projects.</description>
     <packaging>pom</packaging>
@@ -108,7 +108,7 @@
         <connection>${c8tech.scm.connection}</connection>
         <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
         <url>${c8tech.scm.url}</url>
-        <tag>v7.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <licenses>
