@@ -100,7 +100,7 @@
             <dependency>
                 <groupId>org.ops4j.pax.url</groupId>
                 <artifactId>pax-url-aether</artifactId>
-                <version>${version.pax-url}</version>
+                <version>${pax-url.version}</version>
                 <exclusions>
                     <exclusion>
                         <artifactId>jcl-over-slf4j</artifactId>
@@ -158,7 +158,7 @@
             <dependency>
                 <groupId>org.ops4j.pax.url</groupId>
                 <artifactId>pax-url-assembly</artifactId>
-                <version>${version.pax-url}</version>
+                <version>${pax-url.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.codehaus.jackson</groupId>

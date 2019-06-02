@@ -51,8 +51,8 @@
         <!-- FELIX. -->
         <felix.framework.version>6.0.3</felix.framework.version>
 
-        <version.felix>${felix.framework.version}</version.felix>
-        <version.felix.bundlerepository>2.0.10</version.felix.bundlerepository>
+        <felix.version>${felix.framework.version}</felix.version>
+        <felix.bundlerepository.version>2.0.10</felix.bundlerepository.version>
         <felix.configadmin.version>1.9.14</felix.configadmin.version>
         <felix.configurator.version>1.0.8</felix.configurator.version>
         <felix.coordinator.version>1.0.2</felix.coordinator.version>
@@ -270,7 +270,7 @@
             <dependency>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>org.apache.felix.bundlerepository</artifactId>
-                <version>${version.felix.bundlerepository}</version>
+                <version>${felix.bundlerepository.version}</version>
                 <exclusions>
                     <exclusion>
                         <artifactId>easymock</artifactId>

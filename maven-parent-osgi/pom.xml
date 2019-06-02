@@ -67,17 +67,17 @@
         <!-- ========================  -->
         <!--  MAVEN PLUGIN VERSIONS    -->
         <!-- ========================  -->
-        <version.maven-bundle>4.2.0</version.maven-bundle>
+        <maven-bundle.version>4.2.0</maven-bundle.version>
         <eclipse.aether.version>1.0.0.v20140518</eclipse.aether.version>
 
         <!-- Tools -->
         <pojosr.version>0.2.1</pojosr.version>
 
         <!-- OSGI -->
-        <version.osgi.core>7.0.0</version.osgi.core>
-        <version.osgi.cmpn>${version.osgi.core}</version.osgi.cmpn>
-        <version.osgi.annotation>${version.osgi.core}</version.osgi.annotation>
-        <version.pax-url>2.6.1</version.pax-url>
+        <osgi.core.version>7.0.0</osgi.core.version>
+        <osgi.cmpn.version>${osgi.core.version}</osgi.cmpn.version>
+        <osgi.annotation.version>${osgi.core.version}</osgi.annotation.version>
+        <pax-url.version>2.6.1</pax-url.version>
 
     </properties>
 
@@ -120,19 +120,19 @@
                 <dependency>
                     <groupId>org.osgi</groupId>
                     <artifactId>osgi.core</artifactId>
-                    <version>${version.osgi.core}</version>
+                    <version>${osgi.core.version}</version>
                     <scope>provided</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.osgi</groupId>
                     <artifactId>osgi.annotation</artifactId>
-                    <version>${version.osgi.annotation}</version>
+                    <version>${osgi.annotation.version}</version>
                     <scope>provided</scope>
                 </dependency>
 <!--                 <dependency> -->
 <!--                     <groupId>org.osgi</groupId> -->
 <!--                     <artifactId>osgi.cmpn</artifactId> -->
-<!--                     <version>${version.osgi.cmpn}</version> -->
+<!--                     <version>${osgi.cmpn.version}</version> -->
 <!--                     <scope>provided</scope> -->
 <!--                 </dependency> -->
                 <dependency>
@@ -400,19 +400,19 @@
                 <dependency>
                     <groupId>org.osgi</groupId>
                     <artifactId>osgi.core</artifactId>
-                    <version>${version.osgi.core}</version>
+                    <version>${osgi.core.version}</version>
                     <scope>provided</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.osgi</groupId>
                     <artifactId>osgi.annotation</artifactId>
-                    <version>${version.osgi.annotation}</version>
+                    <version>${osgi.annotation.version}</version>
                     <scope>provided</scope>
                 </dependency>
 <!--                 <dependency> -->
 <!--                     <groupId>org.osgi</groupId> -->
 <!--                     <artifactId>osgi.cmpn</artifactId> -->
-<!--                     <version>${version.osgi.cmpn}</version> -->
+<!--                     <version>${osgi.cmpn.version}</version> -->
 <!--                     <scope>provided</scope> -->
 <!--                 </dependency> -->
                 <dependency>
@@ -510,7 +510,7 @@
                         <plugin>
                             <groupId>org.apache.felix</groupId>
                             <artifactId>maven-bundle-plugin</artifactId>
-                            <version>${version.maven-bundle}</version>
+                            <version>${maven-bundle.version}</version>
                             <extensions>true</extensions>
                             <inherited>true</inherited>
                             <configuration>
@@ -560,7 +560,7 @@
                     <plugin>
                         <groupId>org.apache.felix</groupId>
                         <artifactId>maven-bundle-plugin</artifactId>
-                        <version>${version.maven-bundle}</version>
+                        <version>${maven-bundle.version}</version>
                         <inherited>true</inherited>
                         <executions>
                             <execution>
@@ -614,7 +614,7 @@
                     <plugin>
                         <groupId>org.apache.felix</groupId>
                         <artifactId>maven-bundle-plugin</artifactId>
-                        <version>${version.maven-bundle}</version>
+                        <version>${maven-bundle.version}</version>
                         <reportSets>
                             <reportSet>
                                 <id>baseline-report</id>
@@ -646,7 +646,7 @@
                     <plugin>
                         <groupId>org.apache.felix</groupId>
                         <artifactId>maven-bundle-plugin</artifactId>
-                        <version>${version.maven-bundle}</version>
+                        <version>${maven-bundle.version}</version>
                         <inherited>true</inherited>
                         <executions>
                             <execution>
@@ -809,7 +809,7 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>${version.maven-bundle}</version>
+                    <version>${maven-bundle.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -820,12 +820,12 @@
                             <additionalDependency>
                                 <groupId>org.osgi</groupId>
                                 <artifactId>osgi.core</artifactId>
-                                <version>${version.osgi.core}</version>
+                                <version>${osgi.core.version}</version>
                             </additionalDependency>
                             <additionalDependency>
                                 <groupId>org.osgi</groupId>
                                 <artifactId>osgi.annotation</artifactId>
-                                <version>${version.osgi.annotation}</version>
+                                <version>${osgi.annotation.version}</version>
                             </additionalDependency>
                         </additionalDependencies>
                     </configuration>

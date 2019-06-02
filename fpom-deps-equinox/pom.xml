@@ -65,7 +65,7 @@
         <org.eclipse.equinox.useradmin.version>1.1.500</org.eclipse.equinox.useradmin.version>
         <org.eclipse.equinox.util.version>1.1.200</org.eclipse.equinox.util.version>
         <org.eclipse.equinox.wireadmin.version>1.0.600</org.eclipse.equinox.wireadmin.version>
-        <org.eclipse.osgi.version.services>3.8.0</org.eclipse.osgi.version.services>
+        <org.eclipse.osgi.services.version>3.8.0</org.eclipse.osgi.services.version>
         <org.eclipse.osgi.util.version>3.5.200</org.eclipse.osgi.util.version>
         <org.eclipse.osgi.version>3.13.300</org.eclipse.osgi.version>
 
@@ -151,7 +151,7 @@
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.osgi.services</artifactId>
-                <version>${org.eclipse.osgi.version.services}</version>
+                <version>${org.eclipse.osgi.services.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.platform</groupId>
