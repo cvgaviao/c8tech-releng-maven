@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 
+### example: ./trigger-remote-release-build.sh 0.6.0(release-version) 0.6.1-SNAPSHOT(next-version) false/true (dryrun)
+
 if [[ ! -n "$CIRCLE_USER_TOKEN" ]]; then
     echo "You must export CIRCLE_USER_TOKEN environment variable before run." 1>&2
     exit 1
