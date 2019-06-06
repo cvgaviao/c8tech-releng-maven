@@ -1,1628 +1,1578 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- ======================================================================    -->
-<!-- Copyright © 2015-2019, Cristiano V. Gavião.                      -->
-<!--                                                                           -->
-<!-- All rights reserved. This program and the accompanying materials          -->
-<!-- are made available under the terms of the Eclipse Public License v1.0     -->
-<!-- which accompanies this distribution, and is available at                  -->
-<!-- http://www.eclipse.org/legal/epl-v10.html                                 -->
-<!--                                                                           -->
-<!-- =======================================================================   -->
+<!-- ======================================================================  -->
+<!-- Copyright © 2015-2019, Cristiano V. Gavião.                    -->
+<!--                                                                         -->
+<!-- All rights reserved. This program and the accompanying materials        -->
+<!-- are made available under the terms of the Eclipse Public License v1.0   -->
+<!-- which accompanies this distribution, and is available at                -->
+<!-- http://www.eclipse.org/legal/epl-v10.html                               -->
+<!--                                                                         -->
+<!-- ======================================================================= -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.com.c8tech.releng</groupId>
-    <artifactId>maven-parent-java</artifactId>
-    <version>8.1-SNAPSHOT</version>
-    <name>C8Tech Maven Parent Java POM</name>
-    <description>The master parent POM aimed to set up the build of all C8Tech's Java Maven based projects.</description>
-    <packaging>pom</packaging>
+	<groupId>br.com.c8tech.releng</groupId>
+	<artifactId>maven-parent-java</artifactId>
+	<version>8.1-SNAPSHOT</version>
+	<name>C8Tech Maven Parent Java POM</name>
+	<description>The master parent POM aimed to set up the build of all C8Tech's Java Maven based projects.</description>
+	<packaging>pom</packaging>
 
-    <inceptionYear>2015</inceptionYear>
+	<inceptionYear>2015</inceptionYear>
 
-    <modules>
-        <module>fpom-deps-felix</module>
-        <module>fpom-deps-osgi</module>
-        <module>fpom-itests-paxexam</module>
-        <module>fpom-deps-equinox</module>
-    </modules>
+	<modules>
+		<module>fpom-deps-felix</module>
+		<module>fpom-deps-osgi</module>
+		<module>fpom-itests-paxexam</module>
+		<module>fpom-deps-equinox</module>
+	</modules>
 
-    <organization>
-        <name>C8 Technology ME</name>
-        <url>www.c8tech.com.br</url>
-    </organization>
+	<organization>
+		<name>C8 Technology ME</name>
+		<url>www.c8tech.com.br</url>
+	</organization>
 
-    <developers>
-        <developer>
-            <id>cvgaviao</id>
-            <name>Cristiano Gavião</name>
-            <email>cvgaviao@c8tech.com.br</email>
-            <timezone>-3</timezone>
-            <roles>
-                <role>Developer</role>
-            </roles>
-        </developer>
-    </developers>
+	<developers>
+		<developer>
+			<id>cvgaviao</id>
+			<name>Cristiano Gavião</name>
+			<email>cvgaviao@c8tech.com.br</email>
+			<timezone>-3</timezone>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
 
-    <!-- ================================  -->
-    <!--    ISSUES MANAGEMENT PROPERTIES   -->
-    <!-- ================================  -->
-    <issueManagement>
-        <system>${c8tech.im.system}</system>
-        <url>${c8tech.im.server.url}</url>
-    </issueManagement>
+	<!-- ================================ -->
+	<!-- ISSUES MANAGEMENT PROPERTIES -->
+	<!-- ================================ -->
+	<issueManagement>
+		<system>${c8tech.im.system}</system>
+		<url>${c8tech.im.server.url}</url>
+	</issueManagement>
 
-    <!-- ciManagement, distributionManagement(Site) and scm should be duplicated
-        for every git repository (parent pom) and in most cases for each aggregator
-        due the fact that its modules uses different parents. -->
+	<!-- ciManagement, distributionManagement(Site) and scm should be duplicated 
+		for every git repository (parent pom) and in most cases for each aggregator 
+		due the fact that its modules uses different parents. -->
 
-    <!-- ====================================  -->
-    <!--    CONTINUOUS INTEGRATION PROPERTIES  -->
-    <!-- ====================================  -->
-    <ciManagement>
-        <system>${c8tech.ci.system}</system>
-        <url>${c8tech.ci.server.url}</url>
-    </ciManagement>
+	<!-- ==================================== -->
+	<!-- CONTINUOUS INTEGRATION PROPERTIES -->
+	<!-- ==================================== -->
+	<ciManagement>
+		<system>${c8tech.ci.system}</system>
+		<url>${c8tech.ci.server.url}</url>
+	</ciManagement>
 
-    <!-- =================  -->
-    <!--    PROJECT SITE    -->
-    <!-- =================  -->
-    <url>${c8tech.project.site.url}</url>
+	<!-- ================= -->
+	<!-- PROJECT SITE -->
+	<!-- ================= -->
+	<url>${c8tech.project.site.url}</url>
 
-    <distributionManagement>
-        <!-- ===============================  -->
-        <!--  RELEASE PUBLISHING PROPERTIES   -->
-        <!-- ===============================  -->
-        <repository>
-            <id>${c8tech.distribution.repository.release.id}</id>
-            <url>${c8tech.distribution.repository.release.url}</url>
-        </repository>
-        <!-- ================================  -->
-        <!--  SNAPSHOT PUBLISHING PROPERTIES   -->
-        <!-- ================================  -->
-        <snapshotRepository>
-            <id>${c8tech.distribution.repository.snapshot.id}</id>
-            <url>${c8tech.distribution.repository.snapshot.url}</url>
-        </snapshotRepository>
-        <!-- ==============================  -->
-        <!--    SITE PUBLISHING PROPERTIES   -->
-        <!-- ==============================  -->
-        <site>
-            <id>${c8tech.distribution.site.id}</id>
-            <name>${c8tech.distribution.site.name}</name>
-            <url>${c8tech.distribution.site.url}</url>
-        </site>
-    </distributionManagement>
+	<distributionManagement>
+		<!-- =============================== -->
+		<!-- RELEASE PUBLISHING PROPERTIES -->
+		<!-- =============================== -->
+		<repository>
+			<id>${c8tech.distribution.repository.release.id}</id>
+			<url>${c8tech.distribution.repository.release.url}</url>
+		</repository>
+		<!-- ================================ -->
+		<!-- SNAPSHOT PUBLISHING PROPERTIES -->
+		<!-- ================================ -->
+		<snapshotRepository>
+			<id>${c8tech.distribution.repository.snapshot.id}</id>
+			<url>${c8tech.distribution.repository.snapshot.url}</url>
+		</snapshotRepository>
+		<!-- ============================== -->
+		<!-- SITE PUBLISHING PROPERTIES -->
+		<!-- ============================== -->
+		<site>
+			<id>${c8tech.distribution.site.id}</id>
+			<name>${c8tech.distribution.site.name}</name>
+			<url>${c8tech.distribution.site.url}</url>
+		</site>
+	</distributionManagement>
 
-    <!-- ======================================  -->
-    <!--  SOURCE CONTROL MANAGEMENT PROPERTIES   -->
-    <!-- ======================================  -->
-    <scm>
-        <!-- connection and developerConnection must be added in children
-            in order to work with git properly-->
-        <connection>${c8tech.scm.connection}</connection>
-        <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
-        <url>${c8tech.scm.url}</url>
-        <tag>HEAD</tag>
-    </scm>
+	<!-- ====================================== -->
+	<!-- SOURCE CONTROL MANAGEMENT PROPERTIES -->
+	<!-- ====================================== -->
+	<scm>
+		<!-- connection and developerConnection must be added in children in order 
+			to work with git properly -->
+		<connection>${c8tech.scm.connection}</connection>
+		<developerConnection>${c8tech.scm.connection.dev}</developerConnection>
+		<url>${c8tech.scm.url}</url>
+		<tag>HEAD</tag>
+	</scm>
 
-    <licenses>
-        <license>
-            <name>Eclipse Public License v1.0</name>
-            <url>http://www.eclipse.org/legal/epl-v10.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-    <properties>
-    
-        <!-- ========================  -->
-        <!--    PROJECT PROPERTIES     -->
-        <!-- ========================  -->
+	<properties>
 
-        <!-- The minimal Java compiler version-->
-        <java.version>11</java.version>
-        <java.target.version>11</java.target.version>
-        <javadocJreApiVersion>11</javadocJreApiVersion>
-        
-        <!-- Encoding settings-->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- ======================== -->
+		<!-- PROJECT PROPERTIES -->
+		<!-- ======================== -->
 
-        <!-- Version format settings -->
-        <!-- The pattern of the timestamp to used by plugins at building time -->
-        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+		<!-- The minimal Java compiler version -->
+		<java.version>11</java.version>
+		<java.target.version>11</java.target.version>
+		<javadocJreApiVersion>11</javadocJreApiVersion>
 
-        <!-- ========================  -->
-        <!--      SCM PROPERTIES       -->
-        <!-- ========================  -->
-        <!-- sensitive properties must be defined in settings.xml -->
-        
-        <!-- the name of the git repository containing this project. -->
-        <!-- Override this property for each aggregator and parent POM on a new git repository. -->
-        <c8tech.scm.repo.name>c8tech-releng-maven</c8tech.scm.repo.name>
+		<!-- Encoding settings -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- The user used to upload released projects to the SCM repository  -->
-        <!-- Better override this property on setting.xml -->
-        <c8tech.scm.user />
-        
-        <!--  -->
-        <c8tech.scm.branch>master</c8tech.scm.branch>
-        
-        <!--  -->
-        <c8tech.scm.domain />
-        
-        <!--  -->
-        <c8tech.scm.connection.protocol>scm:git:git://</c8tech.scm.connection.protocol>
-        
-        <!--  -->
-        <c8tech.scm.connection.host />
-        
-        <!--  -->
-        <c8tech.scm.connection.dev.protocol>scm:git:ssh://</c8tech.scm.connection.dev.protocol>
-        
-        <!--  -->
-        <c8tech.scm.connection.dev.host />
+		<!-- Version format settings -->
+		<!-- The pattern of the timestamp to used by plugins at building time -->
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-        <!--  -->
-        <c8tech.scm.url>
-            ${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}/tree/${c8tech.scm.branch}/${project.artifactId}
-        </c8tech.scm.url>
+		<!-- ======================== -->
+		<!-- SCM PROPERTIES -->
+		<!-- ======================== -->
+		<!-- sensitive properties must be defined in settings.xml -->
 
-        <!--  -->
-        <c8tech.scm.connection>
-            ${c8tech.scm.connection.protocol}${c8tech.scm.connection.host}${c8tech.scm.user}/${c8tech.scm.repo.name}.git
-        </c8tech.scm.connection>
+		<!-- the name of the git repository containing this project. -->
+		<!-- Override this property for each aggregator and parent POM on a new 
+			git repository. -->
+		<c8tech.scm.repo.name>c8tech-releng-maven</c8tech.scm.repo.name>
 
-        <!--  -->
-        <c8tech.scm.connection.dev>
-            ${c8tech.scm.connection.dev.protocol}${c8tech.scm.connection.dev.host}/${c8tech.scm.user}/${c8tech.scm.repo.name}.git
-        </c8tech.scm.connection.dev>
+		<!-- The user used to upload released projects to the SCM repository -->
+		<!-- Better override this property on setting.xml -->
+		<c8tech.scm.user />
 
-        <project.scm.id>github.com</project.scm.id>
+		<!-- -->
+		<c8tech.scm.branch>master</c8tech.scm.branch>
 
+		<!-- -->
+		<c8tech.scm.domain />
 
-        <!-- ===============================  -->
-        <!-- SITE STAGE and RELEASE SETTINGS  -->
-        <!-- ===============================  -->
+		<!-- -->
+		<c8tech.scm.connection.protocol>scm:git:git://</c8tech.scm.connection.protocol>
+
+		<!-- -->
+		<c8tech.scm.connection.host />
+
+		<!-- -->
+		<c8tech.scm.connection.dev.protocol>scm:git:ssh://</c8tech.scm.connection.dev.protocol>
+
+		<!-- -->
+		<c8tech.scm.connection.dev.host />
+
+		<!-- -->
+		<c8tech.scm.url>
+			${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}/tree/${c8tech.scm.branch}/${project.artifactId}
+		</c8tech.scm.url>
+
+		<!-- -->
+		<c8tech.scm.connection>
+			${c8tech.scm.connection.protocol}${c8tech.scm.connection.host}${c8tech.scm.user}/${c8tech.scm.repo.name}.git
+		</c8tech.scm.connection>
+
+		<!-- -->
+		<c8tech.scm.connection.dev>
+			${c8tech.scm.connection.dev.protocol}${c8tech.scm.connection.dev.host}/${c8tech.scm.user}/${c8tech.scm.repo.name}.git
+		</c8tech.scm.connection.dev>
+
+		<project.scm.id>github.com</project.scm.id>
 
 
-        <!-- points to the root of project's site -->
-        <!-- it is better to override this property in the setting.xml file. -->
-        <c8tech.site.domain />
-        
-        <!-- the url of the repository's site -->
-        <c8tech.site.repository.url>${c8tech.site.domain}${c8tech.scm.repo.name}/</c8tech.site.repository.url>
-
-        <!-- the url of the repository's site -->
-        <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
-        
-        <!-- This property should be overridden on every parent POM 
-            in order to prevents maven's default behavior that is to 
-            append /${project.artifactId} in the end -->
-        <c8tech.distribution.protocol />
-        <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
-        
-        <!-- The Id of the site to be published-->
-        <!-- This value must point to a <server> in the settings.xml in order to get authentication data. -->
-        <c8tech.distribution.site.id>${c8tech.scm.repo.name}-ghpages</c8tech.distribution.site.id>
-
-        <c8tech.distribution.site.name>
-            ${project.artifactId} Site
-        </c8tech.distribution.site.name>
-
-        <!-- Properties that children projects can use to skip site generation and deployment executions -->
-        <c8tech.site.skip>false</c8tech.site.skip>
-        <c8tech.deploy.skip>false</c8tech.deploy.skip>
-
-        <!-- Points to the current project workspace where built repositories and site will be staged. -->
-        <!-- should be better to set this property in the settings.xml file or using system property JVM parameter (-Dc8tech.workspace.dir).
-            in command line.  -->
-        <c8tech.workspace.dir>${env.HOME}${file.separator}${project.groupId}-workspace-dev${file.separator}</c8tech.workspace.dir>
-
-        <!-- indicates where to stage built repositories in local machine -->
-        <c8tech.workspace.dir.repositories>${c8tech.workspace.dir}${file.separator}repositories${file.separator}</c8tech.workspace.dir.repositories>
-
-        <!-- indicates where to stage built repositories in local machine -->
-        <c8tech.workspace.dir.site>${c8tech.workspace.dir}${file.separator}STAGED-SITE${file.separator}</c8tech.workspace.dir.site>
-
-        <!-- should automatic push changes to scm repo when releasing -->
-        <c8tech.release.push>false</c8tech.release.push>
+		<!-- =============================== -->
+		<!-- SITE STAGE and RELEASE SETTINGS -->
+		<!-- =============================== -->
 
 
-        <!-- ========================  -->
-        <!--  ISSUE MANAGEMENT         -->
-        <!-- ========================  -->
-        <c8tech.im.system />
-        <c8tech.im.server.domain />
-        <c8tech.im.server.dir />
-        <c8tech.im.server.url>${c8tech.im.server.domain}/${c8tech.im.server.dir}</c8tech.im.server.url>
+		<!-- points to the root of project's site -->
+		<!-- it is better to override this property in the setting.xml file. -->
+		<c8tech.site.domain />
 
-        <!-- ========================  -->
-        <!--  Set CI SYSTEM and location    -->
-        <!-- ========================  -->
-        <c8tech.ci.system />
-        <c8tech.ci.server.url>${c8tech.ci.server.domain}/${c8tech.ci.server.user}/${c8tech.scm.repo.name}</c8tech.ci.server.url>
+		<!-- the url of the repository's site -->
+		<c8tech.site.repository.url>${c8tech.site.domain}${c8tech.scm.repo.name}/</c8tech.site.repository.url>
 
-        <!-- ========================  -->
-        <!--  MAVEN PLUGIN VERSIONS    -->
-        <!-- ========================  -->
-        <maven-assembly.version>3.1.1</maven-assembly.version>
-        <maven-antrun.version>1.8</maven-antrun.version>
-        <maven-animal-sniffer.version>1.17</maven-animal-sniffer.version>
-        <maven-build-helper.version>3.0.0</maven-build-helper.version>
-        <maven-checkstyle.version>3.1.0</maven-checkstyle.version>
-        <maven-clean.version>3.1.0</maven-clean.version>
-        <maven-compiler.version>3.8.1</maven-compiler.version>
-        <maven-dependency.version>3.1.1</maven-dependency.version>
-        <maven-depends.version>1.4.0</maven-depends.version>
-        <maven-deploy.version>3.0.0-M1</maven-deploy.version>
-        <maven-enforcer.version>3.0.0-M2</maven-enforcer.version>
-        <extra-enforcer-rules.version>1.2</extra-enforcer-rules.version>
-        <maven-findbugs.version>3.0.5</maven-findbugs.version>
-        <maven-gpg.version>1.6</maven-gpg.version>
-        <maven-install.version>3.0.0-M1</maven-install.version>
-        <maven-javadoc.version>3.1.0</maven-javadoc.version>
-        <maven-jar.version>3.1.2</maven-jar.version>
-        <maven-jar-signer.version>3.0.0</maven-jar-signer.version>
-        <maven-project-info-reports.version>3.0.0</maven-project-info-reports.version>
-        <maven-property.version>1.0.0</maven-property.version>
-        <maven-release.version>2.5.3</maven-release.version>
-        <maven-resources.version>3.1.0</maven-resources.version>
-        <maven-shade.version>3.2.1</maven-shade.version>
-        <maven-site.version>3.7.1</maven-site.version>
-        <maven-source.version>3.1.0</maven-source.version>
-        <!-- REPORTING -->
-        <taglist-maven.version>2.4</taglist-maven.version>
-        <report-license-maven.version>1.20</report-license-maven.version>
-        <versions-maven.version>2.7</versions-maven.version>
-        <maven-jxr.version>3.0.0</maven-jxr.version>
-        <maven.doxia.module.markdown.version>1.9</maven.doxia.module.markdown.version>
-        <maven-fluido-skin.version>1.7</maven-fluido-skin.version>
-        <maven-changes.version>2.12.1</maven-changes.version>
-        <maven-plugin-tools-javadoc.version>3.4</maven-plugin-tools-javadoc.version>
-        <plexus-component-javadoc.version>1.6</plexus-component-javadoc.version>
+		<!-- the url of the repository's site -->
+		<c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
 
-        <wagon-ssh.version>3.3.2</wagon-ssh.version>
-        <wagon-git.version>2.0.3</wagon-git.version>
+		<!-- This property should be overridden on every parent POM in order to 
+			prevents maven's default behavior that is to append /${project.artifactId} 
+			in the end -->
+		<c8tech.distribution.protocol />
+		<c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
 
-        <!-- Tools -->
-        <guava.version>27.1-jre</guava.version>
-        <dockerfile-maven.version>1.4.10</dockerfile-maven.version>
-        <johnzon.version>1.1.12</johnzon.version>
-        <geronimo.json.version>1.2</geronimo.json.version>
-        
-        <jool.version>0.9.14</jool.version>
-        <org.immutables.version>2.7.5</org.immutables.version>
-        
-        <!-- LOGGING AND MONITORING -->
-        <slf4j.version>1.7.25</slf4j.version>
-        <logback.version>1.2.3</logback.version>
+		<!-- The Id of the site to be published -->
+		<!-- This value must point to a <server> in the settings.xml in order to 
+			get authentication data. -->
+		<c8tech.distribution.site.id>${c8tech.scm.repo.name}-ghpages</c8tech.distribution.site.id>
 
-        <!-- in order to generate a short version of reports for testing
-            purposes -->
-        <c8tech.report.short>false</c8tech.report.short>
+		<c8tech.distribution.site.name>
+			${project.artifactId} Site
+		</c8tech.distribution.site.name>
+
+		<!-- Properties that children projects can use to skip site generation 
+			and deployment executions -->
+		<c8tech.site.skip>false</c8tech.site.skip>
+		<c8tech.deploy.skip>false</c8tech.deploy.skip>
+
+		<!-- Points to the current project workspace where built repositories and 
+			site will be staged. -->
+		<!-- should be better to set this property in the settings.xml file or 
+			using system property JVM parameter (-Dc8tech.workspace.dir). in command 
+			line. -->
+		<c8tech.workspace.dir>${env.HOME}${file.separator}${project.groupId}-workspace-dev${file.separator}</c8tech.workspace.dir>
+
+		<!-- indicates where to stage built repositories in local machine -->
+		<c8tech.workspace.dir.repositories>${c8tech.workspace.dir}${file.separator}repositories${file.separator}</c8tech.workspace.dir.repositories>
+
+		<!-- indicates where to stage built repositories in local machine -->
+		<c8tech.workspace.dir.site>${c8tech.workspace.dir}${file.separator}STAGED-SITE${file.separator}</c8tech.workspace.dir.site>
+
+		<!-- should automatic push changes to scm repo when releasing -->
+		<c8tech.release.push>false</c8tech.release.push>
 
 
-        <!-- license configuration -->
-        <!-- default license to use for children -->
-        <license-maven.version>3.0</license-maven.version>
-        <license.licenseName>epl_v1</license.licenseName>
-        <license.copyrightOwners>Cristiano V. Gavião</license.copyrightOwners>
+		<!-- ======================== -->
+		<!-- ISSUE MANAGEMENT -->
+		<!-- ======================== -->
+		<c8tech.im.system />
+		<c8tech.im.server.domain />
+		<c8tech.im.server.dir />
+		<c8tech.im.server.url>${c8tech.im.server.domain}/${c8tech.im.server.dir}</c8tech.im.server.url>
 
-        <!-- ************************ -->
-        <!-- TESTING -->
-        <!-- JACOCO and Sonar/Reporting settings -->
-        <maven-failsafe.version>3.0.0-M3</maven-failsafe.version>
-        <maven-surefire.version>${maven-failsafe.version}</maven-surefire.version>
-        <junit.version-platform>1.3.1</junit.version-platform>
-        <sonar-maven.version>3.6.0.1398</sonar-maven.version>
-        <jacoco-maven.version>0.8.3</jacoco-maven.version>
-        <pax-exam.version>4.11.0</pax-exam.version>
-        <junit.version>5.3.2</junit.version>
-        <mockito.version>2.28.2</mockito.version>
-        <assertj.version>3.12.2</assertj.version>
+		<!-- ======================== -->
+		<!-- Set CI SYSTEM and location -->
+		<!-- ======================== -->
+		<c8tech.ci.system />
+		<c8tech.ci.server.url>${c8tech.ci.server.domain}/${c8tech.ci.server.user}/${c8tech.scm.repo.name}</c8tech.ci.server.url>
 
-        <!-- The Sonar Jacoco Listener for JUnit to extract coverage details
-            per test -->
-        <sonar-jacoco-listeners.version>5.13.0.18197</sonar-jacoco-listeners.version>
+		<!-- ======================== -->
+		<!-- MAVEN PLUGIN VERSIONS -->
+		<!-- ======================== -->
+		<maven-assembly.version>3.1.1</maven-assembly.version>
+		<maven-antrun.version>1.8</maven-antrun.version>
+		<maven-animal-sniffer.version>1.17</maven-animal-sniffer.version>
+		<maven-build-helper.version>3.0.0</maven-build-helper.version>
+		<maven-checkstyle.version>3.1.0</maven-checkstyle.version>
+		<maven-clean.version>3.1.0</maven-clean.version>
+		<maven-compiler.version>3.8.1</maven-compiler.version>
+		<maven-dependency.version>3.1.1</maven-dependency.version>
+		<maven-depends.version>1.4.0</maven-depends.version>
+		<maven-deploy.version>3.0.0-M1</maven-deploy.version>
+		<maven-enforcer.version>3.0.0-M2</maven-enforcer.version>
+		<extra-enforcer-rules.version>1.2</extra-enforcer-rules.version>
+		<maven-findbugs.version>3.0.5</maven-findbugs.version>
+		<maven-gpg.version>1.6</maven-gpg.version>
+		<maven-install.version>3.0.0-M1</maven-install.version>
+		<maven-javadoc.version>3.1.0</maven-javadoc.version>
+		<maven-jar.version>3.1.2</maven-jar.version>
+		<maven-jar-signer.version>3.0.0</maven-jar-signer.version>
+		<maven-project-info-reports.version>3.0.0</maven-project-info-reports.version>
+		<maven-property.version>1.0.0</maven-property.version>
+		<maven-release.version>2.5.3</maven-release.version>
+		<maven-resources.version>3.1.0</maven-resources.version>
+		<maven-shade.version>3.2.1</maven-shade.version>
+		<maven-site.version>3.7.1</maven-site.version>
+		<maven-source.version>3.1.0</maven-source.version>
+		<!-- REPORTING -->
+		<taglist-maven.version>2.4</taglist-maven.version>
+		<report-license-maven.version>1.20</report-license-maven.version>
+		<versions-maven.version>2.7</versions-maven.version>
+		<maven-jxr.version>3.0.0</maven-jxr.version>
+		<maven.doxia.module.markdown.version>1.9</maven.doxia.module.markdown.version>
+		<maven-fluido-skin.version>1.7</maven-fluido-skin.version>
+		<maven-changes.version>2.12.1</maven-changes.version>
+		<maven-plugin-tools-javadoc.version>3.4</maven-plugin-tools-javadoc.version>
+		<plexus-component-javadoc.version>1.6</plexus-component-javadoc.version>
 
-        <commons-io.version>2.6</commons-io.version>
-        <commons-collections.version>3.2.2</commons-collections.version>
-        <commons-lang3.version>3.9</commons-lang3.version>
-        <commons-compress.version>1.18</commons-compress.version>
-        <freemarker.version>2.3.28</freemarker.version>
-        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+		<wagon-ssh.version>3.3.2</wagon-ssh.version>
+		<wagon-git.version>2.0.3</wagon-git.version>
 
-        <!-- ========================  -->
-        <!--      OSGI PROPERTIES       -->
-        <!-- ========================  -->
+		<!-- Tools -->
+		<guava.version>27.1-jre</guava.version>
+		<dockerfile-maven.version>1.4.10</dockerfile-maven.version>
+		<johnzon.version>1.1.12</johnzon.version>
+		<geronimo.json.version>1.2</geronimo.json.version>
+
+		<jool.version>0.9.14</jool.version>
+		<org.immutables.version>2.7.5</org.immutables.version>
+
+		<!-- LOGGING AND MONITORING -->
+		<slf4j.version>1.7.25</slf4j.version>
+		<logback.version>1.2.3</logback.version>
+
+		<!-- in order to generate a short version of reports for testing purposes -->
+		<c8tech.report.short>false</c8tech.report.short>
+
+
+		<!-- license configuration -->
+		<!-- default license to use for children -->
+		<license-maven.version>3.0</license-maven.version>
+		<license.licenseName>epl_v1</license.licenseName>
+		<license.copyrightOwners>Cristiano V. Gavião</license.copyrightOwners>
+
+		<!-- ************************ -->
+		<!-- TESTING -->
+		<!-- JACOCO and Sonar/Reporting settings -->
+		<maven-failsafe.version>3.0.0-M3</maven-failsafe.version>
+		<maven-surefire.version>${maven-failsafe.version}</maven-surefire.version>
+		<junit.version-platform>1.3.1</junit.version-platform>
+		<sonar-maven.version>3.6.0.1398</sonar-maven.version>
+		<jacoco-maven.version>0.8.3</jacoco-maven.version>
+		<pax-exam.version>4.11.0</pax-exam.version>
+		<junit.version>5.5.0-M1</junit.version>
+		<mockito.version>2.28.2</mockito.version>
+		<assertj.version>3.12.2</assertj.version>
+
+		<!-- The Sonar Jacoco Listener for JUnit to extract coverage details per 
+			test -->
+		<sonar-jacoco-listeners.version>5.13.0.18197</sonar-jacoco-listeners.version>
+
+		<commons-io.version>2.6</commons-io.version>
+		<commons-collections.version>3.2.2</commons-collections.version>
+		<commons-lang3.version>3.9</commons-lang3.version>
+		<commons-compress.version>1.18</commons-compress.version>
+		<freemarker.version>2.3.28</freemarker.version>
+		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+
+		<!-- ======================== -->
+		<!-- OSGI PROPERTIES -->
+		<!-- ======================== -->
+		<c8tech.releng.version>8.1-SNAPSHOT</c8tech.releng.version>
 		<maven-bundle.version>4.2.0</maven-bundle.version>
 		<osgi.core.version>7.0.0</osgi.core.version>
 		<osgi.cmpn.version>${osgi.core.version}</osgi.cmpn.version>
 		<osgi.annotation.version>${osgi.core.version}</osgi.annotation.version>
 		<pax-url.version>2.6.1</pax-url.version>
 
-    </properties>
+	</properties>
 
-    <profiles>
+	<profiles>
 
-        <profile>
-            <!-- profile used to setup a milestone release -->
-            <id>set-building-branch-to-milestone</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.branch</name>
-                    <value>milestone</value>
-                </property>
-            </activation>
-            <properties>
-                <c8tech.build.branch>milestone</c8tech.build.branch>
-                <c8tech.stage.artifact.version>M${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</c8tech.stage.artifact.version>
-                <c8tech.stage.repository.keep.old>true</c8tech.stage.repository.keep.old>
-            </properties>
-        </profile>
+		<profile>
+			<id>setup-site-for-parent-projects</id>
+			<activation>
+				<property>
+					<name>c8tech.build.release</name>
+				</property>
+				<file>
+					<exists>.c8tech.releng.parent</exists>
+				</file>
+			</activation>
+			<properties>
+				<c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
+				<c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
+				<c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
+			</properties>
+			<reporting>
+				<plugins>
+					<plugin>
+						<artifactId>maven-checkstyle-plugin</artifactId>
+						<version>${maven-checkstyle.version}</version>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jxr-plugin</artifactId>
+						<version>${maven-jxr.version}</version>
+						<reportSets>
+							<reportSet>
+								<id>aggregate-jxr</id>
+								<reports>
+									<report>aggregate</report>
+									<report>test-aggregate</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+						<configuration>
+							<skip>${c8tech.report.short}</skip>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<reportSets>
+							<reportSet>
+								<id>javadoc-aggregate</id>
+								<configuration>
+									<detectLinks>true</detectLinks>
+									<quiet>true</quiet>
+									<skip>${c8tech.skip.reports}</skip>
+								</configuration>
+								<reports>
+									<report>aggregate</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>taglist-maven-plugin</artifactId>
+						<version>${taglist-maven.version}</version>
+						<reportSets>
+							<reportSet>
+								<!-- defines taglist aggregate report -->
+								<id>taglist-aggregate</id>
+								<reports>
+									<report>taglist</report>
+								</reports>
+								<configuration>
+									<aggregate>true</aggregate>
+								</configuration>
+							</reportSet>
+						</reportSets>
+					</plugin>
+					<!-- <plugin> -->
+					<!-- <groupId>org.apache.maven.plugins</groupId> -->
+					<!-- <artifactId>maven-surefire-report-plugin</artifactId> -->
+					<!-- <version>${maven-surefire.version}</version> -->
+					<!-- <inherited>false</inherited> -->
+					<!-- <configuration> -->
+					<!-- <skipFailsafeReport>${c8tech.skip.reports}</skipFailsafeReport> -->
+					<!-- <skipSurefireReport>${c8tech.skip.reports}</skipSurefireReport> -->
+					<!-- <aggregate>true</aggregate> -->
+					<!-- </configuration> -->
+					<!-- </plugin> -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-project-info-reports-plugin</artifactId>
+						<version>${maven-project-info-reports.version}</version>
+						<configuration>
+							<dependencyDetailsEnabled>${c8tech.allow.reports}</dependencyDetailsEnabled>
+							<dependencyLocationsEnabled>${c8tech.allow.reports}</dependencyLocationsEnabled>
+						</configuration>
+						<reportSets>
+							<reportSet>
+								<id>parent-project-info-report</id>
+								<reports>
+									<!-- ci-management, dependencies, dependency-convergence, dependency-info, 
+										dependency-management, distribution-management, help, index, issue-management, 
+										licenses, mailing-lists, modules, plugin-management, plugins, scm, summary, 
+										team -->
+									<report>index</report>
+									<report>modules</report>
+									<report>team</report>
+									<report>licenses</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
+				</plugins>
+			</reporting>
+		</profile>
 
-        <profile>
-            <!-- profile used to setup a GA release -->
-            <id>set-building-branch-to-GA</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.branch</name>
-                    <value>release</value>
-                </property>
-            </activation>
-            <properties>
-                <c8tech.build.branch>release</c8tech.build.branch>
-                <c8tech.stage.artifact.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}</c8tech.stage.artifact.version>
-                <c8tech.stage.repository.keep.old>true</c8tech.stage.repository.keep.old>
-            </properties>
-        </profile>
+		<profile>
+			<id>setup-site-for-java-projects</id>
+			<activation>
+				<property>
+					<name>c8tech.build.release</name>
+				</property>
+				<file>
+					<exists>${basedir}/src/main/java</exists>
+					<missing>.c8tech.releng.solo</missing>
+				</file>
+			</activation>
+			<properties>
+				<c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}/${project.artifactId}</c8tech.project.site.url>
+				<c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
+				<c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}${project.artifactId}</c8tech.distribution.site.url>
+			</properties>
+		</profile>
 
-        <profile>
-            <!-- profile used to setup a snapshot release -->
-            <!-- it must be activated when there isn't c8tech.build.branch
-                defined. -->
-            <id>set-building-branch-to-latest</id>
-            <activation>
-                <property>
-                    <name>!c8tech.build.branch</name>
-                </property>
-            </activation>
-            <properties>
-                <c8tech.build.branch>latest</c8tech.build.branch>
-                <c8tech.stage.artifact.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</c8tech.stage.artifact.version>
-                <!-- is used to request that repositories that was generated
-                    and exported by old buildings do not be touched. -->
-                <c8tech.stage.repository.keep.old>false</c8tech.stage.repository.keep.old>
-            </properties>
-        </profile>
+		<profile>
+			<id>setup-site-parameters-for-java-projects-without-parent</id>
+			<activation>
+				<property>
+					<name>c8tech.build.release</name>
+				</property>
+				<file>
+					<exists>.c8tech.releng.solo</exists>
+				</file>
+			</activation>
+			<properties>
+				<c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
+				<c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
+				<c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
+			</properties>
+		</profile>
 
-        <profile>
-            <id>setup-site-for-parent-projects</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-                <file>
-                    <exists>.c8tech.releng.parent</exists>
-                </file>
-            </activation>
-            <properties>
-                <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
-                <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
-                <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
-            </properties>
-            <reporting>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>${maven-checkstyle.version}</version>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-jxr-plugin</artifactId>
-                        <version>${maven-jxr.version}</version>
-                        <reportSets>
-                            <reportSet>
-                                <id>aggregate-jxr</id>
-                                <reports>
-                                    <report>aggregate</report>
-                                    <report>test-aggregate</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                        <configuration>
-                            <skip>${c8tech.report.short}</skip>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <reportSets>
-                            <reportSet>
-                                <id>javadoc-aggregate</id>
-                                <configuration>
-                                    <detectLinks>true</detectLinks>
-                                    <quiet>true</quiet>
-                                    <skip>${c8tech.skip.reports}</skip>
-                                </configuration>
-                                <reports>
-                                    <report>aggregate</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>taglist-maven-plugin</artifactId>
-                        <version>${taglist-maven.version}</version>
-                        <reportSets>
-                            <reportSet>
-                                <!-- defines taglist aggregate report -->
-                                <id>taglist-aggregate</id>
-                                <reports>
-                                    <report>taglist</report>
-                                </reports>
-                                <configuration>
-                                    <aggregate>true</aggregate>
-                                </configuration>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-<!--                     <plugin> -->
-<!--                         <groupId>org.apache.maven.plugins</groupId> -->
-<!--                         <artifactId>maven-surefire-report-plugin</artifactId> -->
-<!--                         <version>${maven-surefire.version}</version> -->
-<!--                         <inherited>false</inherited> -->
-<!--                         <configuration> -->
-<!--                             <skipFailsafeReport>${c8tech.skip.reports}</skipFailsafeReport> -->
-<!--                             <skipSurefireReport>${c8tech.skip.reports}</skipSurefireReport> -->
-<!--                             <aggregate>true</aggregate> -->
-<!--                         </configuration> -->
-<!--                     </plugin> -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-project-info-reports-plugin</artifactId>
-                        <version>${maven-project-info-reports.version}</version>
-                        <configuration>
-                            <dependencyDetailsEnabled>${c8tech.allow.reports}</dependencyDetailsEnabled>
-                            <dependencyLocationsEnabled>${c8tech.allow.reports}</dependencyLocationsEnabled>
-                        </configuration>
-                        <reportSets>
-                            <reportSet>
-                                <id>parent-project-info-report</id>
-                                <reports>
-                                    <!-- ci-management, dependencies, dependency-convergence, 
-                                    dependency-info, dependency-management, distribution-management, 
-                                    help, index, issue-management, licenses, mailing-lists, 
-                                    modules, plugin-management, plugins, scm, summary, team -->
-                                    <report>index</report>
-                                    <report>modules</report>
-                                    <report>team</report>
-                                    <report>licenses</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                </plugins>
-            </reporting>
-        </profile>
+		<profile>
+			<id>setup-site-parameters-for-java-projects</id>
+			<activation>
+				<property>
+					<name>c8tech.build.release</name>
+				</property>
+				<file>
+					<exists>${basedir}/src/main/java</exists>
+				</file>
+			</activation>
+			<reporting>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-report-plugin</artifactId>
+						<version>${maven-surefire.version}</version>
+						<inherited>true</inherited>
+						<reportSets>
+							<reportSet>
+								<id>tests-report-java</id>
+								<reports>
+									<report>report-only</report>
+								</reports>
+							</reportSet>
+							<reportSet>
+								<id>integration-tests-report-java</id>
+								<reports>
+									<report>failsafe-report-only</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
 
-        <profile>
-            <id>setup-site-for-java-projects</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-                <file>
-                    <exists>${basedir}/src/main/java</exists>
-                    <missing>.c8tech.releng.solo</missing>
-                </file>
-            </activation>
-            <properties>
-                <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}/${project.artifactId}</c8tech.project.site.url>
-                <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
-                <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}${project.artifactId}</c8tech.distribution.site.url>
-            </properties>
-        </profile>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-changes-plugin</artifactId>
+						<version>${maven-changes.version}</version>
+						<configuration>
+							<includeOpenIssues>false</includeOpenIssues>
+						</configuration>
+						<reportSets>
+							<reportSet>
+								<id>changes-report-java</id>
+								<reports>
+									<report>changes-report</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>versions-maven-plugin</artifactId>
+						<version>${versions-maven.version}</version>
+						<configuration>
+							<skip>${c8tech.skip.reports}</skip>
+							<autoLinkItems>true</autoLinkItems>
+							<processProperties>true</processProperties>
+						</configuration>
+						<reportSets>
+							<reportSet>
+								<id>versions-report-java</id>
+								<reports>
+									<report>dependency-updates-report</report>
+									<report>plugin-updates-report</report>
+									<report>property-updates-report</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<version>${report-license-maven.version}</version>
+						<configuration>
+							<verbose>false</verbose>
+							<quiet>true</quiet>
+							<skipThirdPartyReport>${c8tech.skip.reports}</skipThirdPartyReport>
+						</configuration>
+						<reportSets>
+							<reportSet>
+								<id>licenses-report-java</id>
+								<reports>
+									<report>third-party-report</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-project-info-reports-plugin</artifactId>
+						<version>${maven-project-info-reports.version}</version>
+						<configuration>
+							<dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+							<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+							<!-- <dependencyDetailsEnabled>${c8tech.allow.reports}</dependencyDetailsEnabled> -->
+							<!-- <dependencyLocationsEnabled>${c8tech.allow.reports}</dependencyLocationsEnabled> -->
+						</configuration>
+						<reportSets>
+							<reportSet>
+								<id>project-info-report-java</id>
+								<reports>
+									<!-- ci-management, dependencies, dependency-convergence, dependency-info, 
+										dependency-management, distribution-management, help, index, issue-management, 
+										licenses, mailing-lists, modules, plugin-management, plugins, scm, summary, 
+										team -->
+									<report>index</report>
+									<report>ci-management</report>
+									<report>dependencies</report>
+									<report>dependency-convergence</report>
+									<report>dependency-info</report>
+									<report>dependency-management</report>
+									<report>distribution-management</report>
+									<report>issue-management</report>
+									<report>licenses</report>
+									<report>plugin-management</report>
+									<report>plugins</report>
+									<report>scm</report>
+									<report>summary</report>
+									<report>team</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jxr-plugin</artifactId>
+						<version>${maven-jxr.version}</version>
+						<reportSets>
+							<reportSet>
+								<id>jxr-report-java</id>
+								<reports>
+									<report>jxr</report>
+									<report>test-jxr</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>taglist-maven-plugin</artifactId>
+						<version>${taglist-maven.version}</version>
+						<reportSets>
+							<reportSet>
+								<!-- defines taglist reports in the modules -->
+								<id>taglist-report-java</id>
+								<reports>
+									<report>taglist</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
 
-        <profile>
-            <id>setup-site-parameters-for-java-projects-without-parent</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-                <file>
-                    <exists>.c8tech.releng.solo</exists>
-                </file>
-            </activation>
-            <properties>
-                <c8tech.project.site.url>${c8tech.site.domain}${c8tech.scm.repo.name}</c8tech.project.site.url>
-                <c8tech.scm.url>${c8tech.scm.domain}${c8tech.scm.user}/${c8tech.scm.repo.name}</c8tech.scm.url>
-                <c8tech.distribution.site.url>${c8tech.distribution.protocol}${c8tech.site.repository.url}</c8tech.distribution.site.url>
-            </properties>
-        </profile>
+				</plugins>
+			</reporting>
+		</profile>
 
-        <profile>
-            <id>setup-site-parameters-for-java-projects</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-                <file>
-                    <exists>${basedir}/src/main/java</exists>
-                </file>
-            </activation>
-            <reporting>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-report-plugin</artifactId>
-                        <version>${maven-surefire.version}</version>
-                        <inherited>true</inherited>
-                        <reportSets>
-                            <reportSet>
-                                <id>tests-report-java</id>
-                                <reports>
-                                    <report>report-only</report>
-                                </reports>
-                            </reportSet>
-                            <reportSet>
-                                <id>integration-tests-report-java</id>
-                                <reports>
-                                    <report>failsafe-report-only</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
+		<profile>
+			<!-- Enable unit testing. The profile is activated when you have src/test/java 
+				directory in the project. It will add junit, assertJ, and mockito artifacts 
+				to the classpath ("test" scope). -->
+			<!-- This profile is only activated when building in Eclipse with m2e -->
+			<id>when-building-java-with-junit-tests-eclipse</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/test/java</exists>
+				</file>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+			<dependencies>
+				<!-- <dependency> -->
+				<!-- <groupId>org.junit.platform</groupId> -->
+				<!-- <artifactId>junit-platform-launcher</artifactId> -->
+				<!-- <scope>test</scope> -->
+				<!-- </dependency> -->
+			</dependencies>
+		</profile>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-changes-plugin</artifactId>
-                        <version>${maven-changes.version}</version>
-                        <configuration>
-                            <includeOpenIssues>false</includeOpenIssues>
-                        </configuration>
-                        <reportSets>
-                            <reportSet>
-                                <id>changes-report-java</id>
-                                <reports>
-                                    <report>changes-report</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>versions-maven-plugin</artifactId>
-                        <version>${versions-maven.version}</version>
-                        <configuration>
-                            <skip>${c8tech.skip.reports}</skip>
-                            <autoLinkItems>true</autoLinkItems>
-                            <processProperties>true</processProperties>
-                        </configuration>
-                        <reportSets>
-                            <reportSet>
-                                <id>versions-report-java</id>
-                                <reports>
-                                    <report>dependency-updates-report</report>
-                                    <report>plugin-updates-report</report>
-                                    <report>property-updates-report</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>license-maven-plugin</artifactId>
-                        <version>${report-license-maven.version}</version>
-                        <configuration>
-                            <verbose>false</verbose>
-                            <quiet>true</quiet>
-                            <skipThirdPartyReport>${c8tech.skip.reports}</skipThirdPartyReport>
-                        </configuration>
-                        <reportSets>
-                            <reportSet>
-                                <id>licenses-report-java</id>
-                                <reports>
-                                    <report>third-party-report</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-project-info-reports-plugin</artifactId>
-                        <version>${maven-project-info-reports.version}</version>
-                        <configuration>
-                            <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
-                            <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-                            <!-- <dependencyDetailsEnabled>${c8tech.allow.reports}</dependencyDetailsEnabled> -->
-                            <!-- <dependencyLocationsEnabled>${c8tech.allow.reports}</dependencyLocationsEnabled> -->
-                        </configuration>
-                        <reportSets>
-                            <reportSet>
-                                <id>project-info-report-java</id>
-                                <reports>
-                                    <!-- ci-management, dependencies, dependency-convergence, 
-                                    dependency-info, dependency-management, distribution-management, 
-                                    help, index, issue-management, licenses, mailing-lists, 
-                                    modules, plugin-management, plugins, scm, summary, team -->
-                                    <report>index</report>
-                                    <report>ci-management</report>
-                                    <report>dependencies</report>
-                                    <report>dependency-convergence</report>
-                                    <report>dependency-info</report>
-                                    <report>dependency-management</report>
-                                    <report>distribution-management</report>
-                                    <report>issue-management</report>
-                                    <report>licenses</report>
-                                    <report>plugin-management</report>
-                                    <report>plugins</report>
-                                    <report>scm</report>
-                                    <report>summary</report>
-                                    <report>team</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-jxr-plugin</artifactId>
-                        <version>${maven-jxr.version}</version>
-                        <reportSets>
-                            <reportSet>
-                                <id>jxr-report-java</id>
-                                <reports>
-                                    <report>jxr</report>
-                                    <report>test-jxr</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>taglist-maven-plugin</artifactId>
-                        <version>${taglist-maven.version}</version>
-                        <reportSets>
-                            <reportSet>
-                                <!-- defines taglist reports in the modules -->
-                                <id>taglist-report-java</id>
-                                <reports>
-                                    <report>taglist</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
+		<profile>
+			<!-- Enable unit testing. The profile is activated when you have src/test/java 
+				directory in the project. It will add junit, assertJ, and mockito artifacts 
+				to the classpath ("test" scope). -->
+			<id>when-building-java-with-junit-tests</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/test/java</exists>
+				</file>
+			</activation>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit</groupId>
+						<artifactId>junit-bom</artifactId>
+						<version>${junit.version}</version>
+						<scope>import</scope>
+						<type>pom</type>
+					</dependency>
+					<dependency>
+						<groupId>org.mockito</groupId>
+						<artifactId>mockito-junit-jupiter</artifactId>
+						<version>${mockito.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.assertj</groupId>
+						<artifactId>assertj-core</artifactId>
+						<version>${assertj.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-simple</artifactId>
+						<version>${slf4j.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>info.solidsoft.mockito</groupId>
+						<artifactId>mockito-java8</artifactId>
+						<version>2.5.0</version>
+						<scope>test</scope>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+			<dependencies>
+				<dependency>
+					<groupId>org.junit.jupiter</groupId>
+					<artifactId>junit-jupiter-engine</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.junit.jupiter</groupId>
+					<artifactId>junit-jupiter-params</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.junit.jupiter</groupId>
+					<artifactId>junit-jupiter-api</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.mockito</groupId>
+					<artifactId>mockito-junit-jupiter</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.assertj</groupId>
+					<artifactId>assertj-core</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-simple</artifactId>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<version>${maven-surefire.version}</version>
+							<inherited>true</inherited>
+							<configuration>
+								<!-- Skips unit tests if the value of skip.unit.tests property is 
+									true -->
+								<skipTests>${skip.unit.tests}</skipTests>
+								<includes>
+									<include>**/*Test.java</include>
+									<include>**/*UnitTest.java</include>
+									<include>**/*UT.java</include>
+								</includes>
+								<excludes>
+									<exclude>**/*IntegrationTest.java</exclude>
+									<exclude>**/*ITest.java</exclude>
+									<exclude>**/*IT.java</exclude>
+								</excludes>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-failsafe-plugin</artifactId>
+							<version>${maven-failsafe.version}</version>
+							<inherited>true</inherited>
+							<configuration>
+								<includes>
+									<include>**/*IntegrationTest.java</include>
+									<include>**/*ITest.java</include>
+									<include>**/*IT.java</include>
+								</includes>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${maven-failsafe.version}</version>
+						<executions>
+							<execution>
+								<id>integration-test</id>
+								<goals>
+									<goal>integration-test</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>verify</id>
+								<goals>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-                </plugins>
-            </reporting>
-        </profile>
+		<profile>
+			<id>when-building-java-inside-jenkins</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/test/java</exists>
+				</file>
+				<property>
+					<name>env.WORKSPACE</name>
+				</property>
+			</activation>
+			<properties>
+				<c8tech.build.workspace>${env.WORKSPACE}</c8tech.build.workspace>
+			</properties>
+		</profile>
 
-        <profile>
-            <!--
-            Enable unit testing. The profile is activated when you have
-            src/test/java directory in the project. It will add junit, assertJ,
-            and mockito artifacts to the classpath ("test" scope).
-            -->
-   <!-- This profile is only activated when building in Eclipse with m2e -->
-            <id>when-building-java-with-junit-tests-eclipse</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/test/java</exists>
-                </file>
-                <property>
-                    <name>m2e.version</name>
-                </property>
-            </activation>
-            <dependencies>
-<!--                 <dependency> -->
-<!--                     <groupId>org.junit.platform</groupId> -->
-<!--                     <artifactId>junit-platform-launcher</artifactId> -->
-<!--                     <scope>test</scope> -->
-<!--                 </dependency> -->
-            </dependencies>
-        </profile>
+		<profile>
+			<id>when-building-java-with-parent-outside-jenkins</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/test/java</exists>
+					<missing>.c8tech.releng.solo</missing>
+				</file>
+				<property>
+					<name>!env.WORKSPACE</name>
+				</property>
+			</activation>
+			<properties>
+				<c8tech.build.workspace>${basedir}/../target/</c8tech.build.workspace>
+			</properties>
+		</profile>
 
-        <profile>
-            <!--
-            Enable unit testing. The profile is activated when you have
-            src/test/java directory in the project. It will add junit, assertJ,
-            and mockito artifacts to the classpath ("test" scope).
-            -->
-            <id>when-building-java-with-junit-tests</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/test/java</exists>
-                </file>
-            </activation>
-            <dependencyManagement>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.junit</groupId>
-                        <artifactId>junit-bom</artifactId>
-                        <version>${junit.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.mockito</groupId>
-                        <artifactId>mockito-junit-jupiter</artifactId>
-                        <version>${mockito.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.assertj</groupId>
-                        <artifactId>assertj-core</artifactId>
-                        <version>${assertj.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-simple</artifactId>
-                        <version>${slf4j.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>info.solidsoft.mockito</groupId>
-                        <artifactId>mockito-java8</artifactId>
-                        <version>2.5.0</version>
-                        <scope>test</scope>
-                    </dependency>
-                </dependencies>
-            </dependencyManagement>
-            <dependencies>
-                <dependency>
-                    <groupId>org.junit.jupiter</groupId>
-                    <artifactId>junit-jupiter-engine</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.junit.jupiter</groupId>
-                    <artifactId>junit-jupiter-params</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.junit.jupiter</groupId>
-                    <artifactId>junit-jupiter-api</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                 <dependency>
-                    <groupId>org.mockito</groupId>
-                    <artifactId>mockito-junit-jupiter</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.assertj</groupId>
-                    <artifactId>assertj-core</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-simple</artifactId>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-surefire-plugin</artifactId>
-                            <version>${maven-surefire.version}</version>
-                            <inherited>true</inherited>
-                            <configuration>
-                        <!-- Skips unit tests if the value of skip.unit.tests
-                            property is true -->
-                                <skipTests>${skip.unit.tests}</skipTests>
-                                <includes>
-                                    <include>**/*Test.java</include>
-                                    <include>**/*UnitTest.java</include>
-                                    <include>**/*UT.java</include>
-                                </includes>
-                                <excludes>
-                                    <exclude>**/*IntegrationTest.java</exclude>
-                                    <exclude>**/*ITest.java</exclude>
-                                    <exclude>**/*IT.java</exclude>
-                                </excludes>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-failsafe-plugin</artifactId>
-                            <version>${maven-failsafe.version}</version>
-                            <inherited>true</inherited>
-                            <configuration>
-                                <includes>
-                                    <include>**/*IntegrationTest.java</include>
-                                    <include>**/*ITest.java</include>
-                                    <include>**/*IT.java</include>
-                                </includes>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${maven-failsafe.version}</version>
-                        <executions>
-                            <execution>
-                                <id>integration-test</id>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>verify</id>
-                                <goals>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+		<profile>
+			<id>when-building-java-without-parent-outside-jenkins</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/test/java</exists>
+				</file>
+				<property>
+					<name>!env.WORKSPACE</name>
+				</property>
+			</activation>
+			<properties>
+				<c8tech.build.workspace>${basedir}/target/</c8tech.build.workspace>
+			</properties>
+		</profile>
 
-        <profile>
-            <id>when-building-java-inside-jenkins</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/test/java</exists>
-                </file>
-                <property>
-                    <name>env.WORKSPACE</name>
-                </property>
-            </activation>
-            <properties>
-                <c8tech.build.workspace>${env.WORKSPACE}</c8tech.build.workspace>
-            </properties>
-        </profile>
+		<profile>
+			<!-- This profile is used to setup a code coverage using Jacoco that will 
+				be sent for SonarQube. -->
+			<!-- Sonar/Jacoco integration. The sonar.host.url must be defined in a 
+				profile inside setting.xml. Note that you need to call both profiles when 
+				executing sonar using: 'mvn sonar:sonar -Dc8tech.build.test.coverage'. <sonar.host.url>http://localhost:9000/</sonar.host.url> -->
+			<id>when-building-java-do-test-with-CodeCoverage</id>
+			<activation>
+				<property>
+					<name>c8tech.build.test.coverage</name>
+				</property>
+				<file>
+					<exists>${basedir}/src/test/java</exists>
+				</file>
+			</activation>
+			<properties>
+				<argLine>-Xmx1024m</argLine>
 
-        <profile>
-            <id>when-building-java-with-parent-outside-jenkins</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/test/java</exists>
-                    <missing>.c8tech.releng.solo</missing>
-                </file>
-                <property>
-                    <name>!env.WORKSPACE</name>
-                </property>
-            </activation>
-            <properties>
-                <c8tech.build.workspace>${basedir}/../target/</c8tech.build.workspace>
-            </properties>
-        </profile>
+				<jacoco.outputDir>${c8tech.build.workspace}/jacoco</jacoco.outputDir>
 
-        <profile>
-            <id>when-building-java-without-parent-outside-jenkins</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/test/java</exists>
-                </file>
-                <property>
-                    <name>!env.WORKSPACE</name>
-                </property>
-            </activation>
-            <properties>
-                <c8tech.build.workspace>${basedir}/target/</c8tech.build.workspace>
-            </properties>
-        </profile>
+				<c8tech.jacoco.include>*/**</c8tech.jacoco.include>
 
-        <profile>
-            <!-- This profile is used to setup a code coverage using Jacoco
-                that will be sent for SonarQube. -->
-            <!-- Sonar/Jacoco integration. The sonar.host.url must be defined
-                in a profile inside setting.xml. Note that you need to call both profiles
-                when executing sonar using: 'mvn sonar:sonar -Dc8tech.build.test.coverage'.
-                <sonar.host.url>http://localhost:9000/</sonar.host.url> -->
-            <id>when-building-java-do-test-with-CodeCoverage</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.test.coverage</name>
-                </property>
-                <file>
-                    <exists>${basedir}/src/test/java</exists>
-                </file>
-            </activation>
-            <properties>
-                <argLine>-Xmx1024m</argLine>
+				<!-- Tells Sonar to use jacoco for coverage results -->
+				<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 
-                <jacoco.outputDir>${c8tech.build.workspace}/jacoco</jacoco.outputDir>
+				<!-- Tells Sonar where the Jacoco coverage result file is located for 
+					Integration Tests -->
+				<sonar.jacoco.reportPaths>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.reportPaths>
 
-                <c8tech.jacoco.include>*/**</c8tech.jacoco.include>
+				<sonar.language>java</sonar.language>
 
-                <!-- Tells Sonar to use jacoco for coverage results -->
-                <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+				<sonar.report.export.path>issues</sonar.report.export.path>
 
-                <!-- Tells Sonar where the Jacoco coverage result file is
-                    located for Integration Tests -->
-                <sonar.jacoco.reportPaths>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.reportPaths>
+				<sonar.verbose>false</sonar.verbose>
 
-                <sonar.language>java</sonar.language>
+				<!-- Jacoco output file for UTs -->
+				<jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
 
-                <sonar.report.export.path>issues</sonar.report.export.path>
+				<!-- Tells Sonar where the Jacoco coverage result file is located for 
+					Unit Tests -->
+				<sonar.jacoco.reportPaths>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPaths>
 
-                <sonar.verbose>false</sonar.verbose>
+				<!-- Jacoco output file for ITs -->
+				<jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
 
-                <!-- Jacoco output file for UTs -->
-                <jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
+				<!-- where sonar will find the junit reports -->
+				<sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
+				<sonar.junit.itReportsPath>target/failsafe-reports</sonar.junit.itReportsPath>
 
-                <!-- Tells Sonar where the Jacoco coverage result file is
-                    located for Unit Tests -->
-                <sonar.jacoco.reportPaths>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPaths>
+			</properties>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<!-- Setup jacoco -->
+						<plugin>
+							<groupId>org.jacoco</groupId>
+							<artifactId>jacoco-maven-plugin</artifactId>
+							<version>${jacoco-maven.version}</version>
+							<configuration>
+								<append>true</append>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<version>${maven-surefire.version}</version>
+							<inherited>true</inherited>
+							<configuration>
+								<!-- <runOrder>random</runOrder> -->
+								<properties>
+									<property>
+										<name>listener</name>
+										<value>org.sonar.java.jacoco.JUnitListener</value>
+									</property>
+								</properties>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-failsafe-plugin</artifactId>
+							<version>${maven-surefire.version}</version>
+							<inherited>true</inherited>
+							<configuration>
+								<failIfNoTests>false</failIfNoTests>
+								<!-- Specific to generate mapping between tests and covered code -->
+								<properties>
+									<property>
+										<name>listener</name>
+										<value>org.sonar.java.jacoco.JUnitListener</value>
+									</property>
+								</properties>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<!-- Enabling use of jacoco -->
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>${jacoco-maven.version}</version>
+						<executions>
+							<!-- Prepares a variable, jacoco.agent.ut.arg, that contains the info 
+								to be passed to the JVM hosting the code being tested. -->
+							<execution>
+								<id>prepare-ut-agent</id>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<phase>process-test-classes</phase>
+								<configuration>
+									<destFile>${sonar.jacoco.reportPaths}</destFile>
+								</configuration>
+							</execution>
+							<execution>
+								<id>default-report</id>
+								<goals>
+									<goal>report</goal>
+								</goals>
+								<phase>verify</phase>
+								<configuration>
+									<dataFile>${sonar.jacoco.reportPaths}</dataFile>
+								</configuration>
+							</execution>
+							<execution>
+								<!-- Prepares a variable, jacoco.agent.it.arg, that contains the 
+									info to be passed to the JVM hosting the code being tested. -->
+								<id>prepare-it-agent</id>
+								<goals>
+									<goal>prepare-agent-integration</goal>
+								</goals>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<destFile>${sonar.jacoco.reportPaths}</destFile>
+								</configuration>
+							</execution>
+							<execution>
+								<id>default-report-itest</id>
+								<goals>
+									<goal>report-integration</goal>
+								</goals>
+								<phase>verify</phase>
+								<configuration>
+									<dataFile>${sonar.jacoco.reportPaths}</dataFile>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.sonarsource.java</groupId>
+					<artifactId>sonar-jacoco-listeners</artifactId>
+					<version>${sonar-jacoco-listeners.version}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
 
-                <!-- Jacoco output file for ITs -->
-                <jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
+		<profile>
+			<id>when-building-any-project-check-license</id>
+			<activation>
+				<property>
+					<name>c8tech.build.test.coverage</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<inherited>true</inherited>
+						<configuration>
+							<verbose>false</verbose>
+							<useMissingFile>true</useMissingFile>
+							<failIfWarning>true</failIfWarning>
+							<deployMissingFile>false</deployMissingFile>
+							<useRepositoryMissingFiles>false</useRepositoryMissingFiles>
+							<includeTransitiveDependencies>false</includeTransitiveDependencies>
+							<roots>
+								<root>src/main/java</root>
+								<root>src/test/java</root>
+							</roots>
+						</configuration>
+						<executions>
+							<execution>
+								<id>check-license-files</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>update-project-license</goal>
+									<goal>add-third-party</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-                <!-- where sonar will find the junit reports -->
-                <sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
-                <sonar.junit.itReportsPath>target/failsafe-reports</sonar.junit.itReportsPath>
+		<profile>
+			<id>when-building-root-project-check-headers</id>
+			<activation>
+				<file>
+					<exists>pom.xml</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<inherited>true</inherited>
+						<executions>
+							<execution>
+								<id>check-header-root-project</id>
+								<goals>
+									<goal>check</goal>
+								</goals>
+								<phase>process-test-classes</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-            </properties>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <!-- Setup jacoco -->
-                        <plugin>
-                            <groupId>org.jacoco</groupId>
-                            <artifactId>jacoco-maven-plugin</artifactId>
-                            <version>${jacoco-maven.version}</version>
-                            <configuration>
-                                <append>true</append>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-surefire-plugin</artifactId>
-                            <version>${maven-surefire.version}</version>
-                            <inherited>true</inherited>
-                            <configuration>
-<!--                                 <runOrder>random</runOrder> -->
-                                <properties>
-                                    <property>
-                                        <name>listener</name>
-                                        <value>org.sonar.java.jacoco.JUnitListener</value>
-                                    </property>
-                                </properties>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-failsafe-plugin</artifactId>
-                            <version>${maven-surefire.version}</version>
-                            <inherited>true</inherited>
-                            <configuration>
-                                <failIfNoTests>false</failIfNoTests>
-                                <!-- Specific to generate mapping between
-                                    tests and covered code -->
-                                <properties>
-                                    <property>
-                                        <name>listener</name>
-                                        <value>org.sonar.java.jacoco.JUnitListener</value>
-                                    </property>
-                                </properties>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-                <plugins>
-                    <!-- Enabling use of jacoco -->
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>${jacoco-maven.version}</version>
-                        <executions>
-                            <!-- Prepares a variable, jacoco.agent.ut.arg,
-                                that contains the info to be passed to the JVM hosting the code being tested. -->
-                            <execution>
-                                <id>prepare-ut-agent</id>
-                                <goals>
-                                    <goal>prepare-agent</goal>
-                                </goals>
-                                <phase>process-test-classes</phase>
-                                <configuration>
-                                    <destFile>${sonar.jacoco.reportPaths}</destFile>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>default-report</id>
-                                <goals>
-                                    <goal>report</goal>
-                                </goals>
-                                <phase>verify</phase>
-                                <configuration>
-                                    <dataFile>${sonar.jacoco.reportPaths}</dataFile>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <!-- Prepares a variable, jacoco.agent.it.arg,
-                                    that contains the info to be passed to the JVM hosting the code being tested. -->
-                                <id>prepare-it-agent</id>
-                                <goals>
-                                    <goal>prepare-agent-integration</goal>
-                                </goals>
-                                <phase>pre-integration-test</phase>
-                                <configuration>
-                                    <destFile>${sonar.jacoco.reportPaths}</destFile>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>default-report-itest</id>
-                                <goals>
-                                    <goal>report-integration</goal>
-                                </goals>
-                                <phase>verify</phase>
-                                <configuration>
-                                    <dataFile>${sonar.jacoco.reportPaths}</dataFile>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-            <dependencies>
-                <dependency>
-                    <groupId>org.sonarsource.java</groupId>
-                    <artifactId>sonar-jacoco-listeners</artifactId>
-                    <version>${sonar-jacoco-listeners.version}</version>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
-        </profile>
+		<profile>
+			<id>when-building-java-project</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/main/java</exists>
+				</file>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+					<scope>compile</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.immutables</groupId>
+					<artifactId>value</artifactId>
+					<version>${org.immutables.version}</version>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.immutables</groupId>
+					<artifactId>builder</artifactId>
+					<version>${org.immutables.version}</version>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+			<build>
+			</build>
+		</profile>
 
-        <profile>
-            <id>when-building-any-project-check-license</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.test.coverage</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>license-maven-plugin</artifactId>
-                        <inherited>true</inherited>
-                        <configuration>
-                            <verbose>false</verbose>
-                            <useMissingFile>true</useMissingFile>
-                            <failIfWarning>true</failIfWarning>
-                            <deployMissingFile>false</deployMissingFile>
-                            <useRepositoryMissingFiles>false</useRepositoryMissingFiles>
-                            <includeTransitiveDependencies>false</includeTransitiveDependencies>
-                            <roots>
-                                <root>src/main/java</root>
-                                <root>src/test/java</root>
-                            </roots>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>check-license-files</id>
-                                <phase>generate-resources</phase>
-                                <goals>
-                                    <goal>update-project-license</goal>
-                                    <goal>add-third-party</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+		<profile>
+			<!-- profile used to sign bundles that will be released and deployed -->
+			<id>when-releasing-java-sign-jar</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/main/java</exists>
+				</file>
+				<property>
+					<name>c8tech.build.release</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jarsigner-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>verify</id>
+								<goals>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-        <profile>
-            <id>when-building-root-project-check-headers</id>
-            <activation>
-                <file><exists>pom.xml</exists></file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.mycila</groupId>
-                        <artifactId>license-maven-plugin</artifactId>
-                        <inherited>true</inherited>
-                        <executions>
-                            <execution>
-                                <id>check-header-root-project</id>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                                <phase>process-test-classes</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>when-building-java-project</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/main/java</exists>
-                </file>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.immutables</groupId>
-                    <artifactId>value</artifactId>
-                    <version>${org.immutables.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.immutables</groupId>
-                    <artifactId>builder</artifactId>
-                    <version>${org.immutables.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
-            <build>
-            </build>
-        </profile>
-
-        <profile>
-            <!-- profile used to sign bundles that will be released and deployed -->
-            <id>when-releasing-java-sign-jar</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/main/java</exists>
-                </file>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-jarsigner-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>sign</id>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>verify</id>
-                                <goals>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <!-- profile used to sign resources that will be released and
-                deployed -->
-            <id>when-releasing-any-resources-sign-them</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                                <configuration>
-                                    <keyname>${gpg.keyname}</keyname>
-                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+		<profile>
+			<!-- profile used to sign resources that will be released and deployed -->
+			<id>when-releasing-any-resources-sign-them</id>
+			<activation>
+				<property>
+					<name>c8tech.build.release</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+								<configuration>
+									<keyname>${gpg.keyname}</keyname>
+									<passphraseServerId>${gpg.keyname}</passphraseServerId>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
 
-        <profile>
-            <!-- profile used to generate JAVADOC for OSGi bundle projects -->
-            <id>when-releasing-java-generate-javadoc</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/main/java</exists>
-                </file>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <!-- Generates Javadoc -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                                <configuration>
-                                    <additionalparam>${javadoc.opts}</additionalparam>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+		<profile>
+			<!-- profile used to generate JAVADOC for OSGi bundle projects -->
+			<id>when-releasing-java-generate-javadoc</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/main/java</exists>
+				</file>
+				<property>
+					<name>c8tech.build.release</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Generates Javadoc -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+								<configuration>
+									<additionalparam>${javadoc.opts}</additionalparam>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-        <profile>
-            <!-- profile used to generate source artifacts for bundles. It
-                is activated only for full buildings -->
-            <id>when-releasing-java-generate-source</id>
-            <activation>
-                <file>
-                    <exists>${basedir}/src/main/java</exists>
-                </file>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <!-- Generates jar with sources -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-	                    <version>${maven-source.version}</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <excludeResources>true</excludeResources>
-                            <excludes>
-                                <exclude>**/jars/**</exclude>
-                            </excludes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+		<profile>
+			<!-- profile used to generate source artifacts for bundles. It is activated 
+				only for full buildings -->
+			<id>when-releasing-java-generate-source</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/main/java</exists>
+				</file>
+				<property>
+					<name>c8tech.build.release</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Generates jar with sources -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>${maven-source.version}</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<phase>package</phase>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<excludeResources>true</excludeResources>
+							<excludes>
+								<exclude>**/jars/**</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-        <profile>
-            <!-- It will ensure that the required properties are being provided -->
-            <id>when-releasing-ensure-requirements</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <inherited>true</inherited>
-                        <configuration>
-                            <failFast>true</failFast>
-                            <fail>true</fail>
-                            <ignoreCache>true</ignoreCache>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>enforce-property</id>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <configuration>
-                                    <rules>
-                                        <requireProperty>
-                                            <property>c8tech.build.release</property>
-                                            <message>You must set the
-                                                c8tech.build.release
-                                                property, so all
-                                                profiles related are
-                                                called.
-                                            </message>
-                                        </requireProperty>
-                                        <requireProperty>
-                                            <property>c8tech.build.branch</property>
-                                            <message>You must set
-                                                c8tech.build.branch.
-                                            </message>
-                                        </requireProperty>
-                                        <requireProperty>
-                                            <property>c8tech.workspace.dir</property>
-                                            <message>You must set the
-                                                c8tech.workspace.dir
-                                                property in
-                                                the
-                                                settings.xml file!</message>
-                                        </requireProperty>
-                                    </rules>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+		<profile>
+			<!-- It will ensure that the required properties are being provided -->
+			<id>when-releasing-ensure-requirements</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<inherited>true</inherited>
+						<configuration>
+							<failFast>true</failFast>
+							<fail>true</fail>
+							<ignoreCache>true</ignoreCache>
+						</configuration>
+						<executions>
+							<execution>
+								<id>enforce-property</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireProperty>
+											<property>c8tech.build.release</property>
+											<message>You must set the
+												c8tech.build.release
+												property, so all
+												profiles related are
+												called.
+											</message>
+										</requireProperty>
+										<requireProperty>
+											<property>c8tech.build.branch</property>
+											<message>You must set
+												c8tech.build.branch.
+											</message>
+										</requireProperty>
+										<requireProperty>
+											<property>c8tech.workspace.dir</property>
+											<message>You must set the
+												c8tech.workspace.dir
+												property in
+												the
+												settings.xml file!</message>
+										</requireProperty>
+									</rules>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
 
-        <profile>
-            <id>when-releasing-parent-project</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-                <file>
-                    <exists>.c8tech.build.parent</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <inherited>true</inherited>
-                        <configuration>
-                            <failFast>true</failFast>
-                            <fail>true</fail>
-                            <ignoreCache>true</ignoreCache>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>check-project-files</id>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <phase>initialize</phase>
-                                <configuration>
-                                    <rules>
-                                        <requireFilesExist>
-                                            <files>
-                                                <file>LICENSE.txt</file>
-                                                <file>README.md</file>
-                                                <!-- <file>NOTICE.txt</file> -->
-                                                <!--<file>changelog.txt</file> -->
-                                            </files>
-                                        </requireFilesExist>
-                                    </rules>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-site-plugin</artifactId>
-                        <inherited>false</inherited>
-                        <executions>
-                            <execution>
-                                <id>attach-file</id>
-                                <goals>
-                                    <goal>attach-descriptor</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+		<profile>
+			<id>when-releasing-parent-project</id>
+			<activation>
+				<property>
+					<name>c8tech.build.release</name>
+				</property>
+				<file>
+					<exists>.c8tech.build.parent</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<inherited>true</inherited>
+						<configuration>
+							<failFast>true</failFast>
+							<fail>true</fail>
+							<ignoreCache>true</ignoreCache>
+						</configuration>
+						<executions>
+							<execution>
+								<id>check-project-files</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<phase>initialize</phase>
+								<configuration>
+									<rules>
+										<requireFilesExist>
+											<files>
+												<file>LICENSE.txt</file>
+												<file>README.md</file>
+												<!-- <file>NOTICE.txt</file> -->
+												<!--<file>changelog.txt</file> -->
+											</files>
+										</requireFilesExist>
+									</rules>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-site-plugin</artifactId>
+						<inherited>false</inherited>
+						<executions>
+							<execution>
+								<id>attach-file</id>
+								<goals>
+									<goal>attach-descriptor</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-        <profile>
-            <id>when-releasing-java-project</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-                <file>
-                    <exists>${basedir}/src/main/java</exists>
-                </file>
-            </activation>
-            <properties>
-                <baseline.failOnError>true</baseline.failOnError>
-                <baseline.failOnWarning>false</baseline.failOnWarning>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <!-- plugin used to clean the latest snapshot build -->
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>build-helper-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>remove-old-artifacts</id>
-                                <phase>install</phase>
-                                <goals>
-                                    <goal>remove-project-artifact</goal>
-                                </goals>
-                                <configuration>
-                                    <removeAll>false</removeAll>
-                                    <!-- When true, remove all built artifacts
-                                        including all versions. When false, remove all built artifacts of this project
-                                        version -->
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <inherited>true</inherited>
-                        <configuration>
-                            <failFast>true</failFast>
-                            <fail>true</fail>
-                            <ignoreCache>true</ignoreCache>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>check-required-properties</id>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <phase>initialize</phase>
-                                <configuration>
-                                    <rules>
-                                        <requireProperty>
-                                            <property>c8tech.build.test.coverage</property>
-                                        </requireProperty>
-                                    </rules>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>update-headers-and-licenses</id>
-            <activation>
-            	<activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.mycila</groupId>
-                        <artifactId>license-maven-plugin</artifactId>
-                        <inherited>true</inherited>
-                        <executions>
-                            <execution>
-                                <id>update-license-header</id>
-                                <inherited>true</inherited>
-                                <phase>process-resources</phase>
-                                <goals>
-                                	<goal>remove</goal>
-                                    <goal>format</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>license-maven-plugin</artifactId>
-                        <inherited>true</inherited>
-                        <configuration>
-                            <verbose>false</verbose>
-                            <acceptPomPackaging>true</acceptPomPackaging>
-                            <deployMissingFile>false</deployMissingFile>
-                            <failIfWarning>true</failIfWarning>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>update-license-files</id>
-                                <phase>generate-resources</phase>
-                                <goals>
-                                    <goal>update-project-license</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+		<profile>
+			<id>when-releasing-java-project</id>
+			<activation>
+				<property>
+					<name>c8tech.build.release</name>
+				</property>
+				<file>
+					<exists>${basedir}/src/main/java</exists>
+				</file>
+			</activation>
+			<properties>
+				<baseline.failOnError>true</baseline.failOnError>
+				<baseline.failOnWarning>false</baseline.failOnWarning>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- plugin used to clean the latest snapshot build -->
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>remove-old-artifacts</id>
+								<phase>install</phase>
+								<goals>
+									<goal>remove-project-artifact</goal>
+								</goals>
+								<configuration>
+									<removeAll>false</removeAll>
+									<!-- When true, remove all built artifacts including all versions. 
+										When false, remove all built artifacts of this project version -->
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<inherited>true</inherited>
+						<configuration>
+							<failFast>true</failFast>
+							<fail>true</fail>
+							<ignoreCache>true</ignoreCache>
+						</configuration>
+						<executions>
+							<execution>
+								<id>check-required-properties</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<phase>initialize</phase>
+								<configuration>
+									<rules>
+										<requireProperty>
+											<property>c8tech.build.test.coverage</property>
+										</requireProperty>
+									</rules>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>update-headers-and-licenses</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<inherited>true</inherited>
+						<executions>
+							<execution>
+								<id>update-license-header</id>
+								<inherited>true</inherited>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>remove</goal>
+									<goal>format</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<inherited>true</inherited>
+						<configuration>
+							<verbose>false</verbose>
+							<acceptPomPackaging>true</acceptPomPackaging>
+							<deployMissingFile>false</deployMissingFile>
+							<failIfWarning>true</failIfWarning>
+						</configuration>
+						<executions>
+							<execution>
+								<id>update-license-files</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>update-project-license</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-        <profile>
-            <!-- profile used to setup the environment for eclipse/m2e development -->
-            <id>lifecycle-mapping-in-eclipse</id>
-            <!-- activated only when running in m2e (eclipse) -->
-            <activation>
-                <property>
-                    <name>m2e.version</name>
-                </property>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.eclipse.m2e</groupId>
-                            <artifactId>lifecycle-mapping</artifactId>
-                            <version>1.0.0</version>
-                            <configuration>
-                                <lifecycleMappingMetadata>
-                                    <pluginExecutions>
-                                        <pluginExecution>
-                                            <pluginExecutionFilter>
-                                                <groupId>org.apache.maven.plugins</groupId>
-                                                <artifactId>maven-dependency-plugin</artifactId>
-                                                <versionRange>[3.0,)</versionRange>
-                                                <goals>
-                                                    <goal>copy</goal>
-                                                    <goal>unpack</goal>
-                                                </goals>
-                                            </pluginExecutionFilter>
-                                            <action>
-                                                <execute>
-                                                    <runOnIncremental>true</runOnIncremental>
-                                                    <runOnConfiguration>true</runOnConfiguration>
-                                                </execute>
-                                            </action>
-                                        </pluginExecution>
+		<profile>
+			<!-- profile used to setup the environment for eclipse/m2e development -->
+			<id>lifecycle-mapping-in-eclipse</id>
+			<!-- activated only when running in m2e (eclipse) -->
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>lifecycle-mapping</artifactId>
+							<version>1.0.0</version>
+							<configuration>
+								<lifecycleMappingMetadata>
+									<pluginExecutions>
 										<pluginExecution>
-		                					<pluginExecutionFilter>
-		                						<groupId>com.mycila</groupId>
-		                						<artifactId>
-		                							license-maven-plugin
-		                						</artifactId>
-		                						<versionRange>
-		                							[3.0,)
-		                						</versionRange>
-		                						<goals>
-		                							<goal>check</goal>
-		                							<goal>remove</goal>
-		                							<goal>update</goal>
-		                						</goals>
-		                					</pluginExecutionFilter>
-		                					<action>
-		                						<ignore></ignore>
-		                					</action>
-		                				</pluginExecution>                                        
-                                        <pluginExecution>
-                                            <pluginExecutionFilter>
-                                                <groupId>org.apache.maven.plugins</groupId>
-                                                <artifactId>maven-antrun-plugin</artifactId>
-                                                <versionRange>[1.0,)</versionRange>
-                                                <goals>
-                                                    <goal>run</goal>
-                                                </goals>
-                                            </pluginExecutionFilter>
-                                            <action>
-                                                <execute>
-                                                    <runOnIncremental>false</runOnIncremental>
-                                                    <runOnConfiguration>true</runOnConfiguration>
-                                                </execute>
-                                            </action>
-                                        </pluginExecution>
-                                    </pluginExecutions>
-                                </lifecycleMappingMetadata>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-        
-        <!-- ========================  -->
-        <!--      OSGI PROFILES        -->
-        <!-- ========================  -->
-        
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-dependency-plugin</artifactId>
+												<versionRange>[3.0,)</versionRange>
+												<goals>
+													<goal>copy</goal>
+													<goal>unpack</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<execute>
+													<runOnIncremental>true</runOnIncremental>
+													<runOnConfiguration>true</runOnConfiguration>
+												</execute>
+											</action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>com.mycila</groupId>
+												<artifactId>
+													license-maven-plugin
+												</artifactId>
+												<versionRange>
+													[3.0,)
+												</versionRange>
+												<goals>
+													<goal>check</goal>
+													<goal>remove</goal>
+													<goal>update</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore></ignore>
+											</action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-antrun-plugin</artifactId>
+												<versionRange>[1.0,)</versionRange>
+												<goals>
+													<goal>run</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<execute>
+													<runOnIncremental>false</runOnIncremental>
+													<runOnConfiguration>true</runOnConfiguration>
+												</execute>
+											</action>
+										</pluginExecution>
+									</pluginExecutions>
+								</lifecycleMappingMetadata>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+		<!-- ======================== -->
+		<!-- OSGI PROFILES -->
+		<!-- ======================== -->
+
 		<profile>
 			<!-- profile used to setup projects for OSGi bundle integration tests 
 				based on Pax-Exam -->
@@ -1647,14 +1597,14 @@
 					<dependency>
 						<groupId>br.com.c8tech.releng</groupId>
 						<artifactId>fpom-deps-osgi</artifactId>
-						<version>7.1-SNAPSHOT</version>
+						<version>${c8tech.releng.version}</version>
 						<scope>import</scope>
 						<type>pom</type>
 					</dependency>
 					<dependency>
 						<groupId>br.com.c8tech.releng</groupId>
 						<artifactId>fpom-itests-paxexam</artifactId>
-						<version>7.1-SNAPSHOT</version>
+						<version>${c8tech.releng.version}</version>
 						<scope>import</scope>
 						<type>pom</type>
 					</dependency>
@@ -1776,39 +1726,27 @@
 			<properties>
 				<itests.osgi.framework.id>felix</itests.osgi.framework.id>
 			</properties>
-
-			<dependencyManagement>
-				<dependencies>
-					<dependency>
-						<groupId>br.com.c8tech.releng</groupId>
-						<artifactId>fpom-deps-osgi</artifactId>
-						<version>7.1-SNAPSHOT</version>
-						<scope>import</scope>
-						<type>pom</type>
-					</dependency>
-				</dependencies>
-			</dependencyManagement>
 			<dependencies>
 				<dependency>
 					<groupId>br.com.c8tech.releng</groupId>
 					<artifactId>fpom-deps-felix</artifactId>
-					<version>7.1-SNAPSHOT</version>
+					<version>${c8tech.releng.version}</version>
 					<type>pom</type>
 					<scope>test</scope>
-<!-- 					<exclusions> -->
-<!-- 						<exclusion> -->
-<!-- 							<groupId>org.apache.felix</groupId> -->
-<!-- 							<artifactId>org.apache.felix.logback</artifactId> -->
-<!-- 						</exclusion> -->
-<!-- 						<exclusion> -->
-<!-- 							<groupId>ch.qos.logback</groupId> -->
-<!-- 							<artifactId>logback-classic</artifactId> -->
-<!-- 						</exclusion> -->
-<!-- 						<exclusion> -->
-<!-- 							<groupId>ch.qos.logback</groupId> -->
-<!-- 							<artifactId>logback-core</artifactId> -->
-<!-- 						</exclusion> -->
-<!-- 					</exclusions> -->
+					<!-- <exclusions> -->
+					<!-- <exclusion> -->
+					<!-- <groupId>org.apache.felix</groupId> -->
+					<!-- <artifactId>org.apache.felix.logback</artifactId> -->
+					<!-- </exclusion> -->
+					<!-- <exclusion> -->
+					<!-- <groupId>ch.qos.logback</groupId> -->
+					<!-- <artifactId>logback-classic</artifactId> -->
+					<!-- </exclusion> -->
+					<!-- <exclusion> -->
+					<!-- <groupId>ch.qos.logback</groupId> -->
+					<!-- <artifactId>logback-core</artifactId> -->
+					<!-- </exclusion> -->
+					<!-- </exclusions> -->
 				</dependency>
 				<dependency>
 					<groupId>org.junit.vintage</groupId>
@@ -1837,7 +1775,7 @@
 										<artifactItem>
 											<groupId>br.com.c8tech.releng</groupId>
 											<artifactId>fpom-deps-felix</artifactId>
-											<version>7.1-SNAPSHOT</version>
+											<version>${c8tech.releng.version}</version>
 											<type>versions</type>
 											<classifier>latest</classifier>
 											<overWrite>true</overWrite>
@@ -1867,24 +1805,11 @@
 			<properties>
 				<itests.osgi.framework.id>equinox</itests.osgi.framework.id>
 			</properties>
-
-			<dependencyManagement>
-				<dependencies>
-					<dependency>
-						<groupId>br.com.c8tech.releng</groupId>
-						<artifactId>fpom-deps-osgi</artifactId>
-						<version>7.1-SNAPSHOT</version>
-						<scope>import</scope>
-						<type>pom</type>
-					</dependency>
-				</dependencies>
-			</dependencyManagement>
-
 			<dependencies>
 				<dependency>
 					<groupId>br.com.c8tech.releng</groupId>
 					<artifactId>fpom-deps-equinox</artifactId>
-					<version>7.1-SNAPSHOT</version>
+					<version>${c8tech.releng.version}</version>
 					<type>pom</type>
 					<scope>test</scope>
 				</dependency>
@@ -1910,7 +1835,7 @@
 					<dependency>
 						<groupId>br.com.c8tech.releng</groupId>
 						<artifactId>fpom-deps-osgi</artifactId>
-						<version>7.1-SNAPSHOT</version>
+						<version>${c8tech.releng.version}</version>
 						<scope>import</scope>
 						<type>pom</type>
 					</dependency>
@@ -2116,7 +2041,7 @@
 				</plugins>
 			</build>
 		</profile>
-		
+
 		<profile>
 			<!-- profile used to generate source artifacts for bundles. It is activated 
 				only for full buildings -->
@@ -2183,61 +2108,61 @@
 					</plugin>
 				</plugins>
 			</build>
-		</profile>        
-    </profiles>
+		</profile>
+	</profiles>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources-filtered</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-            </testResource>
-            <testResource>
-                <directory>src/test/resources-filtered</directory>
-                <filtering>true</filtering>
-            </testResource>
-        </testResources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>parse-version</id>
-                        <inherited>true</inherited>
-                        <goals>
-                            <goal>parse-version</goal>
-                        </goals>
-                        <phase>validate</phase>
-                    </execution>
-                </executions>
-            </plugin>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources-filtered</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources-filtered</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>parse-version</id>
+						<inherited>true</inherited>
+						<goals>
+							<goal>parse-version</goal>
+						</goals>
+						<phase>validate</phase>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
@@ -2257,509 +2182,512 @@
 					</execution>
 				</executions>
 			</plugin>
-        </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${nexus-staging-maven-plugin.version}</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <serverId>${c8tech.distribution.repository.release.id}</serverId>
-                        <nexusUrl>${c8tech.distribution.repository.base.url}</nexusUrl>
-                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        <autoDropAfterRelease>false</autoDropAfterRelease>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>${maven-build-helper.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>${maven-project-info-reports.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>${maven-source.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler.version}</version>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.target.version}</target>
-                        <release>${java.target.version}</release>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>${maven-install.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>${maven-resources.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${maven-surefire.version}</version>
-                    <configuration>
-                        <argLine>
-                            --illegal-access=permit
-                        </argLine>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>${maven-jar.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>${maven-clean.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-antrun-plugin</artifactId>
-                    <version>${maven-antrun.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>findbugs-maven-plugin</artifactId>
-                    <version>${maven-findbugs.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>${sonar-maven.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${maven-checkstyle.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>${maven-assembly.version}</version>
-                </plugin>
-	            <plugin>
-	                <groupId>org.apache.maven.plugins</groupId>
-	                <artifactId>maven-shade-plugin</artifactId>
-	                <version>${maven-shade.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${maven-site.version}</version>
-                    <inherited>true</inherited>
-                    <configuration>
-                        <stagingDirectory>${c8tech.workspace.dir.site}</stagingDirectory>
-                        <topSiteURL>${c8tech.site.domain}</topSiteURL>
-                        <siteDirectory>${basedir}${file.separator}src${file.separator}site</siteDirectory>
-                        <chmod>true</chmod>
-                        <inputEncoding>UTF-8</inputEncoding>
-                        <outputEncoding>UTF-8</outputEncoding>
-                    </configuration>
-                    <dependencies>
-                        <dependency>
-                            <!-- add support for ssh/scp -->
-                            <groupId>org.apache.maven.wagon</groupId>
-                            <artifactId>wagon-ssh</artifactId>
-                            <version>${wagon-ssh.version}</version>
-                        </dependency>
-                        <!-- support to github pages deployment http://site.trajano.net/wagon-git/ -->
-                        <dependency>
-                            <groupId>net.trajano.wagon</groupId>
-                            <artifactId>wagon-git</artifactId>
-                            <!-- DON'T CHANGE THIS to 2.0.4 -->
-                            <version>${wagon-git.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.maven.skins</groupId>
-                            <artifactId>maven-fluido-skin</artifactId>
-                            <version>${maven-fluido-skin.version}</version>
-                        </dependency>
-                        <dependency>
-                            <!-- To use the Markdown format -->
-                            <groupId>org.apache.maven.doxia</groupId>
-                            <artifactId>doxia-module-markdown</artifactId>
-                            <version>${maven.doxia.module.markdown.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>taglist-maven-plugin</artifactId>
-                    <version>${taglist-maven.version}</version>
-                    <configuration>
-                        <tagListOptions>
-                            <tagClasses>
-                                <tagClass>
-                                    <displayName>Todo Work</displayName>
-                                    <tags>
-                                        <tag>
-                                            <matchString>todo</matchString>
-                                            <matchType>ignoreCase</matchType>
-                                        </tag>
-                                        <tag>
-                                            <matchString>FIXME</matchString>
-                                            <matchType>exact</matchType>
-                                        </tag>
-                                    </tags>
-                                </tagClass>
-                            </tagClasses>
-                        </tagListOptions>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>${maven-surefire.version}</version>
-                    <configuration>
-                        <argLine>
-                            --illegal-access=permit
-                        </argLine>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jxr-plugin</artifactId>
-                    <version>${maven-jxr.version}</version>
-                    <configuration>
-                        <skip>${c8tech.skip.reports}</skip>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jarsigner-plugin</artifactId>
-                    <version>${maven-jar-signer.version}</version>
-                    <configuration>
-                        <verify>true</verify>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>${maven-gpg.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${maven-javadoc.version}</version>
-                    <configuration>
-                        <charset>${project.reporting.outputEncoding}</charset>
-                        <tagletArtifacts>
-                            <tagletArtifact>
-                                <groupId>org.apache.maven.plugin-tools</groupId>
-                                <artifactId>maven-plugin-tools-javadoc</artifactId>
-                                <version>${maven-plugin-tools-javadoc.version}</version>
-                            </tagletArtifact>
-                            <tagletArtifact>
-                                <groupId>org.codehaus.plexus</groupId>
-                                <artifactId>plexus-component-javadoc</artifactId>
-                                <version>${plexus-component-javadoc.version}</version>
-                            </tagletArtifact>
-                        </tagletArtifacts>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven-deploy.version}</version>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>versions-maven-plugin</artifactId>
-                    <version>${versions-maven.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>animal-sniffer-maven-plugin</artifactId>
-                    <version>${maven-animal-sniffer.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>${maven-enforcer.version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>extra-enforcer-rules</artifactId>
-                            <version>${extra-enforcer-rules.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <!-- This plugin is to control the headers -->
-                    <groupId>com.mycila</groupId>
-                    <artifactId>license-maven-plugin</artifactId>
-                    <version>${license-maven.version}</version>
-                    <inherited>true</inherited>
-                    <configuration>
-                        <failIfUnknown>true</failIfUnknown>
-                        <mapping>
-                            <pom.xml>XML_PER_LINE</pom.xml>
-                            <xml>XML_STYLE</xml>
-                            <store>TXT_STYLE</store>
-                        </mapping>
-                        <properties>
-                            <owner>${license.copyrightOwners}</owner>
-                        </properties>
-                       	<detail>true</detail>
-                       	<useDefaultExcludes>true</useDefaultExcludes>
-                       	<inlineHeader>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>${nexus-staging-maven-plugin.version}</version>
+					<extensions>true</extensions>
+					<configuration>
+						<serverId>${c8tech.distribution.repository.release.id}</serverId>
+						<nexusUrl>${c8tech.distribution.repository.base.url}</nexusUrl>
+						<autoReleaseAfterClose>true</autoReleaseAfterClose>
+						<autoDropAfterRelease>false</autoDropAfterRelease>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- deploy-plugin must be skipped because the nexus. -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven-deploy.version}</version>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${maven-build-helper.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>${maven-project-info-reports.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler.version}</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.target.version}</target>
+						<release>${java.target.version}</release>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven-install.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${maven-surefire.version}</version>
+					<configuration>
+						<argLine>
+							--illegal-access=permit
+						</argLine>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven-clean.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>${maven-findbugs.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${sonar-maven.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${maven-checkstyle.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${maven-assembly.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>${maven-shade.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${maven-site.version}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<stagingDirectory>${c8tech.workspace.dir.site}</stagingDirectory>
+						<topSiteURL>${c8tech.site.domain}</topSiteURL>
+						<siteDirectory>${basedir}${file.separator}src${file.separator}site</siteDirectory>
+						<chmod>true</chmod>
+						<inputEncoding>UTF-8</inputEncoding>
+						<outputEncoding>UTF-8</outputEncoding>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<!-- add support for ssh/scp -->
+							<groupId>org.apache.maven.wagon</groupId>
+							<artifactId>wagon-ssh</artifactId>
+							<version>${wagon-ssh.version}</version>
+						</dependency>
+						<!-- support to github pages deployment http://site.trajano.net/wagon-git/ -->
+						<dependency>
+							<groupId>net.trajano.wagon</groupId>
+							<artifactId>wagon-git</artifactId>
+							<!-- DON'T CHANGE THIS to 2.0.4 -->
+							<version>${wagon-git.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.maven.skins</groupId>
+							<artifactId>maven-fluido-skin</artifactId>
+							<version>${maven-fluido-skin.version}</version>
+						</dependency>
+						<dependency>
+							<!-- To use the Markdown format -->
+							<groupId>org.apache.maven.doxia</groupId>
+							<artifactId>doxia-module-markdown</artifactId>
+							<version>${maven.doxia.module.markdown.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>taglist-maven-plugin</artifactId>
+					<version>${taglist-maven.version}</version>
+					<configuration>
+						<tagListOptions>
+							<tagClasses>
+								<tagClass>
+									<displayName>Todo Work</displayName>
+									<tags>
+										<tag>
+											<matchString>todo</matchString>
+											<matchType>ignoreCase</matchType>
+										</tag>
+										<tag>
+											<matchString>FIXME</matchString>
+											<matchType>exact</matchType>
+										</tag>
+									</tags>
+								</tagClass>
+							</tagClasses>
+						</tagListOptions>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>${maven-surefire.version}</version>
+					<configuration>
+						<argLine>
+							--illegal-access=permit
+						</argLine>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${maven-jxr.version}</version>
+					<configuration>
+						<skip>${c8tech.skip.reports}</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>${maven-jar-signer.version}</version>
+					<configuration>
+						<verify>true</verify>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>${maven-gpg.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc.version}</version>
+					<configuration>
+						<charset>${project.reporting.outputEncoding}</charset>
+						<tagletArtifacts>
+							<tagletArtifact>
+								<groupId>org.apache.maven.plugin-tools</groupId>
+								<artifactId>maven-plugin-tools-javadoc</artifactId>
+								<version>${maven-plugin-tools-javadoc.version}</version>
+							</tagletArtifact>
+							<tagletArtifact>
+								<groupId>org.codehaus.plexus</groupId>
+								<artifactId>plexus-component-javadoc</artifactId>
+								<version>${plexus-component-javadoc.version}</version>
+							</tagletArtifact>
+						</tagletArtifacts>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${versions-maven.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>animal-sniffer-maven-plugin</artifactId>
+					<version>${maven-animal-sniffer.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>extra-enforcer-rules</artifactId>
+							<version>${extra-enforcer-rules.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<!-- This plugin is to control the headers -->
+					<groupId>com.mycila</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>${license-maven.version}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<failIfUnknown>true</failIfUnknown>
+						<mapping>
+							<pom.xml>XML_PER_LINE</pom.xml>
+							<xml>XML_STYLE</xml>
+							<store>TXT_STYLE</store>
+						</mapping>
+						<properties>
+							<owner>${license.copyrightOwners}</owner>
+						</properties>
+						<detail>true</detail>
+						<useDefaultExcludes>true</useDefaultExcludes>
+						<inlineHeader>
 ======================================================================
 Copyright © ${license.git.copyrightYears}, ${owner}.
-                                                                         
+
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
 which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
-                                                                      
-======================================================================= 		                        	</inlineHeader>
-                        <includes>
-                            <include>pom.xml</include>
-                            <include>src/main/java/**</include>
-                            <include>src/test/java/**</include>
-                        </includes>
-                        <excludes>
-                            <exclude>**/README</exclude>
-                            <exclude>**/src/test/resources/**</exclude>
-                            <exclude>**/src/main/resources/**</exclude>
-                            <exclude>**/THIRD-PARTY.properties</exclude>
-                            <exclude>LICENSE.txt</exclude>
-                            <exclude>src/site/*/**</exclude>
-                            <exclude>.m2e-launchers/*/**</exclude>
-                            <exclude>.c8tech.*</exclude>
-                            <exclude>**/*.jks</exclude>
-                        </excludes>
-                        <useDefaultExcludes></useDefaultExcludes>
-                    </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.mycila</groupId>
-                            <artifactId>license-maven-plugin-git</artifactId>
-                            <version>${license-maven.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
 
-                <plugin>
-                    <!-- this plugin is to control the license files attached to binaries -->
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>license-maven-plugin</artifactId>
-                    <version>${report-license-maven.version}</version>
-                    <configuration>
-                        <verbose>false</verbose>
-                        <generateBundle>true</generateBundle>
-                        <quiet>true</quiet>
-                        <sortArtifactByName>true</sortArtifactByName>
-                        <failIfWarning>true</failIfWarning>
-                        <excludedLicenses>
-                            <excludedLicense>
-                                GNU General Public License
-                                (GPL) version 1.0
-                            </excludedLicense>
-                            <excludedLicense>
-                                GNU General Public License
-                                (GPL) version 2.0
-                            </excludedLicense>
-                            <excludedLicense>
-                                GNU General Public License
-                                (GPL) version 3.0
-                            </excludedLicense>
-                        </excludedLicenses>
-                        <licenseMerges>
-                            <licenseMerge>
-                                The Apache Software
-                                License,
-                                Version 2.0|Apache
-                                License, Version
-                                2.0|Apache
-                                License V2.0|Apache 2|ASF
-                                2.0|apache-2.0|Apache
-                                Public
-                                License 2.0
-                            </licenseMerge>
-                            <licenseMerge>BSD License|BSD
-                                license|BSD</licenseMerge>
-                            <licenseMerge>MIT License|MIT
-                                license|MIT</licenseMerge>
-                            <licenseMerge>
-                                Lesser General Public
-                                License
-                                (LPGL) v 2.1|GNU
-                                Lesser
-                                General
-                                Public
-                                License, 2.1|LGPL
-                                2.1
-                            </licenseMerge>
-                            <licenseMerge>
-                                Lesser General Public
-                                License
-                                (LPGL)|GNU Lesser
-                                General Public
-                                License|GNU LESSER
-                                GENERAL PUBLIC
-                                LICENSE|LGPL|lgpl
-                            </licenseMerge>
-                            <licenseMerge>
-                                COMMON DEVELOPMENT AND
-                                DISTRIBUTION LICENSE
-                                (CDDL)
-                                Version
-                                1.0|Common Development
-                                and Distribution
-                                License
-                                (CDDL)
-                                v1.0
-                            </licenseMerge>
-                            <licenseMerge>Indiana University
-                                Extreme! Lab
-                                Software
-                                License,
-                                vesion 1.1.1|Indiana
-                                University
-                                Extreme! Lab
-                                Software License</licenseMerge>
-                        </licenseMerges>
-                    </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.nuiton.processor</groupId>
-                            <artifactId>nuiton-processor</artifactId>
-                            <version>1.3</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.freemarker</groupId>
-                            <artifactId>freemarker</artifactId>
-                            <version>${freemarker.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.apache.commons</groupId>
-                            <artifactId>commons-lang3</artifactId>
-                            <version>${commons-lang3.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>commons-collections</groupId>
-                            <artifactId>commons-collections</artifactId>
-                            <version>${commons-collections.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>commons-io</groupId>
-                            <artifactId>commons-io</artifactId>
-                            <version>${commons-io.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>${maven-release.version}</version>
-                    <configuration>
-                        <arguments>
-                            -Dc8tech.build.release
-                            -Dc8tech.build.test.coverage ${arguments}
-                        </arguments>
-                        <tagNameFormat>v@{project.version}</tagNameFormat>
-                        <!-- ensure submodule are available to other submodules -->
-                        <preparationGoals>clean install</preparationGoals>
-                        
-                        <!-- Let the CI do the deployment -->
-                        <goals>install site site-deploy</goals>
-                        <releaseProfiles>when-releasing-ensure-requirements</releaseProfiles>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>${maven-dependency.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>com.spotify</groupId>
-                    <artifactId>dockerfile-maven-plugin</artifactId>
-                    <version>${dockerfile-maven.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+=======================================================================
+						</inlineHeader>
+						<includes>
+							<include>pom.xml</include>
+							<include>src/main/java/**</include>
+							<include>src/test/java/**</include>
+						</includes>
+						<excludes>
+							<exclude>**/README</exclude>
+							<exclude>src/test/resources/**</exclude>
+							<exclude>src/main/resources/**</exclude>
+							<exclude>**/THIRD-PARTY.properties</exclude>
+							<exclude>**/LICENSE.txt</exclude>
+							<exclude>src/site/*/**</exclude>
+							<exclude>.m2e-launchers/*/**</exclude>
+							<exclude>**/.c8tech.*</exclude>
+							<exclude>**/*.jks</exclude>
+						</excludes>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>com.mycila</groupId>
+							<artifactId>license-maven-plugin-git</artifactId>
+							<version>${license-maven.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<plugin>
+					<!-- this plugin is to control the license files attached to binaries -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>${report-license-maven.version}</version>
+					<configuration>
+						<verbose>false</verbose>
+						<generateBundle>true</generateBundle>
+						<quiet>true</quiet>
+						<sortArtifactByName>true</sortArtifactByName>
+						<failIfWarning>true</failIfWarning>
+						<excludedLicenses>
+							<excludedLicense>
+								GNU General Public License
+								(GPL) version 1.0
+							</excludedLicense>
+							<excludedLicense>
+								GNU General Public License
+								(GPL) version 2.0
+							</excludedLicense>
+							<excludedLicense>
+								GNU General Public License
+								(GPL) version 3.0
+							</excludedLicense>
+						</excludedLicenses>
+						<licenseMerges>
+							<licenseMerge>
+								The Apache Software
+								License,
+								Version 2.0|Apache
+								License, Version
+								2.0|Apache
+								License V2.0|Apache 2|ASF
+								2.0|apache-2.0|Apache
+								Public
+								License 2.0
+							</licenseMerge>
+							<licenseMerge>BSD License|BSD
+								license|BSD</licenseMerge>
+							<licenseMerge>MIT License|MIT
+								license|MIT</licenseMerge>
+							<licenseMerge>
+								Lesser General Public
+								License
+								(LPGL) v 2.1|GNU
+								Lesser
+								General
+								Public
+								License, 2.1|LGPL
+								2.1
+							</licenseMerge>
+							<licenseMerge>
+								Lesser General Public
+								License
+								(LPGL)|GNU Lesser
+								General Public
+								License|GNU LESSER
+								GENERAL PUBLIC
+								LICENSE|LGPL|lgpl
+							</licenseMerge>
+							<licenseMerge>
+								COMMON DEVELOPMENT AND
+								DISTRIBUTION LICENSE
+								(CDDL)
+								Version
+								1.0|Common Development
+								and Distribution
+								License
+								(CDDL)
+								v1.0
+							</licenseMerge>
+							<licenseMerge>Indiana University
+								Extreme! Lab
+								Software
+								License,
+								vesion 1.1.1|Indiana
+								University
+								Extreme! Lab
+								Software License</licenseMerge>
+						</licenseMerges>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.nuiton.processor</groupId>
+							<artifactId>nuiton-processor</artifactId>
+							<version>1.3</version>
+						</dependency>
+						<dependency>
+							<groupId>org.freemarker</groupId>
+							<artifactId>freemarker</artifactId>
+							<version>${freemarker.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.commons</groupId>
+							<artifactId>commons-lang3</artifactId>
+							<version>${commons-lang3.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>commons-collections</groupId>
+							<artifactId>commons-collections</artifactId>
+							<version>${commons-collections.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>commons-io</groupId>
+							<artifactId>commons-io</artifactId>
+							<version>${commons-io.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>${maven-release.version}</version>
+					<configuration>
+						<arguments>
+							-Dc8tech.build.release
+							-Dc8tech.build.test.coverage
+							${arguments}
+						</arguments>
+						<tagNameFormat>v@{project.version}</tagNameFormat>
+						<!-- ensure submodule are available to other submodules -->
+						<preparationGoals>clean install</preparationGoals>
+
+						<!-- Let the CI do the deployment -->
+						<goals>install site site-deploy</goals>
+						<releaseProfiles>when-releasing-ensure-requirements</releaseProfiles>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>com.spotify</groupId>
+					<artifactId>dockerfile-maven-plugin</artifactId>
+					<version>${dockerfile-maven.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.servicemix.bundles</groupId>
-                <artifactId>org.apache.servicemix.bundles.jsr305</artifactId>
-                <version>3.0.2_1</version>
-            </dependency>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.jsr305</artifactId>
+				<version>3.0.2_1</version>
+			</dependency>
 
-            <!-- Lambda extension -->
-            <dependency>
-                <groupId>org.jooq</groupId>
-                <artifactId>jool</artifactId>
-                <version>${jool.version}</version>
-            </dependency>
-        
-        <!-- JSON support -->
-            <dependency>
-                <groupId>org.apache.geronimo.specs</groupId>
-                <artifactId>geronimo-json_1.1_spec</artifactId>
-                <version>${geronimo.json.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.johnzon</groupId>
-                <artifactId>johnzon-core</artifactId>
-                <version>${johnzon.version}</version>
-            </dependency>
+			<!-- Lambda extension -->
+			<dependency>
+				<groupId>org.jooq</groupId>
+				<artifactId>jool</artifactId>
+				<version>${jool.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
+			<!-- JSON support -->
+			<dependency>
+				<groupId>org.apache.geronimo.specs</groupId>
+				<artifactId>geronimo-json_1.1_spec</artifactId>
+				<version>${geronimo.json.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.johnzon</groupId>
+				<artifactId>johnzon-core</artifactId>
+				<version>${johnzon.version}</version>
+			</dependency>
 
-            <dependency>
-                <!-- add support for ssh/scp -->
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh</artifactId>
-                <version>${wagon-ssh.version}</version>
-            </dependency>
-            <!-- support to github pages deployment http://site.trajano.net/wagon-git/ -->
-            <dependency>
-                <groupId>net.trajano.wagon</groupId>
-                <artifactId>wagon-git</artifactId>
-                <version>${wagon-git.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.maven.skins</groupId>
-                <artifactId>maven-fluido-skin</artifactId>
-                <version>${maven-fluido-skin.version}</version>
-            </dependency>
-            <dependency>
-                <!-- To use the Markdown format -->
-                <groupId>org.apache.maven.doxia</groupId>
-                <artifactId>doxia-module-markdown</artifactId>
-                <version>${maven.doxia.module.markdown.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+
+			<dependency>
+				<!-- add support for ssh/scp -->
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>${wagon-ssh.version}</version>
+			</dependency>
+			<!-- support to github pages deployment http://site.trajano.net/wagon-git/ -->
+			<dependency>
+				<groupId>net.trajano.wagon</groupId>
+				<artifactId>wagon-git</artifactId>
+				<version>${wagon-git.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.skins</groupId>
+				<artifactId>maven-fluido-skin</artifactId>
+				<version>${maven-fluido-skin.version}</version>
+			</dependency>
+			<dependency>
+				<!-- To use the Markdown format -->
+				<groupId>org.apache.maven.doxia</groupId>
+				<artifactId>doxia-module-markdown</artifactId>
+				<version>${maven.doxia.module.markdown.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
