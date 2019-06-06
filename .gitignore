@@ -10,6 +10,5 @@ src-gen/
 xtend-gen/
 plugin.xml_gen
 .project
-license-header-epl-v10.txt
 /release.properties
 pom.xml.releaseBackup

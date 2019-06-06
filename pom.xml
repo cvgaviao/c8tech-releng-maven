@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- ==========================================================================  -->
-<!-- Copyright © 2015-2019 Cristiano Gavião, C8 Technology ME.                         -->
-<!--                                                                             -->
-<!-- All rights reserved. This program and the accompanying materials            -->
-<!-- are made available under the terms of the Eclipse Public License v1.0       -->
-<!-- which accompanies this distribution, and is available at                    -->
-<!-- http://www.eclipse.org/legal/epl-v10.html                                   -->
-<!--                                                                             -->
-<!-- Contributors:                                                               -->
-<!-- Cristiano Gavião (cvgaviao@c8tech.com.br)- initial API and implementation   -->
-<!-- ==========================================================================  -->
+<!-- ======================================================================    -->
+<!-- Copyright © 2015-2019, Cristiano Gavião, C8 Technology ME.                      -->
+<!--                                                                           -->
+<!-- All rights reserved. This program and the accompanying materials          -->
+<!-- are made available under the terms of the Eclipse Public License v1.0     -->
+<!-- which accompanies this distribution, and is available at                  -->
+<!-- http://www.eclipse.org/legal/epl-v10.html                                 -->
+<!--                                                                           -->
+<!-- =======================================================================   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -130,6 +128,9 @@
         <java.target.version>11</java.target.version>
         <javadocJreApiVersion>11</javadocJreApiVersion>
         
+        <license-header.group>br.com.c8tech.releng</license-header.group>
+        <license-header.artifact>maven-parent-java</license-header.artifact>
+        <license-header.version>7.0</license-header.version>
         <!-- Encoding settings-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -282,7 +283,7 @@
         <report-license-maven.version>1.20</report-license-maven.version>
         <versions-maven.version>2.7</versions-maven.version>
         <maven-jxr.version>3.0.0</maven-jxr.version>
-        <maven.doxia.module.markdown.version>1.8</maven.doxia.module.markdown.version>
+        <maven.doxia.module.markdown.version>1.9</maven.doxia.module.markdown.version>
         <maven-fluido-skin.version>1.7</maven-fluido-skin.version>
         <maven-changes.version>2.12.1</maven-changes.version>
         <maven-plugin-tools-javadoc.version>3.4</maven-plugin-tools-javadoc.version>
@@ -330,7 +331,7 @@
 
         <!-- The Sonar Jacoco Listener for JUnit to extract coverage details
             per test -->
-        <sonar-jacoco-listeners.version>5.7.0.15470</sonar-jacoco-listeners.version>
+        <sonar-jacoco-listeners.version>5.13.0.18197</sonar-jacoco-listeners.version>
 
         <commons-io.version>2.6</commons-io.version>
         <commons-collections.version>3.2.2</commons-collections.version>
@@ -1108,13 +1109,10 @@
         </profile>
 
         <profile>
-            <id>when-building-any-project-check-header</id>
+            <id>when-building-any-project-get-header-template</id>
             <activation>
-                <property>
-                    <name>c8tech.build.test.coverage</name>
-                </property>
                 <file>
-                    <missing>license-header-epl-v10.txt</missing>
+                    <missing>license-header.txt</missing>
                 </file>
             </activation>
             <build>
@@ -1126,27 +1124,38 @@
                         <executions>
                             <execution>
                                 <id>copy-license-header-check</id>
-                                <phase>prepare-package</phase>
+                                <phase>generate-resources</phase>
                                 <goals>
                                     <goal>copy</goal>
                                 </goals>
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>br.com.c8tech.releng</groupId>
-                                            <artifactId>maven-parent-java</artifactId>
-                                            <version>2.0</version>
+                                            <groupId>${license-header.group}</groupId>
+                                            <artifactId>${license-header.artifact}</artifactId>
+                                            <version>${license-header.version}</version>
                                             <type>txt</type>
                                             <classifier>license</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${basedir}</outputDirectory>
-                                            <destFileName>license-header-epl-v10.txt</destFileName>
+                                            <destFileName>license-header.txt</destFileName>
                                         </artifactItem>
                                     </artifactItems>
                                 </configuration>
                             </execution>
                         </executions>
                     </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>when-building-any-project-check-header</id>
+            <activation>
+                <file><exists>license-header.txt</exists></file>
+            </activation>
+            <build>
+                <plugins>
                     <plugin>
                         <groupId>com.mycila</groupId>
                         <artifactId>license-maven-plugin</artifactId>
@@ -1157,7 +1166,7 @@
                                 <goals>
                                     <goal>check</goal>
                                 </goals>
-                                <phase>verify</phase>
+                                <phase>process-test-classes</phase>
                             </execution>
                         </executions>
                         <configuration>
@@ -1537,42 +1546,10 @@
         <profile>
             <id>update-headers-and-licenses</id>
             <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
+            	<activeByDefault>false</activeByDefault>
             </activation>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <version>${maven-dependency.version}</version>
-                        <inherited>true</inherited>
-                        <executions>
-                            <execution>
-                                <id>copy-license-header-update</id>
-                                <phase>generate-sources</phase>
-                                <inherited>true</inherited>
-                                <goals>
-                                    <goal>copy</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>br.com.c8tech.releng</groupId>
-                                            <artifactId>maven-parent-java</artifactId>
-                                            <version>6.1-SNAPSHOT</version>
-                                            <type>txt</type>
-                                            <classifier>license</classifier>
-                                            <overWrite>true</overWrite>
-                                            <outputDirectory>${basedir}</outputDirectory>
-                                            <destFileName>license-header-epl-v10.txt</destFileName>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
                     <plugin>
                         <groupId>com.mycila</groupId>
                         <artifactId>license-maven-plugin</artifactId>
@@ -1612,51 +1589,6 @@
                                 <phase>generate-resources</phase>
                                 <goals>
                                     <goal>update-project-license</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>update-parent-headers</id>
-            <activation>
-                <property>
-                    <name>c8tech.build.release</name>
-                </property>
-                <file>
-                    <exists>license-header-epl-v10.txt</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.mycila</groupId>
-                        <artifactId>license-maven-plugin</artifactId>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <aggregate>true</aggregate>
-                            <header>${basedir}/license-header-epl-v10.txt</header>
-                            <includes>
-                                <include>pom.xml</include>
-                            </includes>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>update-parent-header</id>
-                                <inherited>false</inherited>
-                                <phase>generate-resources</phase>
-                                <goals>
-                                    <goal>format</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>check-parent-header</id>
-                                <inherited>false</inherited>
-                                <goals>
-                                    <goal>check</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -1778,7 +1710,7 @@
                         <phase>validate</phase>
                     </execution>
                     <execution>
-                        <id>attach-eplv1-license-header</id>
+                        <id>attach-license-header</id>
                         <phase>package</phase>
                         <inherited>false</inherited>
                         <goals>
@@ -1787,7 +1719,7 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>${basedir}/license-header-epl-v10.txt</file>
+                                    <file>${basedir}/license-header.txt</file>
                                     <type>txt</type>
                                     <classifier>license</classifier>
                                 </artifact>
@@ -2050,7 +1982,7 @@
                     <inherited>true</inherited>
                     <configuration>
                         <failIfUnknown>true</failIfUnknown>
-                        <header>${basedir}/license-header-epl-v10.txt</header>
+                        <header>${basedir}/license-header.txt</header>
                         <mapping>
                             <pom.xml>XML_PER_LINE</pom.xml>
                             <xml>XML_STYLE</xml>
