@@ -18,7 +18,7 @@
     <parent>
         <groupId>br.com.c8tech.releng</groupId>
         <artifactId>maven-parent-osgi</artifactId>
-        <version>7.1-SNAPSHOT</version>
+        <version>8.0</version>
         <relativePath>../maven-parent-osgi/pom.xml</relativePath>
     </parent>
 
@@ -34,7 +34,7 @@
         <connection>${c8tech.scm.connection}</connection>
         <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
         <url>${c8tech.scm.url}</url>
-        <tag>HEAD</tag>
+        <tag>v8.0</tag>
     </scm>
     <distributionManagement>
         <site>
