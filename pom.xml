@@ -130,7 +130,7 @@
         
         <license-header.group>br.com.c8tech.releng</license-header.group>
         <license-header.artifact>maven-parent-java</license-header.artifact>
-        <license-header.version>7.0</license-header.version>
+        <license-header.version>8.0</license-header.version>
         <!-- Encoding settings-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
