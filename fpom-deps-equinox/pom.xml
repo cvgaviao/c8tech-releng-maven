@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- ======================================================================  -->
-<!-- Copyright © 2015-2019, Cristiano V. Gavião.                    -->
-<!--                                                                         -->
-<!-- All rights reserved. This program and the accompanying materials        -->
-<!-- are made available under the terms of the Eclipse Public License v1.0   -->
-<!-- which accompanies this distribution, and is available at                -->
-<!-- http://www.eclipse.org/legal/epl-v10.html                               -->
-<!--                                                                         -->
-<!-- ======================================================================= -->
+<!-- ============================================================================ -->
+<!--  Copyright ©  2015-2019,    Cristiano V. Gavião			                  -->
+<!--                                                                              -->
+<!--  All rights reserved.                                                        -->
+<!--  This program and the accompanying materials are made available under        -->
+<!--  the terms of the Eclipse Public License v1.0 which accompanies this         -->
+<!--  distribution and is available at http://www.eclipse.org/legal/epl-v10.html  -->
+<!--                                                                              -->
+<!-- ============================================================================ -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -57,7 +57,6 @@
         <org.eclipse.equinox.event.version>1.5.0</org.eclipse.equinox.event.version>
         <org.eclipse.equinox.metatype.version>1.4.600</org.eclipse.equinox.metatype.version>
         <org.eclipse.equinox.preferences.version>3.7.300</org.eclipse.equinox.preferences.version>
-        <org.eclipse.equinox.region.version>1.4.300</org.eclipse.equinox.region.version>
         <org.eclipse.equinox.useradmin.version>1.1.500</org.eclipse.equinox.useradmin.version>
         <org.eclipse.equinox.util.version>1.1.200</org.eclipse.equinox.util.version>
         <org.eclipse.equinox.wireadmin.version>1.0.600</org.eclipse.equinox.wireadmin.version>
@@ -143,11 +142,6 @@
                 <groupId>org.eclipse.platform</groupId>
                 <artifactId>org.eclipse.equinox.event</artifactId>
                 <version>${org.eclipse.equinox.event.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.region</artifactId>
-                <version>${org.eclipse.equinox.region.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

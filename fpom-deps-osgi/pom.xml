@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- ======================================================================  -->
-<!-- Copyright © 2015-2019, Cristiano V. Gavião.                    -->
-<!--                                                                         -->
-<!-- All rights reserved. This program and the accompanying materials        -->
-<!-- are made available under the terms of the Eclipse Public License v1.0   -->
-<!-- which accompanies this distribution, and is available at                -->
-<!-- http://www.eclipse.org/legal/epl-v10.html                               -->
-<!--                                                                         -->
-<!-- ======================================================================= -->
+<!-- ============================================================================ -->
+<!--  Copyright ©  2015-2019,    Cristiano V. Gavião			                  -->
+<!--                                                                              -->
+<!--  All rights reserved.                                                        -->
+<!--  This program and the accompanying materials are made available under        -->
+<!--  the terms of the Eclipse Public License v1.0 which accompanies this         -->
+<!--  distribution and is available at http://www.eclipse.org/legal/epl-v10.html  -->
+<!--                                                                              -->
+<!-- ============================================================================ -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -54,6 +54,9 @@
         <asm.version>6.0_BETA</asm.version>
         <jansi.version>1.18</jansi.version>
         <jna.version>5.3.1</jna.version>
+        <felix.converter.version>1.0.8</felix.converter.version>
+        <felix.gogo.runtime.version>1.1.2</felix.gogo.runtime.version>
+        
     </properties>
 
     <dependencyManagement>
@@ -293,58 +296,18 @@
                 <artifactId>jline</artifactId>
                 <version>${jline.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>org.apache.felix.converter</artifactId>
+                <version>${felix.converter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>org.apache.felix.gogo.runtime</artifactId>
+                <version>${felix.gogo.runtime.version}</version>
+            </dependency>
+            
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.aries.subsystem</groupId>
-            <artifactId>org.apache.aries.subsystem.gogo-command</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.aries.subsystem</groupId>
-            <artifactId>org.apache.aries.subsystem.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.aries.subsystem</groupId>
-            <artifactId>org.apache.aries.subsystem.api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.aries</groupId>
-            <artifactId>org.apache.aries.util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.equinox.region</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.aries.spifly</groupId>
-            <artifactId>org.apache.aries.spifly.dynamic.framework.extension</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.aries.spifly</groupId>
-            <artifactId>org.apache.aries.spifly.dynamic.bundle</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.ow2.asm</groupId>
-            <artifactId>asm-all</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-json_1.1_spec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.johnzon</groupId>
-            <artifactId>johnzon-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.bundles</groupId>
-            <artifactId>org.apache.servicemix.bundles.jsr305</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jooq</groupId>
-            <artifactId>jool</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>
