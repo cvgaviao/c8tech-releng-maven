@@ -670,11 +670,30 @@
 		</profile>
 
 		<profile>
+			<id>when-building-java-with-junit-tests-outside-eclipse</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/test/java</exists>
+				</file>
+				<property>
+					<name>!m2e.version</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+					<version>${logback.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
 			<!-- Enable unit testing. The profile is activated when you have src/test/java 
 				directory in the project. It will add junit, assertJ, and mockito artifacts 
 				to the classpath ("test" scope). -->
 			<!-- This profile is only activated when building in Eclipse with m2e -->
-			<id>when-building-java-with-junit-tests-eclipse</id>
+			<id>when-building-java-with-junit-tests-inside-eclipse</id>
 			<activation>
 				<file>
 					<exists>${basedir}/src/test/java</exists>
@@ -684,11 +703,12 @@
 				</property>
 			</activation>
 			<dependencies>
-				<!-- <dependency> -->
-				<!-- <groupId>org.junit.platform</groupId> -->
-				<!-- <artifactId>junit-platform-launcher</artifactId> -->
-				<!-- <scope>test</scope> -->
-				<!-- </dependency> -->
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-simple</artifactId>
+					<version>${slf4j.version}</version>
+					<scope>test</scope>
+				</dependency>
 			</dependencies>
 		</profile>
 
@@ -722,15 +742,9 @@
 						<version>${assertj.version}</version>
 					</dependency>
 					<dependency>
-						<groupId>org.slf4j</groupId>
-						<artifactId>slf4j-simple</artifactId>
-						<version>${slf4j.version}</version>
-					</dependency>
-					<dependency>
 						<groupId>info.solidsoft.mockito</groupId>
 						<artifactId>mockito-java8</artifactId>
 						<version>2.5.0</version>
-						<scope>test</scope>
 					</dependency>
 				</dependencies>
 			</dependencyManagement>
@@ -756,13 +770,13 @@
 					<scope>test</scope>
 				</dependency>
 				<dependency>
-					<groupId>org.assertj</groupId>
-					<artifactId>assertj-core</artifactId>
+					<groupId>info.solidsoft.mockito</groupId>
+					<artifactId>mockito-java8</artifactId>
 					<scope>test</scope>
 				</dependency>
 				<dependency>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-simple</artifactId>
+					<groupId>org.assertj</groupId>
+					<artifactId>assertj-core</artifactId>
 					<scope>test</scope>
 				</dependency>
 			</dependencies>
@@ -1090,7 +1104,7 @@
 						<inherited>true</inherited>
 						<executions>
 							<execution>
-								<id>check-header-root-project</id>
+								<id>check-license-headers</id>
 								<goals>
 									<goal>check</goal>
 								</goals>
@@ -1099,36 +1113,6 @@
 						</executions>
 					</plugin>
 				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>when-building-java-project</id>
-			<activation>
-				<file>
-					<exists>${basedir}/src/main/java</exists>
-				</file>
-			</activation>
-			<dependencies>
-				<dependency>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-					<scope>compile</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.immutables</groupId>
-					<artifactId>value</artifactId>
-					<version>${org.immutables.version}</version>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.immutables</groupId>
-					<artifactId>builder</artifactId>
-					<version>${org.immutables.version}</version>
-					<scope>provided</scope>
-				</dependency>
-			</dependencies>
-			<build>
 			</build>
 		</profile>
 
@@ -1886,6 +1870,21 @@
 					<artifactId>org.apache.servicemix.bundles.jsr305</artifactId>
 					<scope>provided</scope>
 				</dependency>
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.immutables</groupId>
+					<artifactId>value</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.immutables</groupId>
+					<artifactId>builder</artifactId>
+					<scope>provided</scope>
+				</dependency>
 			</dependencies>
 			<build>
 				<pluginManagement>
@@ -2630,21 +2629,33 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.jsr305</artifactId>
-				<version>3.0.2_1</version>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>org.immutables</groupId>
+				<artifactId>value</artifactId>
+				<version>${org.immutables.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.immutables</groupId>
+				<artifactId>builder</artifactId>
+				<version>${org.immutables.version}</version>
+			</dependency>
 			<!-- Lambda extension -->
 			<dependency>
 				<groupId>org.jooq</groupId>
 				<artifactId>jool</artifactId>
 				<version>${jool.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.jsr305</artifactId>
+				<version>3.0.2_1</version>
 			</dependency>
 
 			<!-- JSON support -->
@@ -2658,41 +2669,7 @@
 				<artifactId>johnzon-core</artifactId>
 				<version>${johnzon.version}</version>
 			</dependency>
-
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-				<version>${logback.version}</version>
-			</dependency>
-
-			<dependency>
-				<!-- add support for ssh/scp -->
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ssh</artifactId>
-				<version>${wagon-ssh.version}</version>
-			</dependency>
-			<!-- support to github pages deployment http://site.trajano.net/wagon-git/ -->
-			<dependency>
-				<groupId>net.trajano.wagon</groupId>
-				<artifactId>wagon-git</artifactId>
-				<version>${wagon-git.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.maven.skins</groupId>
-				<artifactId>maven-fluido-skin</artifactId>
-				<version>${maven-fluido-skin.version}</version>
-			</dependency>
-			<dependency>
-				<!-- To use the Markdown format -->
-				<groupId>org.apache.maven.doxia</groupId>
-				<artifactId>doxia-module-markdown</artifactId>
-				<version>${maven.doxia.module.markdown.version}</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
 </project>
