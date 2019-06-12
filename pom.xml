@@ -604,10 +604,10 @@
 								<skip>${c8tech.skip.reports}</skip>
 							</configuration>
 						</plugin>
-					
+
 					</plugins>
 				</pluginManagement>
-			</build>			
+			</build>
 		</profile>
 
 		<profile>
@@ -821,7 +821,11 @@
 					<groupId>org.slf4j</groupId>
 					<artifactId>slf4j-simple</artifactId>
 					<version>${slf4j.version}</version>
-					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.johnzon</groupId>
+					<artifactId>johnzon-core</artifactId>
+					<version>${johnzon.version}</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -976,8 +980,7 @@
 			<id>when-building-java-with-parent-outside-jenkins</id>
 			<activation>
 				<file>
-					<exists>${basedir}/src/test/java</exists>
-					<missing>.c8tech.releng.solo</missing>
+					<missing>.c8tech.releng.parent</missing>
 				</file>
 				<property>
 					<name>!env.WORKSPACE</name>
@@ -989,10 +992,10 @@
 		</profile>
 
 		<profile>
-			<id>when-building-java-without-parent-outside-jenkins</id>
+			<id>when-building-java-solo-outside-jenkins</id>
 			<activation>
 				<file>
-					<exists>${basedir}/src/test/java</exists>
+					<exists>.c8tech.releng.solo</exists>
 				</file>
 				<property>
 					<name>!env.WORKSPACE</name>
@@ -1719,12 +1722,6 @@
 					<exists>.c8tech.releng.itests.paxexam</exists>
 				</file>
 			</activation>
-			<properties>
-				<!-- <argLine>-Xmx1024m</argLine> -->
-				<itests.framework.dependencies.file>
-					dependencies-${itests.osgi.framework.id}.properties
-				</itests.framework.dependencies.file>
-			</properties>
 			<dependencyManagement>
 				<dependencies>
 					<dependency>
@@ -1745,22 +1742,28 @@
 			</dependencyManagement>
 			<dependencies>
 				<dependency>
-					<groupId>org.osgi</groupId>
-					<artifactId>osgi.core</artifactId>
-					<version>${osgi.core.version}</version>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.osgi</groupId>
-					<artifactId>osgi.annotation</artifactId>
-					<version>${osgi.annotation.version}</version>
-					<scope>provided</scope>
+					<groupId>br.com.c8tech.releng</groupId>
+					<artifactId>fpom-deps-osgi</artifactId>
+					<version>${c8tech.releng.version}</version>
+					<type>pom</type>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>br.com.c8tech.releng</groupId>
 					<artifactId>fpom-itests-paxexam</artifactId>
+					<version>${c8tech.releng.version}</version>
 					<type>pom</type>
 					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jooq</groupId>
+					<artifactId>jool</artifactId>
+					<scope>compile</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+					<scope>compile</scope>
 				</dependency>
 			</dependencies>
 			<build>
@@ -1814,10 +1817,10 @@
 							<configuration>
 								<failIfNoTests>false</failIfNoTests>
 								<systemPropertyVariables>
-									<itests.osgi.framework.id>${itests.osgi.framework.id}</itests.osgi.framework.id>
+									<itests.osgi.framework>${itests.osgi.framework}</itests.osgi.framework>
 									<itests.project.version>${project.version}</itests.project.version>
 									<itests.project.build.directory>${project.build.directory}</itests.project.build.directory>
-									<itest.ide>false</itest.ide>
+									<itest.ide>${m2e.version}</itest.ide>
 								</systemPropertyVariables>
 								<!-- Let's put failsafe reports with surefire to have access to tests 
 									failures/success reports in sonar -->
@@ -1838,9 +1841,12 @@
 								<goals>
 									<goal>generate-depends-file</goal>
 								</goals>
-								<phase>generate-resources</phase>
+								<phase>process-resources</phase>
 							</execution>
 						</executions>
+						<configuration>
+							<recursive>true</recursive>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
@@ -1856,9 +1862,6 @@
 					<value>felix</value>
 				</property>
 			</activation>
-			<properties>
-				<itests.osgi.framework.id>felix</itests.osgi.framework.id>
-			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>br.com.c8tech.releng</groupId>
@@ -1866,62 +1869,22 @@
 					<version>${c8tech.releng.version}</version>
 					<type>pom</type>
 					<scope>test</scope>
-					<!-- <exclusions> -->
-					<!-- <exclusion> -->
-					<!-- <groupId>org.apache.felix</groupId> -->
-					<!-- <artifactId>org.apache.felix.logback</artifactId> -->
-					<!-- </exclusion> -->
-					<!-- <exclusion> -->
-					<!-- <groupId>ch.qos.logback</groupId> -->
-					<!-- <artifactId>logback-classic</artifactId> -->
-					<!-- </exclusion> -->
-					<!-- <exclusion> -->
-					<!-- <groupId>ch.qos.logback</groupId> -->
-					<!-- <artifactId>logback-core</artifactId> -->
-					<!-- </exclusion> -->
-					<!-- </exclusions> -->
-				</dependency>
-				<dependency>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-					<version>${junit.version}</version>
-					<scope>test</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>org.apache.felix</groupId>
+							<artifactId>org.apache.felix.logback</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>ch.qos.logback</groupId>
+							<artifactId>logback-classic</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>ch.qos.logback</groupId>
+							<artifactId>logback-core</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 			</dependencies>
-
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<version>${maven-dependency.version}</version>
-						<inherited>true</inherited>
-						<executions>
-							<execution>
-								<id>copy-deps-felix</id>
-								<phase>generate-resources</phase>
-								<goals>
-									<goal>copy</goal>
-								</goals>
-								<configuration>
-									<artifactItems>
-										<artifactItem>
-											<groupId>br.com.c8tech.releng</groupId>
-											<artifactId>fpom-deps-felix</artifactId>
-											<version>${c8tech.releng.version}</version>
-											<type>versions</type>
-											<classifier>latest</classifier>
-											<overWrite>true</overWrite>
-											<outputDirectory>${project.build.outputDirectory}/META-INF/maven/</outputDirectory>
-											<destFileName>${itests.framework.dependencies.file}</destFileName>
-										</artifactItem>
-									</artifactItems>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 
 		<profile>
@@ -1935,9 +1898,6 @@
 					<value>equinox</value>
 				</property>
 			</activation>
-			<properties>
-				<itests.osgi.framework.id>equinox</itests.osgi.framework.id>
-			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>br.com.c8tech.releng</groupId>
@@ -1945,15 +1905,24 @@
 					<version>${c8tech.releng.version}</version>
 					<type>pom</type>
 					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-					<version>${junit.version}</version>
-					<scope>test</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>org.apache.felix</groupId>
+							<artifactId>org.apache.felix.logback</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>ch.qos.logback</groupId>
+							<artifactId>logback-classic</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>ch.qos.logback</groupId>
+							<artifactId>logback-core</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 			</dependencies>
 		</profile>
+
 		<profile>
 			<!-- profile used to setup a maven based bundle development project -->
 			<!-- it is activated when a .c8tech.releng.bundle file where found. -->
@@ -1996,16 +1965,6 @@
 				<dependency>
 					<groupId>org.jooq</groupId>
 					<artifactId>jool</artifactId>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.geronimo.specs</groupId>
-					<artifactId>geronimo-json_1.1_spec</artifactId>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.servicemix.bundles</groupId>
-					<artifactId>org.apache.servicemix.bundles.jsr305</artifactId>
 					<scope>provided</scope>
 				</dependency>
 				<dependency>
@@ -2631,7 +2590,7 @@
 					<artifactId>sonar-maven-plugin</artifactId>
 					<version>${sonar-maven.version}</version>
 				</plugin>
-			
+
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -2659,11 +2618,10 @@
 				<version>${jool.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.jsr305</artifactId>
-				<version>3.0.2_1</version>
+				<groupId>org.apache.geronimo.specs</groupId>
+				<artifactId>geronimo-atinject_1.0_spec</artifactId>
+				<version>1.1</version>
 			</dependency>
-
 			<!-- JSON support -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
@@ -2677,5 +2635,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 </project>
