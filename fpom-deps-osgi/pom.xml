@@ -45,28 +45,43 @@
     <!-- end of per child setting -->
 
 	<properties>
+		<osgi.core.version>7.0.0</osgi.core.version>
+		<osgi.cmpn.version>${osgi.core.version}</osgi.cmpn.version>
+		<osgi.annotation.version>${osgi.core.version}</osgi.annotation.version>
+
 		<aries.subsystems.api.version>2.0.10</aries.subsystems.api.version>
 		<aries.subsystems.core.version>${aries.subsystems.api.version}</aries.subsystems.core.version>
 		<aries.util.version>1.1.3</aries.util.version>
-		<aries.spifly.version>1.2.1</aries.spifly.version>
+		<aries.spifly.version>1.2.3</aries.spifly.version>
 		<apache.mina.version>3.0.0-M2</apache.mina.version>
-		<apache.sshd.version>2.2.0</apache.sshd.version>
-		<org.eclipse.equinox.region.version>1.4.300</org.eclipse.equinox.region.version>
-		<jline.version>3.11.0</jline.version>
+		<apache.sshd.version>2.3.0</apache.sshd.version>
+		<org.eclipse.equinox.region.version>1.4.400</org.eclipse.equinox.region.version>
+		<jline.version>3.12.1</jline.version>
 		<asm.version>6.0_BETA</asm.version>
 		<jansi.version>1.18</jansi.version>
-		<jna.version>5.3.1</jna.version>
+		<jna.version>5.4.0</jna.version>
+		<felix.file-install.version>3.6.4</felix.file-install.version>
 		<felix.converter.version>1.0.8</felix.converter.version>
 		<felix.gogo.runtime.version>1.1.2</felix.gogo.runtime.version>
-
+		<jackson.version>2.9.9</jackson.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.apache.johnzon</groupId>
-				<artifactId>johnzon-core</artifactId>
-				<version>${johnzon.version}</version>
+				<groupId>org.osgi</groupId>
+				<artifactId>osgi.core</artifactId>
+				<version>${osgi.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>osgi.annotation</artifactId>
+				<version>${osgi.annotation.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>osgi.cmpn</artifactId>
+				<version>${osgi.cmpn.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.fusesource.jansi</groupId>
@@ -96,7 +111,7 @@
 				<exclusions>
 					<exclusion>
 						<groupId>org.apache.felix</groupId>
-            			<artifactId>org.apache.felix.framework</artifactId>
+						<artifactId>org.apache.felix.framework</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -107,7 +122,7 @@
 				<exclusions>
 					<exclusion>
 						<groupId>org.apache.felix</groupId>
-            			<artifactId>org.apache.felix.framework</artifactId>
+						<artifactId>org.apache.felix.framework</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -317,29 +332,47 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.felix</groupId>
+				<artifactId>org.apache.felix.fileinstall</artifactId>
+				<version>${felix.file-install.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.felix</groupId>
 				<artifactId>org.apache.felix.gogo.runtime</artifactId>
 				<version>${felix.gogo.runtime.version}</version>
+			</dependency>
+    		<!-- Jackson -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.datatype</groupId>
+				<artifactId>jackson-datatype-jsr353</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.json</groupId>
+				<artifactId>javax.json-api</artifactId>
+				<version>1.1.4</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-json_1.1_spec</artifactId>
-        </dependency>
-		<dependency>
-			<groupId>org.apache.johnzon</groupId>
-			<artifactId>johnzon-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.aries.spifly</groupId>
-			<artifactId>org.apache.aries.spifly.dynamic.bundle</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.aries.spifly</groupId>
-			<artifactId>org.apache.aries.spifly.dynamic.framework.extension</artifactId>
-		</dependency>
-	</dependencies>
+<!-- 	<dependencies> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.aries.spifly</groupId> -->
+<!-- 			<artifactId>org.apache.aries.spifly.dynamic.bundle</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.aries.spifly</groupId> -->
+<!-- 			<artifactId>org.apache.aries.spifly.dynamic.framework.extension</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 	</dependencies> -->
 
 </project>

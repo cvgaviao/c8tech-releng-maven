@@ -258,7 +258,7 @@
 		<!-- ======================== -->
 		<maven-assembly.version>3.1.1</maven-assembly.version>
 		<maven-antrun.version>1.8</maven-antrun.version>
-		<maven-animal-sniffer.version>1.17</maven-animal-sniffer.version>
+		<maven-animal-sniffer.version>1.18</maven-animal-sniffer.version>
 		<maven-build-helper.version>3.0.0</maven-build-helper.version>
 		<maven-checkstyle.version>3.1.0</maven-checkstyle.version>
 		<maven-clean.version>3.1.0</maven-clean.version>
@@ -267,12 +267,13 @@
 		<maven-depends.version>1.4.0</maven-depends.version>
 		<maven-deploy.version>3.0.0-M1</maven-deploy.version>
 		<maven-enforcer.version>3.0.0-M2</maven-enforcer.version>
+		<exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
 		<extra-enforcer-rules.version>1.2</extra-enforcer-rules.version>
 		<maven-findbugs.version>3.0.5</maven-findbugs.version>
 		<maven-gpg.version>1.6</maven-gpg.version>
 		<maven-install.version>3.0.0-M1</maven-install.version>
 		<maven-javadoc.version>3.1.0</maven-javadoc.version>
-		<maven-jar.version>3.1.1</maven-jar.version>
+		<maven-jar.version>3.1.2</maven-jar.version>
 		<maven-jar-signer.version>3.0.0</maven-jar-signer.version>
 		<maven-project-info-reports.version>3.0.0</maven-project-info-reports.version>
 		<maven-property.version>1.0.0</maven-property.version>
@@ -296,7 +297,7 @@
 		<wagon-git.version>2.0.3</wagon-git.version>
 
 		<!-- Tools -->
-		<guava.version>27.1-jre</guava.version>
+		<guava.version>28.0-jre</guava.version>
 		<dockerfile-maven.version>1.4.10</dockerfile-maven.version>
 		<johnzon.version>1.1.12</johnzon.version>
 		<geronimo.json.version>1.2</geronimo.json.version>
@@ -323,17 +324,16 @@
 		<!-- JACOCO and Sonar/Reporting settings -->
 		<maven-failsafe.version>3.0.0-M3</maven-failsafe.version>
 		<maven-surefire.version>${maven-failsafe.version}</maven-surefire.version>
-		<junit.version-platform>1.3.1</junit.version-platform>
 		<sonar-maven.version>3.6.0.1398</sonar-maven.version>
-		<jacoco-maven.version>0.8.3</jacoco-maven.version>
+		<jacoco-maven.version>0.8.4</jacoco-maven.version>
 		<pax-exam.version>4.11.0</pax-exam.version>
-		<junit.version>5.4.2</junit.version>
-		<mockito.version>2.28.2</mockito.version>
-		<assertj.version>3.12.2</assertj.version>
+		<junit.version>5.5.1</junit.version>
+		<mockito.version>3.0.0</mockito.version>
+		<assertj.version>3.13.2</assertj.version>
 
 		<!-- The Sonar Jacoco Listener for JUnit to extract coverage details per 
 			test -->
-		<sonar-jacoco-listeners.version>5.13.0.18197</sonar-jacoco-listeners.version>
+		<sonar-jacoco-listeners.version>5.13.1.18282</sonar-jacoco-listeners.version>
 
 		<commons-io.version>2.6</commons-io.version>
 		<commons-collections.version>3.2.2</commons-collections.version>
@@ -347,9 +347,6 @@
 		<!-- ======================== -->
 		<c8tech.releng.version>8.1-SNAPSHOT</c8tech.releng.version>
 		<maven-bundle.version>4.2.0</maven-bundle.version>
-		<osgi.core.version>7.0.0</osgi.core.version>
-		<osgi.cmpn.version>${osgi.core.version}</osgi.cmpn.version>
-		<osgi.annotation.version>${osgi.core.version}</osgi.annotation.version>
 		<pax-url.version>2.6.1</pax-url.version>
 
 		<license.inlineHeader><![CDATA[
@@ -821,11 +818,6 @@
 					<groupId>org.slf4j</groupId>
 					<artifactId>slf4j-simple</artifactId>
 					<version>${slf4j.version}</version>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.johnzon</groupId>
-					<artifactId>johnzon-core</artifactId>
-					<version>${johnzon.version}</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -1740,13 +1732,13 @@
 			</activation>
 			<dependencyManagement>
 				<dependencies>
-					<dependency>
-						<groupId>br.com.c8tech.releng</groupId>
-						<artifactId>fpom-deps-osgi</artifactId>
-						<version>${c8tech.releng.version}</version>
-						<scope>import</scope>
-						<type>pom</type>
-					</dependency>
+<!-- 					<dependency> -->
+<!-- 						<groupId>br.com.c8tech.releng</groupId> -->
+<!-- 						<artifactId>fpom-deps-osgi</artifactId> -->
+<!-- 						<version>${c8tech.releng.version}</version> -->
+<!-- 						<scope>import</scope> -->
+<!-- 						<type>pom</type> -->
+<!-- 					</dependency> -->
 					<dependency>
 						<groupId>br.com.c8tech.releng</groupId>
 						<artifactId>fpom-itests-paxexam</artifactId>
@@ -1757,13 +1749,13 @@
 				</dependencies>
 			</dependencyManagement>
 			<dependencies>
-				<dependency>
-					<groupId>br.com.c8tech.releng</groupId>
-					<artifactId>fpom-deps-osgi</artifactId>
-					<version>${c8tech.releng.version}</version>
-					<type>pom</type>
-					<scope>test</scope>
-				</dependency>
+<!-- 				<dependency> -->
+<!-- 					<groupId>br.com.c8tech.releng</groupId> -->
+<!-- 					<artifactId>fpom-deps-osgi</artifactId> -->
+<!-- 					<version>${c8tech.releng.version}</version> -->
+<!-- 					<type>pom</type> -->
+<!-- 					<scope>test</scope> -->
+<!-- 				</dependency> -->
 				<dependency>
 					<groupId>br.com.c8tech.releng</groupId>
 					<artifactId>fpom-itests-paxexam</artifactId>
@@ -1963,19 +1955,16 @@
 				<dependency>
 					<groupId>org.osgi</groupId>
 					<artifactId>osgi.core</artifactId>
-					<version>${osgi.core.version}</version>
 					<scope>provided</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.osgi</groupId>
 					<artifactId>osgi.annotation</artifactId>
-					<version>${osgi.annotation.version}</version>
 					<scope>provided</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.osgi</groupId>
 					<artifactId>osgi.cmpn</artifactId>
-					<version>${osgi.cmpn.version}</version>
 					<scope>provided</scope>
 				</dependency>
 				<dependency>
@@ -2224,12 +2213,10 @@
 								<additionalDependency>
 									<groupId>org.osgi</groupId>
 									<artifactId>osgi.core</artifactId>
-									<version>${osgi.core.version}</version>
 								</additionalDependency>
 								<additionalDependency>
 									<groupId>org.osgi</groupId>
 									<artifactId>osgi.annotation</artifactId>
-									<version>${osgi.annotation.version}</version>
 								</additionalDependency>
 							</additionalDependencies>
 						</configuration>
@@ -2314,34 +2301,9 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>${maven-clean.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven-compiler.version}</version>
-					<configuration>
-						<source>${java.version}</source>
-						<target>${java.target.version}</target>
-						<release>${java.target.version}</release>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>${maven-install.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>${maven-resources.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>${maven-jar.version}</version>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>animal-sniffer-maven-plugin</artifactId>
+					<version>${maven-animal-sniffer.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -2349,84 +2311,9 @@
 					<version>${maven-build-helper.version}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>${maven-source.version}</version>
-				</plugin>
-				<plugin>
-					<!-- deploy-plugin must be skipped because the nexus. -->
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>${maven-deploy.version}</version>
-					<configuration>
-						<skip>true</skip>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.sonatype.plugins</groupId>
-					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>${nexus-staging-maven-plugin.version}</version>
-					<extensions>true</extensions>
-					<configuration>
-						<serverId>${c8tech.distribution.repository.release.id}</serverId>
-						<nexusUrl>${c8tech.distribution.repository.base.url}</nexusUrl>
-						<autoReleaseAfterClose>true</autoReleaseAfterClose>
-						<autoDropAfterRelease>false</autoDropAfterRelease>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jarsigner-plugin</artifactId>
-					<version>${maven-jar-signer.version}</version>
-					<configuration>
-						<verify>true</verify>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-gpg-plugin</artifactId>
-					<version>${maven-gpg.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>${maven-release.version}</version>
-					<configuration>
-						<arguments>
-							-Dc8tech.build.release
-							-Dc8tech.build.test.coverage
-							${arguments}
-						</arguments>
-						<tagNameFormat>v@{project.version}</tagNameFormat>
-						<!-- ensure submodule are available to other submodules -->
-						<preparationGoals>clean install</preparationGoals>
-
-						<!-- Let the CI do the deployment -->
-						<goals>install site site-deploy</goals>
-						<releaseProfiles>when-releasing-ensure-requirements</releaseProfiles>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>versions-maven-plugin</artifactId>
-					<version>${versions-maven.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>animal-sniffer-maven-plugin</artifactId>
-					<version>${maven-animal-sniffer.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>${maven-enforcer.version}</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.codehaus.mojo</groupId>
-							<artifactId>extra-enforcer-rules</artifactId>
-							<version>${extra-enforcer-rules.version}</version>
-						</dependency>
-					</dependencies>
+					<groupId>com.spotify</groupId>
+					<artifactId>dockerfile-maven-plugin</artifactId>
+					<version>${dockerfile-maven.version}</version>
 				</plugin>
 				<plugin>
 					<!-- This plugin is to control the headers -->
@@ -2582,14 +2469,16 @@
 					</dependencies>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<version>${maven-dependency.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>com.spotify</groupId>
-					<artifactId>dockerfile-maven-plugin</artifactId>
-					<version>${dockerfile-maven.version}</version>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>${nexus-staging-maven-plugin.version}</version>
+					<extensions>true</extensions>
+					<configuration>
+						<serverId>${c8tech.distribution.repository.release.id}</serverId>
+						<nexusUrl>${c8tech.distribution.repository.base.url}</nexusUrl>
+						<autoReleaseAfterClose>true</autoReleaseAfterClose>
+						<autoDropAfterRelease>false</autoDropAfterRelease>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -2598,13 +2487,111 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven-clean.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler.version}</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.target.version}</target>
+						<release>${java.target.version}</release>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency.version}</version>
+				</plugin>
+				<plugin>
+					<!-- deploy-plugin must be skipped because the nexus. -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven-deploy.version}</version>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>extra-enforcer-rules</artifactId>
+							<version>${extra-enforcer-rules.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>${maven-gpg.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven-install.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>${maven-jar-signer.version}</version>
+					<configuration>
+						<verify>true</verify>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>${maven-release.version}</version>
+					<configuration>
+						<arguments>
+							-Dc8tech.build.release
+							-Dc8tech.build.test.coverage
+							${arguments}
+						</arguments>
+						<tagNameFormat>v@{project.version}</tagNameFormat>
+						<!-- ensure submodule are available to other submodules -->
+						<preparationGoals>clean install</preparationGoals>
+
+						<!-- Let the CI do the deployment -->
+						<goals>install site site-deploy</goals>
+						<releaseProfiles>when-releasing-ensure-requirements</releaseProfiles>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-shade-plugin</artifactId>
 					<version>${maven-shade.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
 					<version>${sonar-maven.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${versions-maven.version}</version>
 				</plugin>
 
 			</plugins>
@@ -2615,6 +2602,11 @@
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+  				<artifactId>slf4j-ext</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
 			<dependency>
@@ -2637,17 +2629,6 @@
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-atinject_1.0_spec</artifactId>
 				<version>1.1</version>
-			</dependency>
-			<!-- JSON support -->
-			<dependency>
-				<groupId>org.apache.geronimo.specs</groupId>
-				<artifactId>geronimo-json_1.1_spec</artifactId>
-				<version>${geronimo.json.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.johnzon</groupId>
-				<artifactId>johnzon-core</artifactId>
-				<version>${johnzon.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

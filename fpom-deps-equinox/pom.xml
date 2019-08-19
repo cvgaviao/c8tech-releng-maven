@@ -10,262 +10,283 @@
 <!--                                                                              -->
 <!-- ============================================================================ -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>br.com.c8tech.releng</groupId>
-        <artifactId>maven-parent-java</artifactId>
-        <version>8.1-SNAPSHOT</version>
-    </parent>
+	<parent>
+		<groupId>br.com.c8tech.releng</groupId>
+		<artifactId>maven-parent-java</artifactId>
+		<version>8.1-SNAPSHOT</version>
+	</parent>
 
-    <artifactId>fpom-deps-equinox</artifactId>
-    <name>C8Tech Maven Fragment POM for dependencies of a Equinox container.</name>
-    <description>A fragment POM that groups dependencies related to Equinox container.
+	<artifactId>fpom-deps-equinox</artifactId>
+	<name>C8Tech Maven Fragment POM for dependencies of a Equinox container.</name>
+	<description>A fragment POM that groups dependencies related to Equinox container.
     It is aimed to be imported by integration tests or distribution projects POMs.</description>
-    <packaging>pom</packaging>
+	<packaging>pom</packaging>
 
     <!-- Due a maven limitation, this MUST be replicated to all children -->
-    <url>${c8tech.project.site.url}</url>
-    <scm>
-        <connection>${c8tech.scm.connection}</connection>
-        <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
-        <url>${c8tech.scm.url}</url>
-        <tag>HEAD</tag>
-    </scm>
-    <distributionManagement>
-        <site>
-            <id>${c8tech.distribution.site.id}</id>
-            <name>${c8tech.distribution.site.name}</name>
-            <url>${c8tech.distribution.site.url}</url>
-        </site>
-    </distributionManagement>
+	<url>${c8tech.project.site.url}</url>
+	<scm>
+		<connection>${c8tech.scm.connection}</connection>
+		<developerConnection>${c8tech.scm.connection.dev}</developerConnection>
+		<url>${c8tech.scm.url}</url>
+		<tag>HEAD</tag>
+	</scm>
+	<distributionManagement>
+		<site>
+			<id>${c8tech.distribution.site.id}</id>
+			<name>${c8tech.distribution.site.name}</name>
+			<url>${c8tech.distribution.site.url}</url>
+		</site>
+	</distributionManagement>
     <!-- end of per child setting -->
 
-    <properties>
-        <javax.xml.version>1.3.4.v201005080400</javax.xml.version>
-        <javax.servlet.version>3.1.0.v201410161800</javax.servlet.version>
-        <javax.net.ssl.version>3.1.0.v201410161800</javax.net.ssl.version>
+	<properties>
+		<javax.xml.version>1.3.4.v201005080400</javax.xml.version>
+		<javax.servlet.version>3.1.0.v201410161800</javax.servlet.version>
+		<javax.net.ssl.version>3.1.0.v201410161800</javax.net.ssl.version>
 
-        <org.eclipse.equinox.cm.version>1.4.0</org.eclipse.equinox.cm.version>
-        <org.eclipse.equinox.common.version>3.10.300</org.eclipse.equinox.common.version>
-        <org.eclipse.equinox.concurrent.version>1.1.0</org.eclipse.equinox.concurrent.version>
-        <org.eclipse.equinox.console.version>1.3.200</org.eclipse.equinox.console.version>
-        <org.eclipse.equinox.coordinator.version>1.3.600</org.eclipse.equinox.coordinator.version>
-        <org.eclipse.equinox.device.version>1.0.400</org.eclipse.equinox.device.version>
-        <org.eclipse.equinox.ds.version>1.6.0</org.eclipse.equinox.ds.version>
-        <org.eclipse.equinox.event.version>1.5.0</org.eclipse.equinox.event.version>
-        <org.eclipse.equinox.metatype.version>1.4.600</org.eclipse.equinox.metatype.version>
-        <org.eclipse.equinox.preferences.version>3.7.300</org.eclipse.equinox.preferences.version>
-        <org.eclipse.equinox.useradmin.version>1.1.500</org.eclipse.equinox.useradmin.version>
-        <org.eclipse.equinox.util.version>1.1.200</org.eclipse.equinox.util.version>
-        <org.eclipse.equinox.wireadmin.version>1.0.600</org.eclipse.equinox.wireadmin.version>
-        <org.eclipse.osgi.services.version>3.8.0</org.eclipse.osgi.services.version>
-        <org.eclipse.osgi.util.version>3.5.200</org.eclipse.osgi.util.version>
-        <org.eclipse.osgi.version>3.13.300</org.eclipse.osgi.version>
+		<org.eclipse.equinox.cm.version>1.4.0</org.eclipse.equinox.cm.version>
+		<org.eclipse.equinox.common.version>3.10.400</org.eclipse.equinox.common.version>
+		<org.eclipse.equinox.concurrent.version>1.1.0</org.eclipse.equinox.concurrent.version>
+		<org.eclipse.equinox.console.version>1.3.300</org.eclipse.equinox.console.version>
+		<org.eclipse.equinox.coordinator.version>1.3.600</org.eclipse.equinox.coordinator.version>
+		<org.eclipse.equinox.device.version>1.0.400</org.eclipse.equinox.device.version>
+		<org.eclipse.equinox.ds.version>1.6.0</org.eclipse.equinox.ds.version>
+		<org.eclipse.equinox.event.version>1.5.100</org.eclipse.equinox.event.version>
+		<org.eclipse.equinox.metatype.version>1.5.0</org.eclipse.equinox.metatype.version>
+		<org.eclipse.equinox.preferences.version>3.7.400</org.eclipse.equinox.preferences.version>
+		<org.eclipse.equinox.useradmin.version>1.1.500</org.eclipse.equinox.useradmin.version>
+		<org.eclipse.equinox.util.version>1.1.200</org.eclipse.equinox.util.version>
+		<org.eclipse.equinox.wireadmin.version>1.0.600</org.eclipse.equinox.wireadmin.version>
+		<org.eclipse.osgi.services.version>3.8.0</org.eclipse.osgi.services.version>
+		<org.eclipse.osgi.util.version>3.5.200</org.eclipse.osgi.util.version>
+		<org.eclipse.osgi.version>3.14.0</org.eclipse.osgi.version>
 
-    </properties>
+	</properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>br.com.c8tech.releng</groupId>
-                <version>8.1-SNAPSHOT</version>
-                <artifactId>fpom-deps-felix</artifactId>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>br.com.c8tech.releng</groupId>
-                <version>8.1-SNAPSHOT</version>
-                <artifactId>fpom-deps-osgi</artifactId>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>br.com.c8tech.releng</groupId>
+				<version>8.1-SNAPSHOT</version>
+				<artifactId>fpom-deps-felix</artifactId>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.c8tech.releng</groupId>
+				<version>8.1-SNAPSHOT</version>
+				<artifactId>fpom-deps-osgi</artifactId>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
             <!-- current released eclipse bundles from maven central -->
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.osgi</artifactId>
-                <version>${org.eclipse.osgi.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.osgi.services</artifactId>
-                <version>${org.eclipse.osgi.services.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.osgi.util</artifactId>
-                <version>${org.eclipse.osgi.util.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.util</artifactId>
-                <version>${org.eclipse.equinox.util.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.preferences</artifactId>
-                <version>${org.eclipse.equinox.preferences.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.metatype</artifactId>
-                <version>${org.eclipse.equinox.metatype.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.ds</artifactId>
-                <version>${org.eclipse.equinox.ds.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.coordinator</artifactId>
-                <version>${org.eclipse.equinox.coordinator.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.console</artifactId>
-                <version>${org.eclipse.equinox.console.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.cm</artifactId>
-                <version>${org.eclipse.equinox.cm.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.common</artifactId>
-                <version>${org.eclipse.equinox.common.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.platform</groupId>
-                <artifactId>org.eclipse.equinox.event</artifactId>
-                <version>${org.eclipse.equinox.event.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.osgi</artifactId>
+				<version>${org.eclipse.osgi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.osgi.services</artifactId>
+				<version>${org.eclipse.osgi.services.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.osgi.util</artifactId>
+				<version>${org.eclipse.osgi.util.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.equinox.util</artifactId>
+				<version>${org.eclipse.equinox.util.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.equinox.preferences</artifactId>
+				<version>${org.eclipse.equinox.preferences.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.equinox.metatype</artifactId>
+				<version>${org.eclipse.equinox.metatype.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.equinox.ds</artifactId>
+				<version>${org.eclipse.equinox.ds.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.equinox.coordinator</artifactId>
+				<version>${org.eclipse.equinox.coordinator.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.equinox.console</artifactId>
+				<version>${org.eclipse.equinox.console.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.equinox.cm</artifactId>
+				<version>${org.eclipse.equinox.cm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.equinox.common</artifactId>
+				<version>${org.eclipse.equinox.common.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.equinox.event</artifactId>
+				<version>${org.eclipse.equinox.event.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.osgi</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.osgi.services</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.osgi.util</artifactId>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.osgi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.osgi.services</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.osgi.util</artifactId>
+		</dependency>
 <!-- we are using the felix implementation since equinox is still on Compendium 6 -->
 <!--         <dependency> -->
 <!--             <groupId>org.eclipse.platform</groupId> -->
 <!--             <artifactId>org.eclipse.equinox.cm</artifactId> -->
 <!--         </dependency> -->
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.equinox.common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.equinox.coordinator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.equinox.console</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.equinox.event</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.equinox.common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.equinox.coordinator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.equinox.console</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.equinox.event</artifactId>
+		</dependency>
 <!-- we are using the felix implementation since equinox is still on Compendium 6 -->
 <!--         <dependency> -->
 <!--             <groupId>org.eclipse.platform</groupId> -->
 <!--             <artifactId>org.eclipse.equinox.ds</artifactId> -->
 <!--         </dependency> -->
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.equinox.metatype</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.equinox.preferences</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.platform</groupId>
-            <artifactId>org.eclipse.equinox.util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.bundlerepository</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.configadmin</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.converter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.configurator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.gogo.shell</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.gogo.runtime</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.gogo.command</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.gogo.jline</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.logback</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.scr</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.fusesource.jansi</groupId>
-            <artifactId>jansi</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jline</groupId>
-            <artifactId>jline</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.util.pushstream</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.util.function</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.util.promise</artifactId>
-        </dependency>
-
-    </dependencies>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.equinox.metatype</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.equinox.preferences</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.equinox.util</artifactId>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.felix</groupId> -->
+<!-- 			<artifactId>org.apache.felix.bundlerepository</artifactId> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.configadmin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.converter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.configurator</artifactId>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.felix</groupId> -->
+<!-- 			<artifactId>org.apache.felix.fileinstall</artifactId> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.gogo.shell</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.gogo.runtime</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.gogo.command</artifactId>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.felix</groupId> -->
+<!-- 			<artifactId>org.apache.felix.gogo.jline</artifactId> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.logback</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.scr</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.fusesource.jansi</groupId> -->
+<!-- 			<artifactId>jansi</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.jline</groupId> -->
+<!-- 			<artifactId>jline</artifactId> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.util.pushstream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.util.function</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.util.promise</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr353</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.json</groupId>
+			<artifactId>javax.json-api</artifactId>
+		</dependency>
+	</dependencies>
 
 </project>
