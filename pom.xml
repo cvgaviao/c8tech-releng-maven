@@ -298,7 +298,7 @@
 
 		<!-- Tools -->
 		<guava.version>28.0-jre</guava.version>
-		<dockerfile-maven.version>1.4.10</dockerfile-maven.version>
+		<docker-maven.version>0.31.0</docker-maven.version>
 		<johnzon.version>1.1.12</johnzon.version>
 		<geronimo.json.version>1.2</geronimo.json.version>
 
@@ -2311,9 +2311,9 @@
 					<version>${maven-build-helper.version}</version>
 				</plugin>
 				<plugin>
-					<groupId>com.spotify</groupId>
-					<artifactId>dockerfile-maven-plugin</artifactId>
-					<version>${dockerfile-maven.version}</version>
+					<groupId>io.fabric8</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>${docker-maven.version}</version>
 				</plugin>
 				<plugin>
 					<!-- This plugin is to control the headers -->
