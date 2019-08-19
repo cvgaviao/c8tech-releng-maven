@@ -297,11 +297,11 @@
 		<wagon-git.version>2.0.3</wagon-git.version>
 
 		<!-- Tools -->
-		<guava.version>28.0-jre</guava.version>
 		<docker-maven.version>0.31.0</docker-maven.version>
-		<johnzon.version>1.1.12</johnzon.version>
+		<dekorate.version>0.8.0</dekorate.version>
 		<geronimo.json.version>1.2</geronimo.json.version>
-
+		<guava.version>28.0-jre</guava.version>
+		<johnzon.version>1.1.12</johnzon.version>		
 		<jool.version>0.9.14</jool.version>
 		<org.immutables.version>2.7.5</org.immutables.version>
 
@@ -2599,6 +2599,11 @@
 	</build>
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+			  <groupId>io.dekorate</groupId>
+			  <artifactId>kubernetes-annotations</artifactId>
+			  <version>${dekorate.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
