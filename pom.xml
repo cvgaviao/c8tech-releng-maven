@@ -308,6 +308,7 @@
         <jool.version>0.9.14</jool.version>
         <org.immutables.version>2.8.0</org.immutables.version>
         <freelib.utils.version>1.0.1</freelib.utils.version>
+        <jackson.version>2.9.10</jackson.version>
         
 
 		<!-- LOGGING AND MONITORING -->
