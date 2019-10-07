@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ============================================================================ -->
+<!--  Copyright ©  2015-2019,    Cristiano V. Gavião			                  -->
+<!--                                                                              -->
+<!--  All rights reserved.                                                        -->
+<!--  This program and the accompanying materials are made available under        -->
+<!--  the terms of the Eclipse Public License v1.0 which accompanies this         -->
+<!--  distribution and is available at http://www.eclipse.org/legal/epl-v10.html  -->
+<!--                                                                              -->
+<!-- ============================================================================ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>br.com.c8tech.releng</groupId>
+        <artifactId>maven-parent-java</artifactId>
+        <version>8.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>maven-parent-vertx</artifactId>
+    <name>C8Tech maven parent Vert.x POM.</name>
+    <description>A parent POM for Vert.x based projects.</description>
+    <packaging>pom</packaging>
+
+    <!-- Due a maven limitation, this MUST be replicated to all children -->
+    <url>${c8tech.project.site.url}</url>
+    <scm>
+        <connection>${c8tech.scm.connection}</connection>
+        <developerConnection>${c8tech.scm.connection.dev}</developerConnection>
+        <url>${c8tech.scm.url}</url>
+        <tag>HEAD</tag>
+    </scm>
+    <distributionManagement>
+        <site>
+            <id>${c8tech.distribution.site.id}</id>
+            <name>${c8tech.distribution.site.name}</name>
+            <url>${c8tech.distribution.site.url}</url>
+        </site>
+    </distributionManagement>
+    <!-- end of per child setting -->
+
+    <properties>
+        <vertx.version>4.0.0-SNAPSHOT</vertx.version>
+        <dagger.version>2.24</dagger.version>
+        <vertx-maven-plugin.version>1.0-SNAPSHOT</vertx-maven-plugin.version>
+    </properties>
+
+    <profiles>
+                <!-- ======================== -->
+        <!-- Vert.x PROFILES -->
+        <!-- ======================== -->
+
+        <profile>
+            <!-- profile used to setup a maven based bundle development project -->
+            <!-- it is activated when a .c8tech.releng.bundle file where found. -->
+            <id>when-building-vertx-jar</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.vertx</exists>
+                </file>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>io.reactiverse</groupId>
+                            <artifactId>vertx-maven-plugin</artifactId>
+                            <version>${vertx-maven-plugin.version}</version>
+                            <configuration>
+                                <verticle>${app.main.verticle}</verticle>
+                                <launcher>io.vertx.core.Launcher</launcher>
+                                <redeploy>true</redeploy>
+                                <projectBuildDir>${project.build.directory}/docker-context</projectBuildDir>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <version>${maven-compiler.version}</version>
+                            <configuration>
+                                <annotationProcessorPaths>
+                                    <annotationProcessorPath>
+                                        <groupId>io.vertx</groupId>
+                                        <artifactId>vertx-codegen</artifactId>
+                                        <version>${vertx.version}</version>
+                                        <classifier>processor</classifier>
+                                    </annotationProcessorPath>
+                                    <annotationProcessorPath>
+                                        <groupId>io.vertx</groupId>
+                                        <artifactId>vertx-service-proxy</artifactId>
+                                        <version>${vertx.version}</version>
+                                        <classifier>processor</classifier>
+                                    </annotationProcessorPath>
+                                    <annotationProcessorPath>
+                                        <groupId>com.google.dagger</groupId>
+                                        <artifactId>dagger-compiler</artifactId>
+                                        <version>${dagger.version}</version>
+                                    </annotationProcessorPath>
+                                </annotationProcessorPaths>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>io.reactiverse</groupId>
+                        <artifactId>vertx-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>vmp</id>
+                                <goals>
+                                    <goal>initialize</goal>
+                                    <goal>package</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-stack-depchain</artifactId>
+                        <version>${vertx.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.google.dagger</groupId>
+                        <artifactId>dagger</artifactId>
+                        <version>${dagger.version}</version>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+
+            <dependencies>
+                <dependency>
+                    <groupId>com.google.dagger</groupId>
+                    <artifactId>dagger</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.vertx</groupId>
+                    <artifactId>vertx-core</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.vertx</groupId>
+                    <artifactId>vertx-rx-java2</artifactId>
+                </dependency>
+
+                <dependency>
+                    <groupId>io.vertx</groupId>
+                    <artifactId>vertx-junit5</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+    </profiles>
+
+</project>

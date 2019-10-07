@@ -61,7 +61,7 @@
 		<jansi.version>1.18</jansi.version>
 		<jna.version>5.4.0</jna.version>
 		<felix.file-install.version>3.6.4</felix.file-install.version>
-		<felix.converter.version>1.0.8</felix.converter.version>
+		<felix.converter.version>1.0.10</felix.converter.version>
 		<felix.gogo.runtime.version>1.1.2</felix.gogo.runtime.version>
 		<jackson.version>2.9.9</jackson.version>
 	</properties>
