@@ -62,7 +62,7 @@
 		<felix.gogo.jline.version>1.1.4</felix.gogo.jline.version>
 		<felix.gogo.shell.version>1.1.2</felix.gogo.shell.version>
 		<felix.log.versionback>1.0.2</felix.log.versionback>
-		<felix.log.version>1.2.0</felix.log.version>
+		<felix.log.version>1.2.2</felix.log.version>
 		<felix.metatype.version>1.2.2</felix.metatype.version>
 		<felix.prefs.version>1.1.0</felix.prefs.version>
 		<felix.scr.version>2.1.16</felix.scr.version>
