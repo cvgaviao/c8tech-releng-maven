@@ -129,7 +129,12 @@
                 <c8tech.ci.server.user>c8tech-releaser-bot</c8tech.ci.server.user>
 
             </properties>
-
+        </profile>
+        <profile>
+            <id>Sonatype-OSS</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <repositories>
                 <repository>
                     <id>sonatype-stage</id>
@@ -158,7 +163,7 @@
                     </url>
                 </repository>
             </repositories>
-        </profile>
+        </profile>        
     </profiles>
 
 </settings>
