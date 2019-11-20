@@ -221,7 +221,7 @@
                 </property>
             </activation>
             <properties>
-                <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
+                <dockerfile-maven.version>1.4.13</dockerfile-maven.version>
                 <docker.source.directory>${basedir}/src/main/docker</docker.source.directory>
                 <docker.source.directory.filtering>${basedir}/src/main/docker-filtering</docker.source.directory.filtering>
                 <docker.context.directory>${project.build.directory}/docker-context</docker.context.directory>
