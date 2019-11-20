@@ -45,7 +45,6 @@
 
     <properties>
         <vertx.version>4.0.0-SNAPSHOT</vertx.version>
-        <dagger.version>2.24</dagger.version>
         <vertx-maven-plugin.version>1.0.22</vertx-maven-plugin.version>
     </properties>
 
@@ -138,11 +137,6 @@
                                         <version>${vertx.version}</version>
                                         <classifier>processor</classifier>
                                     </path>
-                                    <path>
-                                        <groupId>com.google.dagger</groupId>
-                                        <artifactId>dagger-compiler</artifactId>
-                                        <version>${dagger.version}</version>
-                                    </path>
                                 </annotationProcessorPaths>
                             </configuration>
                         </plugin>
@@ -185,11 +179,6 @@
                         <version>${vertx.version}</version>
                         <type>pom</type>
                         <scope>import</scope>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.google.dagger</groupId>
-                        <artifactId>dagger</artifactId>
-                        <version>${dagger.version}</version>
                     </dependency>
                 </dependencies>
             </dependencyManagement>
