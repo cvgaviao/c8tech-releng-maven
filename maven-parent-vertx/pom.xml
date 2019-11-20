@@ -46,19 +46,22 @@
     <properties>
         <vertx.version>4.0.0-SNAPSHOT</vertx.version>
         <dagger.version>2.24</dagger.version>
-        <vertx-maven-plugin.version>1.0-SNAPSHOT</vertx-maven-plugin.version>
+        <vertx-maven-plugin.version>1.0.22</vertx-maven-plugin.version>
     </properties>
 
     <profiles>
-                <!-- ======================== -->
-        <!-- Vert.x PROFILES -->
+        <!-- ======================== -->
+        <!--      Vert.x PROFILES     -->
         <!-- ======================== -->
 
         <profile>
             <!-- profile used to setup a maven based bundle development project -->
             <!-- it is activated when a .c8tech.releng.bundle file where found. -->
-            <id>when-building-vertx-jar</id>
+            <id>when-building-vertx-jar-inside-eclipse</id>
             <activation>
+                <property>
+                    <name>m2e.version</name>
+                </property>
                 <file>
                     <exists>.c8tech.releng.vertx</exists>
                 </file>
@@ -71,36 +74,89 @@
                             <artifactId>vertx-maven-plugin</artifactId>
                             <version>${vertx-maven-plugin.version}</version>
                             <configuration>
-                                <verticle>${app.main.verticle}</verticle>
-                                <launcher>io.vertx.core.Launcher</launcher>
+                                <runMode>exploded</runMode>
                                 <redeploy>true</redeploy>
-                                <projectBuildDir>${project.build.directory}/docker-context</projectBuildDir>
+                                <vertx.directory>${project.build.directory}/run</vertx.directory>
                             </configuration>
                         </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>when-building-vertx-jar-outside-eclipse</id>
+            <activation>
+                <property>
+                    <name>!m2e.version</name>
+                </property>
+                <file>
+                    <exists>.c8tech.releng.vertx</exists>
+                </file>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>io.reactiverse</groupId>
+                            <artifactId>vertx-maven-plugin</artifactId>
+                            <version>${vertx-maven-plugin.version}</version>
+                            <configuration>
+                                <runMode>jar</runMode>
+                                <redeploy>false</redeploy>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+
+        <profile>
+            <!-- profile used to setup a maven based bundle development project -->
+            <!-- it is activated when a .c8tech.releng.bundle file where found. -->
+            <id>when-building-vertx-jar</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.vertx</exists>
+                </file>
+            </activation>
+            <properties>
+                <vertx.build.directory>${project.build.directory}</vertx.build.directory>
+            </properties>
+            <build>
+                <pluginManagement>
+                    <plugins>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-compiler-plugin</artifactId>
                             <version>${maven-compiler.version}</version>
+                            <inherited>true</inherited>
                             <configuration>
                                 <annotationProcessorPaths>
-                                    <annotationProcessorPath>
+                                    <path>
                                         <groupId>io.vertx</groupId>
                                         <artifactId>vertx-codegen</artifactId>
                                         <version>${vertx.version}</version>
                                         <classifier>processor</classifier>
-                                    </annotationProcessorPath>
-                                    <annotationProcessorPath>
-                                        <groupId>io.vertx</groupId>
-                                        <artifactId>vertx-service-proxy</artifactId>
-                                        <version>${vertx.version}</version>
-                                        <classifier>processor</classifier>
-                                    </annotationProcessorPath>
-                                    <annotationProcessorPath>
+                                    </path>
+                                    <path>
                                         <groupId>com.google.dagger</groupId>
                                         <artifactId>dagger-compiler</artifactId>
                                         <version>${dagger.version}</version>
-                                    </annotationProcessorPath>
+                                    </path>
                                 </annotationProcessorPaths>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>io.reactiverse</groupId>
+                            <artifactId>vertx-maven-plugin</artifactId>
+                            <version>${vertx-maven-plugin.version}</version>
+                            <configuration>
+                                <launcher>${vertx.launcher}</launcher>
+                                <verticle>${vertx.verticle}</verticle>
+                                <vertxVersion>${vertx.version}</vertxVersion>
+                                <projectGroupId>${project.groupId}</projectGroupId>
+                                <projectArtifactId>${project.artifactId}</projectArtifactId>
+                                <projectBuildDir>${vertx.build.directory}</projectBuildDir>
                             </configuration>
                         </plugin>
                     </plugins>
@@ -140,18 +196,19 @@
 
             <dependencies>
                 <dependency>
-                    <groupId>com.google.dagger</groupId>
-                    <artifactId>dagger</artifactId>
-                </dependency>
-                <dependency>
                     <groupId>io.vertx</groupId>
                     <artifactId>vertx-core</artifactId>
                 </dependency>
                 <dependency>
-                    <groupId>io.vertx</groupId>
-                    <artifactId>vertx-rx-java2</artifactId>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jul-to-slf4j</artifactId>
+                    <version>${slf4j.version}</version>
                 </dependency>
-
+                <dependency>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                    <scope>compile</scope>
+                </dependency>
                 <dependency>
                     <groupId>io.vertx</groupId>
                     <artifactId>vertx-junit5</artifactId>
@@ -160,6 +217,158 @@
             </dependencies>
         </profile>
 
+        <!-- ======================== -->
+        <!--      Docker PROFILES     -->
+        <!-- ======================== -->
+
+        <profile>
+            <id>build-docker-image</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.vertx</exists>
+                </file>
+                <property>
+                    <name>withDocker.build</name>
+                </property>
+            </activation>
+            <properties>
+                <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
+                <docker.source.directory>${basedir}/src/main/docker</docker.source.directory>
+                <docker.source.directory.filtering>${basedir}/src/main/docker-filtering</docker.source.directory.filtering>
+                <docker.context.directory>${project.build.directory}/docker-context</docker.context.directory>
+                <docker.image.name>${project.artifactId}</docker.image.name>
+                <docker.image.tag>${project.version}</docker.image.tag>
+                <dockerfile.name>Dockerfile</dockerfile.name>
+                <vertx.build.directory>${docker.context.directory}</vertx.build.directory>
+            </properties>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.spotify</groupId>
+                            <artifactId>dockerfile-maven-plugin</artifactId>
+                            <version>${dockerfile-maven-plugin}</version>
+                            <configuration>
+                                <noCache>false</noCache>
+                                <googleContainerRegistryEnabled>false</googleContainerRegistryEnabled>
+                                <dockerfile>${docker.context.directory}/${dockerfile.name}</dockerfile>
+                                <repository>${docker.image.namespace}${docker.image.name}</repository>
+                                <tag>${project.version}</tag>
+                                <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                                <contextDirectory>${docker.context.directory}</contextDirectory>
+                                <buildArgs>
+                                    <APP_JAR_FILE>${project.build.finalName}.jar</APP_JAR_FILE>
+                                    <APP_PROJECT_ID>${project.artifactId}</APP_PROJECT_ID>
+                                    <APP_PROJECT_VERSION>${project.version}</APP_PROJECT_VERSION>
+                                    <APP_BUILD_DATE>${build-date}</APP_BUILD_DATE>
+                                    <HTTP_PORT>8085</HTTP_PORT>
+                                </buildArgs>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>timestamp-property</id>
+                                <goals>
+                                    <goal>timestamp-property</goal>
+                                </goals>
+                                <configuration>
+                                    <name>build-date</name>
+                                    <pattern>yyyy-MM-dd</pattern>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-docker-resources</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${docker.context.directory}</outputDirectory>
+                                    <encoding>UTF-8</encoding>
+                                    <resources>
+                                        <resource>
+                                            <directory>${docker.source.directory}</directory>
+                                            <targetPath>
+                                                ${docker.context.directory}
+                                            </targetPath>
+                                            <filtering>false</filtering>
+                                            <includes>
+                                                <include>**/*</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>${docker.source.directory.filtering}</directory>
+                                            <filtering>true</filtering>
+                                            <targetPath>
+                                                ${docker.context.directory}
+                                            </targetPath>
+                                            <includes>
+                                                <include>**/*</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>com.spotify</groupId>
+                        <artifactId>dockerfile-maven-plugin</artifactId>
+                        <version>${dockerfile-maven.version}</version>
+                        <executions>
+                            <execution>
+                                <id>default</id>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>push-docker-image</id>
+            <activation>
+                <file>
+                    <exists>.c8tech.releng.vertx</exists>
+                </file>
+                <property>
+                    <name>withDocker.push</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.spotify</groupId>
+                        <artifactId>dockerfile-maven-plugin</artifactId>
+                        <version>${dockerfile-maven-version}</version>
+                        <executions>
+                            <execution>
+                                <id>pushing-to-registry</id>
+                                <goals>
+                                    <goal>push</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>
