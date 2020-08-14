@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.properties" deleted="false" description="Property with a schema $ref template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.properties.ref" name="$ref property">${propertyName}:
+  $$ref: "#/components/schemas/${schema}"</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="200_OK">200_OK_${CONTEXT}:
+  description: Ok
+  
+  headers:
+    X-Request-ID:
+      $$ref: "#/components/headers/X-Request-ID"
+          
+  content:
+    application/json:
+      schema:
+        $$ref: "#/components/schemas/${CONTEXT}"
+      examples:
+        "example 1":
+            $$ref: "#/components/examples/createSigningBasketResponseExample1"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="200_OK_$ref">'200':
+  $$ref: "#/components/responses/200_OK_${CONTEXT}"
+
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="201_CREATED">201_CREATED_${CONTEXT}:
+  description: Created
+  
+  headers:
+    X-Request-ID:
+      $$ref: "#/components/headers/X-Request-ID"
+          
+  content:
+    application/json:
+      schema:
+        $$ref: "#/components/schemas/201_Response_${CONTEXT}"
+      examples:
+        "Response (always with explicit authorization start)":
+        $$ref: "#/components/examples/createSigningBasketResponseExample1"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="201_CREATED_$ref">'201':
+  $$ref: "#/components/responses/201_CREATED_${CONTEXT}"
+  
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Bad Request error response" enabled="true" name="400_BAD_REQUEST">400_BAD_REQUEST_${DEFAULT}:
+  description: Bad Request 
+  headers:
+    X-Request-ID: 
+      $$ref: "#/components/headers/X-Request-ID"
+  content:
+    application/problem+json:
+      schema:
+        $$ref: "#/components/schemas/Error_400_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Bad request response reference" enabled="true" name="400_BAD_REQUEST_$ref">'400':
+  $$ref: "#/components/responses/400_BAD_REQUEST_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="400_Error_Schema">Error_400_${DEFAULT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode400_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="400_MessageCodes">MessageCode400_${DEFAULT}: 
+  description: Message codes defined for HTTP Error code 400 (BAD_REQUEST).
+  type: string
+  enum: 
+    - "FORMAT_ERROR"              #gen
+    - "PARAMETER_NOT_CONSISTENT"  #gen
+    - "PARAMETER_NOT_SUPPORTED"   #gen
+    - "SERVICE_INVALID"           #gen
+    - "RESOURCE_UNKNOWN"          #gen
+    - "RESOURCE_EXPIRED"          #gen
+    - "RESOURCE_BLOCKED"          #gen
+    - "TIMESTAMP_INVALID"         #gen
+    - "PERIOD_INVALID"            #gen
+    - "SCA_METHOD_UNKNOWN"        #gen
+    - "CONSENT_UNKNOWN"           #gen
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="401_Error_Schema">Error_401_${DEFAULT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode401_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="401_MessageCodes">MessageCode401_${DEFAULT}: 
+  description: Message codes defined for HTTP Error code 401 (UNAUTHORIZED).
+  type: string
+  enum: 
+    - "CERTIFICATE_INVALID"       #gen
+    - "CERTIFICATE_EXPIRED"       #gen
+    - "CERTIFICATE_BLOCKED"       #gen
+    - "CERTIFICATE_REVOKE"        #gen
+    - "CERTIFICATE_MISSING"       #gen
+    - "SIGNATURE_INVALID"         #gen
+    - "SIGNATURE_MISSING"         #gen
+    - "CORPORATE_ID_INVALID"      #gen
+    - "PSU_CREDENTIALS_INVALID"   #gen
+    - "CONSENT_INVALID"           #gen, AIS
+    - "CONSENT_EXPIRED"           #gen
+    - "TOKEN_UNKNOWN"             #gen
+    - "TOKEN_INVALID"             #gen
+    - "TOKEN_EXPIRED"             #gen
+
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Unauthorized error response" enabled="true" name="401_UNAUTHORIZED">401_UNAUTHORIZED_${DEFAULT}:
+  description: Unauthorized
+  headers:
+    X-Request-ID: 
+      $$ref: "#/components/headers/X-Request-ID"
+  content:
+    application/problem+json:
+      schema:
+        $$ref: "#/components/schemas/Error_401_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="401 response code" enabled="true" name="401_UNAUTHORIZED_$ref">'401':
+  $$ref: "#/components/responses/401_UNAUTHORIZED_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="403_Error_Schema">Error_403_${DEFAULT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode403_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Forbidden error response" enabled="true" name="403_FORBIDDEN">403_FORBIDDEN_${DEFAULT}:
+  description: Forbidden
+  headers:
+    X-Request-ID: 
+      $$ref: "#/components/headers/X-Request-ID"
+  content:
+    application/problem+json:
+      schema:
+        $$ref: "#/components/schemas/Error_403_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="403_FORBIDDEN_$ref">'403':
+  $$ref: "#/components/responses/403_FORBIDDEN_${DEFAULT}"
+  
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="403_MessageCodes">MessageCode403_${DEFAULT}: 
+  description: Message codes defined for HTTP Error code 403 (FORBIDDEN).
+  type: string
+  enum: 
+    - "CONSENT_UNKNOWN"           #${DEFAULT}
+    - "SERVICE_BLOCKED"                   #${DEFAULT}
+    - "RESOURCE_UNKNOWN"         #${DEFAULT}
+    - "RESOURCE_EXPIRED"                #${DEFAULT}
+    </template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="404_Error_Schema">Error_404_${DEFAULT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode404_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="404_MessageCodes">MessageCode404_${DEFAULT}: 
+  description: Message codes defined for HTTP Error code 404 (NOT FOUND).
+  type: string
+  enum: 
+    - "RESOURCE_UNKNOWN"           #${DEFAULT}
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Resource not found error response" enabled="true" name="404_NOT_FOUND">404_NOT_FOUND_${DEFAULT}:
+  description: Not Found
+  headers:
+    X-Request-ID: 
+      $$ref: "#/components/headers/X-Request-ID"
+  content:
+    application/problem+json:
+      schema:
+        $$ref: "#/components/schemas/Error_404_${DEFAULT}"
+
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="404_NOT_FOUND_$ref">'404':
+  $$ref: "#/components/responses/404_NOT_FOUND_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="405_Error_Schema">Error_405_${DEFAULT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode405_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="405_MessageCodes">MessageCode405_${DEFAULT}: 
+  description: Message codes defined for HTTP Error code 405 (METHOD NOT ALLOWED).
+  type: string
+  enum: 
+    - "REQUESTED_FORMATS_INVALID"           #${DEFAULT}
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Method Not Allowed error response" enabled="true" name="405_METHOD_NOT_ALLOWED">405_METHOD_NOT_ALLOWED_${DEFAULT}:
+  description: Method Not Allowed
+  headers:
+    X-Request-ID: 
+      $$ref: "#/components/headers/X-Request-ID"
+  content:
+    application/problem+json:
+      schema:
+        $$ref: "#/components/schemas/Error_405_${DEFAULT}"
+
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="405_METHOD_NOT_ALLOWED_$ref">'405':
+  $$ref: "#/components/responses/405_METHOD_NOT_ALLOWED_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="406_Error_Schema">Error_406_${DEFAULT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode406_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="406_MessageCodes">MessageCode406_${DEFAULT}: 
+  description: Message codes defined for HTTP Error code 406 (NOT ACCEPTABLE).
+  type: string
+  enum: 
+    - "REQUESTED_FORMATS_INVALID"           #${DEFAULT}
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Not Acceptable error response" enabled="true" name="406_NOT_ACCEPTABLE">406_NOT_ACCEPTABLE_${DEFAULT}':
+  description: Not Acceptable
+  headers:
+    X-Request-ID: 
+      $$ref: "#/components/headers/X-Request-ID"
+  content:
+    application/problem+json:
+      schema:
+        $$ref: "#/components/schemas/Error_406_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="406_NOT_ACCEPTABLE_$ref">'406':
+  $$ref: "#/components/responses/406_NOT_ACCEPTABLE_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="408_Error_Schema">Error_408_${DEFAULT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode408_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Request Timeout error esponse" enabled="true" name="408_REQUEST_TIMEOUT">408_REQUEST_TIMEOUT_${DEFAULT}:
+  description:   Request Timeout
+  #NO RESPONSE BODY
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="408_REQUEST_TIMEOUT_$ref">'408':
+  $$ref: "#/components/responses/408_REQUEST_TIMEOUT_${DEFAULT}"
+
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Conflict error response" enabled="true" name="409_CONFLICT">403_CONFLICT_${DEFAULT}:
+  description: Conflict or Duplicated resource.
+  headers:
+    X-Request-ID: 
+      $$ref: "#/components/headers/X-Request-ID"
+  content:
+    application/problem+json:
+      schema:
+        $$ref: "#/components/schemas/Error_409_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="409_CONFLICT_$ref">'409':
+  $$ref: "#/components/responses/409_CONFLICT_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="409_Error_Schema">Error_409_${DEFAULT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode409_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="409_MessageCodes">MessageCode409_${DEFAULT}: 
+  description: Message codes defined for HTTP Error code 409 (CONFLICT).
+  type: string
+  enum: 
+    - "STATUS_INVALID"           #${DEFAULT}
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="415_Error_Schema">Error_415_${DEFAULT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode415_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Unsupported Media Type error response" enabled="true" name="415_UNSUPPORTED_MEDIA_TYPE">415_UNSUPPORTED_MEDIA_TYPE_${DEFAULT}:
+  description: Unsupported Media Type
+  headers:
+    X-Request-ID: 
+      $$ref: "#/components/headers/X-Request-ID"      
+  #No Response body because there are no valid default message codes in case of HTTP code 415 
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="415_UNSUPPORTED_MEDIA_TYPE_$ref">'415':
+  $$ref: "#/components/responses/415_UNSUPPORTED_MEDIA_TYPE_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="429_Error_Schema">Error_429_${DEFAULT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode429_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="" enabled="true" name="429_MessageCodes">MessageCode429_${DEFAULT}: 
+  description: Message codes for HTTP Error code 429 (TOO MANY REQUESTS).
+  type: string
+  enum: 
+    - "ACCESS_EXCEEDED"           #${DEFAULT}
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Too Many Requests error response" enabled="true" name="429_TOO_MANY_REQUESTS">429_TOO_MANY_REQUESTS_${DEFAULT}:
+  description: Too Many Requests
+  headers:
+    X-Request-ID: 
+      $$ref: "#/components/headers/X-Request-ID"      
+  #No Response body because there are no valid default message codes in case of HTTP code 429 
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="429_TOO_MANY_REQUESTS_$ref">'429':
+  $$ref: "#/components/responses/429_TOO_MANY_REQUESTS_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Internal Server Error error response" enabled="true" name="500_INTERNAL_SERVER_ERROR">500_INTERNAL_SERVER_ERROR_${DEFAULT}:
+  description: Internal Server Error
+  #NO RESPONSE BODY
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="500_INTERNAL_SERVER_ERROR_$ref">'500':
+  $$ref: "#/components/responses/500_INTERNAL_SERVER_ERROR_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="Service Unavailable error response" enabled="true" name="503_SERVICE_UNAVAILABLE">503_SERVICE_UNAVAILABLE_${DEFAULT}:
+  description: Service Unavailable
+  #NO RESPONSE BODY
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="" enabled="true" name="503_SERVICE_UNAVAILABLE_$ref">'503':
+  $$ref: "#/components/responses/503_SERVICE_UNAVAILABLE_${DEFAULT}"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schema" deleted="false" description="ALL OF schema definition" enabled="true" id="com.reprezen.swagedit.openapi3.templates.schema.allOf_schema" name="allOf schema">allOf:
+- $$ref: "${schema1}"
+- type: object
+  properties:
+    ${name}:
+      type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="ALL OF schema definition" enabled="true" name="allOf schema">${element_name:element_name('(schema name)')}:
+  allOf:
+  - $$ref: "${schema1}"
+  - type: object
+    properties:
+      ${name}:
+        type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.properties" deleted="false" description="ALL OF schema definition" enabled="true" name="allOf schema">${element_name:element_name('(property name)')}:
+  allOf:
+  - $$ref: "${schema1}"
+  - type: object
+    properties:
+      ${name}:
+        type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.properties" deleted="false" description="ANY OF schema definition" enabled="true" name="anyOf schema">${element_name:element_name('(property name)')}:
+  anyOf:
+  - $$ref: "${schema1}"
+  - type: object
+    properties:
+      ${name}:
+        type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="ANY OF schema definition" enabled="true" name="anyOf schema">${element_name:element_name('(schema name)')}:
+  anyOf:
+  - $$ref: "${schema1}"
+  - type: object
+    properties:
+      ${name}:
+        type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.callbacks" deleted="false" description="Callback definition template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.callbacks" name="callbacks">${webhook}:
+    'https://${url}':
+      post:
+        requestBody:
+          description: Callback payload
+          content: 
+            'application/json':
+              schema:
+                $$ref: "${schema}"
+        responses:
+          '200':
+            description: webhook successfully processed</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="client error response template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.400_response" name="client error response">'4${00}':
+  description: ${Client} error</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.paths" deleted="false" description="collection resource template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.collection_resource_template" name="Collection resource">/${item}s:
+  get:
+    summary: Retrieves a collection of ${item}s.
+    description: |
+        The collection of ${item}s can be filtered using the specified query parameters.
+         
+    responses:
+      '200':
+        description: OK
+        headers:
+          x-next:
+            description: A link to the next page of responses.
+            schema:
+              type: string
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $$ref: "${itemSchema}" 
+  post:
+    summary: Creates a new ${item} record.
+    requestBody:
+      description: |
+        description
+      content: 
+        "application/json":
+          schema:
+            $$ref: "${itemSchema}"
+    responses:
+      '201':
+        description: Created
+        headers:
+          location: 
+            schema:
+              type: string
+            description: URL of the created resource        
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.pathItem" deleted="false" description="DELETE template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.path_delete_template" name="delete">delete:
+  summary: Delete 
+  description: Delete the entire list (for collection resources) or an item (for object resources)
+  responses:
+    '204':
+      description: Success (no content)
+    '404':
+      description: Not Found</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schema" deleted="false" description="Error schema definition" enabled="true" id="com.reprezen.swagedit.openapi3.templates.schema.error_schema" name="Error schema">type: object
+required:
+  - code
+  - message
+properties:
+  code:
+    type: integer
+    format: int32
+  message:
+    type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="Error schema definition" enabled="true" name="Error schema">${element_name:element_name('(schema name)')}:
+  type: object
+  required:
+    - code
+    - message
+  properties:
+    code:
+      type: integer
+      format: int32
+    message:
+      type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.properties" deleted="false" description="Error schema definition" enabled="true" name="Error schema">${element_name:element_name('(property name)')}:
+  type: object
+  required:
+    - code
+    - message
+  properties:
+    code:
+      type: integer
+      format: int32
+    message:
+      type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="An RFC7807 error  schema with multiple error codes" enabled="true" name="Error_RFC7807_Schema_Detailed">Error_${NUMBER}_${CONTEXT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode${NUMBER}_${CONTEXT}"
+      additionalErrors:
+        description: |
+          Array of Error Information Blocks.
+          Might be used if more than one error is to be communicated
+        type: array
+        items: #ErrorInformation
+          $$ref: "#/components/schemas/RFC7807_ProblemTemplate"
+
+    </template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="An RFC7807 error  schema with single message code" enabled="true" name="Error_RFC7807_Schema_Single_Message_Code">Error_${NUMBER}_${CONTEXT}:
+  allOf:
+  - $$ref: "#/components/schemas/Error_RFC7807_Schema_Template"
+  - type: object
+    required: 
+      - code
+    properties:
+      code:
+        $$ref: "#/components/schemas/MessageCode${NUMBER}_${CONTEXT}"
+    </template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="A error schema template based on the RFC7807. It is necessary only one instance of this per project." enabled="true" name="Error_RFC7807_Schema_Template">Error_RFC7807_Schema_Template:
+  type: object
+  properties:
+    type:
+      description: |
+        An absolute URI reference [RFC3986] that identifies the problem type.
+        When dereferenced, it SHOULD provide human-readable documentation for 
+        the problem type (e.g., using HTML).
+        When this member is not present, its value is assumed to be "about:blank".
+      type: string
+      format: uri
+      default: 'about:blank'
+      example: 'https://c8tech.github.io/problem/constraint-violation'
+    title:
+      description: |
+        A short human readable description of error type.
+        Written in english and readable for engineers 
+        (usually not suited for non technical stakeholders and
+        not localized)
+      type: string
+      maxLength: 70
+      example: Service Unavailable
+    status:
+      description: |
+        The HTTP status code generated by the origin server for this
+        occurrence of the problem.
+      type: integer
+      format: int32
+      minimum: 100
+      maximum: 600
+      exclusiveMaximum: true
+      example: 503
+    detail:
+      description: |
+        A detailed human readable text specific to this instance of the error.
+        XPath might be used to point to the issue generating the error in addition.
+        Remark for Future: In future, a dedicated field might be introduced for the XPath.
+      type: string
+      maxLength: 512
+      example: Connection to database timed out
+    instance:
+      description: |
+        An absolute URI reference that identifies the specific occurrence of the problem.
+        It may or may not yield further information if dereferenced.
+      type: string
+      format: uri
+      maxLength: 70
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.pathItem" deleted="false" description="GET collection resource" enabled="true" id="com.reprezen.swagedit.openapi3.templates.path_GET_on_collection_template" name="get">get:
+  summary: Retrieves a collection of ${item}s.
+  description: |
+    The collection to be returned can be filtered using the specified query parameters.
+    
+  responses:
+    '200':
+      description: OK
+      headers:
+        x-next:
+          description: A link to the next page of responses
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $$ref: "${itemSchema}"</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.pathItem" deleted="false" description="GET object resource" enabled="true" id="com.reprezen.swagedit.openapi3.templates.path_get_on_object_template" name="get">get:
+  summary: Gets an ${item} with the given ${id}.
+  parameters:
+    - name: ${id}
+      in: path
+      required: true
+      description: The id of the ${item} to retrieve.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $$ref: "${itemSchema}" 
+    '404':
+      description: Not Found</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.pathItem" deleted="false" description="HEAD template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.path_head_template" name="head">head:
+  summary: Query a resource in the server
+  description: HEAD sends request and get the response only in the header, the body should not be used
+  responses:
+    '${200}':
+      description: OK</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.parameter" deleted="false" description="header parameter template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.header_parameter" name="header parameter">name: ${name}
+in: header
+description: ${ID}
+required: true
+schema:
+  type: array
+  items:
+    type: ${integer}
+    format: int64
+style: simple
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.parameter" deleted="false" description="integer query parameter template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.integer_query_parameter" name="integer query parameter">name: ${name}
+in: query
+description: ${name}
+required: false
+schema:
+  type: integer
+  format: int64
+style: ${form}
+explode: true
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schema" deleted="false" description="Link schema definition" enabled="true" id="com.reprezen.swagedit.openapi3.templates.schema.links_schema" name="Links schema">type: array
+items:       
+  properties:
+    rel:
+      type: string
+    href:
+      type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="Link schema definition" enabled="true" name="Links schema">${element_name:element_name('(schema name)')}:
+  type: array
+  items:       
+    properties:
+      rel:
+        type: string
+      href:
+        type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.properties" deleted="false" description="Link schema definition" enabled="true" name="Links schema">${element_name:element_name('(property name)')}:
+  type: array
+  items:       
+    properties:
+      rel:
+        type: string
+      href:
+        type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.paths" deleted="false" description="object resource template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.object_resource_template" name="Object resource">/${item}s/{${id}}:
+  get:
+    summary: Gets an ${item} with the given ${id}. 
+    parameters:
+      - name: ${id}
+        in: path
+        required: true
+        description: The id of the ${item} to retrieve.
+        schema:
+          type: string
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              $$ref: "${itemSchema}" 
+      '404':
+        description: Not Found
+  patch:
+    description: dates a record of ${item}.
+    requestBody:
+      description: description
+      content: 
+        "application/json":
+          schema:
+            $$ref: "${itemSchema}"
+    parameters:
+      - name: ${id}
+        in: path
+        required: true
+        description: The id of the ${item} to retrieve.
+        schema:
+          type: string
+    responses:
+      '200':
+        description: OK
+      '404':
+        description: Not Found
+  delete:
+    description: Deletes the ${item}
+    parameters:
+      - name: ${id}
+        in: path
+        required: true
+        description: The id of the ${item} to retrieve
+        schema:
+          type: string
+    responses:
+      '204':
+        description: Success (no content)
+      '404':
+        description: Not Found</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.callback" deleted="false" description="object resource template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.callback.object_resource_template" name="Object resource">/${resource}:
+  get:
+    description: ${description}
+    responses:
+      '200':
+        description: Ok
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $$ref: "${responseModel}"
+      default:
+        description: Error
+        content:
+          'text/html':
+            schema:
+              $$ref: "${errorModel}"</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="OK template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.200_response" name="OK response">'2${00}':
+  description: ${OK}</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schema" deleted="false" description="ONE OF schema definition" enabled="true" id="com.reprezen.swagedit.openapi3.templates.schema.oneOf_schema" name="oneOf schema">oneOf:
+- $$ref: "${schema1}"
+- type: object
+  properties:
+    ${name}:
+      type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="ONE OF schema definition" enabled="true" name="oneOf schema">${element_name:element_name('(schema name)')}:
+  oneOf:
+  - $$ref: "${schema1}"
+  - type: object
+    properties:
+      ${name}:
+        type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.properties" deleted="false" description="ONE OF schema definition" enabled="true" name="oneOf schema">${element_name:element_name('(property name)')}:
+  oneOf:
+  - $$ref: "${schema1}"
+  - type: object
+    properties:
+      ${name}:
+        type: string</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.info.contact" deleted="false" description="Provides contact metadata about this API specification" enabled="true" id="com.reprezen.swagedit.openapi3.templates.info_contact_template" name="OpenAPI contact">name: ${contact_name}
+url: https://${contact_url}
+email: ${contact_email}</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.root" deleted="false" description="Provides descriptive metadata about this API specification" enabled="true" id="com.reprezen.swagedit.openapi3.templates.info_template" name="OpenAPI info">info:
+  version: "1.0.0"
+  title: ${API_title}
+  description: ${API_description}
+  termsOfService: https://${terms_url}
+  contact:
+    name: ${contact_name}
+    url: https://${contact_url}
+    email: ${contact_email}
+  license:
+    name: ${MIT}
+    url: https://opensource.org/licenses/MIT</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.root" deleted="false" description="OpenAPI servers declaration" enabled="true" id="com.reprezen.swagedit.openapi3.templates.servers_template" name="OpenAPI servers">servers:
+- url: https://${url}
+  description: ${description}</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.root" deleted="false" description="OpenAPI version declaration" enabled="true" id="com.reprezen.swagedit.openapi3.templates.openapi_template" name="OpenAPI version">openapi: "3.0.1"</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.pathItem" deleted="false" description="OPTIONS template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.path_options_template" name="options">options:
+  summary: Request resource options
+  description: Request information about methods available for resource manipulation 
+  responses:
+    '2${00}':
+      description: OK</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.pathItem" deleted="false" description="PATCH template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.path_patch_template" name="patch">patch:
+  summary: Partial update
+  description: ${Update}   
+  responses:
+    '2${00}':
+      description: ${OK}
+      content:
+        application/json:
+          schema:
+            $$ref: ${model}</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.parameter" deleted="false" description="path parameter template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.path_parameter" name="path parameter">name: ${name}
+in: path
+description: ${ID}
+required: true
+schema:
+  type: ${string}  
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.pathItem" deleted="false" description="POST template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.path_post_template" name="post">post:
+  summary: Creates a new record of ${input}.
+  description: |
+    Create a new item
+  requestBody:
+    description: description
+    content: 
+      "application/json":
+        schema:
+          $$ref: "${input}"
+  responses:
+    '201':
+      description: Created
+      headers:
+        location: 
+          schema:
+            type: string
+          description: URL of the created resource</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.properties" deleted="false" description="" enabled="true" name="Property integer">${property}:
+  type: integer
+  format: int64</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.properties" deleted="false" description="" enabled="true" name="Property string">${property}:
+  type: string
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.pathItem" deleted="false" description="PUT template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.path_put_template" name="put">put:
+  summary: Update
+  description: Update the entire list (for collection resources) or an item (for object resources)   
+  responses:
+    '2${00}':
+      description: OK</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.requestBody" deleted="false" description="request body template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.body_request_object" name="request body">description: ${description}
+content: 
+  "application/json":
+    schema:
+      $$ref: ${model}</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.response" deleted="false" description="server response link template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.response_link" name="response link">links:
+  ${name}:
+    $$ref: "${ref}"</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schema" deleted="false" description="Schema definition with a required property" enabled="true" id="com.reprezen.swagedit.openapi3.templates.schema.schema_with_property" name="schema with a required property">required:
+- ${property}
+properties:
+  ${property}:
+    type: integer
+    format: int64</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="Schema definition with a required property" enabled="true" name="schema with a required property">${element_name:element_name('(schema name)')}:
+  required:
+  - ${property}
+  properties:
+    ${property}:
+      type: integer
+      format: int64</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.properties" deleted="false" description="Schema definition with a required property" enabled="true" name="schema with a required property">${element_name:element_name('(property name)')}:
+  required:
+  - ${property}
+  properties:
+    ${property}:
+      type: integer
+      format: int64</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.responses" deleted="false" description="server error response template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.500_response" name="server error response">'5${00}':
+  description: ${Server} error</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.requestBodies" deleted="false" description="request body template" enabled="true" name="shared request body ">${element_name:element_name('(request body  name)')}:
+  description: ${description}
+  content: 
+    "application/json":
+      schema:
+        $$ref: ${model}</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schema" deleted="false" description="Schema definition with a required property" enabled="true" id="com.reprezen.swagedit.openapi3.templates.schema.simple" name="simple schema">properties:
+  ${property}:
+    type: integer
+    format: int64</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.schemas" deleted="false" description="Schema definition with a required property" enabled="true" name="simple schema">${element_name:element_name('(schema name)')}:
+  type: object
+  properties:
+    ${property}:
+      type: integer
+      format: int64</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.properties" deleted="false" description="Schema definition with a required property" enabled="true" name="simple schema">${element_name:element_name('(property name)')}:
+  properties:
+    ${property}:
+      type: integer
+      format: int64</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.paths" deleted="false" description="singleton resource template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.singleton_resource_template" name="Singleton resource">/${item}:
+  get:
+    description: Retrieve the ${item}
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              $$ref: "${itemSchema}" 
+  put:
+    description: Create a new ${item}
+    requestBody:
+      description: description
+      content: 
+        "application/json":
+          schema:
+            $$ref: "${itemSchema}"
+    responses:
+      '201':
+        description: Created
+  delete:
+    description: Delete the ${item}
+    responses:
+      '204':
+        description: Success (no content)
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.parameter" deleted="false" description="string query parameter template" enabled="true" id="com.reprezen.swagedit.openapi3.templates.string_query_parameter" name="string query parameter">name: ${name}
+in: query
+description: ${name}
+required: false
+schema:
+  type: ${string}
+style: ${form}
+explode: true
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.headers" deleted="false" description="Correlates HTTP requests between a client and multiple server processes. " enabled="true" name="X-Correlation-ID">X-Correlation-ID:
+  description: |
+    An RFC4122 UUID used to correlates the initial HTTP requests from a client with multiple server processes.
+  required: true
+  schema:
+    type: string
+    format: uuid
+  example: "99391c7e-ad88-49ec-a2ad-99ddcb1f7721"
+</template><template autoinsert="true" context="com.reprezen.swagedit.openapi3.templates.headers" deleted="false" description="A header for the ID of the request" enabled="true" name="X-Request-ID">X-Request-ID:
+  description: ID of the request, unique to the call, as determined by the initiating party.
+  required: true
+  schema:
+    type: string
+    format: uuid
+  example: "99391c7e-ad88-49ec-a2ad-99ddcb1f7721"
+    </template></templates>
