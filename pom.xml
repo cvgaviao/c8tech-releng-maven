@@ -340,7 +340,7 @@
 			test -->
 		<sonar-jacoco-listeners.version>5.14.0.18788</sonar-jacoco-listeners.version>
 
-		<commons-io.version>2.6</commons-io.version>
+		<commons-io.version>2.7</commons-io.version>
 		<commons-collections.version>3.2.2</commons-collections.version>
 		<commons-lang3.version>3.10</commons-lang3.version>
 		<commons-compress.version>1.18</commons-compress.version>
